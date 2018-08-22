@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginWithFacebookButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
@@ -26,6 +27,20 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = NSLocalizedString("Sign Up", comment: "Sign Up")
+        if let button = sender as? UIButton {
+            if button == signupButton {
+                backItem.title = NSLocalizedString("Sign Up", comment: "Sign Up")
+            } else if button == forgotButton {
+                backItem.title = NSLocalizedString("Forgot Password", comment: "Forgot Password")
+            }
+        }
+        backItem.tintColor = .black
+        navigationItem.backBarButtonItem = backItem
     }
     
 

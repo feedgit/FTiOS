@@ -15,6 +15,8 @@
 		130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E1212D6E2800C3E21A /* LoginViewController.swift */; };
 		130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E3212D7D4900C3E21A /* ForgotPasswordViewController.swift */; };
 		130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */; };
+		130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */; };
+		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		130E05E1212D6E2800C3E21A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		130E05E3212D7D4900C3E21A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
+		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 				130E05E1212D6E2800C3E21A /* LoginViewController.swift */,
 				130E05E3212D7D4900C3E21A /* ForgotPasswordViewController.swift */,
 				130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */,
+				130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */,
+				130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -156,6 +162,8 @@
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
+				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
+				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

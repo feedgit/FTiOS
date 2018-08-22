@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  SignUpUsernameViewController.swift
 //  FeedTrue
 //
 //  Created by Quoc Le on 8/22/18.
@@ -8,22 +8,11 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
-    @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var firstNameTextField: UITextField!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordLabel: UILabel!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var femaleIconButton: UIButton!
-    @IBOutlet weak var femaleTextButton: UIButton!
-    @IBOutlet weak var maleIconButton: UIButton!
-    @IBOutlet weak var maleTextButton: UIButton!
-    @IBOutlet weak var finishSignUpButton: UIButton!
-    
+class SignUpUsernameViewController: UIViewController {
+
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameTextFiled: UITextField!
+    @IBOutlet weak var nextButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,10 +41,5 @@ class SignUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    // MARK: - Actions
-    @IBAction func finishSignUpPressed(_ sender: Any) {
-    }
-    
 
 }
