@@ -36,12 +36,109 @@ class WebService: NSObject {
                 }
                 
                 
-                guard let signInResponse = response.result.value else {
+                guard let value = response.result.value else {
                     completion(false, nil)
                     return
                 }
                 
-                completion(true, signInResponse)
+                completion(true, value)
+        }
+    }
+    
+    func validateSignUp(info: SignUpInfo, completion: @escaping (Bool, [String: Any]?)->()) {
+        var params:[String: Any] = [
+            "username": info.username ?? "",
+            "first_name": info.first_name ?? "",
+            "last_name": info.last_name ?? "",
+            "email": info.email ?? "",
+            //"phone_number": info.phone_number ?? "",
+            "password": info.password ?? "",
+            //"date_of_birth": null
+        ]
+        
+        // TEST
+        info.phone_number = "0123456789"
+        info.date_of_birth = "1989-20-05"
+        
+        if let phone = info.phone_number {
+            params["phone_number"] = phone
+        }
+        
+        if let date = info.date_of_birth {
+            params["date_of_birth"] = date
+        }
+        let urlString = "\(host)/api/v1/users/account/sign_up/attempt/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .validate()
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if let _ = value["success"] as? String {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(false, value)
+        }
+    }
+    
+    func signUp(info: SignUpInfo, completion: @escaping (Bool, SignUpResponse?)->()) {
+        var params:[String: Any] = [
+            "username": info.username ?? "",
+            "first_name": info.first_name ?? "",
+            "last_name": info.last_name ?? "",
+            "email": info.email ?? "",
+            //"phone_number": info.phone_number ?? "",
+            "password": info.password ?? "",
+            //"date_of_birth": null
+        ]
+        
+        // TEST
+        info.phone_number = "0123456789"
+        info.date_of_birth = "1989-20-05"
+        
+        if let phone = info.phone_number {
+            params["phone_number"] = phone
+        }
+        
+        if let date = info.date_of_birth {
+            params["date_of_birth"] = date
+        }
+        let urlString = "\(host)/api/v1/users/account/sign_up/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .validate()
+            .responseObject { (response: DataResponse<SignUpResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
         }
     }
 }
