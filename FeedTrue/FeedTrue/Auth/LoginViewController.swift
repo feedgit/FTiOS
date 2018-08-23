@@ -60,8 +60,9 @@ class LoginViewController: UIViewController {
         guard let username = usernameTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        WebService.default.signIn(username: username, password: password) { (success, message) in
-            NSLog("success: \(success ? "TRUE": "FALSE") message: \(message ?? "")")
+        WebService.default.signIn(username: username, password: password) { (success, signInResponse) in
+            NSLog("success: \(success ? "TRUE": "FALSE") response: \(signInResponse.debugDescription)")
+            // TODO: display response info
         }
     }
     

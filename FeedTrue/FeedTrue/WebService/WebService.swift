@@ -8,13 +8,14 @@
 
 import UIKit
 import Alamofire
+import AlamofireObjectMapper
 
 class WebService: NSObject {
-
+    
     static let `default`: WebService = WebService()
     let host = "https://api.feedtrue.com"
     
-    func signIn(username: String, password: String, completion: @escaping (Bool, String?)->()) {
+    func signIn(username: String, password: String, completion: @escaping (Bool, SignInResponse?)->()) {
         let params:[String: Any] = [
             "username": username,
             "password": password
@@ -27,21 +28,20 @@ class WebService: NSObject {
         }
         
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
-        .validate()
-            .responseJSON { (response) in
-                NSLog(response.debugDescription)
+            .validate()
+            .responseObject { (response: DataResponse<SignInResponse>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
                     return
                 }
-                guard let value = response.result.value as? [String: Any],
-                    let token = value["token"] as? String else {
-                        completion(false, nil)
-                        return
+                
+                
+                guard let signInResponse = response.result.value else {
+                    completion(false, nil)
+                    return
                 }
                 
-                // parse data
-                completion(true, token)
+                completion(true, signInResponse)
         }
     }
 }
