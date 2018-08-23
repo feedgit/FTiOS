@@ -17,6 +17,8 @@
 		130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */; };
 		130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */; };
 		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
+		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
+		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,10 @@
 		130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
+		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
+		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,8 @@
 			children = (
 				130E05CD212D6A3200C3E21A /* FeedTrue */,
 				130E05CC212D6A3200C3E21A /* Products */,
+				5B3456877620078CB0C3AD68 /* Pods */,
+				E807DE1F13EBD0A9AC39E685 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +73,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				13489DE3212EB92400C72BD3 /* WebService */,
 				130E05E0212D6DCF00C3E21A /* Auth */,
 				130E05CE212D6A3200C3E21A /* AppDelegate.swift */,
 				130E05D0212D6A3200C3E21A /* ViewController.swift */,
@@ -87,6 +97,31 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		13489DE3212EB92400C72BD3 /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				13489DE4212EB9FA00C72BD3 /* WebService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		5B3456877620078CB0C3AD68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */,
+				8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E807DE1F13EBD0A9AC39E685 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -94,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 130E05DD212D6A3700C3E21A /* Build configuration list for PBXNativeTarget "FeedTrue" */;
 			buildPhases = (
+				B61CB97070C21E542134104E /* [CP] Check Pods Manifest.lock */,
 				130E05C7212D6A3200C3E21A /* Sources */,
 				130E05C8212D6A3200C3E21A /* Frameworks */,
 				130E05C9212D6A3200C3E21A /* Resources */,
+				883D995420647EABE0E5AA79 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -153,6 +190,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		883D995420647EABE0E5AA79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B61CB97070C21E542134104E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FeedTrue-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		130E05C7212D6A3200C3E21A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -160,6 +236,7 @@
 			files = (
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
+				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
@@ -306,6 +383,7 @@
 		};
 		130E05DE212D6A3700C3E21A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -324,6 +402,7 @@
 		};
 		130E05DF212D6A3700C3E21A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
