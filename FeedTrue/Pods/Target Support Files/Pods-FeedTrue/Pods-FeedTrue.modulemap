@@ -1,0 +1,6 @@
+framework module Pods_FeedTrue {
+  umbrella header "Pods-FeedTrue-umbrella.h"
+
+  export *
+  module * { export * }
+}

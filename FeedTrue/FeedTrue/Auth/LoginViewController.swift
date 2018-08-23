@@ -57,6 +57,13 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     @IBAction func login(_ sender: Any) {
         // TODO: collect data, check & do login
+        guard let username = usernameTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        WebService.default.signIn(username: username, password: password) { (success, signInResponse) in
+            NSLog("success: \(success ? "TRUE": "FALSE") response: \(signInResponse.debugDescription)")
+            // TODO: display response info
+        }
     }
     
     @IBAction func loginWithFacebook(_ sender: Any) {
