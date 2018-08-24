@@ -21,6 +21,7 @@
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
 		13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEC212EDAC200C72BD3 /* SignUpResponse.swift */; };
+		13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
 		13489DEC212EDAC200C72BD3 /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FeedTrue.swift"; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				13489DF2212FE77E00C72BD3 /* Extension */,
 				13489DE3212EB92400C72BD3 /* WebService */,
 				130E05E0212D6DCF00C3E21A /* Auth */,
 				130E05CE212D6A3200C3E21A /* AppDelegate.swift */,
@@ -128,6 +131,14 @@
 				13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		13489DF2212FE77E00C72BD3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		5B3456877620078CB0C3AD68 /* Pods */ = {
@@ -268,6 +279,7 @@
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
+				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,

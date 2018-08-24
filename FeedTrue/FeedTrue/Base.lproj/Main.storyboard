@@ -185,7 +185,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7wi-Dg-oyv" kind="show" id="H6G-I3-hdN"/>
+                                    <segue destination="7wi-Dg-oyv" kind="show" identifier="username" id="H6G-I3-hdN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMR-Gp-nxi">
@@ -263,7 +263,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="orc-hB-aEz" kind="show" id="PkK-uU-uPm"/>
+                                    <segue destination="orc-hB-aEz" kind="show" identifier="phoneNumber" id="PkK-uU-uPm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6t-r5-dPV">
@@ -313,7 +313,7 @@
         <scene sceneID="tTF-e7-PGH">
             <objects>
                 <viewController id="orc-hB-aEz" customClass="SignUpViewController" customModule="FeedTrue" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="7uq-h7-B8M">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="signUpDetails" id="7uq-h7-B8M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>

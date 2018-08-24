@@ -20,6 +20,10 @@ class SignUpUsernameViewController: UIViewController {
         let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
         backButton.tintColor = .black
         navigationItem.backBarButtonItem = backButton
+        
+        // default NEXT button is disable
+        nextButton.isEnabled = false
+        usernameTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,5 +45,23 @@ class SignUpUsernameViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "username" {
+            if let vc = segue.destination as? SignUpPhoneNumberViewController {
+                vc.username = usernameTextFiled.text
+            }
+        }
+    }
+    
+    @objc func textFieldDidChange(_ sender: Any?) {
+        if let text = usernameTextFiled.text, !text.isEmpty {
+            // TODO: check username correct
+            NSLog("\(#function) username: \(text)")
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
 
 }

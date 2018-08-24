@@ -15,6 +15,8 @@ class SignUpPhoneNumberViewController: UIViewController {
     @IBOutlet weak var emailTextFiled: UITextField!
     @IBOutlet weak var nextButton: UIButton!
     
+    var username: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +24,9 @@ class SignUpPhoneNumberViewController: UIViewController {
         let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
         backButton.tintColor = .black
         navigationItem.backBarButtonItem = backButton
+        nextButton.isEnabled = false
+        phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        emailTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,5 +48,26 @@ class SignUpPhoneNumberViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "phoneNumber" {
+            if let vc = segue.destination as? SignUpViewController {
+                vc.phoneNumber = phoneNumberTextField.text
+                vc.emai = emailTextFiled.text
+                vc.username = username
+            }
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let phoneNumber = phoneNumberTextField.text
+        let email = emailTextFiled.text
+        
+        if (phoneNumber != nil) && (email != nil) && !phoneNumber!.isEmpty && !email!.isEmpty {
+            nextButton.isEnabled = true
+        } else {
+            nextButton.isEnabled = false
+        }
+    }
 
 }

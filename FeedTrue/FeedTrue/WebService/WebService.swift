@@ -97,27 +97,15 @@ class WebService: NSObject {
     }
     
     func signUp(info: SignUpInfo, completion: @escaping (Bool, SignUpResponse?)->()) {
-        var params:[String: Any] = [
+        let params:[String: Any] = [
             "username": info.username ?? "",
             "first_name": info.first_name ?? "",
             "last_name": info.last_name ?? "",
             "email": info.email ?? "",
-            //"phone_number": info.phone_number ?? "",
+            "phone_number": info.phone_number ?? "",
             "password": info.password ?? "",
             //"date_of_birth": null
         ]
-        
-        // TEST
-        info.phone_number = "0123456789"
-        info.date_of_birth = "1989-20-05"
-        
-        if let phone = info.phone_number {
-            params["phone_number"] = phone
-        }
-        
-        if let date = info.date_of_birth {
-            params["date_of_birth"] = date
-        }
         let urlString = "\(host)/api/v1/users/account/sign_up/"
         
         guard let url = URL(string: urlString) else {
