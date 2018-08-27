@@ -27,6 +27,10 @@ class SignUpPhoneNumberViewController: UIViewController {
         nextButton.isEnabled = false
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         emailTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+        self.view.addGestureRecognizer(singleTap)
+        self.view.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +72,11 @@ class SignUpPhoneNumberViewController: UIViewController {
         } else {
             nextButton.isEnabled = false
         }
+    }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
     }
 
 }

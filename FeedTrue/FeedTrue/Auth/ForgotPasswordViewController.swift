@@ -19,6 +19,9 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+        self.view.addGestureRecognizer(singleTap)
+        self.view.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +48,11 @@ class ForgotPasswordViewController: UIViewController {
     
     @IBAction func goLogin(_ sender: Any) {
         // TODO: go to Login page
+    }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
     }
     
 }

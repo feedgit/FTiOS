@@ -45,6 +45,10 @@ class SignUpViewController: UIViewController {
         let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
         backButton.tintColor = .black
         navigationItem.backBarButtonItem = backButton
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+        self.view.addGestureRecognizer(singleTap)
+        self.view.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -136,6 +140,11 @@ class SignUpViewController: UIViewController {
             
         }
         return false
+    }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
     }
     
 

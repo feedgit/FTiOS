@@ -24,6 +24,10 @@ class SignUpUsernameViewController: UIViewController {
         // default NEXT button is disable
         nextButton.isEnabled = false
         usernameTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+        self.view.addGestureRecognizer(singleTap)
+        self.view.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +66,11 @@ class SignUpUsernameViewController: UIViewController {
         } else {
             nextButton.isEnabled = false
         }
+    }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
     }
 
 }

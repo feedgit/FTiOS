@@ -22,6 +22,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+        self.view.addGestureRecognizer(singleTap)
+        self.view.isUserInteractionEnabled = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +75,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func useWithoutLogin(_ sender: Any) {
         // TODO: do login without login
+    }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
     }
     
 }
