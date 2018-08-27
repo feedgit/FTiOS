@@ -237,13 +237,13 @@
                                 <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpA-PF-bdQ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zpA-PF-bdQ" customClass="DTTextField" customModule="DTTextField">
                                 <rect key="frame" x="64" y="360" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFo-sV-cEC">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFo-sV-cEC" customClass="DTTextField" customModule="DTTextField">
                                 <rect key="frame" x="64" y="289" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
@@ -309,7 +309,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="tTF-e7-PGH">
             <objects>
-                <viewController id="orc-hB-aEz" customClass="SignUpViewController" customModule="FeedTrue" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signupViewController" id="orc-hB-aEz" customClass="SignUpViewController" customModule="FeedTrue" customModuleProvider="target" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" restorationIdentifier="signUpDetails" id="7uq-h7-B8M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

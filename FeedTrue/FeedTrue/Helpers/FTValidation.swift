@@ -19,4 +19,22 @@ struct FTValidation {
         catch {}
         return false
     }
+    
+    func validatePhoneNumber(phone: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: "^((\\+)|(00))[0-9]{6,14}$", options: .caseInsensitive)
+            if regex.matches(in: phone, options: [], range: NSMakeRange(0, phone.count)).count > 0 {return true}
+        }
+        catch {}
+        return false
+    }
+    
+    func validateEmail(email: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+            if regex.matches(in: email, options: [], range: NSMakeRange(0, email.count)).count > 0 {return true}
+        }
+        catch {}
+        return false
+    }
 }

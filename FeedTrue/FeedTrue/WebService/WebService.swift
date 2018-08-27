@@ -132,6 +132,40 @@ class WebService: NSObject {
         }
     }
     
+    func validatePhone(phone: String, email: String, completion: @escaping (Bool, [String: Any]?)->()) {
+        let params = [
+            "phone_number": phone,
+            "email": email
+        ]
+        
+        let urlString = "\(host)/api/v1/auth/registration/attempt/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if let _ = value["message"] as? String {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(false, value)
+        }
+    }
+    
     func signUp(info: SignUpInfo, completion: @escaping (Bool, SignUpResponse?)->()) {
         let params:[String: Any] = [
             "username": info.username ?? "",
