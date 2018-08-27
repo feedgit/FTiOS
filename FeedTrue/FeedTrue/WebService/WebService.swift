@@ -20,7 +20,7 @@ class WebService: NSObject {
             "username": username,
             "password": password
         ]
-        let urlString = "\(host)/api/v1/api-token-auth/"
+        let urlString = "\(host)/api/v1/auth/login/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -93,6 +93,42 @@ class WebService: NSObject {
                 }
                 
                 completion(false, value)
+        }
+    }
+    
+    func validateUsername(username: String, completion: @escaping (Bool, String?)->()) {
+        let params = [
+            "username": username
+        ]
+        
+        let urlString = "\(host)/api/v1/auth/registration/attempt/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if let msg = value["message"] as? String {
+                    completion(true, msg)
+                    return
+                }
+                
+                if let errorMsg = value["error"] as? String {
+                    completion(false, errorMsg)
+                    return
+                }
         }
     }
     

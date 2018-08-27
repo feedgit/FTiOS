@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import DTTextField
+import MBProgressHUD
 
 class SignUpUsernameViewController: UIViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var usernameTextFiled: UITextField!
+    @IBOutlet weak var usernameTextFiled: DTTextField!
     @IBOutlet weak var nextButton: UIButton!
+    
+    let usernameMessage = NSLocalizedString("Username must be at least 6 characters.", comment: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,8 +26,6 @@ class SignUpUsernameViewController: UIViewController {
         backButton.tintColor = .black
         navigationItem.backBarButtonItem = backButton
         
-        // default NEXT button is disable
-        nextButton.isEnabled = false
         usernameTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
@@ -62,9 +65,51 @@ class SignUpUsernameViewController: UIViewController {
         if let text = usernameTextFiled.text, !text.isEmpty {
             // TODO: check username correct
             NSLog("\(#function) username: \(text)")
-            nextButton.isEnabled = true
+            //nextButton.isEnabled = true
+            if FTValidation().validateUsername(str: text) {
+                usernameTextFiled.hideError()
+            } else {
+                usernameTextFiled.showError(message: usernameMessage)
+            }
         } else {
-            nextButton.isEnabled = false
+            //nextButton.isEnabled = false
+            usernameTextFiled.showError(message: usernameMessage)
+        }
+    }
+    
+    
+    @IBAction func next(_ sender: Any) {
+        guard let text = usernameTextFiled.text else {
+            usernameTextFiled.showError(message: usernameMessage)
+            return
+        }
+        
+        guard FTValidation().validateUsername(str: text) == true else {
+            usernameTextFiled.showError(message: usernameMessage)
+            return
+        }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        WebService.default.validateUsername(username: text) {[weak self] (success, msg) in
+            if success {
+                DispatchQueue.main.async {
+                    if let v = self?.view {
+                        MBProgressHUD.hide(for: v, animated: true)
+                    }
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let phoneVC = storyboard.instantiateViewController(withIdentifier: "phoneNumberIdentifier") as! SignUpPhoneNumberViewController
+                    phoneVC.username = text
+                    self?.navigationController?.pushViewController(phoneVC, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    if let v = self?.view {
+                        MBProgressHUD.hide(for: v, animated: true)
+                    }
+                    
+                    self?.usernameTextFiled.showError(message: msg)
+                }
+            }
         }
     }
     

@@ -5,4 +5,6 @@ use_frameworks!
 target 'FeedTrue' do
 pod 'Alamofire', '~> 4.7'
 pod 'AlamofireObjectMapper', '~> 5.0'
+pod 'DTTextField'
+pod 'MBProgressHUD', '~> 1.1.0'
 end
