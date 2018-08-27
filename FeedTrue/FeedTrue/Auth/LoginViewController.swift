@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import MBProgressHUD
+import DTTextField
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var usernameTextField: DTTextField!
+    @IBOutlet weak var passwordTextField: DTTextField!
     @IBOutlet weak var forgotButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginWithFacebookButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var useWithoutLoginButton: UIButton!
+    
+    fileprivate var progressHub: MBProgressHUD?
+    let usernameErrorMessage = NSLocalizedString("Username field is require.", comment: "")
+    let passwordErrorMessage = NSLocalizedString("Password field is require.", comment: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,11 +66,33 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     @IBAction func login(_ sender: Any) {
         // TODO: collect data, check & do login
-        guard let username = usernameTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
+        guard let username = usernameTextField.text, !username.isEmpty else {
+            usernameTextField.showError(message: usernameErrorMessage)
+            return
+        }
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            passwordTextField.showError(message: passwordErrorMessage)
+            return
+        }
         
-        WebService.default.signIn(username: username, password: password) { (success, signInResponse) in
+        progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHub?.label.text = NSLocalizedString("Login...", comment: "")
+        WebService.default.signIn(username: username, password: password) { [weak self] (success, signInResponse) in
             NSLog("success: \(success ? "TRUE": "FALSE") response: \(signInResponse.debugDescription)")
+            if success {
+                DispatchQueue.main.async {
+                    self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
+                    self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC")
+                    self?.navigationController?.pushViewController(homeVC, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
+                    self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                }
+            }
             // TODO: display response info
         }
     }

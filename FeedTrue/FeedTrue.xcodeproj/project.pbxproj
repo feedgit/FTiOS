@@ -23,6 +23,7 @@
 		13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEC212EDAC200C72BD3 /* SignUpResponse.swift */; };
 		13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */; };
 		13489DF72134062200C72BD3 /* FTValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF62134062200C72BD3 /* FTValidation.swift */; };
+		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+FeedTrue.swift"; sourceTree = "<group>"; };
 		13489DF62134062200C72BD3 /* FTValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTValidation.swift; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
+		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */,
+				13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
+				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

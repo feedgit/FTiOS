@@ -46,28 +46,24 @@ class WebService: NSObject {
     }
     
     func validateSignUp(info: SignUpInfo, completion: @escaping (Bool, [String: Any]?)->()) {
-        var params:[String: Any] = [
+        let params:[String: Any] = [
             "username": info.username ?? "",
             "first_name": info.first_name ?? "",
             "last_name": info.last_name ?? "",
             "email": info.email ?? "",
-            //"phone_number": info.phone_number ?? "",
+            "phone_number": info.phone_number ?? "",
             "password": info.password ?? "",
             //"date_of_birth": null
         ]
         
-        // TEST
-        info.phone_number = "0123456789"
-        info.date_of_birth = "1989-20-05"
+//        // TEST
+//        info.date_of_birth = "1989-20-05"
+//
+//        if let date = info.date_of_birth {
+//            params["date_of_birth"] = date
+//        }
         
-        if let phone = info.phone_number {
-            params["phone_number"] = phone
-        }
-        
-        if let date = info.date_of_birth {
-            params["date_of_birth"] = date
-        }
-        let urlString = "\(host)/api/v1/users/account/sign_up/attempt/"
+        let urlString = "\(host)/api/v1/auth/registration/attempt/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -174,9 +170,10 @@ class WebService: NSObject {
             "email": info.email ?? "",
             "phone_number": info.phone_number ?? "",
             "password": info.password ?? "",
+            "gender": info.gender ?? "Female"
             //"date_of_birth": null
         ]
-        let urlString = "\(host)/api/v1/users/account/sign_up/"
+        let urlString = "\(host)/api/v1/auth/registration/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)

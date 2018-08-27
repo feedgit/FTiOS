@@ -37,4 +37,37 @@ struct FTValidation {
         catch {}
         return false
     }
+    
+    func validateFirstname(str: String) -> Bool
+    {
+        do
+        {
+            let regex = try NSRegularExpression(pattern: "^[0-9a-zA-Z\\_\\s]{1,32}$", options: .caseInsensitive)
+            if regex.matches(in: str, options: [], range: NSMakeRange(0, str.count)).count > 0 {return true}
+        }
+        catch {}
+        return false
+    }
+    
+    func validateLastname(str: String) -> Bool
+    {
+        do
+        {
+            let regex = try NSRegularExpression(pattern: "^[0-9a-zA-Z\\_\\s]{1,32}$", options: .caseInsensitive)
+            if regex.matches(in: str, options: [], range: NSMakeRange(0, str.count)).count > 0 {return true}
+        }
+        catch {}
+        return false
+    }
+    
+    func validatePassword(str: String) -> Bool
+    {
+        do
+        {
+            let regex = try NSRegularExpression(pattern: "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{6,16}$", options: .caseInsensitive)
+            if regex.matches(in: str, options: [], range: NSMakeRange(0, str.count)).count > 0 {return true}
+        }
+        catch {}
+        return false
+    }
 }

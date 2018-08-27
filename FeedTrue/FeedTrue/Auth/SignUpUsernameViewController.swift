@@ -107,6 +107,7 @@ class SignUpUsernameViewController: UIViewController {
                         MBProgressHUD.hide(for: v, animated: true)
                     }
                     
+                    self?.usernameTextFiled.hideError()
                     self?.usernameTextFiled.showError(message: msg)
                 }
             }
