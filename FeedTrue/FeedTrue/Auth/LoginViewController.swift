@@ -9,6 +9,8 @@
 import UIKit
 import MBProgressHUD
 import DTTextField
+import FacebookCore
+import FacebookLogin
 
 class LoginViewController: UIViewController {
 
@@ -84,7 +86,8 @@ class LoginViewController: UIViewController {
                     self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
                     self?.progressHub?.hide(animated: true, afterDelay: 1.0)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC")
+                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
+                    homeVC.signInData = signInResponse
                     self?.navigationController?.pushViewController(homeVC, animated: true)
                 }
             } else {
@@ -99,6 +102,35 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginWithFacebook(_ sender: Any) {
         // TODO: login with FB
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [.publicProfile], viewController: self) {[weak self] (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User canceled login.")
+            case .success(grantedPermissions: let grantedPermissions, declinedPermissions: let delinedPermissions, token: let accessToken):
+                self?.progressHub = MBProgressHUD.showAdded(to: (self?.view)!, animated: true)
+                self?.progressHub?.label.text = NSLocalizedString("Login FB", comment: "")
+                WebService.default.signInWithFacebook(token: accessToken.authenticationToken, completion: { (success, response) in
+                    if success {
+                        DispatchQueue.main.async {
+                            self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
+                            self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
+                            homeVC.signInData = response
+                            self?.navigationController?.pushViewController(homeVC, animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
+                            self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                        }
+                    }
+                })
+            }
+        }
     }
     
     @IBAction func useWithoutLogin(_ sender: Any) {

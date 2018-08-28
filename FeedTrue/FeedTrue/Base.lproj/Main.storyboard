@@ -41,13 +41,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Phone number" textAlignment="natural" minimumFontSize="17" background="Base" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N8K-Uo-fPA" customClass="DTTextField" customModule="DTTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N8K-Uo-fPA" customClass="DTTextField" customModule="DTTextField">
                                 <rect key="frame" x="64" y="321" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" background="Base" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bQ6-tf-Ncy" customClass="DTTextField" customModule="DTTextField">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bQ6-tf-Ncy" customClass="DTTextField" customModule="DTTextField">
                                 <rect key="frame" x="64" y="359" width="247" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -481,16 +481,32 @@
             </objects>
             <point key="canvasLocation" x="4131" y="406"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="bon-8E-Cos">
             <objects>
-                <viewController storyboardIdentifier="homeVC" id="lpL-Wp-eJ3" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="lpL-Wp-eJ3" customClass="HomeViewController" customModule="FeedTrue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QIx-xT-cjy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FeedTrue" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jxl-kB-6Ah">
+                                <rect key="frame" x="8" y="140" width="359" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jxl-kB-6Ah" firstAttribute="top" secondItem="eDQ-Bo-GeS" secondAttribute="top" constant="120" id="n3O-g8-rVU"/>
+                            <constraint firstItem="Jxl-kB-6Ah" firstAttribute="leading" secondItem="eDQ-Bo-GeS" secondAttribute="leading" constant="8" id="ueo-0c-uwz"/>
+                            <constraint firstItem="eDQ-Bo-GeS" firstAttribute="trailing" secondItem="Jxl-kB-6Ah" secondAttribute="trailing" constant="8" id="xdM-lb-pW0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eDQ-Bo-GeS"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="Jxl-kB-6Ah" id="KUS-gI-lzL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zze-W2-p0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -587,7 +603,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Base" width="292" height="45"/>
         <image name="Image 1" width="375" height="293"/>
         <image name="Image 2" width="375" height="375"/>
         <image name="female_selected" width="16" height="24"/>

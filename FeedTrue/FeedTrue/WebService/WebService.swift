@@ -20,29 +20,29 @@ class WebService: NSObject {
             "username": username,
             "password": password
         ]
-        let urlString = "\(host)/api/v1/auth/login/"
+        let urlString = "\(host)/api/v1/auth/login/?username=duongnuhabang&password=chelsea39"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
         }
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
-            .validate()
+        Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default, headers: nil)
             .responseObject { (response: DataResponse<SignInResponse>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
                     return
                 }
-                
-                
+
+
                 guard let value = response.result.value else {
                     completion(false, nil)
                     return
                 }
-                
+
                 completion(true, value)
         }
+        
     }
     
     func validateSignUp(info: SignUpInfo, completion: @escaping (Bool, [String: Any]?)->()) {
@@ -187,6 +187,34 @@ class WebService: NSObject {
                     completion(false, nil)
                     return
                 }
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func signInWithFacebook(token: String, completion: @escaping (Bool, SignInResponse?)->()) {
+        let params:[String: Any] = [
+            "access_token": "JWT \(token)"
+        ]
+        let urlString = "\(host)/api/v1/auth/login/facebook/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseObject { (response: DataResponse<SignInResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
                 
                 guard let value = response.result.value else {
                     completion(false, nil)

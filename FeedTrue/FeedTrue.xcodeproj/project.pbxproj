@@ -24,6 +24,7 @@
 		13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */; };
 		13489DF72134062200C72BD3 /* FTValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF62134062200C72BD3 /* FTValidation.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
+		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		13489DF62134062200C72BD3 /* FTValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTValidation.swift; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
+		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				13A2C4B92135507300C377C0 /* ViewControllers */,
 				13489DF52134060400C72BD3 /* Helpers */,
 				13489DF2212FE77E00C72BD3 /* Extension */,
 				13489DE3212EB92400C72BD3 /* WebService */,
@@ -155,6 +158,22 @@
 				13489DF62134062200C72BD3 /* FTValidation.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		13A2C4B92135507300C377C0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				13A2C4BA2135508000C377C0 /* Home */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		13A2C4BA2135508000C377C0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				13A2C4BB2135509D00C377C0 /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		5B3456877620078CB0C3AD68 /* Pods */ = {
@@ -252,7 +271,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DTTextField/DTTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
@@ -260,7 +286,14 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
@@ -299,6 +332,7 @@
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
+				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,

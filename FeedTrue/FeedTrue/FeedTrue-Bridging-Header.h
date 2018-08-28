@@ -10,4 +10,5 @@
 #define FeedTrue_Bridging_Header_h
 
 #import "MBProgressHUD.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #endif /* FeedTrue_Bridging_Header_h */
