@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        label.text = "username: \(signInData.username ?? "") \n fullname: \(signInData.full_name ?? "")"
+        label.text = "username: \(signInData.user?.username ?? "") \n fullname: \(signInData.user?.full_name ?? "")"
     }
 
     override func didReceiveMemoryWarning() {

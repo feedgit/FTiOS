@@ -22,32 +22,33 @@ import ObjectMapper
 
  */
 class SignInResponse: Mappable {
-    var id: Int?
-    var profile: String?
-    var username: String?
-    var first_name: String?
-    var last_name: String?
-    var full_name: String?
+//    var id: Int?
+//    var profile: String?
+//    var username: String?
+//    var first_name: String?
+//    var last_name: String?
+//    var full_name: String?
     var token: String?
-    var profilePicURL: ProfilePicURL?
-    var notifications: Notifications?
-    var contacts: [UserProfile]?
-    
+//    var profilePicURL: ProfilePicURL?
+//    var notifications: Notifications?
+//    var contacts: [UserProfile]?
+    var user: UserProfile?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        profile <- map["profile"]
-        username <- map["username"]
-        first_name <- map["first_name"]
-        last_name <- map["last_name"]
-        full_name <- map["full_name"]
+//        id <- map["id"]
+//        profile <- map["profile"]
+//        username <- map["username"]
+//        first_name <- map["first_name"]
+//        last_name <- map["last_name"]
+//        full_name <- map["full_name"]
         token <- map["token"]
-        profilePicURL <- map["profile_pic_url"]
-        notifications <- map["notifications"]
-        contacts <- map["usable_profile"]
+//        profilePicURL <- map["profile_pic_url"]
+//        notifications <- map["notifications"]
+//        contacts <- map["usable_profile"]
+        user <- map["user"]
     }
     
 }
@@ -156,7 +157,8 @@ class UserProfile: Mappable {
     var first_name: String?
     var last_name: String?
     var full_name: String?
-    var profilePicURL: ProfilePicURL?
+    var avatar: String?
+    //var profilePicURL: ProfilePicURL?
     
     required init?(map: Map) {
         
@@ -169,7 +171,8 @@ class UserProfile: Mappable {
         first_name <- map["first_name"]
         last_name <- map["last_name"]
         full_name <- map["full_name"]
-        profilePicURL <- map["profile_pic_url"]
+        avatar <- map["avatar"]
+        //profilePicURL <- map["profile_pic_url"]
     }
 
 }
