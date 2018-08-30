@@ -25,6 +25,17 @@
 		13489DF72134062200C72BD3 /* FTValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DF62134062200C72BD3 /* FTValidation.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
+		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
+		13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C22137A47200C377C0 /* ExampleBouncesContentView.swift */; };
+		13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C32137A47200C377C0 /* ExampleAnimateTipsContentView.swift */; };
+		13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C42137A47200C377C0 /* ExampleBasicContentView.swift */; };
+		13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C52137A47200C377C0 /* ExampleHighlightableContentView.swift */; };
+		13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C62137A47200C377C0 /* ExampleTipsContentView.swift */; };
+		13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C72137A47200C377C0 /* ExampleIrregularityContentView.swift */; };
+		13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4CF2137A53A00C377C0 /* FeedTrueRootViewController.swift */; };
+		13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D22137B59300C377C0 /* FTCoreService.swift */; };
+		13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */; };
+		13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +61,17 @@
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBackgroundContentView.swift; sourceTree = "<group>"; };
+		13A2C4C22137A47200C377C0 /* ExampleBouncesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBouncesContentView.swift; sourceTree = "<group>"; };
+		13A2C4C32137A47200C377C0 /* ExampleAnimateTipsContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleAnimateTipsContentView.swift; sourceTree = "<group>"; };
+		13A2C4C42137A47200C377C0 /* ExampleBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleBasicContentView.swift; sourceTree = "<group>"; };
+		13A2C4C52137A47200C377C0 /* ExampleHighlightableContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleHighlightableContentView.swift; sourceTree = "<group>"; };
+		13A2C4C62137A47200C377C0 /* ExampleTipsContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTipsContentView.swift; sourceTree = "<group>"; };
+		13A2C4C72137A47200C377C0 /* ExampleIrregularityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleIrregularityContentView.swift; sourceTree = "<group>"; };
+		13A2C4CF2137A53A00C377C0 /* FeedTrueRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTrueRootViewController.swift; sourceTree = "<group>"; };
+		13A2C4D22137B59300C377C0 /* FTCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCoreService.swift; sourceTree = "<group>"; };
+		13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDefaultService.swift; sourceTree = "<group>"; };
+		13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationService.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +110,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				13A2C4D12137B56200C377C0 /* Services */,
 				13A2C4B92135507300C377C0 /* ViewControllers */,
 				13489DF52134060400C72BD3 /* Helpers */,
 				13489DF2212FE77E00C72BD3 /* Extension */,
@@ -100,6 +123,7 @@
 				130E05D7212D6A3700C3E21A /* LaunchScreen.storyboard */,
 				130E05DA212D6A3700C3E21A /* Info.plist */,
 				13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */,
+				13A2C4CF2137A53A00C377C0 /* FeedTrueRootViewController.swift */,
 			);
 			path = FeedTrue;
 			sourceTree = "<group>";
@@ -163,6 +187,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13A2C4BF2136BF7E00C377C0 /* Tabbar */,
 				13A2C4BA2135508000C377C0 /* Home */,
 			);
 			path = ViewControllers;
@@ -174,6 +199,38 @@
 				13A2C4BB2135509D00C377C0 /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		13A2C4BF2136BF7E00C377C0 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				13A2C4C02137A47200C377C0 /* Content */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		13A2C4C02137A47200C377C0 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */,
+				13A2C4C22137A47200C377C0 /* ExampleBouncesContentView.swift */,
+				13A2C4C32137A47200C377C0 /* ExampleAnimateTipsContentView.swift */,
+				13A2C4C42137A47200C377C0 /* ExampleBasicContentView.swift */,
+				13A2C4C52137A47200C377C0 /* ExampleHighlightableContentView.swift */,
+				13A2C4C62137A47200C377C0 /* ExampleTipsContentView.swift */,
+				13A2C4C72137A47200C377C0 /* ExampleIrregularityContentView.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		13A2C4D12137B56200C377C0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				13A2C4D22137B59300C377C0 /* FTCoreService.swift */,
+				13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */,
+				13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5B3456877620078CB0C3AD68 /* Pods */ = {
@@ -273,6 +330,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DTTextField/DTTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -288,6 +346,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -327,20 +386,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
+				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
+				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
+				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
+				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
+				13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
+				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
+				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
+				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
+				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
+				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

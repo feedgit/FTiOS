@@ -25,6 +25,7 @@ class LoginViewController: UIViewController {
     fileprivate var progressHub: MBProgressHUD?
     let usernameErrorMessage = NSLocalizedString("Username field is require.", comment: "")
     let passwordErrorMessage = NSLocalizedString("Password field is require.", comment: "")
+    var coreService: FTCoreService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +86,12 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
                     self?.progressHub?.hide(animated: true, afterDelay: 1.0)
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
-                    homeVC.signInData = signInResponse
-                    self?.navigationController?.pushViewController(homeVC, animated: true)
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
+//                    homeVC.signInData = signInResponse
+//                    self?.navigationController?.pushViewController(homeVC, animated: true)
+                    self?.dismiss(animated: true, completion: nil)
+                    self?.coreService.registrationService?.storeAuthProfile(signInResponse?.token, profile: signInResponse?.user)
                 }
             } else {
                 DispatchQueue.main.async {
@@ -114,13 +117,15 @@ class LoginViewController: UIViewController {
                 self?.progressHub?.label.text = NSLocalizedString("Login FB", comment: "")
                 WebService.default.signInWithFacebook(token: accessToken.authenticationToken, completion: { (success, response) in
                     if success {
+                        self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
                         DispatchQueue.main.async {
                             self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
                             self?.progressHub?.hide(animated: true, afterDelay: 1.0)
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
-                            homeVC.signInData = response
-                            self?.navigationController?.pushViewController(homeVC, animated: true)
+//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
+//                            homeVC.signInData = response
+//                            self?.navigationController?.pushViewController(homeVC, animated: true)
+                            self?.dismiss(animated: true, completion: nil)
                         }
                     } else {
                         DispatchQueue.main.async {

@@ -10,10 +10,14 @@ import UIKit
 import Alamofire
 import AlamofireObjectMapper
 
-class WebService: NSObject {
+class WebService: NSObject, FTCoreServiceComponent {
     
     static let `default`: WebService = WebService()
     let host = "https://api.feedtrue.com"
+    
+    func setup() {
+        
+    }
     
     func signIn(username: String, password: String, completion: @escaping (Bool, SignInResponse?)->()) {
         let params:[String: Any] = [

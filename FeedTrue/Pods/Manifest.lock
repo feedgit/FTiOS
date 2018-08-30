@@ -10,6 +10,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - DTTextField (0.3.0)
+  - ESTabBarController-swift (2.6.2)
   - FacebookCore (0.3.2):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.35)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireObjectMapper (~> 5.0)
   - DTTextField
+  - ESTabBarController-swift
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -47,6 +49,7 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - Bolts
     - DTTextField
+    - ESTabBarController-swift
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -61,6 +64,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DTTextField: c26deead1a51c92156e2a638ac7d2c702c2f345e
+  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   FacebookCore: fe93222bb70346730ef33b061d493e9e7a7cb1f5
   FacebookLogin: a4e225974791c82836765a294582b4778baffc07
   FacebookShare: 5319f2655d53d20c595745a68dae8476027b8bae
@@ -70,6 +74,6 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
 
-PODFILE CHECKSUM: 6d803980205a297f1ca1a9d8ab2322a3dcec64d8
+PODFILE CHECKSUM: f0be4efcd5d567530e7527340b2277f40235ab4e
 
 COCOAPODS: 1.5.3
