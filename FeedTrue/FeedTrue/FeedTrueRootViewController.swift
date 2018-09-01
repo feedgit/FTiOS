@@ -38,10 +38,7 @@ class FeedTrueRootViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !coreService.isLogged() {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signInVC = storyboard.instantiateViewController(withIdentifier: "loginScreen") as! LoginViewController
-            signInVC.coreService = coreService
-            self.navigationController?.present(signInVC, animated: true, completion: nil)
+            showLogin()
         }
     }
     
@@ -87,20 +84,15 @@ class FeedTrueRootViewController: UIViewController {
 //        }
 //
         let feedVC = UIViewController()
-//        feedVC.rootViewController = self
-//        feedVC.coreService = self.coreService
         feedVC.view.backgroundColor = UIColor.gray
 
         let notificationVC = UIViewController()
-//        notificationVC.coreService = coreService
-//        notificationVC.rootViewController = self
-
         let composeVC = UIViewController()
         composeVC.view.backgroundColor = UIColor.clear
 
-        let profileVC = UIViewController()
-//        v4.rootViewController = self
-//        v4.coreService = self.coreService
+        let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
+        profileVC.rootViewController = self
+        profileVC.rootViewController.coreService = self.coreService
 
         let feedItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "feed_unselected"), selectedImage: UIImage(named: "feed_selected"))
 
@@ -142,6 +134,13 @@ class FeedTrueRootViewController: UIViewController {
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
         
         return navigationController
+    }
+    
+    func showLogin() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let signInVC = storyboard.instantiateViewController(withIdentifier: "loginScreen") as! LoginViewController
+        signInVC.coreService = coreService
+        self.navigationController?.present(signInVC, animated: true, completion: nil)
     }
 
 }

@@ -236,66 +236,36 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    // Login
-    
-    func login(username: String, password: String, completion: @escaping (HTTPURLResponse?) -> ()) {
-        let headers = [
-            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-            "Cache-Control": "no-cache",
-            "Postman-Token": "b25464fa-169e-4533-8010-5f3e35bde30e"
+    func logOut(token: String, completion: @escaping (Bool, String?)->()) {
+        let params:[String: Any] = [
+            "access_token": "\(token)"
         ]
-        let parameters = [
-            [
-                "name": "username",
-                "value": username
-            ],
-            [
-                "name": "password",
-                "value": password
-            ]
-        ]
+        let urlString = "\(host)/api/v1/auth/logout/"
         
-        let boundary = "----WebKitFormBoundary7MA4YWxkTrZu0gW"
-        
-        var body = ""
-        var error: NSError? = nil
-        for param in parameters {
-            let paramName = param["name"]!
-            body += "--\(boundary)\r\n"
-            body += "Content-Disposition:form-data; name=\"\(paramName)\""
-            if let filename = param["fileName"] {
-                let contentType = param["content-type"]!
-                let fileContent = try? String(contentsOfFile: filename, encoding: .utf8)
-                if (error != nil) {
-                    print(error ?? "")
-                }
-                body += "; filename=\"\(filename)\"\r\n"
-                body += "Content-Type: \(contentType)\r\n\r\n"
-                body += fileContent ?? ""
-            } else if let paramValue = param["value"] {
-                body += "\r\n\r\n\(paramValue)"
-            }
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
         }
         
-        let request = NSMutableURLRequest(url: NSURL(string: "\(host)/api/v1/auth/login/")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        body.appendingFormat("\r\n==\(boundary)--\r\n")
-        let postData = body.data(using: .utf8)//[body dataUsingEncoding:NSUTF8StringEncoding];
-        request.httpBody = postData
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
-            }
-        })
-        
-        dataTask.resume()
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if let detailMessage = value["detail"] as? String {
+                    completion(true, detailMessage)
+                    return
+                }
+                
+                completion(false, nil)
+        }
     }
+    
 }

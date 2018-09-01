@@ -17,6 +17,13 @@
 		130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */; };
 		130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */; };
 		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
+		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
+		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
+		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
+		13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AFA213A959500D74C47 /* FTEditProfileViewController.swift */; };
+		13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */; };
+		13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */; };
+		13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -36,6 +43,7 @@
 		13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D22137B59300C377C0 /* FTCoreService.swift */; };
 		13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */; };
 		13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */; };
+		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +60,13 @@
 		130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
+		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
+		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
+		13353AFA213A959500D74C47 /* FTEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewController.swift; sourceTree = "<group>"; };
+		13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTEditProfileViewController.xib; sourceTree = "<group>"; };
+		13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextTableViewCell.swift; sourceTree = "<group>"; };
+		13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTextTableViewCell.xib; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -72,6 +87,7 @@
 		13A2C4D22137B59300C377C0 /* FTCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCoreService.swift; sourceTree = "<group>"; };
 		13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDefaultService.swift; sourceTree = "<group>"; };
 		13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationService.swift; sourceTree = "<group>"; };
+		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +157,27 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		13353AF3213A89A200D74C47 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				13353AFE213A97BF00D74C47 /* Cell */,
+				13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */,
+				13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */,
+				13353AFA213A959500D74C47 /* FTEditProfileViewController.swift */,
+				13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		13353AFE213A97BF00D74C47 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */,
+				13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +224,10 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13353AF3213A89A200D74C47 /* Profile */,
 				13A2C4BF2136BF7E00C377C0 /* Tabbar */,
 				13A2C4BA2135508000C377C0 /* Home */,
+				13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -205,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				13A2C4C02137A47200C377C0 /* Content */,
+				13F8471B213A868A0068656C /* FTTabViewController.swift */,
 			);
 			path = Tabbar;
 			sourceTree = "<group>";
@@ -310,9 +350,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */,
 				130E05D9212D6A3700C3E21A /* LaunchScreen.storyboard in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
+				13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */,
+				13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,11 +429,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */,
+				13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
+				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
+				13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
@@ -407,6 +454,7 @@
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
+				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
