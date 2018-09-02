@@ -24,6 +24,7 @@
 		13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */; };
 		13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */; };
 		13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */; };
+		13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -67,6 +68,7 @@
 		13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTEditProfileViewController.xib; sourceTree = "<group>"; };
 		13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextTableViewCell.swift; sourceTree = "<group>"; };
 		13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTextTableViewCell.xib; sourceTree = "<group>"; };
+		13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserProfileResponse.swift; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				13489DE7212EC65100C72BD3 /* SignInResponse.swift */,
 				13489DEC212EDAC200C72BD3 /* SignUpResponse.swift */,
+				13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
+				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */,

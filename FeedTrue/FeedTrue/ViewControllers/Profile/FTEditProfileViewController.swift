@@ -11,6 +11,9 @@ import UIKit
 class FTEditProfileViewController: UIViewController {
 
     var coreService: FTCoreService!
+    var profile: FTUserProfileResponse!
+    var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -57,8 +60,26 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTextTableViewCell") as! EditTextTableViewCell
         
-        cell.label.text = "First Name"
+        cell.label.text = titles[indexPath.row]
         cell.textFiled.text = "Edit \(indexPath.row.description)"
+        if indexPath.row == 0 {
+            // first name
+            cell.textFiled.text = profile.first_name
+        } else if indexPath.row == 1 {
+            // last name
+            cell.textFiled.text = profile.last_name
+        } else if indexPath.row == 2 {
+            // gender
+            cell.textFiled.text = profile.gender
+        } else if indexPath.row == 3 {
+            // introduction
+            cell.textFiled.text = "introduction"
+        } else if indexPath.row == 4 {
+            // about
+            cell.textFiled.text = "about"
+        } else {
+            cell.textFiled.text = "Unknow DATA"
+        }
         
         return cell
     }
