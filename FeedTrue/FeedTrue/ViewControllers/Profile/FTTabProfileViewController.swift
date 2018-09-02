@@ -12,6 +12,7 @@ import MBProgressHUD
 class FTTabProfileViewController: FTTabViewController {
 
     var profile: FTUserProfileResponse?
+    var about: FTAboutReponse?
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var feedsLabel: UILabel!
     @IBOutlet weak var photoVideoLabel: UILabel!
@@ -25,6 +26,7 @@ class FTTabProfileViewController: FTTabViewController {
         // Do any additional setup after loading the view.
         self.resetUserInfoUI()
         self.loadUserInfo()
+        self.loadUserAbout()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +54,7 @@ class FTTabProfileViewController: FTTabViewController {
         let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
         editVC.coreService = rootViewController.coreService
         editVC.profile = profile
+        editVC.about = about
         navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -91,12 +94,26 @@ class FTTabProfileViewController: FTTabViewController {
             }
         })
     }
+    
+    private func loadUserAbout() {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
+        rootViewController.coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
+            self?.about = response
+            DispatchQueue.main.async {
+                self?.updateAbout()
+            }
+        })
+    }
     private func updateProfileInfo() {
         feedsLabel.text = "\(profile?.feed_count ?? 0)"
         photoVideoLabel.text = "\(profile?.photo_video_count ?? 0)"
         likedLabel.text = "\(profile?.loved ?? 0)"
         fullnameLabel.text = profile?.full_name
-        introLabel.text = profile?.email
+    }
+    
+    private func updateAbout() {
+        introLabel.text = self.about?.intro
     }
     
     private func resetUserInfoUI() {

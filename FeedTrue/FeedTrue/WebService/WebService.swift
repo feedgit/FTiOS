@@ -300,4 +300,36 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func getUserAbout(token: String, username: String, completion: @escaping (Bool, FTAboutReponse?)->()) {
+        let params:[String: Any] = [
+            "access_token": "\(token)"
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/users/\(username)/about/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTAboutReponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
 }

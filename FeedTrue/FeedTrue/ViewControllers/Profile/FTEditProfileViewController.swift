@@ -12,6 +12,7 @@ class FTEditProfileViewController: UIViewController {
 
     var coreService: FTCoreService!
     var profile: FTUserProfileResponse!
+    var about: FTAboutReponse!
     var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
     
     @IBOutlet weak var tableView: UITableView!
@@ -73,10 +74,10 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
             cell.textFiled.text = profile.gender
         } else if indexPath.row == 3 {
             // introduction
-            cell.textFiled.text = "introduction"
+            cell.textFiled.text = about.intro
         } else if indexPath.row == 4 {
             // about
-            cell.textFiled.text = "about"
+            cell.textFiled.text = about.about
         } else {
             cell.textFiled.text = "Unknow DATA"
         }
