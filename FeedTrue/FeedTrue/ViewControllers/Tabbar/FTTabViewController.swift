@@ -16,27 +16,6 @@ class FTTabViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let cameraBtn = UIButton.init(type: .custom)
-        cameraBtn.setImage(UIImage(named: "camera")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        cameraBtn.addTarget(self, action: #selector(FTTabViewController.camera(sender:)), for: .touchUpInside)
-        cameraBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        self.cameraBarBtn = UIBarButtonItem(customView: cameraBtn)
-        //navigationController?.topViewController?.navigationItem.leftBarButtonItem = self.cameraBarBtn
-        navigationItem.leftBarButtonItem = self.cameraBarBtn
-        
-        let messageBtn = UIButton.init(type: .custom)
-        messageBtn.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        messageBtn.addTarget(self, action: #selector(FTTabViewController.message(sender:)), for: .touchUpInside)
-        messageBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        self.messageBarBtn = UIBarButtonItem(customView: messageBtn)
-        
-        //navigationController?.topViewController?.navigationItem.rightBarButtonItem = self.messageBarBtn
-        navigationItem.rightBarButtonItem = self.messageBarBtn
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,6 +25,13 @@ class FTEditProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "EditTextTableViewCell", bundle: nil), forCellReuseIdentifier: "editTextTableViewCell")
         tableView.tableFooterView = UIView()
+        
+        let cancelBarBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
+        cancelBarBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = cancelBarBtn
+        let doneBarBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
+        doneBarBtn.tintColor = .white
+        self.navigationItem.rightBarButtonItem = doneBarBtn
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,5 +90,15 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         return cell
+    }
+    
+    // MARK: Actions
+    @objc func cancel(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func done(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        // TODO: save edit profile
     }
 }

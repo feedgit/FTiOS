@@ -16,6 +16,10 @@ extension UIColor {
     class func genderUnselectedColor(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor.black.withAlphaComponent(alpha)
     }
+    
+    class func navigationBarColor(alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(rgb: 0x2AB5DC).withAlphaComponent(alpha)
+    }
 }
 
 extension UIColor {

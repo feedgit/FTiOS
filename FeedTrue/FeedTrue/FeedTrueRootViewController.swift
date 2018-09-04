@@ -13,12 +13,17 @@ class FeedTrueRootViewController: UIViewController {
     
     private var customNavigationController: UINavigationController?
     var coreService: FTCoreService!
+    var cameraBarBtn: UIBarButtonItem!
+    var messageBarBtn: UIBarButtonItem!
+    var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = UIColor.init(white: 245.0 / 255.0, alpha: 1.0)
+        
+        // navigation bar
         let nav = customIrregularityStyle(delegate: nil)
         let appearance = UIBarButtonItem.appearance()
         appearance.setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: 0.0, vertical: -60), for: .default)
@@ -29,7 +34,27 @@ class FeedTrueRootViewController: UIViewController {
         view.addSubview(nav.view)
         nav.endAppearanceTransition()
         customNavigationController = nav
+        let cameraBtn = UIButton.init(type: .custom)
+        cameraBtn.setImage(UIImage(named: "camera")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        cameraBtn.addTarget(self, action: #selector(camera(_:)), for: .touchUpInside)
+        cameraBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        self.cameraBarBtn = UIBarButtonItem(customView: cameraBtn)
+        navigationController?.topViewController?.navigationItem.leftBarButtonItem = self.cameraBarBtn
         
+        let messageBtn = UIButton.init(type: .custom)
+        messageBtn.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        messageBtn.addTarget(self, action: #selector(message(_:)), for: .touchUpInside)
+        messageBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        self.messageBarBtn = UIBarButtonItem(customView: messageBtn)
+        customNavigationController?.topViewController?.navigationItem.rightBarButtonItem = self.messageBarBtn
+        
+        // search bar
+        searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.placeholder = NSLocalizedString("Search", comment: "")
+        customNavigationController?.topViewController?.navigationItem.titleView = searchBar
+        
+        // services
         coreService = FTCoreService()
         coreService.setup()
         coreService.start()
@@ -141,6 +166,15 @@ class FeedTrueRootViewController: UIViewController {
         let signInVC = storyboard.instantiateViewController(withIdentifier: "loginScreen") as! LoginViewController
         signInVC.coreService = coreService
         self.navigationController?.present(signInVC, animated: true, completion: nil)
+    }
+    
+    // MARK: Actions
+    @objc func message(_ sender: Any) {
+        
+    }
+    
+    @objc func camera(_ sender: Any) {
+        
     }
 
 }
