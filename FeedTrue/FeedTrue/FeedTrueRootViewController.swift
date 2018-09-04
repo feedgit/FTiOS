@@ -109,11 +109,11 @@ class FeedTrueRootViewController: UIViewController {
 //        }
 //
         let feedVC = UIViewController()
-        feedVC.view.backgroundColor = UIColor.gray
+        feedVC.view.backgroundColor = UIColor.backgroundColor()
 
         let notificationVC = UIViewController()
         let composeVC = UIViewController()
-        composeVC.view.backgroundColor = UIColor.clear
+        composeVC.view.backgroundColor = UIColor.backgroundColor()
 
         let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
         profileVC.rootViewController = self

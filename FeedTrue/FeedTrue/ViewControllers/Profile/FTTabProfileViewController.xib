@@ -20,6 +20,7 @@
                 <outlet property="introLabel" destination="odg-dv-wZv" id="BAK-xt-mrW"/>
                 <outlet property="likedLabel" destination="nCq-xa-7DS" id="O9J-R5-oe1"/>
                 <outlet property="photoVideoLabel" destination="e5X-KS-7RF" id="2Zf-U1-srD"/>
+                <outlet property="segmentedControl" destination="tBX-XI-Ftv" id="24K-VY-NHn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -162,20 +163,20 @@
                         <constraint firstItem="93L-Wb-Vye" firstAttribute="top" secondItem="SL5-3H-SGF" secondAttribute="bottom" constant="7.5" id="xOR-SD-rWp"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBX-XI-Ftv">
-                    <rect key="frame" x="0.0" y="187" width="375" height="44"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBX-XI-Ftv" customClass="ScrollableSegmentedControl" customModule="ScrollableSegmentedControl">
+                    <rect key="frame" x="0.0" y="189" width="375" height="64"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="P4a-6s-mQg"/>
+                        <constraint firstAttribute="height" constant="64" id="P4a-6s-mQg"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Dlq-RD-dRf"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Jjh-zh-bGY"/>
                 <constraint firstItem="tBX-XI-Ftv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="QbY-9x-Y1k"/>
-                <constraint firstItem="tBX-XI-Ftv" firstAttribute="top" secondItem="lTT-jd-4FL" secondAttribute="bottom" id="Yft-tL-2tc"/>
+                <constraint firstItem="tBX-XI-Ftv" firstAttribute="top" secondItem="lTT-jd-4FL" secondAttribute="bottom" constant="2" id="Yft-tL-2tc"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/4" id="dfR-kX-XTC"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jZy-pF-ywO"/>
                 <constraint firstItem="tBX-XI-Ftv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="kM5-QW-ezo"/>
