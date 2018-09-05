@@ -9,6 +9,11 @@
 import UIKit
 import ESTabBarController_swift
 
+@objc protocol FTRootViewDelegate {
+    func didLogInSuccess()
+    func didLogInFailure()
+}
+
 class FeedTrueRootViewController: UIViewController {
     
     private var customNavigationController: UINavigationController?
@@ -16,6 +21,7 @@ class FeedTrueRootViewController: UIViewController {
     var cameraBarBtn: UIBarButtonItem!
     var messageBarBtn: UIBarButtonItem!
     var searchBar: UISearchBar!
+    weak var delegate: FTRootViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,6 +171,7 @@ class FeedTrueRootViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let signInVC = storyboard.instantiateViewController(withIdentifier: "loginScreen") as! LoginViewController
         signInVC.coreService = coreService
+        signInVC.delegate = self
         self.navigationController?.present(signInVC, animated: true, completion: nil)
     }
     
@@ -177,4 +184,14 @@ class FeedTrueRootViewController: UIViewController {
         
     }
 
+}
+
+extension FeedTrueRootViewController: LoginDelegate {
+    func didLoginSuccess() {
+        self.delegate?.didLogInSuccess()
+    }
+    
+    func didLoginFailure() {
+        self.delegate?.didLogInFailure()
+    }
 }

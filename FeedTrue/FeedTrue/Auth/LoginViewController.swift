@@ -12,6 +12,10 @@ import DTTextField
 import FacebookCore
 import FacebookLogin
 
+@objc protocol LoginDelegate {
+    func didLoginSuccess()
+    func didLoginFailure()
+}
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameTextField: DTTextField!
@@ -26,6 +30,7 @@ class LoginViewController: UIViewController {
     let usernameErrorMessage = NSLocalizedString("Username field is require.", comment: "")
     let passwordErrorMessage = NSLocalizedString("Password field is require.", comment: "")
     var coreService: FTCoreService!
+    weak var delegate: LoginDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

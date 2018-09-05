@@ -9,8 +9,13 @@
 import UIKit
 import MBProgressHUD
 
+@objc protocol FTEditProfileDelegate {
+    func didSaveSuccessful()
+    func didSaveFailure()
+}
 class FTEditProfileViewController: UIViewController {
 
+    weak var delegate: FTEditProfileDelegate?
     var coreService: FTCoreService!
     var about: FTAboutReponse!
     var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
@@ -87,24 +92,6 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         cell.textFiled.text = "Edit \(indexPath.row.description)"
         cell.delegate = self
         
-//        if indexPath.row == 0 {
-//            // first name
-//            cell.textFiled.text = profile.first_name
-//        } else if indexPath.row == 1 {
-//            // last name
-//            cell.textFiled.text = profile.last_name
-//        } else if indexPath.row == 2 {
-//            // gender
-//            cell.textFiled.text = profile.gender
-//        } else if indexPath.row == 3 {
-//            // introduction
-//            cell.textFiled.text = about.intro
-//        } else if indexPath.row == 4 {
-//            // about
-//            cell.textFiled.text = about.about
-//        } else {
-//            cell.textFiled.text = "Unknow DATA"
-//        }
         if let type = cell.cellType {
             switch type {
             case .firstname:
@@ -147,6 +134,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                         self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
                         self?.progressHub?.hide(animated: true, afterDelay: 1)
                         self?.tableView.reloadData()
+                        self?.delegate?.didSaveSuccessful()
                     }
                 } else {
                     DispatchQueue.main.async {
@@ -155,6 +143,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                         // reset edit data
                         self?.initUserInfo()
                         self?.tableView.reloadData()
+                        self?.delegate?.didSaveFailure()
                     }
                 }
             } else {
@@ -164,6 +153,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                     // reset edit data
                     self?.initUserInfo()
                     self?.tableView.reloadData()
+                    self?.delegate?.didSaveFailure()
                 }
             }
         })

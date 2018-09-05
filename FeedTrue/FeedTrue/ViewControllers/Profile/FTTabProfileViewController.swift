@@ -30,6 +30,7 @@ class FTTabProfileViewController: FTTabViewController {
         self.loadUserInfo()
         self.loadUserAbout()
         self.setUpSegmentControl()
+        self.rootViewController.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,6 +58,7 @@ class FTTabProfileViewController: FTTabViewController {
         let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
         editVC.coreService = rootViewController.coreService
         editVC.about = about
+        editVC.delegate = self
         navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -114,11 +116,11 @@ class FTTabProfileViewController: FTTabViewController {
         feedsLabel.text = "\(profile?.feed_count ?? 0)"
         photoVideoLabel.text = "\(profile?.photo_video_count ?? 0)"
         likedLabel.text = "\(profile?.loved ?? 0)"
-        fullnameLabel.text = profile?.full_name
     }
     
     private func updateAbout() {
         introLabel.text = self.about?.intro
+        fullnameLabel.text = self.about?.full_name
     }
     
     private func resetUserInfoUI() {
@@ -157,4 +159,30 @@ class FTTabProfileViewController: FTTabViewController {
         segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
     }
     
+}
+
+extension FTTabProfileViewController: FTRootViewDelegate {
+    func didLogInSuccess() {
+        DispatchQueue.main.async {
+            self.resetUserInfoUI()
+            self.loadUserInfo()
+            self.loadUserAbout()
+        }
+    }
+    
+    func didLogInFailure() {
+        
+    }
+}
+
+extension FTTabProfileViewController: FTEditProfileDelegate {
+    func didSaveSuccessful() {
+        DispatchQueue.main.async {
+            self.loadUserAbout()
+        }
+    }
+    
+    func didSaveFailure() {
+        
+    }
 }
