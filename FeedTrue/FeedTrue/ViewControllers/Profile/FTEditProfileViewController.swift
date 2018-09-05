@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FTEditProfileViewController: UIViewController {
 
     var coreService: FTCoreService!
-    var profile: FTUserProfileResponse!
     var about: FTAboutReponse!
     var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
+    var userInfo: FTEditUserInfo!
+    private var progressHub: MBProgressHUD?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,6 +34,19 @@ class FTEditProfileViewController: UIViewController {
         let doneBarBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
         doneBarBtn.tintColor = .white
         self.navigationItem.rightBarButtonItem = doneBarBtn
+        
+        // init user intro
+        initUserInfo()
+    }
+    
+    private func initUserInfo() {
+        // init user intro
+        userInfo = FTEditUserInfo()
+        userInfo.fistname = about.first_name
+        userInfo.lastname = about.last_name
+        userInfo.gender = about.gender
+        userInfo.intro = about.intro
+        userInfo.about = about.about
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,27 +82,46 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editTextTableViewCell") as! EditTextTableViewCell
-        
+        cell.cellType = EditProfileCellType(rawValue: indexPath.row)
         cell.label.text = titles[indexPath.row]
         cell.textFiled.text = "Edit \(indexPath.row.description)"
-        if indexPath.row == 0 {
-            // first name
-            cell.textFiled.text = profile.first_name
-        } else if indexPath.row == 1 {
-            // last name
-            cell.textFiled.text = profile.last_name
-        } else if indexPath.row == 2 {
-            // gender
-            cell.textFiled.text = profile.gender
-        } else if indexPath.row == 3 {
-            // introduction
-            cell.textFiled.text = about.intro
-        } else if indexPath.row == 4 {
-            // about
-            cell.textFiled.text = about.about
+        cell.delegate = self
+        
+//        if indexPath.row == 0 {
+//            // first name
+//            cell.textFiled.text = profile.first_name
+//        } else if indexPath.row == 1 {
+//            // last name
+//            cell.textFiled.text = profile.last_name
+//        } else if indexPath.row == 2 {
+//            // gender
+//            cell.textFiled.text = profile.gender
+//        } else if indexPath.row == 3 {
+//            // introduction
+//            cell.textFiled.text = about.intro
+//        } else if indexPath.row == 4 {
+//            // about
+//            cell.textFiled.text = about.about
+//        } else {
+//            cell.textFiled.text = "Unknow DATA"
+//        }
+        if let type = cell.cellType {
+            switch type {
+            case .firstname:
+                cell.textFiled.text = userInfo.fistname
+            case .lastname:
+                cell.textFiled.text = userInfo.lastname
+            case .gender:
+                cell.textFiled.text = userInfo.gender
+            case .intro:
+                cell.textFiled.text = userInfo.intro
+            case .about:
+                cell.textFiled.text = userInfo.about
+            }
         } else {
-            cell.textFiled.text = "Unknow DATA"
+            cell.textFiled.text = nil
         }
+        
         
         return cell
     }
@@ -98,7 +132,62 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func done(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        // TODO: save edit profile
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHub?.detailsLabel.text = NSLocalizedString("Saving...", comment: "")
+        coreService.webService?.editUserInfo(token: token, editInfo: userInfo, completion: {[weak self] (success, response) in
+            if success {
+                if let info = response {
+                    self?.userInfo.fistname = info.first_name
+                    self?.userInfo.lastname = info.last_name
+                    self?.userInfo.gender = info.gender
+                    self?.userInfo.intro = info.intro
+                    self?.userInfo.about = info.about
+                    DispatchQueue.main.async {
+                        self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
+                        self?.progressHub?.hide(animated: true, afterDelay: 1)
+                        self?.tableView.reloadData()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.progressHub?.detailsLabel.text = NSLocalizedString("Failure", comment: "")
+                        self?.progressHub?.hide(animated: true, afterDelay: 1)
+                        // reset edit data
+                        self?.initUserInfo()
+                        self?.tableView.reloadData()
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.progressHub?.detailsLabel.text = NSLocalizedString("Failure", comment: "")
+                    self?.progressHub?.hide(animated: true, afterDelay: 1)
+                    // reset edit data
+                    self?.initUserInfo()
+                    self?.tableView.reloadData()
+                }
+            }
+        })
+    }
+}
+
+extension FTEditProfileViewController: EditTextDelegate {
+    func firstnameDidChange(firstname: String?) {
+        userInfo.fistname = firstname
+    }
+    
+    func lastnameDidChange(lastname: String?) {
+        userInfo.lastname = lastname
+    }
+    
+    func genderDidChange(gender: String?) {
+        userInfo.gender = gender
+    }
+    
+    func introDidChange(intro: String?) {
+        userInfo.intro = intro
+    }
+    
+    func aboutDidChange(about: String?) {
+        userInfo.about = about
     }
 }

@@ -158,6 +158,7 @@ class UserProfile: Mappable {
     var last_name: String?
     var full_name: String?
     var avatar: String?
+    var intro: String?
     //var profilePicURL: ProfilePicURL?
     
     required init?(map: Map) {
@@ -172,6 +173,7 @@ class UserProfile: Mappable {
         last_name <- map["last_name"]
         full_name <- map["full_name"]
         avatar <- map["avatar"]
+        intro <- map["intro"]
         //profilePicURL <- map["profile_pic_url"]
     }
 

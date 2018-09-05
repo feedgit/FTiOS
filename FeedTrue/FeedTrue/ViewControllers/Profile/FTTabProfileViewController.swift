@@ -56,7 +56,6 @@ class FTTabProfileViewController: FTTabViewController {
     @IBAction func edit(_ sender: Any) {
         let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
         editVC.coreService = rootViewController.coreService
-        editVC.profile = profile
         editVC.about = about
         navigationController?.pushViewController(editVC, animated: true)
     }
@@ -86,14 +85,14 @@ class FTTabProfileViewController: FTTabViewController {
     private func loadUserInfo() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
-        
-        MBProgressHUD.showAdded(to: self.view, animated: true)
+
+        //MBProgressHUD.showAdded(to: self.view, animated: true)
         rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
             self?.profile = response
             DispatchQueue.main.async {
                 self?.updateProfileInfo()
-                guard let v = self?.view else { return }
-                MBProgressHUD.hide(for: v, animated: true)
+                //guard let v = self?.view else { return }
+                //MBProgressHUD.hide(for: v, animated: true)
             }
         })
     }
@@ -101,10 +100,13 @@ class FTTabProfileViewController: FTTabViewController {
     private func loadUserAbout() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         rootViewController.coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
             self?.about = response
             DispatchQueue.main.async {
                 self?.updateAbout()
+                guard let v = self?.view else { return }
+                MBProgressHUD.hide(for: v, animated: true)
             }
         })
     }

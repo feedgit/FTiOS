@@ -44,8 +44,11 @@ class WebService: NSObject, FTCoreServiceComponent {
                     completion(false, nil)
                     return
                 }
-
-                completion(true, value)
+                if value.token == nil || value.user == nil {
+                    completion(false, nil)
+                } else {
+                    completion(true, value)
+                }
         }
 
 //        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
@@ -232,7 +235,11 @@ class WebService: NSObject, FTCoreServiceComponent {
                     return
                 }
                 
-                completion(true, value)
+                if value.token == nil || value.user == nil {
+                    completion(false, nil)
+                } else {
+                    completion(true, value)
+                }
         }
     }
     
@@ -317,6 +324,43 @@ class WebService: NSObject, FTCoreServiceComponent {
         
         Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
             .responseObject { (response: DataResponse<FTAboutReponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func editUserInfo(token: String, editInfo: FTEditUserInfo, completion: @escaping (Bool, FTEditUserResponse?)->()) {
+        let params:[String: Any] = [
+            "first_name": editInfo.fistname ?? "",
+            "last_name": editInfo.lastname ?? "",
+            "gender": editInfo.gender ?? "",
+            "intro": editInfo.intro ?? "",
+            "about": editInfo.about ?? ""
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/users/account/edit/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .patch, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTEditUserResponse>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
                     return
