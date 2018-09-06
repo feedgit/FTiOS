@@ -89,19 +89,22 @@ class LoginViewController: UIViewController {
             NSLog("success: \(success ? "TRUE": "FALSE") response: \(signInResponse.debugDescription)")
             if success {
                 DispatchQueue.main.async {
-                    self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
-                    self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                    //self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
+                    //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
 //                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //                    let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
 //                    homeVC.signInData = signInResponse
 //                    self?.navigationController?.pushViewController(homeVC, animated: true)
+                    self?.progressHub?.hide(animated: true)
                     self?.dismiss(animated: true, completion: nil)
                     self?.coreService.registrationService?.storeAuthProfile(signInResponse?.token, profile: signInResponse?.user)
                 }
             } else {
                 DispatchQueue.main.async {
-                    self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
-                    self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                    //self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
+                    //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                    self?.progressHub?.hide(animated: true)
+                    FTAlertViewManager.defaultManager.showOkAlert(nil, message: NSLocalizedString("Wrong Username or Password", comment: ""), handler: nil)
                 }
             }
             // TODO: display response info
@@ -124,18 +127,21 @@ class LoginViewController: UIViewController {
                     if success {
                         self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
                         DispatchQueue.main.async {
-                            self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
-                            self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                            //self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
+                            //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
 //                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //                            let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
 //                            homeVC.signInData = response
 //                            self?.navigationController?.pushViewController(homeVC, animated: true)
+                            self?.progressHub?.hide(animated: true)
                             self?.dismiss(animated: true, completion: nil)
                         }
                     } else {
                         DispatchQueue.main.async {
-                            self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
-                            self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                            //self?.progressHub?.label.text = NSLocalizedString("Login failed.", comment: "")
+                            //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
+                            self?.progressHub?.hide(animated: true)
+                            FTAlertViewManager.defaultManager.showOkAlert(nil, message: NSLocalizedString("Wrong Username or Password", comment: ""), handler: nil)
                         }
                     }
                 })
