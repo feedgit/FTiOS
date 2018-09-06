@@ -25,9 +25,9 @@ class SignUpPhoneNumberViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
-        backButton.tintColor = .black
-        navigationItem.backBarButtonItem = backButton
+        let backButton = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(back))
+        backButton.tintColor = .white
+        navigationItem.leftBarButtonItem = backButton
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         emailTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
@@ -45,7 +45,7 @@ class SignUpPhoneNumberViewController: UIViewController {
     }
     
     @objc func back() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
         
     @objc func textFieldDidChange(_ textField: UITextField) {

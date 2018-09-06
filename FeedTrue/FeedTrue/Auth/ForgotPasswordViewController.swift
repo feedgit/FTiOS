@@ -22,6 +22,10 @@ class ForgotPasswordViewController: UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
         self.view.addGestureRecognizer(singleTap)
         self.view.isUserInteractionEnabled = true
+        
+        let backButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: ""), style: .plain, target: self, action: #selector(back))
+        backButton.tintColor = .white
+        navigationItem.leftBarButtonItem = backButton
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +51,10 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func goLogin(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func back() {
         self.dismiss(animated: true, completion: nil)
     }
     

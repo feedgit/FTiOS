@@ -22,9 +22,9 @@ class SignUpUsernameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
-        backButton.tintColor = .black
-        navigationItem.backBarButtonItem = backButton
+        let backButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(back))
+        backButton.tintColor = .white
+        navigationItem.leftBarButtonItem = backButton
         
         usernameTextFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         

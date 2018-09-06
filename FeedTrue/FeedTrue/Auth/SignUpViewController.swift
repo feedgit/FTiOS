@@ -50,9 +50,9 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let backButton = UIBarButtonItem(title: NSLocalizedString("Sign Up", comment: "Sign Up"), style: .plain, target: self, action: #selector(back))
-        backButton.tintColor = .black
-        navigationItem.backBarButtonItem = backButton
+        let backButton = UIBarButtonItem(title: NSLocalizedString("Back", comment: ""), style: .plain, target: self, action: #selector(back))
+        backButton.tintColor = .white
+        navigationItem.leftBarButtonItem = backButton
         
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
         self.view.addGestureRecognizer(singleTap)
@@ -84,7 +84,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc func back() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
