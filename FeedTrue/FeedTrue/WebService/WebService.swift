@@ -370,8 +370,12 @@ class WebService: NSObject, FTCoreServiceComponent {
                     completion(false, nil)
                     return
                 }
+                if let username = value.username, !username.isEmpty {
+                    completion(true, value)
+                } else {
+                    completion(false, nil)
+                }
                 
-                completion(true, value)
         }
     }
     
