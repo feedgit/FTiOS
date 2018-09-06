@@ -21,6 +21,7 @@ class FTEditProfileViewController: UIViewController {
     var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
     var userInfo: FTEditUserInfo!
     private var progressHub: MBProgressHUD?
+    fileprivate var doneBarBtn: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,8 +37,9 @@ class FTEditProfileViewController: UIViewController {
         let cancelBarBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
         cancelBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = cancelBarBtn
-        let doneBarBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done(_:)))
+        doneBarBtn = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: .plain, target: self, action: #selector(done(_:)))
         doneBarBtn.tintColor = .white
+        doneBarBtn.isEnabled = false
         self.navigationItem.rightBarButtonItem = doneBarBtn
         
         // init user intro
@@ -179,5 +181,9 @@ extension FTEditProfileViewController: EditTextDelegate {
     
     func aboutDidChange(about: String?) {
         userInfo.about = about
+    }
+    
+    func textDidChange() {
+        doneBarBtn.isEnabled = true
     }
 }

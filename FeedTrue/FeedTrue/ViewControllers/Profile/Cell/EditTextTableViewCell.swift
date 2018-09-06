@@ -22,6 +22,7 @@ enum EditProfileCellType: Int {
     func genderDidChange(gender: String?)
     func introDidChange(intro: String?)
     func aboutDidChange(about: String?)
+    func textDidChange()
 }
 
 class EditTextTableViewCell: UITableViewCell {
@@ -43,6 +44,7 @@ class EditTextTableViewCell: UITableViewCell {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        self.delegate?.textDidChange()
         if let type = cellType {
             switch type {
             case .firstname:
