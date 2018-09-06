@@ -195,7 +195,6 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
         
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
-            .validate()
             .responseObject { (response: DataResponse<SignUpResponse>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)

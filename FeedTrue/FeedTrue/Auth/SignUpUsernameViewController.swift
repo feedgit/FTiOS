@@ -118,5 +118,17 @@ class SignUpUsernameViewController: UIViewController {
     @objc func singleTapHandler(_ sender: Any?) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func haveAnAccountPressed(_ sender: Any) {
+        if self.presentingViewController != nil {
+            self.dismiss(animated: false, completion: {
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
+        else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
 
 }

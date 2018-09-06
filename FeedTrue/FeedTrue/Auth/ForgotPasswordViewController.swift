@@ -47,7 +47,7 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func goLogin(_ sender: Any) {
-        // TODO: go to Login page
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Helpers

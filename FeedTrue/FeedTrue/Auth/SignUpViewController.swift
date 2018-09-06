@@ -237,4 +237,16 @@ class SignUpViewController: UIViewController {
             maleTextButton.setTitleColor(UIColor.genderSelectedColor(), for: .normal)
         }
     }
+    
+    @IBAction func haveAnAccountPressed(_ sender: Any) {
+        if self.presentingViewController != nil {
+            self.dismiss(animated: false, completion: {
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+        }
+        else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
 }
