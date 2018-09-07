@@ -8,6 +8,7 @@
 
 import UIKit
 import ESTabBarController_swift
+import MBProgressHUD
 
 @objc protocol FTRootViewDelegate {
     func didLogInSuccess()
@@ -22,6 +23,7 @@ class FeedTrueRootViewController: UIViewController {
     var messageBarBtn: UIBarButtonItem!
     var searchBar: UISearchBar!
     weak var delegate: FTRootViewDelegate?
+    var progressHub: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +71,8 @@ class FeedTrueRootViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !coreService.isLogged() {
-            showLogin()
+            // silently sign in
+            silentlyLogin()
         }
     }
     
@@ -175,6 +178,26 @@ class FeedTrueRootViewController: UIViewController {
         signInVC.coreService = coreService
         signInVC.delegate = self
         self.navigationController?.present(signInVC, animated: true, completion: nil)
+    }
+    
+    func silentlyLogin() {
+            if let password = self.coreService.keychainService?.password(), let username = self.coreService.keychainService?.username() {
+            self.progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+            self.progressHub?.detailsLabel.text = NSLocalizedString("Login...", comment: "")
+            self.coreService.webService?.signIn(username: username, password: password, completion: { [weak self] (success, response) in
+                self?.progressHub?.hide(animated: true)
+                if success {
+                    self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
+                } else {
+                    // show login
+                    DispatchQueue.main.async {
+                        self?.showLogin()
+                    }
+                }
+            })
+        } else {
+            self.showLogin()
+        }
     }
     
     // MARK: Actions

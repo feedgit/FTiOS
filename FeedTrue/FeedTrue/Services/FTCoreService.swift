@@ -14,10 +14,12 @@ protocol FTCoreServiceComponent {
 class FTCoreService: NSObject, FTCoreServiceComponent {
     private(set) var webService: WebService?
     private(set) var registrationService: FTRegistrationService?
+    private(set) var keychainService: FTKeyChainService?
     
     func setup() {
         webService = WebService()
         registrationService = FTRegistrationService()
+        keychainService = FTKeyChainService()
     }
     
     private var _hasAuthInKeychain: Bool = false
