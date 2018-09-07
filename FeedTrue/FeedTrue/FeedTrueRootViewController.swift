@@ -151,7 +151,9 @@ class FeedTrueRootViewController: UIViewController {
         profileVC.tabBarItem = profileItem
 
 
-        let settingVC = UIViewController()
+        let settingVC = FTTabSettingsViewController(nibName: "FTTabSettingsViewController", bundle: nil)
+        settingVC.rootViewController = self
+        settingVC.rootViewController.coreService = self.coreService
 
         let settingItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "setting_unselected"), selectedImage: UIImage(named: "setting_selected"))
         settingItem.contentView?.renderingMode = .alwaysOriginal

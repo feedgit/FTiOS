@@ -63,25 +63,7 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     @IBAction func addFriend(_ sender: Any) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        rootViewController.coreService.webService?.logOut(token: token, completion: {[weak self] (success, message) in
-            if success {
-                DispatchQueue.main.async {
-                    self?.rootViewController.showLogin()
-                    self?.rootViewController.coreService.registrationService?.reset()
-                    self?.resetUserInfoUI()
-                }
-            } else {
-                // TODO: show error message
-                DispatchQueue.main.async {
-                    self?.rootViewController.showLogin()
-                    self?.rootViewController.coreService.registrationService?.reset()
-                    self?.resetUserInfoUI()
-                }
-            }
-        })
+        // TODO: follow/unfollow or Edit profile
     }
     
     private func loadUserInfo() {

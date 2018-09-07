@@ -84,7 +84,7 @@ public class FTAlertViewManager: NSObject {
         }
     }
     
-    fileprivate func showActions(_ title: String?, message: String?, actions: [UIAlertAction], view: AnyObject) {
+    public func showActions(_ title: String?, message: String?, actions: [UIAlertAction], view: AnyObject) {
         self.showAlert(title, message: message, actions: actions, style: UIAlertControllerStyle.actionSheet, view: view)
     }
     

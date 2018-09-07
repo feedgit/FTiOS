@@ -9,6 +9,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - DTGradientButton (0.1.0)
   - DTTextField (0.3.0)
   - ESTabBarController-swift (2.6.2)
   - FacebookCore (0.3.2):
@@ -37,6 +38,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - AlamofireObjectMapper (~> 5.0)
+  - DTGradientButton
   - DTTextField
   - ESTabBarController-swift
   - FacebookCore
@@ -50,6 +52,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - Bolts
+    - DTGradientButton
     - DTTextField
     - ESTabBarController-swift
     - FacebookCore
@@ -66,6 +69,7 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  DTGradientButton: ec700b5d33fdc6c6886f8f7f44023c6087b50a8b
   DTTextField: c26deead1a51c92156e2a638ac7d2c702c2f345e
   ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   FacebookCore: fe93222bb70346730ef33b061d493e9e7a7cb1f5
@@ -78,6 +82,6 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   ScrollableSegmentedControl: a90ae91537fd670a46b177301d035223e3bd149e
 
-PODFILE CHECKSUM: 912dbc64106ac3618f77a71eed735b2d5e3caecf
+PODFILE CHECKSUM: ecea20a7aff74c3ebedd530f00a0e1bdd4512310
 
 COCOAPODS: 1.5.3
