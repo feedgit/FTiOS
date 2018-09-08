@@ -124,6 +124,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Saving...", comment: "")
+        self.doneBarBtn.isEnabled = false
         coreService.webService?.editUserInfo(token: token, editInfo: userInfo, completion: {[weak self] (success, response) in
             if success {
                 if let info = response {
