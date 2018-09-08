@@ -18,7 +18,7 @@ class FTEditProfileViewController: UIViewController {
     weak var delegate: FTEditProfileDelegate?
     var coreService: FTCoreService!
     var about: FTAboutReponse!
-    var titles:[String] = ["First Name", "Last Name", "Gender", "Introduction", "About"]
+    var titles:[String] = ["User Name", "First Name", "Last Name", "Gender", "Introduction", "About"]
     var userInfo: FTEditUserInfo!
     private var progressHub: MBProgressHUD?
     fileprivate var doneBarBtn: UIBarButtonItem!
@@ -33,6 +33,7 @@ class FTEditProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "EditTextTableViewCell", bundle: nil), forCellReuseIdentifier: "editTextTableViewCell")
         tableView.tableFooterView = UIView()
+        tableView.separatorInset = UIEdgeInsetsMake(0, 125, 0, 0)
         
         let cancelBarBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
         cancelBarBtn.tintColor = .white
@@ -49,6 +50,7 @@ class FTEditProfileViewController: UIViewController {
     private func initUserInfo() {
         // init user intro
         userInfo = FTEditUserInfo()
+        userInfo.username = about.username
         userInfo.fistname = about.first_name
         userInfo.lastname = about.last_name
         userInfo.gender = about.gender
@@ -80,11 +82,11 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 64
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,6 +98,8 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         
         if let type = cell.cellType {
             switch type {
+            case .username:
+                cell.textFiled.text = userInfo.username
             case .firstname:
                 cell.textFiled.text = userInfo.fistname
             case .lastname:
@@ -161,9 +165,19 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
             }
         })
     }
+    
+    private func checkAndSaveUsername() {
+        if userInfo.username != about.username {
+            // TODO: save user name
+        }
+    }
 }
 
 extension FTEditProfileViewController: EditTextDelegate {
+    func usernameDidChange(username: String?) {
+        userInfo.username = username
+    }
+    
     func firstnameDidChange(firstname: String?) {
         userInfo.fistname = firstname
     }

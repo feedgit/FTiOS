@@ -9,6 +9,7 @@
 import UIKit
 
 class FTEditUserInfo: NSObject {
+    var username: String?
     var fistname: String?
     var lastname: String?
     var gender: String?

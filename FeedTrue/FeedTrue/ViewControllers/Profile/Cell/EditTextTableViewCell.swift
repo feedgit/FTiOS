@@ -9,14 +9,16 @@
 import UIKit
 
 enum EditProfileCellType: Int {
-    case firstname = 0
-    case lastname = 1
-    case gender = 2
-    case intro = 3
-    case about = 4
+    case username = 0
+    case firstname = 1
+    case lastname = 2
+    case gender = 3
+    case intro = 4
+    case about = 5
 }
 
 @objc protocol EditTextDelegate {
+    func usernameDidChange(username: String?)
     func firstnameDidChange(firstname: String?)
     func lastnameDidChange(lastname: String?)
     func genderDidChange(gender: String?)
@@ -47,6 +49,8 @@ class EditTextTableViewCell: UITableViewCell {
         self.delegate?.textDidChange()
         if let type = cellType {
             switch type {
+            case .username:
+                self.delegate?.usernameDidChange(username: textField.text)
             case .firstname:
                 self.delegate?.firstnameDidChange(firstname: textField.text)
             case .lastname:
