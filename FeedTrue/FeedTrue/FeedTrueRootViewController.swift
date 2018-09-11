@@ -117,7 +117,9 @@ class FeedTrueRootViewController: UIViewController {
 //            print("didHijackHandler")
 //        }
 //
-        let feedVC = UIViewController()
+        let feedVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
+        feedVC.rootViewController = self
+        feedVC.rootViewController.coreService = self.coreService
         feedVC.view.backgroundColor = UIColor.backgroundColor()
 
         let notificationVC = UIViewController()

@@ -379,4 +379,39 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func getFeed(page: Int?, per_page: Int?, username: String?, token: String, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
+        // https://api.feedtrue.com/api/v1/f/?page=1&per_page=1
+        let params:[String: Any] = [
+            "page": page ?? 1,
+            "per_page" : per_page ?? 5
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/f/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTFeedResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
 }

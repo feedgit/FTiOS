@@ -46,6 +46,10 @@
 		13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D22137B59300C377C0 /* FTCoreService.swift */; };
 		13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */; };
 		13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */; };
+		13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */; };
+		13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */; };
+		13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */; };
+		13BA9A882147C35C00AD06D7 /* FTTabFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BA9A862147C35C00AD06D7 /* FTTabFeedViewController.xib */; };
 		13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */; };
 		13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257FC2141324500E84002 /* FTAlertViewManager.swift */; };
 		13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */; };
@@ -102,6 +106,10 @@
 		13A2C4D22137B59300C377C0 /* FTCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCoreService.swift; sourceTree = "<group>"; };
 		13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDefaultService.swift; sourceTree = "<group>"; };
 		13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationService.swift; sourceTree = "<group>"; };
+		13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFileProviderService.swift; sourceTree = "<group>"; };
+		13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedResponse.swift; sourceTree = "<group>"; };
+		13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabFeedViewController.swift; sourceTree = "<group>"; };
+		13BA9A862147C35C00AD06D7 /* FTTabFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabFeedViewController.xib; sourceTree = "<group>"; };
 		13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserInfo.swift; sourceTree = "<group>"; };
 		13D257FC2141324500E84002 /* FTAlertViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlertViewManager.swift; sourceTree = "<group>"; };
 		13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabSettingsViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +230,7 @@
 				13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */,
 				13353B05213C120900D74C47 /* FTAboutReponse.swift */,
 				13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */,
+				13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -256,6 +265,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13BA9A842147C33B00AD06D7 /* Feed */,
 				13D257FF21426DC500E84002 /* Settings */,
 				13353AF3213A89A200D74C47 /* Profile */,
 				13A2C4BF2136BF7E00C377C0 /* Tabbar */,
@@ -304,8 +314,18 @@
 				13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */,
 				13D2580C21428CBB00E84002 /* FTKeyChainService.swift */,
 				13D2580E21428E3700E84002 /* FTSimpleCache.swift */,
+				13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		13BA9A842147C33B00AD06D7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */,
+				13BA9A862147C35C00AD06D7 /* FTTabFeedViewController.xib */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		13D257F4213FC1E200E84002 /* Models */ = {
@@ -407,6 +427,7 @@
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
+				13BA9A882147C35C00AD06D7 /* FTTabFeedViewController.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */,
 				13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */,
@@ -495,8 +516,10 @@
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
 				13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */,
 				13D2580F21428E3700E84002 /* FTSimpleCache.swift in Sources */,
+				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
+				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
@@ -521,6 +544,7 @@
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
+				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
 				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
