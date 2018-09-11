@@ -17,9 +17,10 @@ class FTEditProfileViewController: UIViewController {
 
     weak var delegate: FTEditProfileDelegate?
     var coreService: FTCoreService!
-    var about: FTAboutReponse!
+    var about: FTAboutReponse?
+    var profile: FTUserProfileResponse?
     var titles:[String] = ["User Name", "First Name", "Last Name", "Gender", "Introduction", "About"]
-    var userInfo: FTEditUserInfo!
+    var editInfo: FTEditUserInfo!
     private var progressHub: MBProgressHUD?
     fileprivate var doneBarBtn: UIBarButtonItem!
     
@@ -43,19 +44,38 @@ class FTEditProfileViewController: UIViewController {
         doneBarBtn.isEnabled = false
         self.navigationItem.rightBarButtonItem = doneBarBtn
         
-        // init user intro
-        initUserInfo()
+        // load user intro
+        loadUserInfo()
+        editInfo = FTEditUserInfo()
     }
     
-    private func initUserInfo() {
+    private func loadUserInfo() {
         // init user intro
-        userInfo = FTEditUserInfo()
-        userInfo.username = about.username
-        userInfo.fistname = about.first_name
-        userInfo.lastname = about.last_name
-        userInfo.gender = about.gender
-        userInfo.intro = about.intro
-        userInfo.about = about.about
+        //        userInfo = FTEditUserInfo()
+        //        userInfo.username = about.username
+        //        userInfo.fistname = about.first_name
+        //        userInfo.lastname = about.last_name
+        //        userInfo.gender = about.gender
+        //        userInfo.intro = about.intro
+        //        userInfo.about = about.about
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        guard let username = coreService.registrationService?.authenticationProfile?.profile?.username else { return }
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
+            if success {
+                self?.about = response
+                DispatchQueue.main.async {
+                    guard let v = self?.view else { return }
+                    MBProgressHUD.hide(for: v, animated: true)
+                    self?.tableView.reloadData()
+                }
+            } else {
+                NSLog("\(#function) FAILURE")
+                guard let v = self?.view else { return }
+                MBProgressHUD.hide(for: v, animated: true)
+            }
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -99,17 +119,17 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         if let type = cell.cellType {
             switch type {
             case .username:
-                cell.textFiled.text = userInfo.username
+                cell.textFiled.text = about?.username
             case .firstname:
-                cell.textFiled.text = userInfo.fistname
+                cell.textFiled.text = about?.first_name
             case .lastname:
-                cell.textFiled.text = userInfo.lastname
+                cell.textFiled.text = about?.last_name
             case .gender:
-                cell.textFiled.text = userInfo.gender
+                cell.textFiled.text = about?.gender
             case .intro:
-                cell.textFiled.text = userInfo.intro
+                cell.textFiled.text = about?.intro
             case .about:
-                cell.textFiled.text = userInfo.about
+                cell.textFiled.text = about?.about
             }
         } else {
             cell.textFiled.text = nil
@@ -129,14 +149,14 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Saving...", comment: "")
         self.doneBarBtn.isEnabled = false
-        coreService.webService?.editUserInfo(token: token, editInfo: userInfo, completion: {[weak self] (success, response) in
+        coreService.webService?.editUserInfo(token: token, editInfo: editInfo, completion: {[weak self] (success, response) in
             if success {
                 if let info = response {
-                    self?.userInfo.fistname = info.first_name
-                    self?.userInfo.lastname = info.last_name
-                    self?.userInfo.gender = info.gender
-                    self?.userInfo.intro = info.intro
-                    self?.userInfo.about = info.about
+                    self?.about?.first_name = info.first_name
+                    self?.about?.last_name = info.last_name
+                    self?.about?.gender = info.gender
+                    self?.about?.intro = info.intro
+                    self?.about?.about = info.about
                     DispatchQueue.main.async {
                         self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
                         self?.progressHub?.hide(animated: true, afterDelay: 1)
@@ -148,7 +168,6 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                         self?.progressHub?.detailsLabel.text = NSLocalizedString("Failure", comment: "")
                         self?.progressHub?.hide(animated: true, afterDelay: 1)
                         // reset edit data
-                        self?.initUserInfo()
                         self?.tableView.reloadData()
                         self?.delegate?.didSaveFailure()
                     }
@@ -158,7 +177,6 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                     self?.progressHub?.detailsLabel.text = NSLocalizedString("Failure", comment: "")
                     self?.progressHub?.hide(animated: true, afterDelay: 1)
                     // reset edit data
-                    self?.initUserInfo()
                     self?.tableView.reloadData()
                     self?.delegate?.didSaveFailure()
                 }
@@ -167,7 +185,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     private func checkAndSaveUsername() {
-        if userInfo.username != about.username {
+        if editInfo.username != about?.username {
             // TODO: save user name
         }
     }
@@ -175,27 +193,27 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension FTEditProfileViewController: EditTextDelegate {
     func usernameDidChange(username: String?) {
-        userInfo.username = username
+        editInfo.username = username
     }
     
     func firstnameDidChange(firstname: String?) {
-        userInfo.fistname = firstname
+        editInfo.fistname = firstname
     }
     
     func lastnameDidChange(lastname: String?) {
-        userInfo.lastname = lastname
+        editInfo.lastname = lastname
     }
     
     func genderDidChange(gender: String?) {
-        userInfo.gender = gender
+        editInfo.gender = gender
     }
     
     func introDidChange(intro: String?) {
-        userInfo.intro = intro
+        editInfo.intro = intro
     }
     
     func aboutDidChange(about: String?) {
-        userInfo.about = about
+        editInfo.about = about
     }
     
     func textDidChange() {

@@ -29,6 +29,7 @@ class FTUserProfileResponse: Mappable {
     var nickname: String?
     var join_date: String?
     var photostream: [FTPhotoStream]?
+    var intro: String?
     
     required init?(map: Map) {
         
@@ -54,6 +55,7 @@ class FTUserProfileResponse: Mappable {
         nickname <- map["nickname"]
         join_date <- map["join_date"]
         photostream <- map["photostream"]
+        intro <- map["intro"]
     }
 }
 

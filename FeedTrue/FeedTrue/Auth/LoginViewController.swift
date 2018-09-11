@@ -97,12 +97,14 @@ class LoginViewController: UIViewController {
                         self?.coreService.keychainService?.username(value: username)
                         self?.coreService.keychainService?.password(value: password)
                         self?.coreService.keychainService?.accessToken(value: token)
+                        self?.delegate?.didLoginSuccess()
                     }
                 }
             } else {
                 DispatchQueue.main.async {
                     self?.progressHub?.hide(animated: true)
                     FTAlertViewManager.defaultManager.showOkAlert(nil, message: NSLocalizedString("Wrong Username or Password", comment: ""), handler: nil)
+                    self?.delegate?.didLoginFailure()
                 }
             }
             // TODO: display response info

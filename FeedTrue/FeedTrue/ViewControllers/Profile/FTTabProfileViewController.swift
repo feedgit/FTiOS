@@ -13,7 +13,6 @@ import ScrollableSegmentedControl
 class FTTabProfileViewController: FTTabViewController {
 
     var profile: FTUserProfileResponse?
-    var about: FTAboutReponse?
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var feedsLabel: UILabel!
     @IBOutlet weak var photoVideoLabel: UILabel!
@@ -26,9 +25,6 @@ class FTTabProfileViewController: FTTabViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.resetUserInfoUI()
-        self.loadUserInfo()
-        self.loadUserAbout()
         self.setUpSegmentControl()
         self.rootViewController.delegate = self
     }
@@ -57,8 +53,8 @@ class FTTabProfileViewController: FTTabViewController {
     @IBAction func edit(_ sender: Any) {
         let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
         editVC.coreService = rootViewController.coreService
-        editVC.about = about
         editVC.delegate = self
+        
         navigationController?.pushViewController(editVC, animated: true)
     }
     
@@ -66,43 +62,34 @@ class FTTabProfileViewController: FTTabViewController {
         // TODO: follow/unfollow or Edit profile
     }
     
-    private func loadUserInfo() {
+    func loadUserInfo() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
 
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
-            self?.profile = response
-            DispatchQueue.main.async {
-                self?.updateProfileInfo()
-                //guard let v = self?.view else { return }
-                //MBProgressHUD.hide(for: v, animated: true)
-            }
-        })
-    }
-    
-    private func loadUserAbout() {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
-        guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
-            self?.about = response
-            DispatchQueue.main.async {
-                self?.updateAbout()
+        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+            if success {
+                self?.profile = response
+                DispatchQueue.main.async {
+                    self?.updateProfileInfo()
+                    guard let v = self?.view else { return }
+                    MBProgressHUD.hide(for: v, animated: true)
+                }
+            } else {
+                NSLog("\(#function) FAILURE")
                 guard let v = self?.view else { return }
                 MBProgressHUD.hide(for: v, animated: true)
             }
+            
         })
     }
+    
     private func updateProfileInfo() {
         feedsLabel.text = "\(profile?.feed_count ?? 0)"
         photoVideoLabel.text = "\(profile?.photo_video_count ?? 0)"
         likedLabel.text = "\(profile?.loved ?? 0)"
-    }
-    
-    private func updateAbout() {
-        introLabel.text = self.about?.intro
-        fullnameLabel.text = self.about?.full_name
+        fullnameLabel.text = profile?.full_name
+        introLabel.text = profile?.intro
     }
     
     private func resetUserInfoUI() {
@@ -148,19 +135,19 @@ extension FTTabProfileViewController: FTRootViewDelegate {
         DispatchQueue.main.async {
             self.resetUserInfoUI()
             self.loadUserInfo()
-            self.loadUserAbout()
         }
     }
     
     func didLogInFailure() {
-        
+        self.resetUserInfoUI()
     }
 }
 
 extension FTTabProfileViewController: FTEditProfileDelegate {
     func didSaveSuccessful() {
         DispatchQueue.main.async {
-            self.loadUserAbout()
+            self.resetUserInfoUI()
+            self.loadUserInfo()
         }
     }
     

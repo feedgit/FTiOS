@@ -24,6 +24,7 @@ class FeedTrueRootViewController: UIViewController {
     var searchBar: UISearchBar!
     weak var delegate: FTRootViewDelegate?
     var progressHub: MBProgressHUD?
+    var profileVC: FTTabProfileViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +127,7 @@ class FeedTrueRootViewController: UIViewController {
         let composeVC = UIViewController()
         composeVC.view.backgroundColor = UIColor.backgroundColor()
 
-        let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
+        profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
         profileVC.rootViewController = self
         profileVC.rootViewController.coreService = self.coreService
 
@@ -190,6 +191,10 @@ class FeedTrueRootViewController: UIViewController {
                 self?.progressHub?.hide(animated: true)
                 if success {
                     self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
+                    if response?.token != nil {
+                        self?.profileVC.loadUserInfo()
+                    }
+                    self?.feedtrueTabBarController?.selectedIndex = 0
                 } else {
                     // show login
                     DispatchQueue.main.async {
@@ -215,6 +220,7 @@ class FeedTrueRootViewController: UIViewController {
 
 extension FeedTrueRootViewController: LoginDelegate {
     func didLoginSuccess() {
+        self.feedtrueTabBarController.selectedIndex = 0
         self.delegate?.didLogInSuccess()
     }
     
