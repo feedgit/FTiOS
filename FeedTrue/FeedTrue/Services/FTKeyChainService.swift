@@ -177,6 +177,7 @@ public class FTKeyChainService: NSObject, FTCoreServiceComponent {
     
     public func reset() {
         save(key: "userId", data: "")
+        save(key: "username", data: "")
         save(key: "password", data: "")
         save(key: "accessToken", data: "")
     }

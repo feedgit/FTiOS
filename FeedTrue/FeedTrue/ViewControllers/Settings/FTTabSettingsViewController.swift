@@ -56,10 +56,12 @@ class FTTabSettingsViewController: FTTabViewController {
                         DispatchQueue.main.async {
                             self?.rootViewController.showLogin()
                             self?.rootViewController.coreService.registrationService?.reset()
+                            self?.rootViewController.coreService.keychainService?.reset()
                         }
                     } else {
                         self?.rootViewController.showLogin()
                         self?.rootViewController.coreService.registrationService?.reset()
+                        self?.rootViewController.coreService.keychainService?.reset()
                     }
                 })
             }

@@ -11,6 +11,7 @@ import UIKit
 class ExampleBouncesContentView: ExampleBasicContentView {
 
     public var duration = 0.3
+    public var isEnableSelectingAnimation = false
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +32,9 @@ class ExampleBouncesContentView: ExampleBasicContentView {
     }
     
     func bounceAnimation() {
+        if !isEnableSelectingAnimation {
+            return
+        }
         let impliesAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
         impliesAnimation.values = [1.0 ,1.4, 0.9, 1.15, 0.95, 1.02, 1.0]
         impliesAnimation.duration = duration * 2

@@ -183,7 +183,7 @@ class FeedTrueRootViewController: UIViewController {
     }
     
     func silentlyLogin() {
-            if let password = self.coreService.keychainService?.password(), let username = self.coreService.keychainService?.username() {
+            if let password = self.coreService.keychainService?.password(), !password.isEmpty, let username = self.coreService.keychainService?.username(), !username.isEmpty {
             self.progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
             self.progressHub?.detailsLabel.text = NSLocalizedString("Login...", comment: "")
             self.coreService.webService?.signIn(username: username, password: password, completion: { [weak self] (success, response) in
