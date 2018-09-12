@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().setBackgroundImage(UIImage(color: UIColor.navigationBarColor()), for: UIBarMetrics.default)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        
+        // Facebook configure
+        //[[FBSDKApplicationDelegate sharedInstance] application:application
+        //didFinishLaunchingWithOptions:launchOptions];
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
     }
 
@@ -37,12 +44,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        /*
+         BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+         openURL:url
+         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+         annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+         ];
+         // Add any custom logic here.
+         return handled;
+         */
+        let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        return handled
+    }
 }
 

@@ -135,6 +135,7 @@ class LoginViewController: UIViewController {
 //                            self?.navigationController?.pushViewController(homeVC, animated: true)
                             self?.progressHub?.hide(animated: true)
                             self?.dismiss(animated: true, completion: nil)
+                            self?.delegate?.didLoginSuccess()
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -142,6 +143,7 @@ class LoginViewController: UIViewController {
                             //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
                             self?.progressHub?.hide(animated: true)
                             FTAlertViewManager.defaultManager.showOkAlert(nil, message: NSLocalizedString("Wrong Username or Password", comment: ""), handler: nil)
+                            self?.delegate?.didLoginFailure()
                         }
                     }
                 })
