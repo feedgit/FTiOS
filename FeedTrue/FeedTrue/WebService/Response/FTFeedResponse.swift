@@ -57,15 +57,16 @@ class FTFeedInfo: Mappable {
     var ct_name: String?
     var editable: Bool?
     var write_to: String?
-    var privacy: String?
+    var privacy: Int?
     var self_liked: String?
     var user: UserProfile?
+    var request_reacted: String?
     var date: String?
     var feedcontent: [FTFeedContent]?
     var display: Int?
-    var content: String?
-    var feed_type: String?
-    var reactions: [FTReactions]?
+    var text: String?
+    var feed_type: Int?
+    var reactions: FTReactions?
     var comment: FTComment?
     var feeling: String?
     var hashtag: [String]?
@@ -82,10 +83,11 @@ class FTFeedInfo: Mappable {
         privacy <- map["privacy"]
         self_liked <- map["self_liked"]
         user <- map["user"]
+        request_reacted <- map["request_reacted"]
         date <- map["date"]
         feedcontent <- map["feedcontent"]
         display <- map["display"]
-        content <- map["content"]
+        text <- map["text"]
         feed_type <- map["feed_type"]
         reactions <- map["reactions"]
         comment <- map["comments"]
@@ -112,7 +114,7 @@ class FTFeedContent: Mappable {
 }
 
 class FTReactions: Mappable {
-    var type: String?
+    //var type: String?
     var count: Int?
     var data: Any?
     required init?(map: Map) {
@@ -120,7 +122,7 @@ class FTReactions: Mappable {
     }
     
     func mapping(map: Map) {
-        type <- map["type"]
+        //type <- map["type"]
         count <- map["count"]
         data <- map["data"]
     }
