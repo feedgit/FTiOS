@@ -90,6 +90,11 @@ class FTTabProfileViewController: FTTabViewController {
         likedLabel.text = "\(profile?.loved ?? 0)"
         fullnameLabel.text = profile?.full_name
         introLabel.text = profile?.intro
+        if let urlString = profile?.avatar?.data?.imageURL {
+            if let url = URL(string: urlString) {
+                avatarImageView.loadImage(fromURL: url)
+            }
+        }
     }
     
     private func resetUserInfoUI() {

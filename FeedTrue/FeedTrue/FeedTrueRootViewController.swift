@@ -21,7 +21,7 @@ class FeedTrueRootViewController: UIViewController {
     var coreService: FTCoreService!
     var cameraBarBtn: UIBarButtonItem!
     var messageBarBtn: UIBarButtonItem!
-    var searchBar: UISearchBar!
+    var searchTextField: UITextField!
     weak var delegate: FTRootViewDelegate?
     var progressHub: MBProgressHUD?
     var profileVC: FTTabProfileViewController!
@@ -57,16 +57,21 @@ class FeedTrueRootViewController: UIViewController {
         self.messageBarBtn = UIBarButtonItem(customView: messageBtn)
         customNavigationController?.topViewController?.navigationItem.rightBarButtonItem = self.messageBarBtn
         
-        // search bar
-        searchBar = UISearchBar()
-        searchBar.sizeToFit()
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
-        customNavigationController?.topViewController?.navigationItem.titleView = searchBar
+        // search text field
+        searchTextField = UITextField(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 21))
+        searchTextField.placeholder = NSLocalizedString("Search", comment: "")
+        searchTextField.returnKeyType = .done
+        searchTextField.textColor = .black
+        searchTextField.backgroundColor = .white
+        searchTextField.borderStyle = .roundedRect
+        searchTextField.delegate = self
+        customNavigationController?.topViewController?.navigationItem.titleView = searchTextField
         
         // services
         coreService = FTCoreService()
         coreService.setup()
         coreService.start()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -215,6 +220,11 @@ class FeedTrueRootViewController: UIViewController {
     @objc func camera(_ sender: Any) {
         
     }
+    
+    // MARK: - Helpers
+    @objc func singleTapHandler(_ sender: Any?) {
+        self.view.endEditing(true)
+    }
 
 }
 
@@ -226,5 +236,12 @@ extension FeedTrueRootViewController: LoginDelegate {
     
     func didLoginFailure() {
         self.delegate?.didLogInFailure()
+    }
+}
+
+extension FeedTrueRootViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchTextField.endEditing(true)
+        return true
     }
 }
