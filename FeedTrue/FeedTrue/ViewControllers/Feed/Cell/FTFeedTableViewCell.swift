@@ -32,6 +32,7 @@ class FTFeedTableViewCell: UITableViewCell {
         
         // setup lables
         setUpLabels()
+        userAvatarImageview.round()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

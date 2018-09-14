@@ -26,6 +26,7 @@ class FTTabProfileViewController: FTTabViewController {
 
         // Do any additional setup after loading the view.
         self.setUpSegmentControl()
+        avatarImageView.round()
     }
 
     override func didReceiveMemoryWarning() {

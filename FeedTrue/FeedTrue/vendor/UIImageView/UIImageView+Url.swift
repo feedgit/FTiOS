@@ -12,4 +12,9 @@ extension UIImageView {
     public func loadImage(fromURL: URL?, defaultImage: UIImage? = nil) {
         FileProviderService.service.imageView(self, loadImage: fromURL, defaultImage: defaultImage)
     }
+    
+    func round() {
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+    }
 }

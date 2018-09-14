@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import ScrollableSegmentedControl
 
 class FTTabFeedViewController: FTTabViewController {
     
+    @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [FTFeedInfo]!
     override func viewDidLoad() {
@@ -22,6 +24,10 @@ class FTTabFeedViewController: FTTabViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
+        tableView.layer.cornerRadius = 8
+        tableView.clipsToBounds = true
+        
+        self.setUpSegmentControl()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +53,35 @@ class FTTabFeedViewController: FTTabViewController {
                 NSLog("load feed failure")
             }
         })
+    }
+    
+    // MARK: - Helpers
+    private func setUpSegmentControl() {
+        segmentedControl.segmentStyle = .imageOnTop
+        segmentedControl.insertSegment(withTitle: "Feed", image: UIImage(named: "feed_unselected")?.withRenderingMode(.alwaysOriginal), at: 0)
+        segmentedControl.insertSegment(withTitle: "Photos", image: UIImage(named: "photos_unselected")?.withRenderingMode(.alwaysOriginal), at: 1)
+        segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 2)
+        segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 3)
+        segmentedControl.insertSegment(withTitle: "Music", image: #imageLiteral(resourceName: "music"), at: 4)
+        
+        //segmentedControl.underlineSelected = true
+        segmentedControl.selectedSegmentIndex = 0
+        //fixedWidthSwitch.isOn = false
+        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
+        
+        let largerRedTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black]
+        let largerRedTextHighlightAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
+        let largerRedTextSelectAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
+        
+        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
+        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
+        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
+        
+        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+    }
+    
+    @objc func segmentSelected(sender:ScrollableSegmentedControl) {
+        print("Segment at index \(sender.selectedSegmentIndex)  selected")
     }
 
 }
