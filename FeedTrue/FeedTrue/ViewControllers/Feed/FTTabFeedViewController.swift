@@ -154,6 +154,8 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
             if let url = URL(string: urlString) {
                 cell.userAvatarImageview.loadImage(fromURL: url)
             }
+        } else {
+            cell.userAvatarImageview.image = UIImage(named: "1000x1000")
         }
         cell.nameLabel.text = info.user?.full_name
         cell.dateLabel.text = info.date

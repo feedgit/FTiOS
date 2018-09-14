@@ -94,7 +94,7 @@ class FTAvatarData: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        imageURL <- map["image"]
+        imageURL <- map["file"]
     }
 }
 
