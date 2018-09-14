@@ -105,7 +105,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.nameLabel.text = info.user?.full_name
         cell.dateLabel.text = info.date
-        cell.feedContentTextview.text = info.text
+        cell.feedContentTextview.text = info.text?.htmlToString
         return cell
     }
 }
