@@ -15,6 +15,7 @@ class FTTabFeedViewController: FTTabViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [FTFeedInfo]!
     var nextURLString: String?
+    var refreshControl: UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class FTTabFeedViewController: FTTabViewController {
         tableView.clipsToBounds = true
         
         self.setUpSegmentControl()
+        self.setUpRefreshControl()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +49,7 @@ class FTTabFeedViewController: FTTabViewController {
                 self?.nextURLString = response?.next
                 DispatchQueue.main.async {
                     if let feeds = response?.feeds {
+                        self?.dataSource.removeAll()
                         self?.dataSource = feeds
                         self?.tableView.reloadData()
                         self?.tableView.addBotomActivityView {
@@ -115,6 +118,18 @@ class FTTabFeedViewController: FTTabViewController {
         segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
         
         segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        //refreshControl?.tintColor = UIColor.blue
+        refreshControl?.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        self.refreshControl?.endRefreshing()
+        self.loadFeed()
     }
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
