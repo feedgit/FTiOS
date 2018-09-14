@@ -411,4 +411,33 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func loadMoreFeed(nextURL: String, token: String, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = nextURL
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTFeedResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
 }

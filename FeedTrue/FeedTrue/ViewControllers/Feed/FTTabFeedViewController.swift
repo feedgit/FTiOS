@@ -14,6 +14,8 @@ class FTTabFeedViewController: FTTabViewController {
     @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [FTFeedInfo]!
+    var nextURLString: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,10 +44,14 @@ class FTTabFeedViewController: FTTabViewController {
         self.rootViewController.coreService.webService?.getFeed(page: 1, per_page: 5, username: nil, token: token, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
+                self?.nextURLString = response?.next
                 DispatchQueue.main.async {
                     if let feeds = response?.feeds {
                         self?.dataSource = feeds
                         self?.tableView.reloadData()
+                        self?.tableView.addBotomActivityView {
+                            self?.loadMore()
+                        }
                     }
                     
                 }
@@ -53,6 +59,37 @@ class FTTabFeedViewController: FTTabViewController {
                 NSLog("load feed failure")
             }
         })
+    }
+    
+    func loadMore() {
+        guard let nextURL = self.nextURLString else { return }
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        self.rootViewController.coreService.webService?.loadMoreFeed(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
+            if success {
+                NSLog("load more feed successful \(response?.next ?? "")")
+                self?.nextURLString = response?.next
+                DispatchQueue.main.async {
+                    if let feeds = response?.feeds {
+                        if feeds.count > 0 {
+                            self?.tableView.endBottomActivity()
+                            
+                            self?.dataSource.append(contentsOf: feeds)
+                            self?.tableView.reloadData()
+                        }
+                        else {
+                            self?.tableView.removeBottomActivityView()
+                        }
+                    } else {
+                        self?.tableView.removeFromSuperview()
+                    }
+                }
+            } else {
+                self?.tableView.removeFromSuperview()
+            }
+        })
+        
     }
     
     // MARK: - Helpers
