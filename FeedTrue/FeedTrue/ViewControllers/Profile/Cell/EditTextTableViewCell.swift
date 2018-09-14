@@ -37,6 +37,7 @@ class EditTextTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         textFiled.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

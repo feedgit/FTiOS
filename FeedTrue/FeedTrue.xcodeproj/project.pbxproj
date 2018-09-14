@@ -63,6 +63,7 @@
 		13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9B1D2149794000AD06D7 /* UIImageView+Url.swift */; };
 		13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9B20214A614600AD06D7 /* FTFeedTableViewCell.swift */; };
 		13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BA9B21214A614600AD06D7 /* FTFeedTableViewCell.xib */; };
+		13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9B24214B9D1E00AD06D7 /* FTHelpers.swift */; };
 		13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */; };
 		13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257FC2141324500E84002 /* FTAlertViewManager.swift */; };
 		13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */; };
@@ -136,6 +137,7 @@
 		13BA9B1D2149794000AD06D7 /* UIImageView+Url.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Url.swift"; sourceTree = "<group>"; };
 		13BA9B20214A614600AD06D7 /* FTFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedTableViewCell.swift; sourceTree = "<group>"; };
 		13BA9B21214A614600AD06D7 /* FTFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedTableViewCell.xib; sourceTree = "<group>"; };
+		13BA9B24214B9D1E00AD06D7 /* FTHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTHelpers.swift; sourceTree = "<group>"; };
 		13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserInfo.swift; sourceTree = "<group>"; };
 		13D257FC2141324500E84002 /* FTAlertViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlertViewManager.swift; sourceTree = "<group>"; };
 		13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabSettingsViewController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				13489DF62134062200C72BD3 /* FTValidation.swift */,
 				13D257FC2141324500E84002 /* FTAlertViewManager.swift */,
+				13BA9B24214B9D1E00AD06D7 /* FTHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
+				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,

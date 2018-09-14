@@ -10,11 +10,6 @@ import UIKit
 import ESTabBarController_swift
 import MBProgressHUD
 
-@objc protocol FTRootViewDelegate {
-    func didLogInSuccess()
-    func didLogInFailure()
-}
-
 class FeedTrueRootViewController: UIViewController {
     
     private var customNavigationController: UINavigationController?
@@ -22,9 +17,9 @@ class FeedTrueRootViewController: UIViewController {
     var cameraBarBtn: UIBarButtonItem!
     var messageBarBtn: UIBarButtonItem!
     var searchTextField: UITextField!
-    weak var delegate: FTRootViewDelegate?
     var progressHub: MBProgressHUD?
     var profileVC: FTTabProfileViewController!
+    var feedVC: FTTabFeedViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +118,7 @@ class FeedTrueRootViewController: UIViewController {
 //            print("didHijackHandler")
 //        }
 //
-        let feedVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
+        feedVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
         feedVC.rootViewController = self
         feedVC.rootViewController.coreService = self.coreService
         feedVC.view.backgroundColor = UIColor.backgroundColor()
@@ -196,10 +191,9 @@ class FeedTrueRootViewController: UIViewController {
                 self?.progressHub?.hide(animated: true)
                 if success {
                     self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
-                    if response?.token != nil {
-                        self?.profileVC.loadUserInfo()
-                    }
                     self?.feedtrueTabBarController?.selectedIndex = 0
+                    self?.feedVC.loadFeed()
+                    self?.profileVC.loadUserInfo()
                 } else {
                     // show login
                     DispatchQueue.main.async {
@@ -231,11 +225,12 @@ class FeedTrueRootViewController: UIViewController {
 extension FeedTrueRootViewController: LoginDelegate {
     func didLoginSuccess() {
         self.feedtrueTabBarController.selectedIndex = 0
-        self.delegate?.didLogInSuccess()
+        self.profileVC.loadUserInfo()
+        self.feedVC.loadFeed()
     }
     
     func didLoginFailure() {
-        self.delegate?.didLogInFailure()
+        
     }
 }
 

@@ -20,6 +20,8 @@ class FTTabFeedViewController: FTTabViewController {
         tableView.register(UINib(nibName: "FTFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FTFeedTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.separatorInset = .zero
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,14 +29,7 @@ class FTTabFeedViewController: FTTabViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.loadFeed()
-    }
-    
-
-    private func loadFeed() {
+    @objc func loadFeed() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
             return
         }

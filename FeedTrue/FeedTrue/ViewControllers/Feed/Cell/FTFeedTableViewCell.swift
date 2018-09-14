@@ -28,12 +28,30 @@ class FTFeedTableViewCell: UITableViewCell {
         // Initialization code
         commentTextField.returnKeyType = .done
         commentTextField.delegate = self
+        self.selectionStyle = .none
+        
+        // setup lables
+        setUpLabels()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func setUpLabels() {
+        let loveAttrString = FTHelpers.attributeString(imageNamed: "love", str: NSLocalizedString("Love", comment: ""))
+        loveLabel.attributedText = loveAttrString
+        
+        let commentAttrString = FTHelpers.attributeString(imageNamed: "comment", str: NSLocalizedString("Comment", comment: ""))
+        commentLabel.attributedText = commentAttrString
+        
+        let shareAttrString = FTHelpers.attributeString(imageNamed: "share", str: NSLocalizedString("Share", comment: ""))
+        shareLabel.attributedText = shareAttrString
+        
+        let saveAttrString = FTHelpers.attributeString(imageNamed: "save", str: NSLocalizedString("Save", comment: ""))
+        saveLabel.attributedText = saveAttrString
     }
     
 }

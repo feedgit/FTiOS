@@ -26,7 +26,6 @@ class FTTabProfileViewController: FTTabViewController {
 
         // Do any additional setup after loading the view.
         self.setUpSegmentControl()
-        self.rootViewController.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +61,7 @@ class FTTabProfileViewController: FTTabViewController {
         // TODO: follow/unfollow or Edit profile
     }
     
-    func loadUserInfo() {
+    @objc func loadUserInfo() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
 
@@ -133,19 +132,6 @@ class FTTabProfileViewController: FTTabViewController {
         segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
     }
     
-}
-
-extension FTTabProfileViewController: FTRootViewDelegate {
-    func didLogInSuccess() {
-        DispatchQueue.main.async {
-            self.resetUserInfoUI()
-            self.loadUserInfo()
-        }
-    }
-    
-    func didLogInFailure() {
-        self.resetUserInfoUI()
-    }
 }
 
 extension FTTabProfileViewController: FTEditProfileDelegate {
