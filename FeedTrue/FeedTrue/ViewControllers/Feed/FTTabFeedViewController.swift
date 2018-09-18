@@ -8,6 +8,7 @@
 
 import UIKit
 import ScrollableSegmentedControl
+import MBProgressHUD
 
 class FTTabFeedViewController: FTTabViewController {
     
@@ -16,6 +17,7 @@ class FTTabFeedViewController: FTTabViewController {
     var dataSource: [FTFeedInfo]!
     var nextURLString: String?
     var refreshControl: UIRefreshControl?
+    private var progressHub: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,6 +151,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FTFeedTableViewCell") as! FTFeedTableViewCell
+        cell.delegate = self
         let info = dataSource[indexPath.row]
         if let urlString = info.user?.avatar?.data?.imageURL {
             if let url = URL(string: urlString) {
@@ -160,6 +163,61 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.nameLabel.text = info.user?.full_name
         cell.dateLabel.text = info.date
         cell.feedContentTextview.text = info.text?.htmlToString
+        cell.info = info
         return cell
+    }
+}
+
+extension FTTabFeedViewController: FTFeedCellDelegate {
+    func feeddCellGotoFeed(cell: FTFeedTableViewCell) {
+        // TODO: goto feed
+        NSLog("\(#function) \(cell.info.text ?? "")")
+    }
+    
+    func feeddCellShare(cell: FTFeedTableViewCell) {
+        // TODO: share
+        NSLog("\(#function) \(cell.info.text ?? "")")
+    }
+    
+    func feeddCellSeeLessContent(cell: FTFeedTableViewCell) {
+        // TODO: see less content
+        NSLog("\(#function) \(cell.info.text ?? "")")
+    }
+    
+    func feeddCellReportInapproriate(cell: FTFeedTableViewCell) {
+        // TODO: report inapproriate
+        NSLog("\(#function) \(cell.info.text ?? "")")
+    }
+    
+    func feeddCellEdit(cell: FTFeedTableViewCell) {
+        // TODO: edit
+        NSLog("\(#function) \(cell.info.text ?? "")")
+    }
+    
+    func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell) {
+        // TODO: delete
+        NSLog("\(#function) \(cell.info.text ?? "")")
+        guard let feedID = cell.info.id else { return }
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHub?.detailsLabel.text = NSLocalizedString("Delete...", comment: "")
+        self.rootViewController.coreService.webService?.deleteFeed(feedID: "\(feedID)", token: token, completion: { [weak self] (success, response) in
+            if success {
+                // Reload feed
+                self?.dataSource = self?.dataSource.filter { $0.id != cell.info.id }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
+                    self?.progressHub?.hide(animated: true, afterDelay: 1)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.progressHub?.detailsLabel.text = NSLocalizedString("Failure", comment: "")
+                    self?.progressHub?.hide(animated: true, afterDelay: 1)
+                }
+            }
+        })
     }
 }

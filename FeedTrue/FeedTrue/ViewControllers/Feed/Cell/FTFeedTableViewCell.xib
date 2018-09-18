@@ -49,6 +49,9 @@
                                     <constraint firstAttribute="width" constant="69" id="lGH-hx-Oi1"/>
                                 </constraints>
                                 <state key="normal" image="more_btn"/>
+                                <connections>
+                                    <action selector="moreBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fgn-RR-90S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -178,6 +181,7 @@
                 <outlet property="feedContentTextview" destination="seP-8H-MMv" id="fVf-T6-mVd"/>
                 <outlet property="leftImageView" destination="Y3g-XV-US0" id="A6W-fj-Ajz"/>
                 <outlet property="loveLabel" destination="1FQ-XO-bAv" id="l52-70-vov"/>
+                <outlet property="moreBtn" destination="rdU-l0-GdK" id="krt-gj-s2g"/>
                 <outlet property="nameLabel" destination="HEV-CY-oPP" id="m20-a8-3qd"/>
                 <outlet property="rightImageView" destination="Mdu-IM-X57" id="L9i-rp-ESK"/>
                 <outlet property="saveLabel" destination="Tsc-1z-LhL" id="JR6-io-pAx"/>

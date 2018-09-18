@@ -440,4 +440,32 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func deleteFeed(feedID: String, token: String, completion: @escaping (Bool, Any?) -> ()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/f/\(feedID)/delete/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .delete, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
 }
