@@ -9,6 +9,7 @@
 import UIKit
 import ScrollableSegmentedControl
 import MBProgressHUD
+import SwiftMoment
 
 class FTTabFeedViewController: FTTabViewController {
     
@@ -161,7 +162,12 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
             cell.userAvatarImageview.image = UIImage(named: "1000x1000")
         }
         cell.nameLabel.text = info.user?.full_name
-        cell.dateLabel.text = info.date
+        //cell.dateLabel.text = info.date
+        if let dateString = info.date {
+            cell.dateLabel.text = moment(dateString)?.fromNow()
+        } else {
+            cell.dateLabel.text = nil
+        }
         cell.contentLabel.text = info.text?.htmlToString
         cell.info = info
         return cell

@@ -13,4 +13,5 @@ pod 'FacebookShare'
 pod 'ESTabBarController-swift'
 pod 'ScrollableSegmentedControl', '~> 1.3.0'
 pod 'DTGradientButton'
+pod 'SwiftMoment'
 end
