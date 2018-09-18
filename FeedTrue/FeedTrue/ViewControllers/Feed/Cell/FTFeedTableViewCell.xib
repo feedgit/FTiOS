@@ -31,19 +31,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cong Toan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HEV-CY-oPP">
-                                <rect key="frame" x="96" y="26.5" width="556" height="23"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                <rect key="frame" x="96" y="30.5" width="556" height="20"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 hours ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUZ-UH-LIr">
-                                <rect key="frame" x="96" y="57.5" width="556" height="18.5"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <rect key="frame" x="96" y="58.5" width="556" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rdU-l0-GdK">
-                                <rect key="frame" x="668" y="26.5" width="69" height="21"/>
+                                <rect key="frame" x="668" y="30.5" width="69" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rdU-l0-GdK" secondAttribute="height" multiplier="23:7" id="430-9Z-qzF"/>
                                     <constraint firstAttribute="width" constant="69" id="lGH-hx-Oi1"/>
@@ -69,18 +69,8 @@
                             <constraint firstItem="WDm-gu-T0d" firstAttribute="leading" secondItem="qKT-VB-Bih" secondAttribute="leading" constant="16" id="lUH-Xe-xXq"/>
                         </constraints>
                     </view>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seP-8H-MMv">
-                        <rect key="frame" x="16" y="104" width="717" height="80"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="80" id="jPu-8n-iR0"/>
-                        </constraints>
-                        <string key="text">Từ Bắc đến Nam, đi đâu để tìm những món đồ xinh cho homestay thêm lộng lẫy? Dù theo phong cách vintage, industrial hay scandinavian</string>
-                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjU-8j-7dV">
-                        <rect key="frame" x="8" y="192" width="733" height="366.5"/>
+                        <rect key="frame" x="8" y="164" width="733" height="366.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="UZW-ck-XiT">
                                 <rect key="frame" x="8" y="0.0" width="717" height="366.5"/>
@@ -104,7 +94,7 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H7l-kc-ZmT">
-                        <rect key="frame" x="8" y="589" width="733" height="44"/>
+                        <rect key="frame" x="8" y="561" width="733" height="44"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FQ-XO-bAv">
                                 <rect key="frame" x="0.0" y="13" width="183.5" height="18.5"/>
@@ -137,7 +127,7 @@
                         </constraints>
                     </stackView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a comment ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45o-42-AgG">
-                        <rect key="frame" x="32" y="641" width="685" height="44"/>
+                        <rect key="frame" x="32" y="613" width="685" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="Tou-q9-ww6"/>
                         </constraints>
@@ -146,27 +136,36 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-Tq-YYL">
-                        <rect key="frame" x="8" y="701" width="733" height="214.5"/>
+                        <rect key="frame" x="8" y="673" width="733" height="242.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLh-Yz-6bs">
+                        <rect key="frame" x="8" y="104" width="733" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="aqn-Pp-aTb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vjU-8j-7dV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="2bh-1Q-Rpk"/>
-                    <constraint firstItem="vjU-8j-7dV" firstAttribute="top" secondItem="seP-8H-MMv" secondAttribute="bottom" constant="8" id="6Lh-CL-vxP"/>
                     <constraint firstItem="45o-42-AgG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="6h6-Cw-KJU"/>
                     <constraint firstItem="5wk-Tq-YYL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="AHl-jC-0c3"/>
                     <constraint firstAttribute="bottom" secondItem="5wk-Tq-YYL" secondAttribute="bottom" constant="8" id="BCV-28-RgR"/>
-                    <constraint firstAttribute="trailing" secondItem="seP-8H-MMv" secondAttribute="trailing" constant="16" id="EFB-p3-gAG"/>
+                    <constraint firstAttribute="trailing" secondItem="GLh-Yz-6bs" secondAttribute="trailing" constant="8" id="CY1-bu-HxI"/>
                     <constraint firstItem="45o-42-AgG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="F1P-7A-Snn"/>
                     <constraint firstItem="qKT-VB-Bih" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="H5V-pi-PQh"/>
+                    <constraint firstItem="Y3g-XV-US0" firstAttribute="top" secondItem="GLh-Yz-6bs" secondAttribute="bottom" constant="16" id="KnA-Qy-O96"/>
                     <constraint firstItem="H7l-kc-ZmT" firstAttribute="top" secondItem="vjU-8j-7dV" secondAttribute="bottom" constant="30.5" id="LSN-3b-MDw"/>
                     <constraint firstItem="qKT-VB-Bih" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="TsV-7k-KFr"/>
+                    <constraint firstItem="GLh-Yz-6bs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ucg-yF-V0f"/>
                     <constraint firstAttribute="trailing" secondItem="qKT-VB-Bih" secondAttribute="trailing" constant="4" id="UvC-Da-KU8"/>
                     <constraint firstItem="H7l-kc-ZmT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="aAj-7e-tKi"/>
                     <constraint firstItem="5wk-Tq-YYL" firstAttribute="top" secondItem="45o-42-AgG" secondAttribute="bottom" constant="16" id="bqt-Ci-lPW"/>
-                    <constraint firstItem="seP-8H-MMv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ceu-eT-Kdb"/>
                     <constraint firstItem="H7l-kc-ZmT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="f1o-fF-eJd"/>
-                    <constraint firstItem="seP-8H-MMv" firstAttribute="top" secondItem="qKT-VB-Bih" secondAttribute="bottom" constant="4" id="jnX-Lc-tUg"/>
+                    <constraint firstItem="GLh-Yz-6bs" firstAttribute="top" secondItem="qKT-VB-Bih" secondAttribute="bottom" constant="4" id="gaz-o3-qFh"/>
                     <constraint firstItem="vjU-8j-7dV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mSF-wG-pZl"/>
                     <constraint firstItem="5wk-Tq-YYL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="x4C-7x-R19"/>
                     <constraint firstItem="45o-42-AgG" firstAttribute="top" secondItem="H7l-kc-ZmT" secondAttribute="bottom" constant="8" id="zyj-Ac-7uu"/>
@@ -177,8 +176,8 @@
                 <outlet property="commentLabel" destination="CdZ-he-pWa" id="Snc-Bs-ple"/>
                 <outlet property="commentTextField" destination="45o-42-AgG" id="LeN-aV-1JR"/>
                 <outlet property="commentView" destination="5wk-Tq-YYL" id="rSf-Cq-sVx"/>
+                <outlet property="contentLabel" destination="GLh-Yz-6bs" id="Ndj-oc-sCQ"/>
                 <outlet property="dateLabel" destination="PUZ-UH-LIr" id="Lxr-iG-f8a"/>
-                <outlet property="feedContentTextview" destination="seP-8H-MMv" id="fVf-T6-mVd"/>
                 <outlet property="leftImageView" destination="Y3g-XV-US0" id="A6W-fj-Ajz"/>
                 <outlet property="loveLabel" destination="1FQ-XO-bAv" id="l52-70-vov"/>
                 <outlet property="moreBtn" destination="rdU-l0-GdK" id="krt-gj-s2g"/>

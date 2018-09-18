@@ -185,10 +185,10 @@ class FeedTrueRootViewController: UIViewController {
     
     func silentlyLogin() {
             if let password = self.coreService.keychainService?.password(), !password.isEmpty, let username = self.coreService.keychainService?.username(), !username.isEmpty {
-            self.progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
-            self.progressHub?.detailsLabel.text = NSLocalizedString("Login...", comment: "")
+            //self.progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
+            //self.progressHub?.detailsLabel.text = NSLocalizedString("Login...", comment: "")
             self.coreService.webService?.signIn(username: username, password: password, completion: { [weak self] (success, response) in
-                self?.progressHub?.hide(animated: true)
+                //self?.progressHub?.hide(animated: true)
                 if success {
                     self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
                     self?.feedtrueTabBarController?.selectedIndex = 0

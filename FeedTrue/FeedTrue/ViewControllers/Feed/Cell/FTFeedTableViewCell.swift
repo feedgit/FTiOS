@@ -22,7 +22,7 @@ class FTFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var userAvatarImageview: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var feedContentTextview: UITextView!
+    @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var leftImageView: UIImageView!
     @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var loveLabel: UILabel!
