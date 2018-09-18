@@ -15,7 +15,7 @@ class FTUserProfileResponse: Mappable {
     var first_name: String?
     var last_name: String?
     var full_name: String?
-    var avatar: FTAvatar?
+    var avatar: String?
     var featured_photos: FTAvatar?
     var editable: Bool?
     var relationship_to_user: String?
@@ -124,7 +124,7 @@ class FTFriendInfos: Mappable {
     var last_name: String?
     var full_name: String?
     var profile: String?
-    var avatar: FTAvatar?
+    var avatar: String?
     
     required init?(map: Map) {
         

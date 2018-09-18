@@ -157,7 +157,7 @@ class UserProfile: Mappable {
     var first_name: String?
     var last_name: String?
     var full_name: String?
-    var avatar: FTAvatar?
+    var avatar: String?
     var intro: String?
     //var profilePicURL: ProfilePicURL?
     

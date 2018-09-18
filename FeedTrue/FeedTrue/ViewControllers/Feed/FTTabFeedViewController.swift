@@ -153,7 +153,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FTFeedTableViewCell") as! FTFeedTableViewCell
         cell.delegate = self
         let info = dataSource[indexPath.row]
-        if let urlString = info.user?.avatar?.data?.imageURL {
+        if let urlString = info.user?.avatar {
             if let url = URL(string: urlString) {
                 cell.userAvatarImageview.loadImage(fromURL: url)
             }
