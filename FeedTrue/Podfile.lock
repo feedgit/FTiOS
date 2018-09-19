@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.3)
+  - Alamofire-SwiftyJSON (3.0.0):
+    - Alamofire (~> 4.5)
+    - SwiftyJSON (~> 4.0.0)
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
@@ -35,9 +38,11 @@ PODS:
   - ObjectMapper (3.3.0)
   - ScrollableSegmentedControl (1.3.0)
   - SwiftMoment (0.7)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - Alamofire-SwiftyJSON
   - AlamofireObjectMapper (~> 5.0)
   - DTGradientButton
   - DTTextField
@@ -48,10 +53,12 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.1.0)
   - ScrollableSegmentedControl (~> 1.3.0)
   - SwiftMoment
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Alamofire-SwiftyJSON
     - AlamofireObjectMapper
     - Bolts
     - DTGradientButton
@@ -67,9 +74,11 @@ SPEC REPOS:
     - ObjectMapper
     - ScrollableSegmentedControl
     - SwiftMoment
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DTGradientButton: ec700b5d33fdc6c6886f8f7f44023c6087b50a8b
@@ -85,7 +94,8 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   ScrollableSegmentedControl: a90ae91537fd670a46b177301d035223e3bd149e
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: ed6d259d35b94bddfb4bdebe0d3f97134219eb36
+PODFILE CHECKSUM: ce21a5e1125d0bcd7d8f465c84706721bee4600a
 
 COCOAPODS: 1.5.3
