@@ -170,6 +170,13 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.contentLabel.text = info.text?.htmlToString
         cell.info = info
+        
+        let photoController = PhotosController(dataSourceType: .remote)
+        photoController.collectionView?.isScrollEnabled = false
+        self.addChildViewController(photoController)
+        cell.collectionView.addSubview(photoController.view)
+        cell.collectionView.isScrollEnabled = false
+        photoController.didMove(toParentViewController: self)
         return cell
     }
 }

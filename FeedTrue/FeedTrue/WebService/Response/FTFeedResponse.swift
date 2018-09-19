@@ -96,19 +96,94 @@ class FTFeedInfo: Mappable {
     }
 }
 
+/*
+"feedcontent": {
+    "display_type": 1,
+    "data": [
+    {
+    "id": 108,
+    "image": "https://api.feedtrue.com/media/users/1/9_108.jpg"
+    },
+    {
+    "id": 103,
+    "image": "https://api.feedtrue.com/media/users/1/9_103.jpg"
+    },
+    {
+    "id": 59,
+    "image": "https://api.feedtrue.com/media/users/1/9_59.jpg"
+    }
+    ]
+},
+"feedcontent": {
+    "display_type": 2,
+    "data": [
+    {
+    "id": 11,
+    "featured_image": "https://api.feedtrue.com/media/users/21/video/11/artwork.jpg",
+    "file": "https://api.feedtrue.com/media/users/21/video/11/11.mp4"
+    }
+    ]
+},
+ 
+"feedcontent": {
+    "display_type": 3,
+    "data": [
+    {
+    "id": 67,
+    "title": "Gác xếp của tôi",
+    "thumbnail": "https://api.feedtrue.com/media/avatar/article/67.gif",
+    "slug": "gac-xep-cua-toi"
+    }
+    ]
+},
+
+"feedcontent": {
+    "display_type": 4,
+    "data": [
+    {
+    "id": 56,
+    "user": {
+    "id": 1,
+    "username": "lecongtoan",
+    "full_name": "Công Toàn Lê",
+    "first_name": "Công Toàn",
+    "last_name": "Lê",
+    "avatar": "https://api.feedtrue.com/media/avatar/profile/1/avatar.jpg"
+    },
+    "date": "2018-09-18T07:03:28.041000Z",
+    "feedcontent": {
+    "display_type": 1,
+    "data": [
+    {
+    "id": 108,
+    "image": "https://api.feedtrue.com/media/users/1/9_108.jpg"
+    },
+    {
+    "id": 103,
+    "image": "https://api.feedtrue.com/media/users/1/9_103.jpg"
+    },
+    {
+    "id": 59,
+    "image": "https://api.feedtrue.com/media/users/1/9_59.jpg"
+    }
+    ]
+    },
+    "text": "Việt Nam (tên chính thức: Cộng hòa Xã hội Chủ nghĩa Việt Nam) là quốc gia nằm ở phía Đông bán đảo Đông Dương thuộc khu vực Đông Nam Á. Với dân số ước tính 96,5 triệu dân vào năm 2018, Việt Nam là quốc gia đông dân thứ 15 trên thế giới và là quốc gia đông dân thứ 8 của châu Á. Thủ đô là thành phố Hà Nội kể từ năm 1976, với Thành phố Hồ Chí Minh là thành phố đông dân nhất."
+    }
+    ]
+},
+*/
+ 
+ 
 class FTFeedContent: Mappable {
-    var id: Int?
-    var type: String?
-    var order_num: Int?
-    var data: Any?
+    var display_type: Int?
+    var data: [String: Any]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        type <- map["type"]
-        order_num <- map["order_num"]
+        display_type <- map["display_type"]
         data <- map["data"]
     }
 }

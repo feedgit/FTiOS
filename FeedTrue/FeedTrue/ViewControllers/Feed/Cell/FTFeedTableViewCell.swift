@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 @objc protocol FTFeedCellDelegate {
     func feeddCellGotoFeed(cell: FTFeedTableViewCell)
     func feeddCellShare(cell: FTFeedTableViewCell)
@@ -23,8 +24,6 @@ class FTFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var leftImageView: UIImageView!
-    @IBOutlet weak var rightImageView: UIImageView!
     @IBOutlet weak var loveLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var shareLabel: UILabel!
@@ -32,6 +31,8 @@ class FTFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var moreBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     var info: FTFeedInfo!
     
     override func awakeFromNib() {
