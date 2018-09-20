@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMoment
 
 @objc protocol FTFeedCellDelegate {
     func feeddCellGotoFeed(cell: FTFeedTableViewCell)
@@ -14,12 +15,14 @@ import UIKit
     func feeddCellSeeLessContent(cell: FTFeedTableViewCell)
     func feeddCellReportInapproriate(cell: FTFeedTableViewCell)
     func feeddCellEdit(cell: FTFeedTableViewCell)
-    func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell)
+    @objc func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell)
 }
 
-class FTFeedTableViewCell: UITableViewCell {
-
+class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
+    typealias CellData = FTFeedViewModel
     weak var delegate: FTFeedCellDelegate?
+    var feed: FTFeedInfo!
+    
     @IBOutlet weak var userAvatarImageview: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -32,8 +35,7 @@ class FTFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    var info: FTFeedInfo!
+    @IBOutlet weak var collectionLayoutConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +47,31 @@ class FTFeedTableViewCell: UITableViewCell {
         // setup lables
         setUpLabels()
         userAvatarImageview.round()
+    }
+    
+    func renderCell(data: FTFeedViewModel) {
+        feed = data.feed
+        if let urlString = feed.user?.avatar {
+            if let url = URL(string: urlString) {
+                self.userAvatarImageview.loadImage(fromURL: url)
+            }
+        } else {
+            self.userAvatarImageview.image = UIImage(named: "1000x1000")
+        }
+        self.nameLabel.text = feed.user?.full_name
+        if let dateString = feed.date {
+            self.dateLabel.text = moment(dateString)?.fromNow()
+        } else {
+            self.dateLabel.text = nil
+        }
+        self.contentLabel.text = feed.text?.htmlToString
+        
+        let photoController = PhotosController(dataSourceType: .remote)
+        photoController.collectionView?.isScrollEnabled = false
+//        self.addChildViewController(photoController)
+//        self.collectionView.addSubview(photoController.view)
+//        self.collectionView.isScrollEnabled = false
+//        photoController.didMove(toParentViewController: self)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -97,7 +124,7 @@ class FTFeedTableViewCell: UITableViewCell {
         }
         
         var actions:[UIAlertAction] = []
-        if info.editable == true {
+        if feed.editable == true {
             /*
              Edit: Open modal Edit
              Permanently Delete: (with text-color Red): DELETE /f/${feedID}/delete/ and remove this feed out of feed list

@@ -15,7 +15,7 @@ class FTTabFeedViewController: FTTabViewController {
     
     @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    var dataSource: [FTFeedInfo]!
+    var dataSource = [FTFeedViewModel]()
     var nextURLString: String?
     var refreshControl: UIRefreshControl?
     private var progressHub: MBProgressHUD?
@@ -25,7 +25,7 @@ class FTTabFeedViewController: FTTabViewController {
 
         // Do any additional setup after loading the view.
         dataSource = []
-        tableView.register(UINib(nibName: "FTFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FTFeedTableViewCell")
+        FTFeedViewModel.register(tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -53,7 +53,7 @@ class FTTabFeedViewController: FTTabViewController {
                 DispatchQueue.main.async {
                     if let feeds = response?.feeds {
                         self?.dataSource.removeAll()
-                        self?.dataSource = feeds
+                        self?.dataSource = feeds.map({FTFeedViewModel(f: $0)})
                         self?.tableView.reloadData()
                         self?.tableView.addBotomActivityView {
                             self?.loadMore()
@@ -81,7 +81,7 @@ class FTTabFeedViewController: FTTabViewController {
                         if feeds.count > 0 {
                             self?.tableView.endBottomActivity()
                             
-                            self?.dataSource.append(contentsOf: feeds)
+                            self?.dataSource.append(contentsOf: feeds.map({FTFeedViewModel(f: $0)}))
                             self?.tableView.reloadData()
                         }
                         else {
@@ -151,32 +151,10 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FTFeedTableViewCell") as! FTFeedTableViewCell
+        let content = dataSource[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTFeedTableViewCell
         cell.delegate = self
-        let info = dataSource[indexPath.row]
-        if let urlString = info.user?.avatar {
-            if let url = URL(string: urlString) {
-                cell.userAvatarImageview.loadImage(fromURL: url)
-            }
-        } else {
-            cell.userAvatarImageview.image = UIImage(named: "1000x1000")
-        }
-        cell.nameLabel.text = info.user?.full_name
-        //cell.dateLabel.text = info.date
-        if let dateString = info.date {
-            cell.dateLabel.text = moment(dateString)?.fromNow()
-        } else {
-            cell.dateLabel.text = nil
-        }
-        cell.contentLabel.text = info.text?.htmlToString
-        cell.info = info
-        
-        let photoController = PhotosController(dataSourceType: .remote)
-        photoController.collectionView?.isScrollEnabled = false
-        self.addChildViewController(photoController)
-        cell.collectionView.addSubview(photoController.view)
-        cell.collectionView.isScrollEnabled = false
-        photoController.didMove(toParentViewController: self)
+        cell.renderCell(data: content)
         return cell
     }
 }
@@ -184,33 +162,27 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
 extension FTTabFeedViewController: FTFeedCellDelegate {
     func feeddCellGotoFeed(cell: FTFeedTableViewCell) {
         // TODO: goto feed
-        NSLog("\(#function) \(cell.info.text ?? "")")
     }
     
     func feeddCellShare(cell: FTFeedTableViewCell) {
         // TODO: share
-        NSLog("\(#function) \(cell.info.text ?? "")")
     }
     
     func feeddCellSeeLessContent(cell: FTFeedTableViewCell) {
         // TODO: see less content
-        NSLog("\(#function) \(cell.info.text ?? "")")
     }
     
     func feeddCellReportInapproriate(cell: FTFeedTableViewCell) {
         // TODO: report inapproriate
-        NSLog("\(#function) \(cell.info.text ?? "")")
     }
     
     func feeddCellEdit(cell: FTFeedTableViewCell) {
         // TODO: edit
-        NSLog("\(#function) \(cell.info.text ?? "")")
     }
     
     func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell) {
         // TODO: delete
-        NSLog("\(#function) \(cell.info.text ?? "")")
-        guard let feedID = cell.info.id else { return }
+        guard let feedID = cell.feed.id else { return }
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
             return
         }
@@ -219,7 +191,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         self.rootViewController.coreService.webService?.deleteFeed(feedID: "\(feedID)", token: token, completion: { [weak self] (success, response) in
             if success {
                 // Reload feed
-                self?.dataSource = self?.dataSource.filter { $0.id != cell.info.id }
+                self?.dataSource = (self?.dataSource.filter { $0.feed.id != cell.feed.id })!
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
