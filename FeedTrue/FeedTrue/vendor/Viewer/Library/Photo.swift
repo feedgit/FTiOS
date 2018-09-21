@@ -22,6 +22,9 @@ class Photo: Viewable {
     var id: String
     var url: String?
     var assetID: String?
+    var thumbnailURL: String?
+    var title: String?
+    var slug: String?
 
     init(id: String) {
         self.id = id

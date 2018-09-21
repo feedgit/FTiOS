@@ -62,7 +62,7 @@ class FTFeedInfo: Mappable {
     var user: UserProfile?
     var request_reacted: String?
     var date: String?
-    var feedcontent: [FTFeedContent]?
+    var feedcontent: FTFeedContent?
     var display: Int?
     var text: String?
     var feed_type: Int?
@@ -177,7 +177,7 @@ class FTFeedInfo: Mappable {
  
 class FTFeedContent: Mappable {
     var display_type: Int?
-    var data: [String: Any]?
+    var data: [[String: Any]]?
     required init?(map: Map) {
         
     }
