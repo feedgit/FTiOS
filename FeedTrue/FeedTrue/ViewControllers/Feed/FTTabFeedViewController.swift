@@ -160,6 +160,17 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension FTTabFeedViewController: FTFeedCellDelegate {
+    
+    func feedCellDidTapUsername(username: String) {
+        // TODO: open username
+        let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
+        profileVC.rootViewController = self.rootViewController
+        profileVC.rootViewController.coreService = rootViewController.coreService
+        profileVC.displayType = .user
+        profileVC.username = username
+        self.navigationController?.pushViewController(profileVC, animated: true)
+        
+    }
     func feeddCellGotoFeed(cell: FTFeedTableViewCell) {
         // TODO: goto feed
     }

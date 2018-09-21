@@ -16,6 +16,7 @@ import SwiftMoment
     func feeddCellReportInapproriate(cell: FTFeedTableViewCell)
     func feeddCellEdit(cell: FTFeedTableViewCell)
     @objc func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell)
+    func feedCellDidTapUsername(username: String)
 }
 
 class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
@@ -56,6 +57,14 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         collectionView.dataSource = self
         collectionView.delegate = self
         self.collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.Identifier)
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
+        userAvatarImageview.addGestureRecognizer(singleTap)
+        userAvatarImageview.isUserInteractionEnabled = true
+    }
+    
+    @objc func showUserProfile() {
+        guard let username = feed.user?.username else { return }
+        self.delegate?.feedCellDidTapUsername(username: username)
     }
     
     func renderCell(data: FTFeedViewModel) {

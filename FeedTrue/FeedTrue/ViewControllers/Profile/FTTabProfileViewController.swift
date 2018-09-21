@@ -10,9 +10,16 @@ import UIKit
 import MBProgressHUD
 import ScrollableSegmentedControl
 
+enum ProfileDisplayType {
+    case owner
+    case user
+}
+
 class FTTabProfileViewController: FTTabViewController {
 
     var profile: FTUserProfileResponse?
+    var displayType: ProfileDisplayType = .owner
+    var username: String?
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var feedsLabel: UILabel!
     @IBOutlet weak var photoVideoLabel: UILabel!
@@ -27,6 +34,16 @@ class FTTabProfileViewController: FTTabViewController {
         // Do any additional setup after loading the view.
         self.setUpSegmentControl()
         avatarImageView.round()
+        if displayType == .user {
+            let leftBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(popView))
+            leftBarButton.tintColor = .white
+            navigationItem.leftBarButtonItem = leftBarButton
+            self.loadUserInfoWithUsername(username: username!)
+        }
+    }
+    
+    @objc func popView() {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +83,26 @@ class FTTabProfileViewController: FTTabViewController {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
 
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+            if success {
+                self?.profile = response
+                DispatchQueue.main.async {
+                    self?.updateProfileInfo()
+                    guard let v = self?.view else { return }
+                    MBProgressHUD.hide(for: v, animated: true)
+                }
+            } else {
+                NSLog("\(#function) FAILURE")
+                guard let v = self?.view else { return }
+                MBProgressHUD.hide(for: v, animated: true)
+            }
+            
+        })
+    }
+    
+    @objc func loadUserInfoWithUsername(username: String) {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
         rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
             if success {
