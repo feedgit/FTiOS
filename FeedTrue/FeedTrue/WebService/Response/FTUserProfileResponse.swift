@@ -9,6 +9,12 @@
 import UIKit
 import ObjectMapper
 
+enum FollowsViewerType {
+    case following
+    case secret_following
+    case follow
+}
+
 class FTUserProfileResponse: Mappable {
     var id: Int?
     var username: String?
@@ -18,6 +24,8 @@ class FTUserProfileResponse: Mappable {
     var avatar: String?
     var featured_photos: FTAvatar?
     var editable: Bool?
+    var followed_by_viewer: Bool?
+    var follows_viewer: Any?
     var relationship_to_user: String?
     var feed_count: Int?
     var photo_video_count: Int?
@@ -44,6 +52,8 @@ class FTUserProfileResponse: Mappable {
         avatar <- map["avatar"]
         featured_photos <- map["featured_photos"]
         editable <- map["editable"]
+        followed_by_viewer <- map["followed_by_viewer"]
+        follows_viewer <- map["follows_viewer"]
         relationship_to_user <- map["relationship_to_user"]
         feed_count <- map["feed_count"]
         photo_video_count <- map["photo_video_count"]
@@ -56,6 +66,23 @@ class FTUserProfileResponse: Mappable {
         join_date <- map["join_date"]
         photostream <- map["photostream"]
         intro <- map["intro"]
+    }
+    
+    func getFollowType() -> FollowsViewerType {
+        if let follow = follows_viewer as? Bool {
+            return follow ? .following : .follow
+        }
+        return .secret_following
+    }
+    
+    func isFollowedByViewer() -> Bool {
+        guard let isFollow = followed_by_viewer else { return false }
+        return isFollow
+    }
+    
+    func isEditable() -> Bool {
+        guard let isEditable = editable else { return false }
+        return isEditable
     }
 }
 

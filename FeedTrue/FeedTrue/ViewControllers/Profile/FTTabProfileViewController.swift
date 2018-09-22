@@ -15,10 +15,18 @@ enum ProfileDisplayType {
     case user
 }
 
+enum FollowState: String {
+    case follow_back = "Follow Back"
+    case following = "Following"
+    case secret_following = "Secret Following"
+    case follow = "Follow"
+}
+
 class FTTabProfileViewController: FTTabViewController {
 
     var profile: FTUserProfileResponse?
     var displayType: ProfileDisplayType = .owner
+    var followState: FollowState = .follow
     var username: String?
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var feedsLabel: UILabel!
@@ -26,6 +34,7 @@ class FTTabProfileViewController: FTTabViewController {
     @IBOutlet weak var likedLabel: UILabel!
     @IBOutlet weak var fullnameLabel: UILabel!
     @IBOutlet weak var introLabel: UILabel!
+    @IBOutlet weak var followBtn: UIButton!
     
     @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     override func viewDidLoad() {
@@ -67,16 +76,21 @@ class FTTabProfileViewController: FTTabViewController {
     
     // MARK: - IBActions
 
-    @IBAction func edit(_ sender: Any) {
-        let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
-        editVC.coreService = rootViewController.coreService
-        editVC.delegate = self
-        
-        navigationController?.pushViewController(editVC, animated: true)
-    }
-    
-    @IBAction func addFriend(_ sender: Any) {
-        // TODO: follow/unfollow or Edit profile
+    @IBAction func followOrEdit(_ sender: Any) {
+        switch displayType {
+        case .owner:
+            let editVC = FTEditProfileViewController(nibName: "FTEditProfileViewController", bundle: nil)
+            editVC.coreService = rootViewController.coreService
+            editVC.delegate = self
+            
+            navigationController?.pushViewController(editVC, animated: true)
+        case .user:
+            guard let profile = profile else { return }
+            if profile.isFollowedByViewer() && profile.getFollowType() == .follow {
+                followState = .follow_back
+            }
+            
+        }
     }
     
     @objc func loadUserInfo() {
@@ -122,14 +136,33 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     private func updateProfileInfo() {
-        feedsLabel.text = "\(profile?.feed_count ?? 0)"
-        photoVideoLabel.text = "\(profile?.photo_video_count ?? 0)"
-        likedLabel.text = "\(profile?.loved ?? 0)"
-        fullnameLabel.text = profile?.full_name
-        introLabel.text = profile?.intro
-        if let urlString = profile?.avatar {
+        guard let p = profile else { return }
+        feedsLabel.text = "\(p.feed_count ?? 0)"
+        photoVideoLabel.text = "\(p.photo_video_count ?? 0)"
+        likedLabel.text = "\(p.loved ?? 0)"
+        fullnameLabel.text = p.full_name
+        introLabel.text = p.intro
+        if let urlString = p.avatar {
             if let url = URL(string: urlString) {
                 avatarImageView.loadImage(fromURL: url)
+            }
+        }
+        if p.isEditable() {
+            followBtn.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
+        } else {
+            if p.isFollowedByViewer() && p.getFollowType() == .follow {
+                followBtn.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
+                followState = .follow_back
+            } else {
+                switch p.getFollowType() {
+                case .follow:
+                    followState = .follow
+                case .following:
+                    followState = .following
+                case .secret_following:
+                    followState = .secret_following
+                }
+                followBtn.setTitle(NSLocalizedString(followState.rawValue, comment: ""), for: .normal)
             }
         }
     }
