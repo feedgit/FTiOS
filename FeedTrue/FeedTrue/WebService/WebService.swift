@@ -488,7 +488,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             "Authorization": "JWT \(token)"
         ]
         
-        let urlString = "\(host)/api/v1/\(username)/follow/"
+        let urlString = "\(host)/api/v1/users/\(username)/follow/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -496,17 +496,21 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
         
         Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
-            .responseString { (response) in
+            .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
                     return
                 }
                 
-                guard let value = response.result.value else {
+                guard let value = response.result.value as? [String: Any] else {
                     completion(false, nil)
                     return
                 }
-                completion(true, value)
+                if let relationship = value["relationship"] as? Int {
+                    completion(relationship == 0, nil)
+                    return
+                }
+                completion(false, nil)
         }
     }
     
@@ -515,7 +519,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             "Authorization": "JWT \(token)"
         ]
         
-        let urlString = "\(host)/api/v1/\(username)/secret_follow/"
+        let urlString = "\(host)/api/v1/users/\(username)/secret_follow/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -523,18 +527,23 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
         
         Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
-            .responseString { (response) in
+            .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
                     return
                 }
                 
-                guard let value = response.result.value else {
+                guard let value = response.result.value as? [String: Any] else {
                     completion(false, nil)
                     return
                 }
-                completion(true, value)
+                if let relationship = value["relationship"] as? Int {
+                    completion(relationship == 1, nil)
+                    return
+                }
+                completion(false, nil)
         }
+        
     }
     
     func unfollow(token: String, username: String, completion: @escaping (Bool, String?)->()) {

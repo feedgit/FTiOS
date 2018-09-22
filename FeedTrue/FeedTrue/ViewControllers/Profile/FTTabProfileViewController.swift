@@ -88,9 +88,60 @@ class FTTabProfileViewController: FTTabViewController {
             switch followState {
             case .follow_back, .follow:
                 // TODO: call follow API
-                break
+                let secretFollowAction = UIAlertAction(title: NSLocalizedString("Secret Follow", comment: ""), style: .default) { [weak self] (action) in
+                    // TODO: secret follow API
+                    guard let token = self?.rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+                    guard let username = self?.profile?.username else { return }
+                    MBProgressHUD.showAdded(to: self?.view ?? UIView(), animated: true)
+                    self?.followBtn.setTitle(NSLocalizedString(FollowState.secret_following.rawValue, comment: ""), for: .normal)
+                    self?.rootViewController.coreService.webService?.secretFollow(token: token, username: username, completion: { [weak self] (success, message) in
+                        if success {
+                            // update status
+                            self?.followState = .secret_following
+                            DispatchQueue.main.async {
+                                guard let v = self?.view else { return }
+                                MBProgressHUD.hide(for: v, animated: true)
+                            }
+                        } else {
+                            // revert status
+                            DispatchQueue.main.async {
+                                self?.followBtn.setTitle(NSLocalizedString(self?.followState.rawValue ?? "", comment: ""), for: .normal)
+                                guard let v = self?.view else { return }
+                                MBProgressHUD.hide(for: v, animated: true)
+                            }
+                        }
+                    })
+                }
+                
+                let followAction = UIAlertAction(title: NSLocalizedString("Folow", comment: ""), style: .default) { [weak self] (action) in
+                    // TODO: follow API
+                    guard let token = self?.rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+                    guard let username = self?.profile?.username else { return }
+                    MBProgressHUD.showAdded(to: self?.view ?? UIView(), animated: true)
+                    self?.followBtn.setTitle(NSLocalizedString(FollowState.following.rawValue, comment: ""), for: .normal)
+                    self?.rootViewController.coreService.webService?.follow(token: token, username: username, completion: { [weak self] (success, message) in
+                        if success {
+                            // update status
+                            self?.followState = .secret_following
+                            DispatchQueue.main.async {
+                                guard let v = self?.view else { return }
+                                MBProgressHUD.hide(for: v, animated: true)
+                            }
+                        } else {
+                            // revert status
+                            DispatchQueue.main.async {
+                                self?.followBtn.setTitle(NSLocalizedString(self?.followState.rawValue ?? "", comment: ""), for: .normal)
+                                guard let v = self?.view else { return }
+                                MBProgressHUD.hide(for: v, animated: true)
+                            }
+                        }
+                    })
+                }
+                
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: nil)
+                
+                FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: [secretFollowAction, followAction, cancelAction], view: self.view)
             case .secret_following, .following:
-                // TODO: unfollow
                 guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
                 guard let username = profile?.username else { return }
                 MBProgressHUD.showAdded(to: self.view, animated: true)
@@ -112,7 +163,6 @@ class FTTabProfileViewController: FTTabViewController {
                         }
                     }
                 })
-                break
             }
             
         }
