@@ -9,10 +9,10 @@
 import UIKit
 import ObjectMapper
 
-enum FollowsViewerType {
-    case following
-    case secret_following
-    case follow
+enum FollowsViewerType: Int {
+    case following = 0
+    case secret_following = 1
+    case follow_back = 2
 }
 
 class FTUserProfileResponse: Mappable {
@@ -24,8 +24,8 @@ class FTUserProfileResponse: Mappable {
     var avatar: String?
     var featured_photos: FTAvatar?
     var editable: Bool?
-    var followed_by_viewer: Bool?
-    var follows_viewer: Any?
+    var followed_by_viewer: Int?
+    var follows_viewer: Int?
     var relationship_to_user: String?
     var feed_count: Int?
     var photo_video_count: Int?
@@ -69,15 +69,15 @@ class FTUserProfileResponse: Mappable {
     }
     
     func getFollowType() -> FollowsViewerType {
-        if let follow = follows_viewer as? Bool {
-            return follow ? .following : .follow
+        if let follow = follows_viewer {
+            return FollowsViewerType.init(rawValue: follow) ?? .secret_following
         }
         return .secret_following
     }
     
     func isFollowedByViewer() -> Bool {
         guard let isFollow = followed_by_viewer else { return false }
-        return isFollow
+        return isFollow == 1
     }
     
     func isEditable() -> Bool {

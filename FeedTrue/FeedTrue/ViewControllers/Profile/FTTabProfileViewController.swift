@@ -85,9 +85,34 @@ class FTTabProfileViewController: FTTabViewController {
             
             navigationController?.pushViewController(editVC, animated: true)
         case .user:
-            guard let profile = profile else { return }
-            if profile.isFollowedByViewer() && profile.getFollowType() == .follow {
-                followState = .follow_back
+            switch followState {
+            case .follow_back, .follow:
+                // TODO: call follow API
+                break
+            case .secret_following, .following:
+                // TODO: unfollow
+                guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+                guard let username = profile?.username else { return }
+                MBProgressHUD.showAdded(to: self.view, animated: true)
+                followBtn.setTitle(NSLocalizedString(FollowState.follow.rawValue, comment: ""), for: .normal)
+                rootViewController.coreService.webService?.unfollow(token: token, username: username, completion: { [weak self] (success, message) in
+                    if success {
+                        // update status
+                        self?.followState = .follow
+                        DispatchQueue.main.async {
+                            guard let v = self?.view else { return }
+                            MBProgressHUD.hide(for: v, animated: true)
+                        }
+                    } else {
+                        // revert status
+                        DispatchQueue.main.async {
+                            self?.followBtn.setTitle(NSLocalizedString(self?.followState.rawValue ?? "", comment: ""), for: .normal)
+                            guard let v = self?.view else { return }
+                            MBProgressHUD.hide(for: v, animated: true)
+                        }
+                    }
+                })
+                break
             }
             
         }
@@ -148,22 +173,21 @@ class FTTabProfileViewController: FTTabViewController {
             }
         }
         if p.isEditable() {
-            followBtn.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
+            followBtn.setTitle(NSLocalizedString("Edit Profile", comment: ""), for: .normal)
         } else {
-            if p.isFollowedByViewer() && p.getFollowType() == .follow {
-                followBtn.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
+            if p.isFollowedByViewer() && p.getFollowType() == .follow_back {
                 followState = .follow_back
             } else {
                 switch p.getFollowType() {
-                case .follow:
+                case .follow_back:
                     followState = .follow
                 case .following:
                     followState = .following
                 case .secret_following:
                     followState = .secret_following
                 }
-                followBtn.setTitle(NSLocalizedString(followState.rawValue, comment: ""), for: .normal)
             }
+            followBtn.setTitle(NSLocalizedString(followState.rawValue, comment: ""), for: .normal)
         }
     }
     

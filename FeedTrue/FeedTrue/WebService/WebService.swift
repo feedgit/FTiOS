@@ -468,4 +468,106 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    // MARK: - Follow APIs
+    /*
+     Follow
+     
+     POST /api/v1/users/${username}/follow/
+     
+     Secret Follow
+     
+     POST /api/v1/users/${username}/secret_follow/
+     
+     UnFollow
+     
+     POST /api/v1/users/${username}/unfollow/
+     */
+    
+    func follow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/\(username)/follow/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseString { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                completion(true, value)
+        }
+    }
+    
+    func secretFollow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/\(username)/secret_follow/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseString { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                completion(true, value)
+        }
+    }
+    
+    func unfollow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/users/\(username)/unfollow/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: String] else {
+                    completion(false, nil)
+                    return
+                }
+                if let msg = value["message"] {
+                    completion(true, msg)
+                    return
+                } else if let error_msg = value["error"] {
+                    completion(false, error_msg)
+                    return
+                }
+                completion(false, nil)
+        }
+    }
 }
