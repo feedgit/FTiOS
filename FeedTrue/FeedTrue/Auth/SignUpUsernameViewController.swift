@@ -31,6 +31,8 @@ class SignUpUsernameViewController: UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
         self.view.addGestureRecognizer(singleTap)
         self.view.isUserInteractionEnabled = true
+        usernameTextFiled.defaultBorder()
+        nextButton.defaultBorder()
     }
 
     override func didReceiveMemoryWarning() {

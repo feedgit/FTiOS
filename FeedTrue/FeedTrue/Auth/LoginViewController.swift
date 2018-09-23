@@ -39,6 +39,16 @@ class LoginViewController: UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
         self.view.addGestureRecognizer(singleTap)
         self.view.isUserInteractionEnabled = true
+        self.setupUI()
+    }
+    
+    private func setupUI() {
+        loginButton.defaultBorder()
+        loginWithFacebookButton.defaultBorder()
+        signupButton.defaultBorder()
+        useWithoutLoginButton.defaultBorder()
+        usernameTextField.defaultBorder()
+        passwordTextField.defaultBorder()
     }
 
     override func didReceiveMemoryWarning() {

@@ -76,6 +76,7 @@
 		134FF1142152B37300551771 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 134FF0EA2152B37300551771 /* play.png */; };
 		134FF1152152B37300551771 /* seek@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 134FF0EB2152B37300551771 /* seek@3x.png */; };
 		134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF11C215335D600551771 /* FTFeedViewModel.swift */; };
+		134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
@@ -193,6 +194,7 @@
 		134FF0EA2152B37300551771 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		134FF0EB2152B37300551771 /* seek@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seek@3x.png"; sourceTree = "<group>"; };
 		134FF11C215335D600551771 /* FTFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedViewModel.swift; sourceTree = "<group>"; };
+		134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */,
 				13D25808214271B200E84002 /* UIButton+FeedTrue.swift */,
 				13BA9B28214BC96900AD06D7 /* String+FeedTrue.swift */,
+				134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
+				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
 				13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */,
 				134FF0EF2152B37300551771 /* VideoProgressView.swift in Sources */,
 				134FF0F12152B37300551771 /* SlideshowView.swift in Sources */,

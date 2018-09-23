@@ -11,7 +11,7 @@ import UIKit
 extension UIButton {
     func defaultBorder() {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.navigationBarColor().cgColor
+        self.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         self.layer.cornerRadius = self.frame.size.height/2
         self.clipsToBounds = true
     }
