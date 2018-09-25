@@ -77,6 +77,23 @@
 		134FF1152152B37300551771 /* seek@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 134FF0EB2152B37300551771 /* seek@3x.png */; };
 		134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF11C215335D600551771 /* FTFeedViewModel.swift */; };
 		134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */; };
+		134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A32159EF9A00551771 /* ComponentBuilder.swift */; };
+		134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A42159EF9A00551771 /* ReactionSummary.swift */; };
+		134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A52159EF9A00551771 /* ReactionFeedback.swift */; };
+		134FF1B72159EF9B00551771 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A62159EF9A00551771 /* Configurable.swift */; };
+		134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A72159EF9A00551771 /* ReactionSummaryConfig.swift */; };
+		134FF1B92159EF9B00551771 /* ReactionButtonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A82159EF9A00551771 /* ReactionButtonConfig.swift */; };
+		134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1A92159EF9A00551771 /* UIReactionControl.swift */; };
+		134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AA2159EF9A00551771 /* FacebookReactions.swift */; };
+		134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AB2159EF9A00551771 /* Extensions.swift */; };
+		134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AC2159EF9A00551771 /* Reaction.swift */; };
+		134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AD2159EF9A00551771 /* ReactionSelector.swift */; };
+		134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AE2159EF9A00551771 /* ReactionAlignment.swift */; };
+		134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1AF2159EF9A00551771 /* CAReactionSummaryLayer.swift */; };
+		134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B02159EF9A00551771 /* ReactionButton.swift */; };
+		134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */; };
+		134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */; };
+		134FF1C42159EF9B00551771 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B32159EF9A00551771 /* Components.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
@@ -195,6 +212,23 @@
 		134FF0EB2152B37300551771 /* seek@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "seek@3x.png"; sourceTree = "<group>"; };
 		134FF11C215335D600551771 /* FTFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedViewModel.swift; sourceTree = "<group>"; };
 		134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+FeedTrue.swift"; sourceTree = "<group>"; };
+		134FF1A32159EF9A00551771 /* ComponentBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentBuilder.swift; sourceTree = "<group>"; };
+		134FF1A42159EF9A00551771 /* ReactionSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSummary.swift; sourceTree = "<group>"; };
+		134FF1A52159EF9A00551771 /* ReactionFeedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedback.swift; sourceTree = "<group>"; };
+		134FF1A62159EF9A00551771 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		134FF1A72159EF9A00551771 /* ReactionSummaryConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSummaryConfig.swift; sourceTree = "<group>"; };
+		134FF1A82159EF9A00551771 /* ReactionButtonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionButtonConfig.swift; sourceTree = "<group>"; };
+		134FF1A92159EF9A00551771 /* UIReactionControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIReactionControl.swift; sourceTree = "<group>"; };
+		134FF1AA2159EF9A00551771 /* FacebookReactions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookReactions.swift; sourceTree = "<group>"; };
+		134FF1AB2159EF9A00551771 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		134FF1AC2159EF9A00551771 /* Reaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		134FF1AD2159EF9A00551771 /* ReactionSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelector.swift; sourceTree = "<group>"; };
+		134FF1AE2159EF9A00551771 /* ReactionAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionAlignment.swift; sourceTree = "<group>"; };
+		134FF1AF2159EF9A00551771 /* CAReactionSummaryLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAReactionSummaryLayer.swift; sourceTree = "<group>"; };
+		134FF1B02159EF9A00551771 /* ReactionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionButton.swift; sourceTree = "<group>"; };
+		134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedbackDelegate.swift; sourceTree = "<group>"; };
+		134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelectorConfig.swift; sourceTree = "<group>"; };
+		134FF1B32159EF9A00551771 /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -465,6 +499,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		134FF1A22159EF9A00551771 /* Reactions */ = {
+			isa = PBXGroup;
+			children = (
+				134FF1A32159EF9A00551771 /* ComponentBuilder.swift */,
+				134FF1A42159EF9A00551771 /* ReactionSummary.swift */,
+				134FF1A52159EF9A00551771 /* ReactionFeedback.swift */,
+				134FF1A62159EF9A00551771 /* Configurable.swift */,
+				134FF1A72159EF9A00551771 /* ReactionSummaryConfig.swift */,
+				134FF1A82159EF9A00551771 /* ReactionButtonConfig.swift */,
+				134FF1A92159EF9A00551771 /* UIReactionControl.swift */,
+				134FF1AA2159EF9A00551771 /* FacebookReactions.swift */,
+				134FF1AB2159EF9A00551771 /* Extensions.swift */,
+				134FF1AC2159EF9A00551771 /* Reaction.swift */,
+				134FF1AD2159EF9A00551771 /* ReactionSelector.swift */,
+				134FF1AE2159EF9A00551771 /* ReactionAlignment.swift */,
+				134FF1AF2159EF9A00551771 /* CAReactionSummaryLayer.swift */,
+				134FF1B02159EF9A00551771 /* ReactionButton.swift */,
+				134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */,
+				134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */,
+				134FF1B32159EF9A00551771 /* Components.swift */,
+			);
+			path = Reactions;
+			sourceTree = "<group>";
+		};
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +594,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				134FF1A22159EF9A00551771 /* Reactions */,
 				134FF0BE2152B37300551771 /* Viewer */,
 				13BA9B1C2149794000AD06D7 /* UIImageView */,
 				13BA9B0B2149792100AD06D7 /* Extension */,
@@ -822,6 +881,7 @@
 				13BA9B29214BC96900AD06D7 /* String+FeedTrue.swift in Sources */,
 				134FF0F72152B37300551771 /* PaginatedScrollView.swift in Sources */,
 				13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */,
+				134FF1B92159EF9B00551771 /* ReactionButtonConfig.swift in Sources */,
 				13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */,
 				13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */,
 				13BA9B102149792200AD06D7 /* UploadTask.swift in Sources */,
@@ -830,11 +890,14 @@
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
+				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
+				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
 				13BA9B0F2149792200AD06D7 /* DownloadTask.swift in Sources */,
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
+				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
 				134FF0EC2152B37300551771 /* ViewableControllerContainer.swift in Sources */,
 				13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */,
@@ -843,6 +906,7 @@
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
+				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
 				134FF0F62152B37300551771 /* Viewable.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
@@ -856,38 +920,50 @@
 				13D2580D21428CBB00E84002 /* FTKeyChainService.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
+				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
+				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
+				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
+				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
 				13BA9B1B2149793500AD06D7 /* BECell.swift in Sources */,
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
+				134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */,
 				134FF0F32152B37300551771 /* VideoView.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
+				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
 				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
+				134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */,
+				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
+				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
 				13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */,
 				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
 				134FF0FF2152B37300551771 /* HeaderView.swift in Sources */,
 				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
+				134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
+				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
+				134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */,
 				13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */,
 				134FF0EF2152B37300551771 /* VideoProgressView.swift in Sources */,
 				134FF0F12152B37300551771 /* SlideshowView.swift in Sources */,

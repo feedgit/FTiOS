@@ -50,7 +50,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         self.selectionStyle = .none
         
         // setup lables
-        setUpLabels()
+        //setUpLabels()
         userAvatarImageview.round()
         
         // collection view to display photos/video
@@ -60,6 +60,26 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
         userAvatarImageview.addGestureRecognizer(singleTap)
         userAvatarImageview.isUserInteractionEnabled = true
+        
+        reactionButton.reactionSelector = ReactionSelector()
+        reactionButton.config           = ReactionButtonConfig() {
+            $0.iconMarging      = 10
+            $0.spacing          = 0
+            $0.font             = UIFont(name: "HelveticaNeue", size: 0)
+            $0.neutralTintColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
+            $0.alignment        = .centerLeft
+        }
+        
+        reactionButton.reactionSelector?.feedbackDelegate = self
+    }
+    
+    
+    @IBOutlet weak var reactionButton: ReactionButton!
+    
+    @IBAction func reactionButtonTouchUpAction(_ sender: Any) {
+        if reactionButton.isSelected == false {
+            reactionButton.reaction   = Reaction.facebook.like
+        }
     }
     
     @objc func showUserProfile() {
@@ -217,8 +237,8 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     }
     
     private func setUpLabels() {
-        let loveAttrString = FTHelpers.attributeString(imageNamed: "love", str: NSLocalizedString("Love", comment: ""))
-        loveLabel.attributedText = loveAttrString
+//        let loveAttrString = FTHelpers.attributeString(imageNamed: "love", str: NSLocalizedString("Love", comment: ""))
+//        loveLabel.attributedText = loveAttrString
         
         let commentAttrString = FTHelpers.attributeString(imageNamed: "comment", str: NSLocalizedString("Comment", comment: ""))
         commentLabel.attributedText = commentAttrString
@@ -416,4 +436,11 @@ extension FTFeedTableViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 120, height: 120)
     }
     
+}
+
+extension FTFeedTableViewCell: ReactionFeedbackDelegate {
+    func reactionFeedbackDidChanged(_ feedback: ReactionFeedback?) {
+        guard let reaction = reactionButton.reactionSelector?.selectedReaction else { return }
+        NSLog("\(#function) selected: \(reaction.title)")
+    }
 }

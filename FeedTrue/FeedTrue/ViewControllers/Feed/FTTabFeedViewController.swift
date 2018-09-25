@@ -43,6 +43,7 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     @objc func loadFeed() {
+        _ = self.view
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
             return
         }
