@@ -43,6 +43,7 @@ class FTTabProfileViewController: FTTabViewController {
         // Do any additional setup after loading the view.
         self.setUpSegmentControl()
         avatarImageView.round()
+        followBtn.defaultBorder()
         if displayType == .user {
             let leftBarButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(popView))
             leftBarButton.tintColor = .white
