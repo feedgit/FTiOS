@@ -52,6 +52,7 @@ class FTFeedResponse: Mappable {
  },
  "date": "2018-08-09T07:18:15.248000Z",
  */
+
 class FTFeedInfo: Mappable {
     var id: Int?
     var ct_name: String?

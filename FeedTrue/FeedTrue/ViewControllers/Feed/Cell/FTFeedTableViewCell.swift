@@ -44,10 +44,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var loveLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var shareLabel: UILabel!
-    @IBOutlet weak var saveLabel: UILabel!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var moreBtn: UIButton!
@@ -62,8 +58,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         commentTextField.delegate = self
         self.selectionStyle = .none
         
-        // setup lables
-        //setUpLabels()
         userAvatarImageview.round()
         
         // collection view to display photos/video
@@ -256,28 +250,37 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else if photos.count >= 2 {
             collectionLayoutConstraintHieght.constant = collectionViewWidth / 2
         }
-        
         collectionView.reloadData()
+        
+        // config react icon
+        if let reactType = feed.request_reacted {
+            switch reactType {
+            case "LOVE":
+                ftReactionType = .love
+                reactionButton.reaction   = Reaction.facebook.like
+            case "LAUGH":
+                ftReactionType = .laugh
+                reactionButton.reaction   = Reaction.facebook.laugh
+            case "WOW":
+                ftReactionType = .wow
+                reactionButton.reaction   = Reaction.facebook.wow
+            case "SAD":
+                ftReactionType = .sad
+                reactionButton.reaction   = Reaction.facebook.sad
+            case "ANGRY":
+                ftReactionType = .angry
+                reactionButton.reaction   = Reaction.facebook.angry
+            default:
+                ftReactionType = .love
+                reactionButton.reaction   = Reaction.facebook.like
+            }
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    private func setUpLabels() {
-//        let loveAttrString = FTHelpers.attributeString(imageNamed: "love", str: NSLocalizedString("Love", comment: ""))
-//        loveLabel.attributedText = loveAttrString
-        
-        let commentAttrString = FTHelpers.attributeString(imageNamed: "comment", str: NSLocalizedString("Comment", comment: ""))
-        commentLabel.attributedText = commentAttrString
-        
-        let shareAttrString = FTHelpers.attributeString(imageNamed: "share", str: NSLocalizedString("Share", comment: ""))
-        shareLabel.attributedText = shareAttrString
-        
-        let saveAttrString = FTHelpers.attributeString(imageNamed: "save", str: NSLocalizedString("Save", comment: ""))
-        saveLabel.attributedText = saveAttrString
     }
     
     @IBAction func moreBtnPressed(_ sender: Any) {

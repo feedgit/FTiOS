@@ -579,4 +579,82 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(false, nil)
         }
     }
+    
+    /*
+     Send a react to server (React & Change React)
+     
+     POST /react/
+     
+     Demo Data transmit: { content_type: {ct_name}, object_id: {ct_id}, react_type: {react_type} }
+     
+     Example: If you want to react LOVE with video 44, transmit: { content_type: 'video', object_id: 6, react_type: 'LOVE' }
+     */
+    func react(token: String, ct_name: String, ct_id: Int, react_type: String, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        let params:[String: Any] = [
+            "content_type": ct_name,
+            "object_id" : ct_id,
+            "react_type": react_type
+        ]
+        
+        let urlString = "\(host)/api/v1/react/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                if let react_type = value["react_type"] as? String {
+                    completion(true, react_type)
+                    return
+                }
+                completion(false, nil)
+        }
+    }
+    /*
+     Remove a react (Un-React)
+     
+     POST /react/dis/
+     
+     Demo data tranmit: { content_type: {ct_name}, object_id: {ct_id} }
+     */
+    func removeReact(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        let params:[String: Any] = [
+            "content_type": ct_name,
+            "object_id" : ct_id
+        ]
+        
+        let urlString = "\(host)/api/v1/react/dis/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .response { (response) in
+                guard response.response?.statusCode == 200 else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, nil)
+        }
+    }
 }
