@@ -255,13 +255,13 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     private func setUpSegmentControl() {
-        segmentedControl.segmentStyle = .imageOnTop
+        segmentedControl.segmentStyle = .imageOnly
         segmentedControl.insertSegment(withTitle: "Feed", image: #imageLiteral(resourceName: "feed_unselected"), at: 0)
         segmentedControl.insertSegment(withTitle: "About", image: #imageLiteral(resourceName: "profile_selected"), at: 1)
         segmentedControl.insertSegment(withTitle: "Photos", image: #imageLiteral(resourceName: "photos_unselected"), at: 2)
         segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 3)
         segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 4)
-        
+        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
         //segmentedControl.underlineSelected = true
         segmentedControl.selectedSegmentIndex = 1
         //fixedWidthSwitch.isOn = false

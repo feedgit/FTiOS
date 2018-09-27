@@ -101,15 +101,15 @@ class FTTabFeedViewController: FTTabViewController {
     
     // MARK: - Helpers
     private func setUpSegmentControl() {
-        segmentedControl.segmentStyle = .imageOnTop
-        segmentedControl.insertSegment(withTitle: "Feed", image: UIImage(named: "feed_unselected")?.withRenderingMode(.alwaysOriginal), at: 0)
-        segmentedControl.insertSegment(withTitle: "Photos", image: UIImage(named: "photos_unselected")?.withRenderingMode(.alwaysOriginal), at: 1)
+        segmentedControl.segmentStyle = .imageOnly
+        segmentedControl.insertSegment(withTitle: "Feed", image: UIImage(named: "feed_unselected"), at: 0)
+        segmentedControl.insertSegment(withTitle: "Photos", image: UIImage(named: "photos_unselected"), at: 1)
         segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 2)
         segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 3)
         segmentedControl.insertSegment(withTitle: "Music", image: #imageLiteral(resourceName: "music"), at: 4)
-        
-        //segmentedControl.underlineSelected = true
+        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
         segmentedControl.selectedSegmentIndex = 0
+        
         //fixedWidthSwitch.isOn = false
         //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
         
