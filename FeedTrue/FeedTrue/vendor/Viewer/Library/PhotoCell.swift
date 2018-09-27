@@ -24,6 +24,7 @@ class PhotoCell: UICollectionViewCell {
         self.backgroundColor = .black
         self.addSubview(self.imageView)
         self.addSubview(self.videoIndicator)
+        self.addSubview(self.moreLabel)
     }
 
     required init?(coder _: NSCoder) {
@@ -38,6 +39,16 @@ class PhotoCell: UICollectionViewCell {
 
         return view
     }()
+    
+    lazy var moreLabel: UILabel = {
+        let label = UILabel()
+        label.isHidden = true
+        label.font = UIFont(name: "Helvetica", size: 32)
+        label.textColor = .white
+        label.sizeToFit()
+        label.textAlignment = .center
+        return label
+    } ()
 
     var photo: Photo? {
         didSet {
@@ -61,5 +72,7 @@ class PhotoCell: UICollectionViewCell {
 
         self.videoIndicator.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.imageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        
+        self.moreLabel.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
 }

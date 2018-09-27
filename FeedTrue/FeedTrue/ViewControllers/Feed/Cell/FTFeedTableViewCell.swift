@@ -354,7 +354,13 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.imageView.image = nil
             }
         }
-        
+        if photos.count > 2 && indexPath.row == 1 {
+            cell.moreLabel.text = "+\(photos.count - 2)"
+            cell.moreLabel.isHidden = false
+        } else {
+            cell.moreLabel.text = nil
+            cell.moreLabel.isHidden = true
+        }
         return cell
     }
     
