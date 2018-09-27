@@ -217,4 +217,8 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
             }
         })
     }
+    
+    func feedCellDidChangeReactionType(cell: FTFeedTableViewCell) {
+        // TODO: update reactions with type
+    }
 }

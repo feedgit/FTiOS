@@ -17,6 +17,15 @@ import SwiftMoment
     func feeddCellEdit(cell: FTFeedTableViewCell)
     @objc func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell)
     func feedCellDidTapUsername(username: String)
+    func feedCellDidChangeReactionType(cell: FTFeedTableViewCell)
+}
+
+public enum FTReactionTypes: String {
+    case love = "LOVE"
+    case laugh = "LAUGH"
+    case wow = "WOW"
+    case sad = "SAD"
+    case angry = "ANGRY"
 }
 
 class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
@@ -28,6 +37,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     var viewerController: ViewerController?
     var optionsController: OptionsController?
     let collectionViewWidth = UIScreen.main.bounds.width - 16 - 16
+    var ftReactionType: FTReactionTypes = .love
     
     @IBOutlet weak var userAvatarImageview: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -472,5 +482,20 @@ extension FTFeedTableViewCell: ReactionFeedbackDelegate {
     func reactionFeedbackDidChanged(_ feedback: ReactionFeedback?) {
         guard let reaction = reactionButton.reactionSelector?.selectedReaction else { return }
         NSLog("\(#function) selected: \(reaction.title)")
+        switch reaction.title {
+        case "like":
+            ftReactionType = .love
+        case "laugh":
+            ftReactionType = .laugh
+        case "wow":
+            ftReactionType = .wow
+        case "sad":
+            ftReactionType = .sad
+        case "angry":
+            ftReactionType = .angry
+        default:
+            ftReactionType = .love
+        }
+        self.delegate?.feedCellDidChangeReactionType(cell: self)
     }
 }
