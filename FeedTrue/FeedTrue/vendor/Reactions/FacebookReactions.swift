@@ -35,14 +35,9 @@ extension Reaction {
       return reactionWithId("like")
     }
 
-    /// The facebook's "love" reaction.
-    public static var love: Reaction {
-      return reactionWithId("love")
-    }
-
-    /// The facebook's "haha" reaction.
-    public static var haha: Reaction {
-      return reactionWithId("haha")
+    /// The facebook's "laugh" reaction.
+    public static var laugh: Reaction {
+      return reactionWithId("laugh")
     }
 
     /// The facebook's "wow" reaction.
@@ -60,8 +55,8 @@ extension Reaction {
       return reactionWithId("angry")
     }
 
-    /// The list of standard facebook reactions in this order: `.like`, `.love`, `.haha`, `.wow`, `.sad`, `.angry`.
-    public static let all: [Reaction] = [facebook.like, facebook.love, facebook.haha, facebook.wow, facebook.sad, facebook.angry]
+    /// The list of standard facebook reactions in this order: `.like`, `.laugh`, `.wow`, `.sad`, `.angry`.
+    public static let all: [Reaction] = [facebook.like, facebook.laugh, facebook.wow, facebook.sad, facebook.angry]
 
     // MARK: - Convenience Methods
 
@@ -71,10 +66,7 @@ extension Reaction {
 
       switch id {
       case "like":
-        color           = UIColor(red: 0.29, green: 0.54, blue: 0.95, alpha: 1)
         alternativeIcon = imageWithName("like-template").withRenderingMode(.alwaysTemplate)
-      case "love":
-        color = UIColor(red: 0.93, green: 0.23, blue: 0.33, alpha: 1)
       case "angry":
         color = UIColor(red: 0.96, green: 0.37, blue: 0.34, alpha: 1)
       default:

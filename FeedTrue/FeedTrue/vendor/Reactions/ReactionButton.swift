@@ -104,7 +104,8 @@ public final class ReactionButton: UIReactionControl {
   // MARK: - Updating Object State
 
   override func update() {
-    iconImageView.image = reaction.alternativeIcon ?? reaction.icon
+    //iconImageView.image = reaction.alternativeIcon ?? reaction.icon
+    iconImageView.image = isSelected ? reaction.icon : reaction.alternativeIcon ?? reaction.icon
     titleLabel.font     = config.font
     titleLabel.text     = reaction.title
 
@@ -153,6 +154,8 @@ public final class ReactionButton: UIReactionControl {
           self?.iconImageView.transform = .identity
         })
         }, completion: nil)
+    } else {
+        reaction = reactionSelector?.reactions.first ?? Reaction.facebook.like
     }
 
     sendActions(for: .touchUpInside)
