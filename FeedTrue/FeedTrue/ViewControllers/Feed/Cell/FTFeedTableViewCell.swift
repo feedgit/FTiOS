@@ -27,6 +27,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     var photos = [Photo]()
     var viewerController: ViewerController?
     var optionsController: OptionsController?
+    let collectionViewWidth = UIScreen.main.bounds.width - 16 - 16
     
     @IBOutlet weak var userAvatarImageview: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,7 +41,8 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,8 +56,11 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         userAvatarImageview.round()
         
         // collection view to display photos/video
+        collectionView.showsHorizontalScrollIndicator = false
+        //collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         self.collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.Identifier)
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
         userAvatarImageview.addGestureRecognizer(singleTap)
@@ -148,12 +153,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                  */
             for image in imageDatas {
                 guard let id = image["id"] else { continue }
-                let featured_image = image["featured_image"] as? String
+                let thumbnail = image["thumbnail"] as? String
                 let url = image["file"] as? String
                 let photo = Photo(id: "\(id)")
                 photo.url = url
                 photo.type = .video
-                photo.thumbnailURL = featured_image
+                photo.thumbnailURL = thumbnail
                 photos.append(photo)
                 }
             case 3:
@@ -225,6 +230,16 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             default:
                 break
             }
+        }
+        
+        _ = collectionView
+        if photos.count == 0 {
+            collectionLayoutConstraintHieght.constant = 0
+        } else if photos.count == 1 {
+            let h = collectionViewWidth * (9.0/16.0)
+            collectionLayoutConstraintHieght.constant = h
+        } else if photos.count >= 2 {
+            collectionLayoutConstraintHieght.constant = collectionViewWidth / 2
         }
         
         collectionView.reloadData()
@@ -318,7 +333,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return photos.count > 2 ? 2 : photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -339,6 +354,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.imageView.image = nil
             }
         }
+        
         return cell
     }
     
@@ -433,7 +449,15 @@ extension FTFeedTableViewCell: FooterViewDelegate {
 
 extension FTFeedTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 120)
+        if photos.count == 0 {
+            return CGSize(width: 0, height: 0)
+        }
+        if photos.count == 1 {
+            return CGSize(width: collectionViewWidth, height: (9.0/16.0) * collectionViewWidth)
+        }
+        // 2+ photos
+        let h = collectionViewWidth / 2.0
+        return CGSize(width: h - 1, height: h - 1)
     }
     
 }

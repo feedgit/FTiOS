@@ -46,7 +46,7 @@ class ViewableController: UIViewController {
     lazy var imageView: UIImageView = {
         let view = UIImageView(frame: UIScreen.main.bounds)
         view.backgroundColor = .clear
-        view.contentMode = .scaleAspectFit
+        view.contentMode = .center
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.isUserInteractionEnabled = true
 

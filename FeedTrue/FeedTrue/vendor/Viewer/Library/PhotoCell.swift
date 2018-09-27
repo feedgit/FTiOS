@@ -59,7 +59,7 @@ class PhotoCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.videoIndicator.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.width)
+        self.videoIndicator.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.imageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
     }
 }
