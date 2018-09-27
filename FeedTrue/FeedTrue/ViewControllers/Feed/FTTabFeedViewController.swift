@@ -221,4 +221,8 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feedCellDidChangeReactionType(cell: FTFeedTableViewCell) {
         // TODO: update reactions with type
     }
+    
+    func feedCellDidRemoveReaction(cell: FTFeedTableViewCell) {
+        // TODO: remove reaction
+    }
 }

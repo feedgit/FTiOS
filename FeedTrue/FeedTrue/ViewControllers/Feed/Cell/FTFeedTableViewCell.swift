@@ -18,6 +18,7 @@ import SwiftMoment
     @objc func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell)
     func feedCellDidTapUsername(username: String)
     func feedCellDidChangeReactionType(cell: FTFeedTableViewCell)
+    func feedCellDidRemoveReaction(cell: FTFeedTableViewCell)
 }
 
 public enum FTReactionTypes: String {
@@ -92,8 +93,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var reactionButton: ReactionButton!
     
     @IBAction func reactionButtonTouchUpAction(_ sender: Any) {
+        reactionButton.reaction   = Reaction.facebook.like
+        ftReactionType = .love
         if reactionButton.isSelected == false {
-            reactionButton.reaction   = Reaction.facebook.like
+            self.delegate?.feedCellDidRemoveReaction(cell: self)
+        } else {
+            self.delegate?.feedCellDidChangeReactionType(cell: self)
         }
     }
     

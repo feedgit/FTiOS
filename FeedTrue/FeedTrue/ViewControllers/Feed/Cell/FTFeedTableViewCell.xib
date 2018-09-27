@@ -116,7 +116,7 @@
                                     <constraint firstAttribute="width" secondItem="AYi-Cj-sHG" secondAttribute="height" id="p8y-Ki-q7P"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Sra-Lp-Tqy"/>
+                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dWl-rj-CoV"/>
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6W-dH-OYj">

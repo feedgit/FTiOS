@@ -154,8 +154,6 @@ public final class ReactionButton: UIReactionControl {
           self?.iconImageView.transform = .identity
         })
         }, completion: nil)
-    } else {
-        reaction = reactionSelector?.reactions.first ?? Reaction.facebook.like
     }
 
     sendActions(for: .touchUpInside)
