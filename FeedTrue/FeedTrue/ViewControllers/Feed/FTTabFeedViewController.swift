@@ -35,6 +35,7 @@ class FTTabFeedViewController: FTTabViewController {
         
         self.setUpSegmentControl()
         self.setUpRefreshControl()
+        NotificationCenter.default.addObserver(self, selector: #selector(feedTabTouchAction), name: .FeedTabTouchAction, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -138,6 +139,17 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
         print("Segment at index \(sender.selectedSegmentIndex)  selected")
+    }
+    
+    @objc func feedTabTouchAction() {
+        if tableView.contentOffset.y > 0 {
+            tableView.setContentOffset(.zero, animated: true)
+        } else if tableView.contentOffset.y == 0 {
+            guard rootViewController.coreService != nil else { return }
+            let hub = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hub.hide(animated: true, afterDelay: 1)
+            self.loadFeed()
+        }
     }
 
 }

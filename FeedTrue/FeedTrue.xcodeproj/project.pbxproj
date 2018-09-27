@@ -27,6 +27,7 @@
 		13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */; };
 		13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B05213C120900D74C47 /* FTAboutReponse.swift */; };
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
+		1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E5215D443400EFD1E6 /* Notification+FT.swift */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -162,6 +163,7 @@
 		13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserProfileResponse.swift; sourceTree = "<group>"; };
 		13353B05213C120900D74C47 /* FTAboutReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAboutReponse.swift; sourceTree = "<group>"; };
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
+		1342A7E5215D443400EFD1E6 /* Notification+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+FT.swift"; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				13D25808214271B200E84002 /* UIButton+FeedTrue.swift */,
 				13BA9B28214BC96900AD06D7 /* String+FeedTrue.swift */,
 				134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */,
+				1342A7E5215D443400EFD1E6 /* Notification+FT.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
+				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,
 				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,

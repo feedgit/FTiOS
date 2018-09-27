@@ -110,6 +110,10 @@ class FeedTrueRootViewController: UIViewController {
             if index == 2 {
                 return true
             }
+            if index == 0 {
+                // Feed Tab
+                NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
+            }
             return false
         }
         
