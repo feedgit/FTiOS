@@ -31,6 +31,12 @@ public enum FTReactionTypes: String {
     case angry = "ANGRY"
 }
 
+public enum FTPrivacyType: String {
+    case `public` = "privacy_public"
+    case follow = "privacy_follow"
+    case secret = "privacy_private"
+}
+
 class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTFeedViewModel
     weak var delegate: FTFeedCellDelegate?
@@ -53,6 +59,8 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
     
     @IBOutlet weak var savedBtn: UIButton!
+    
+    @IBOutlet weak var privacyImageView: UIImageView!
     
 
     override func awakeFromNib() {
@@ -114,9 +122,9 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else {
             self.userAvatarImageview.image = UIImage(named: "1000x1000")
         }
-        self.nameLabel.text = feed.user?.full_name
+        self.nameLabel.text = feed.user?.last_name
         if let dateString = feed.date {
-            self.dateLabel.text = moment(dateString)?.fromNow()
+            self.dateLabel.text = moment(dateString)?.fromNowFT()
         } else {
             self.dateLabel.text = nil
         }
@@ -293,6 +301,27 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             // icon save
             savedBtn.backgroundColor = .clear
         }
+        
+        // config privacy icon
+        /*
+         0: Public
+         1: Secret
+         2: Follower Only
+         */
+        var privacyType: FTPrivacyType = .follow
+        if let privacy = feed.privacy {
+            switch privacy {
+            case 0:
+                privacyType = .public
+            case 1:
+                privacyType = .secret
+            case 2:
+                privacyType = .follow
+            default:
+                break
+            }
+        }
+        privacyImageView.image = UIImage(named: privacyType.rawValue)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

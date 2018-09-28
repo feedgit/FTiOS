@@ -142,6 +142,7 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     @objc func feedTabTouchAction() {
+        guard tableView != nil else { return }
         if tableView.contentOffset.y > 0 {
             tableView.setContentOffset(.zero, animated: true)
         } else if tableView.contentOffset.y == 0 {
