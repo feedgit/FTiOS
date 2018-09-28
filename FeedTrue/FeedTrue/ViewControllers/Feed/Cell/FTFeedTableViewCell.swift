@@ -19,6 +19,8 @@ import SwiftMoment
     func feedCellDidTapUsername(username: String)
     func feedCellDidChangeReactionType(cell: FTFeedTableViewCell)
     func feedCellDidRemoveReaction(cell: FTFeedTableViewCell)
+    func feedCellDidSave(cell: FTFeedTableViewCell)
+    func feedCellDidUnSave(cell: FTFeedTableViewCell)
 }
 
 public enum FTReactionTypes: String {
@@ -49,6 +51,8 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
+    
+    @IBOutlet weak var savedBtn: UIButton!
     
 
     override func awakeFromNib() {
@@ -275,6 +279,20 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 reactionButton.reaction   = Reaction.facebook.like
             }
         }
+        
+        // config save icon
+        if let saved = feed.saved {
+            if saved {
+                // icon saved
+                savedBtn.backgroundColor = UIColor.navigationBarColor()
+            } else {
+                // icon save
+                savedBtn.backgroundColor = .clear
+            }
+        } else {
+            // icon save
+            savedBtn.backgroundColor = .clear
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -333,6 +351,20 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: actions, view: self)
     }
     
+    
+    @IBAction func savedTouchUpAction(_ sender: Any) {
+        if let saved = feed.saved {
+            if saved {
+                self.delegate?.feedCellDidUnSave(cell: self)
+                self.savedBtn.backgroundColor = .clear
+                self.feed.saved = false
+                return
+            }
+        }
+        self.savedBtn.backgroundColor = UIColor.navigationBarColor()
+        self.feed.saved = true
+        self.delegate?.feedCellDidSave(cell: self)
+    }
     
 }
 

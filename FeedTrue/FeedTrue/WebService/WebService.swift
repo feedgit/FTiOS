@@ -657,4 +657,85 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, nil)
         }
     }
+    
+    /*
+     Save
+     
+     POST /api/v1/saved/<ct_name>/<ct_id>/
+     
+     Example: If you save feed with ID = 98, POST /api/v1/saved/feed/98/
+     */
+    func saveFeed(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/saved/\(ct_name)/\(ct_id)/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: String] else {
+                    completion(false, nil)
+                    return
+                }
+                if let msg = value["message"] {
+                    completion(true, msg)
+                    return
+                } else if let error_msg = value["error"] {
+                    completion(false, error_msg)
+                    return
+                }
+                completion(false, nil)
+        }
+    }
+    
+    /*
+     Remove a Saved
+     
+     POST /api/v1/saved/<ct_name>/<ct_id>/unsave/
+     */
+    
+    func removeSaveFeed(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/saved/\(ct_name)/\(ct_id)/unsave/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: String] else {
+                    completion(false, nil)
+                    return
+                }
+                if let msg = value["message"] {
+                    completion(true, msg)
+                    return
+                } else if let error_msg = value["error"] {
+                    completion(false, error_msg)
+                    return
+                }
+                completion(false, nil)
+        }
+    }
 }

@@ -130,6 +130,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-an-6Dv">
                                 <rect key="frame" x="188" y="0.0" width="44" height="44"/>
                                 <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="savedTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Be-ZN-aqw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -185,6 +188,7 @@
                 <outlet property="moreBtn" destination="rdU-l0-GdK" id="krt-gj-s2g"/>
                 <outlet property="nameLabel" destination="HEV-CY-oPP" id="m20-a8-3qd"/>
                 <outlet property="reactionButton" destination="AYi-Cj-sHG" id="JRd-cJ-bSU"/>
+                <outlet property="savedBtn" destination="PeB-an-6Dv" id="waa-uj-Rgt"/>
                 <outlet property="userAvatarImageview" destination="WDm-gu-T0d" id="2dv-dF-7Su"/>
             </connections>
             <point key="canvasLocation" x="174.40000000000001" y="172.26386806596702"/>

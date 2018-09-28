@@ -270,4 +270,46 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
             }
         })
     }
+    
+    func feedCellDidSave(cell: FTFeedTableViewCell) {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.feed.id else { return }
+        guard let ct_name = cell.feed.ct_name else { return }
+        rootViewController.coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    cell.feed.saved = false
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
+    
+    func feedCellDidUnSave(cell: FTFeedTableViewCell) {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.feed.id else { return }
+        guard let ct_name = cell.feed.ct_name else { return }
+        rootViewController.coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    cell.feed.saved = true
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
 }

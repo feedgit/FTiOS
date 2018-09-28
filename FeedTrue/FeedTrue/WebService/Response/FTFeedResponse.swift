@@ -71,6 +71,7 @@ class FTFeedInfo: Mappable {
     var comment: FTComment?
     var feeling: String?
     var hashtag: [String]?
+    var saved: Bool?
     
     required init?(map: Map) {
         
@@ -94,6 +95,7 @@ class FTFeedInfo: Mappable {
         comment <- map["comments"]
         feeling <- map["feeling"]
         hashtag <- map["hashtag"]
+        saved <- map["saved"]
     }
 }
 
