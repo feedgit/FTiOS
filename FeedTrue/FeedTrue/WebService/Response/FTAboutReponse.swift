@@ -40,7 +40,7 @@ class FTAboutReponse: Mappable {
     var full_name: String?
     var email: String?
     var nickname: String?
-    var gender: String?
+    var gender: Int?
     var date_of_birth: String? //"1997-05-22",
     var editable: Bool?
     var intro: String?

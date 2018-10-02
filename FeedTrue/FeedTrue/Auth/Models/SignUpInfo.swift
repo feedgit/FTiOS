@@ -16,5 +16,5 @@ class SignUpInfo: NSObject {
     var phone_number: String?
     var password: String?
     var date_of_birth: String?
-    var gender: String?
+    var gender: Int?
 }

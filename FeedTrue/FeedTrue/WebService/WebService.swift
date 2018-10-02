@@ -311,7 +311,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             "Authorization": "JWT \(token)"
         ]
         
-        let urlString = "\(host)/api/v1/\(username)/about/"
+        let urlString = "\(host)/api/v1/users/\(username)/about/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)

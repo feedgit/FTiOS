@@ -41,9 +41,10 @@ class SignUpViewController: UIViewController {
     let passwordErrorMessage = NSLocalizedString("Password is invalid. At least 1 alphabet and 1 special character", comment: "")
     let confirmPasswordErrorMessage = NSLocalizedString("Your password and confirm password do not match.", comment: "")
     
-    enum Gender: String {
-        case male = "Male"
-        case female = "Female"
+    enum Gender: Int {
+        case unidentified = 0
+        case male = 1
+        case female = 2
     }
     
     override func viewDidLoad() {
@@ -235,6 +236,8 @@ class SignUpViewController: UIViewController {
             femaleTextButton.setTitleColor(UIColor.genderUnselectedColor(), for: .normal)
             maleIconButton.setImage(#imageLiteral(resourceName: "male_selected"), for: .normal)
             maleTextButton.setTitleColor(UIColor.genderSelectedColor(), for: .normal)
+        case .unidentified:
+            break
         }
     }
     

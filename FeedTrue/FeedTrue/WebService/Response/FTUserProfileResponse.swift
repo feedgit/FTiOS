@@ -33,7 +33,7 @@ class FTUserProfileResponse: Mappable {
     var loved: Int?
     var friends_intro: [FTFriendInfos]?
     var email: String?
-    var gender: String?
+    var gender: Int?
     var nickname: String?
     var join_date: String?
     var photostream: [FTPhotoStream]?

@@ -64,6 +64,12 @@ class FTEditProfileViewController: UIViewController {
         coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.about = response
+                self?.editInfo.username = self?.about?.username
+                self?.editInfo.fistname = self?.about?.first_name
+                self?.editInfo.lastname = self?.about?.last_name
+                self?.editInfo.gender = self?.about?.gender
+                self?.editInfo.intro = self?.about?.intro
+                self?.editInfo.about = self?.about?.about
                 DispatchQueue.main.async {
                     guard let v = self?.view else { return }
                     MBProgressHUD.hide(for: v, animated: true)
@@ -125,7 +131,19 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
             case .lastname:
                 cell.textFiled.text = about?.last_name
             case .gender:
-                cell.textFiled.text = about?.gender
+                //cell.textFiled.text = about?.gender
+                if let gender = about?.gender {
+                    switch gender {
+                    case 1:
+                        cell.textFiled.text = NSLocalizedString("Male", comment: "")
+                    case 2:
+                        cell.textFiled.text = NSLocalizedString("Female", comment: "")
+                    default:
+                        cell.textFiled.text = NSLocalizedString("UnIdentified", comment: "")
+                    }
+                } else {
+                    cell.textFiled.text = NSLocalizedString("UnIdentified", comment: "")
+                }
             case .intro:
                 cell.textFiled.text = about?.intro
             case .about:
@@ -149,9 +167,11 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Saving...", comment: "")
         self.doneBarBtn.isEnabled = false
+        
         coreService.webService?.editUserInfo(token: token, editInfo: editInfo, completion: {[weak self] (success, response) in
             if success {
                 if let info = response {
+                    self?.about?.username = info.username
                     self?.about?.first_name = info.first_name
                     self?.about?.last_name = info.last_name
                     self?.about?.gender = info.gender
@@ -192,6 +212,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension FTEditProfileViewController: EditTextDelegate {
+    
     func usernameDidChange(username: String?) {
         editInfo.username = username
     }
@@ -205,7 +226,7 @@ extension FTEditProfileViewController: EditTextDelegate {
     }
     
     func genderDidChange(gender: String?) {
-        editInfo.gender = gender
+        //editInfo.gender = gender
     }
     
     func introDidChange(intro: String?) {

@@ -35,7 +35,7 @@ class FTEditUserResponse: Mappable {
     var first_name: String?
     var last_name: String?
     var nickname: String?
-    var gender: String?
+    var gender: Int?
     var date_of_birth: String?
     var job_title: String?
     var phone_number: String?

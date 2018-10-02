@@ -12,7 +12,7 @@ class FTEditUserInfo: NSObject {
     var username: String?
     var fistname: String?
     var lastname: String?
-    var gender: String?
+    var gender: Int?
     var intro: String?
     var about: String?
 }

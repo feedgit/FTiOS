@@ -56,8 +56,8 @@ class EditTextTableViewCell: UITableViewCell {
                 self.delegate?.firstnameDidChange(firstname: textField.text)
             case .lastname:
                 self.delegate?.lastnameDidChange(lastname: textField.text)
-            case .gender:
-                self.delegate?.genderDidChange(gender: textField.text)
+            case .gender: break
+//                self.delegate?.genderDidChange(gender: textField.text)
             case .intro:
                 self.delegate?.introDidChange(intro: textField.text)
             case .about:
