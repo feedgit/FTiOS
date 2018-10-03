@@ -79,10 +79,13 @@ class FTEditProfileViewController: UIViewController {
         let nickNameData = FTSingleLineViewModel.init(title: NSLocalizedString("Nick Name", comment: ""), prefilSingleLine: about.nickname)
         let introData = FTSingleLineViewModel.init(title: NSLocalizedString("Introduction", comment: ""), prefilSingleLine: about.intro)
         let dobData = FTDOBViewModel(title: NSLocalizedString("Date of Birth", comment: ""), prefilDOB: about.date_of_birth)
+        let aboutData = FTMultipleLinesViewModel(title: NSLocalizedString("About you", comment: ""), prefilMultipleLines: about.about)
+        let biographyDate = FTMultipleLinesViewModel(title: NSLocalizedString("Biography", comment: ""), prefilMultipleLines: about.bio)
+        let favouriteQuoteData = FTMultipleLinesViewModel(title: NSLocalizedString("Favourite Quote", comment: ""), prefilMultipleLines: about.quotes)
         let emailData = FTSingleLineViewModel.init(title: NSLocalizedString("Email", comment: ""), prefilSingleLine: about.email)
         let websiteData = FTSingleLineViewModel.init(title: NSLocalizedString("Website", comment: ""), prefilSingleLine: about.website)
         
-        dataSource = [firstNameData, lastNameData, nickNameData, introData, dobData, emailData, websiteData]
+        dataSource = [firstNameData, lastNameData, nickNameData, introData, dobData, aboutData, biographyDate, favouriteQuoteData, emailData, websiteData]
     }
 
     override func didReceiveMemoryWarning() {

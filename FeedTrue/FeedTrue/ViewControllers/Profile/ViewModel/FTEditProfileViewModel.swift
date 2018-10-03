@@ -25,7 +25,7 @@ class FTEditProfileViewModel: BECellDataSource {
                 case .dob:
                     return "FTProfileEditDOBCell"
                 case .multipleLines:
-                    return "FTProfileEditMultipleLineCell"
+                    return "FTProfileEditMultipleLineCellTableViewCell"
                 }
             }
         }
@@ -116,6 +116,10 @@ class FTMultipleLinesViewModel: FTEditProfileViewModel {
         outputMultipleLines = text
         
         super.init(title: t, type: .multipleLines)
+    }
+    
+    override func cellHeight() -> CGFloat {
+        return 160
     }
 }
 

@@ -88,6 +88,8 @@
 		1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D721649FC500EFD1E6 /* TextField.swift */; };
 		1342A90D21649FC500EFD1E6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D821649FC500EFD1E6 /* Button.swift */; };
 		1342A90F2164A24400EFD1E6 /* Date+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A90E2164A24400EFD1E6 /* Date+FT.swift */; };
+		1342A9122164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */; };
+		1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -284,6 +286,8 @@
 		1342A8D721649FC500EFD1E6 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		1342A8D821649FC500EFD1E6 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		1342A90E2164A24400EFD1E6 /* Date+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+FT.swift"; sourceTree = "<group>"; };
+		1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditMultipleLineCellTableViewCell.swift; sourceTree = "<group>"; };
+		1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditMultipleLineCellTableViewCell.xib; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -489,6 +493,8 @@
 				1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */,
 				1342A88421649CBD00EFD1E6 /* FTProfileEditDOBCell.swift */,
 				1342A88521649CBD00EFD1E6 /* FTProfileEditDOBCell.xib */,
+				1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */,
+				1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1192,6 +1198,7 @@
 				130E05D9212D6A3700C3E21A /* LaunchScreen.storyboard in Resources */,
 				134FF1072152B37300551771 /* play@3x.png in Resources */,
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
+				1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
@@ -1374,6 +1381,7 @@
 				1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */,
 				1342A8E021649FC500EFD1E6 /* UITextView+Extensions.swift in Sources */,
 				1342A8F221649FC500EFD1E6 /* CountryCell.swift in Sources */,
+				1342A9122164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
 				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
