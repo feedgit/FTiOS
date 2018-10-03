@@ -29,6 +29,9 @@
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
 		1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E5215D443400EFD1E6 /* Notification+FT.swift */; };
 		1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */; };
+		1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */; };
+		1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */; };
+		1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -166,6 +169,9 @@
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
 		1342A7E5215D443400EFD1E6 /* Notification+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+FT.swift"; sourceTree = "<group>"; };
 		1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+FT.swift"; sourceTree = "<group>"; };
+		1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewModel.swift; sourceTree = "<group>"; };
+		1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditSingleLineCell.swift; sourceTree = "<group>"; };
+		1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditSingleLineCell.xib; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -351,6 +357,7 @@
 		13353AF3213A89A200D74C47 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1342A8752163832400EFD1E6 /* ViewModel */,
 				13D257F4213FC1E200E84002 /* Models */,
 				13353AFE213A97BF00D74C47 /* Cell */,
 				13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */,
@@ -366,8 +373,18 @@
 			children = (
 				13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */,
 				13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */,
+				1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */,
+				1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1342A8752163832400EFD1E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
@@ -791,6 +808,7 @@
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
 				13BA9A882147C35C00AD06D7 /* FTTabFeedViewController.xib in Resources */,
+				1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */,
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
@@ -943,6 +961,7 @@
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
 				134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */,
+				1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */,
 				134FF0F32152B37300551771 /* VideoView.swift in Sources */,
@@ -956,6 +975,7 @@
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
 				134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */,
+				1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,

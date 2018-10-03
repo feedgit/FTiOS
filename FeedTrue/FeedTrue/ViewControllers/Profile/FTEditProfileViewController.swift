@@ -26,15 +26,16 @@ class FTEditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    var dataSource: [FTEditProfileViewModel] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib(nibName: "EditTextTableViewCell", bundle: nil), forCellReuseIdentifier: "editTextTableViewCell")
+        FTEditProfileViewModel.register(tableView: tableView)
         tableView.tableFooterView = UIView()
-        tableView.separatorInset = UIEdgeInsetsMake(0, 125, 0, 0)
+        tableView.separatorStyle = .none
         
         let cancelBarBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel(_:)))
         cancelBarBtn.tintColor = .white
@@ -50,26 +51,13 @@ class FTEditProfileViewController: UIViewController {
     }
     
     private func loadUserInfo() {
-        // init user intro
-        //        userInfo = FTEditUserInfo()
-        //        userInfo.username = about.username
-        //        userInfo.fistname = about.first_name
-        //        userInfo.lastname = about.last_name
-        //        userInfo.gender = about.gender
-        //        userInfo.intro = about.intro
-        //        userInfo.about = about.about
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = coreService.registrationService?.authenticationProfile?.profile?.username else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
         coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.about = response
-                self?.editInfo.username = self?.about?.username
-                self?.editInfo.fistname = self?.about?.first_name
-                self?.editInfo.lastname = self?.about?.last_name
-                self?.editInfo.gender = self?.about?.gender
-                self?.editInfo.intro = self?.about?.intro
-                self?.editInfo.about = self?.about?.about
+                self?.prepareDataSource()
                 DispatchQueue.main.async {
                     guard let v = self?.view else { return }
                     MBProgressHUD.hide(for: v, animated: true)
@@ -83,22 +71,23 @@ class FTEditProfileViewController: UIViewController {
             
         })
     }
+    
+    func prepareDataSource() {
+        guard let about = self.about else { return }
+        let firstNameData = FTSingleLineViewModel.init(title: NSLocalizedString("First Name", comment: ""), prefilSingleLine: about.first_name)
+        let lastNameData = FTSingleLineViewModel.init(title: NSLocalizedString("Last Name", comment: ""), prefilSingleLine: about.last_name)
+        let nickNameData = FTSingleLineViewModel.init(title: NSLocalizedString("Nick Name", comment: ""), prefilSingleLine: about.nickname)
+        let introData = FTSingleLineViewModel.init(title: NSLocalizedString("Introduction", comment: ""), prefilSingleLine: about.intro)
+        let emailData = FTSingleLineViewModel.init(title: NSLocalizedString("Email", comment: ""), prefilSingleLine: about.email)
+        let websiteData = FTSingleLineViewModel.init(title: NSLocalizedString("Website", comment: ""), prefilSingleLine: about.website)
+        
+        dataSource = [firstNameData, lastNameData, nickNameData, introData, emailData, websiteData]
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -108,51 +97,21 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
+        let data = dataSource[indexPath.row]
+        return data.cellHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "editTextTableViewCell") as! EditTextTableViewCell
-        cell.cellType = EditProfileCellType(rawValue: indexPath.row)
-        cell.label.text = titles[indexPath.row]
-        cell.textFiled.text = "Edit \(indexPath.row.description)"
-        cell.delegate = self
+        let content = dataSource[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
-        if let type = cell.cellType {
-            switch type {
-            case .username:
-                cell.textFiled.text = about?.username
-            case .firstname:
-                cell.textFiled.text = about?.first_name
-            case .lastname:
-                cell.textFiled.text = about?.last_name
-            case .gender:
-                //cell.textFiled.text = about?.gender
-                if let gender = about?.gender {
-                    switch gender {
-                    case 1:
-                        cell.textFiled.text = NSLocalizedString("Male", comment: "")
-                    case 2:
-                        cell.textFiled.text = NSLocalizedString("Female", comment: "")
-                    default:
-                        cell.textFiled.text = NSLocalizedString("UnIdentified", comment: "")
-                    }
-                } else {
-                    cell.textFiled.text = NSLocalizedString("UnIdentified", comment: "")
-                }
-            case .intro:
-                cell.textFiled.text = about?.intro
-            case .about:
-                cell.textFiled.text = about?.about
-            }
-        } else {
-            cell.textFiled.text = nil
+        if let editingCell = cell as? BECellRender {
+            editingCell.renderCell(data: content)
         }
-        
         
         return cell
     }
