@@ -20,4 +20,10 @@ extension String {
     var htmlToString: String {
         return htmlToAttributedString?.string ?? ""
     }
+    
+    func toFTDate() -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: self)
+    }
 }

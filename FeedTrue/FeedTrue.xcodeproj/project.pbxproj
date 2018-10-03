@@ -32,6 +32,62 @@
 		1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */; };
 		1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */; };
 		1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */; };
+		1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88421649CBD00EFD1E6 /* FTProfileEditDOBCell.swift */; };
+		1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A88521649CBD00EFD1E6 /* FTProfileEditDOBCell.xib */; };
+		1342A8D921649FC500EFD1E6 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88A21649FC500EFD1E6 /* Array+Extensions.swift */; };
+		1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88B21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift */; };
+		1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88C21649FC500EFD1E6 /* UIImageView+Extensions.swift */; };
+		1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88D21649FC500EFD1E6 /* UIViewController+Extensions.swift */; };
+		1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88E21649FC500EFD1E6 /* UIView+Extensions.swift */; };
+		1342A8DE21649FC500EFD1E6 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A88F21649FC500EFD1E6 /* Date+Extension.swift */; };
+		1342A8DF21649FC500EFD1E6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89021649FC500EFD1E6 /* String+Extensions.swift */; };
+		1342A8E021649FC500EFD1E6 /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89121649FC500EFD1E6 /* UITextView+Extensions.swift */; };
+		1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89221649FC500EFD1E6 /* UIColor+Extensions.swift */; };
+		1342A8E221649FC500EFD1E6 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89321649FC500EFD1E6 /* UIImage+Extensions.swift */; };
+		1342A8E321649FC500EFD1E6 /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89421649FC500EFD1E6 /* UISearchBar+Extensions.swift */; };
+		1342A8E421649FC500EFD1E6 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89521649FC500EFD1E6 /* UIApplication+Extensions.swift */; };
+		1342A8E521649FC500EFD1E6 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89621649FC500EFD1E6 /* UIAlertController+Extensions.swift */; };
+		1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89721649FC500EFD1E6 /* Optional+Extensions.swift */; };
+		1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89821649FC500EFD1E6 /* Common+Extensions.swift */; };
+		1342A8E821649FC500EFD1E6 /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89921649FC500EFD1E6 /* Locale+Extensions.swift */; };
+		1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89A21649FC500EFD1E6 /* UITextField+Extensions.swift */; };
+		1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89D21649FC500EFD1E6 /* AttributedTextBlock.swift */; };
+		1342A8EB21649FC500EFD1E6 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A89E21649FC500EFD1E6 /* TextViewController.swift */; };
+		1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1342A8A121649FC500EFD1E6 /* Countries.bundle */; };
+		1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8A321649FC500EFD1E6 /* LocaleStore.swift */; };
+		1342A8EE21649FC500EFD1E6 /* LocaleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8A521649FC500EFD1E6 /* LocaleInfo.swift */; };
+		1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8A621649FC500EFD1E6 /* LocalePickerViewController.swift */; };
+		1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8A821649FC500EFD1E6 /* PhoneCodeCell.swift */; };
+		1342A8F121649FC500EFD1E6 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8A921649FC500EFD1E6 /* CurrencyCell.swift */; };
+		1342A8F221649FC500EFD1E6 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8AA21649FC500EFD1E6 /* CountryCell.swift */; };
+		1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8AC21649FC500EFD1E6 /* TwoTextFieldsViewController.swift */; };
+		1342A8F421649FC500EFD1E6 /* OneTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8AD21649FC500EFD1E6 /* OneTextFieldViewController.swift */; };
+		1342A8F521649FC500EFD1E6 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B021649FC500EFD1E6 /* Assets.swift */; };
+		1342A8F621649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B121649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift */; };
+		1342A8F721649FC500EFD1E6 /* LocationSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B321649FC500EFD1E6 /* LocationSearchResultsViewController.swift */; };
+		1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B421649FC500EFD1E6 /* LocationPickerViewController.swift */; };
+		1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B621649FC500EFD1E6 /* SearchHistoryManager.swift */; };
+		1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B821649FC500EFD1E6 /* Location.swift */; };
+		1342A8FB21649FC500EFD1E6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8B921649FC500EFD1E6 /* Address.swift */; };
+		1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8BB21649FC500EFD1E6 /* PickerViewViewController.swift */; };
+		1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8BD21649FC500EFD1E6 /* ContactsPickerViewController.swift */; };
+		1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8BF21649FC500EFD1E6 /* Contacts.swift */; };
+		1342A8FF21649FC500EFD1E6 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8C121649FC500EFD1E6 /* Contact.swift */; };
+		1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8C321649FC500EFD1E6 /* ContactCell.swift */; };
+		1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8C521649FC500EFD1E6 /* ColorPickerViewController.swift */; };
+		1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8C721649FC500EFD1E6 /* DatePickerViewController.swift */; };
+		1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8C921649FC500EFD1E6 /* ImagePickerViewController.swift */; };
+		1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8CB21649FC500EFD1E6 /* ItemWithImage.swift */; };
+		1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8CE21649FC500EFD1E6 /* PhotoLayout.swift */; };
+		1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8CF21649FC500EFD1E6 /* TelegramPickerViewController.swift */; };
+		1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D121649FC500EFD1E6 /* ItemWithPhoto.swift */; };
+		1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D221649FC500EFD1E6 /* LikeButtonCell.swift */; };
+		1342A90921649FC500EFD1E6 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D421649FC500EFD1E6 /* Label.swift */; };
+		1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D521649FC500EFD1E6 /* SegmentedControl.swift */; };
+		1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D621649FC500EFD1E6 /* GradientSlider.swift */; };
+		1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D721649FC500EFD1E6 /* TextField.swift */; };
+		1342A90D21649FC500EFD1E6 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8D821649FC500EFD1E6 /* Button.swift */; };
+		1342A90F2164A24400EFD1E6 /* Date+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A90E2164A24400EFD1E6 /* Date+FT.swift */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -172,6 +228,62 @@
 		1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewModel.swift; sourceTree = "<group>"; };
 		1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditSingleLineCell.swift; sourceTree = "<group>"; };
 		1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditSingleLineCell.xib; sourceTree = "<group>"; };
+		1342A88421649CBD00EFD1E6 /* FTProfileEditDOBCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditDOBCell.swift; sourceTree = "<group>"; };
+		1342A88521649CBD00EFD1E6 /* FTProfileEditDOBCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditDOBCell.xib; sourceTree = "<group>"; };
+		1342A88A21649FC500EFD1E6 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		1342A88B21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Extensions.swift"; sourceTree = "<group>"; };
+		1342A88C21649FC500EFD1E6 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		1342A88D21649FC500EFD1E6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		1342A88E21649FC500EFD1E6 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		1342A88F21649FC500EFD1E6 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		1342A89021649FC500EFD1E6 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89121649FC500EFD1E6 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89221649FC500EFD1E6 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89321649FC500EFD1E6 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89421649FC500EFD1E6 /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89521649FC500EFD1E6 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89621649FC500EFD1E6 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89721649FC500EFD1E6 /* Optional+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89821649FC500EFD1E6 /* Common+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Common+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89921649FC500EFD1E6 /* Locale+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89A21649FC500EFD1E6 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		1342A89D21649FC500EFD1E6 /* AttributedTextBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedTextBlock.swift; sourceTree = "<group>"; };
+		1342A89E21649FC500EFD1E6 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		1342A8A121649FC500EFD1E6 /* Countries.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Countries.bundle; sourceTree = "<group>"; };
+		1342A8A321649FC500EFD1E6 /* LocaleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleStore.swift; sourceTree = "<group>"; };
+		1342A8A521649FC500EFD1E6 /* LocaleInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocaleInfo.swift; sourceTree = "<group>"; };
+		1342A8A621649FC500EFD1E6 /* LocalePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalePickerViewController.swift; sourceTree = "<group>"; };
+		1342A8A821649FC500EFD1E6 /* PhoneCodeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneCodeCell.swift; sourceTree = "<group>"; };
+		1342A8A921649FC500EFD1E6 /* CurrencyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		1342A8AA21649FC500EFD1E6 /* CountryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
+		1342A8AC21649FC500EFD1E6 /* TwoTextFieldsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoTextFieldsViewController.swift; sourceTree = "<group>"; };
+		1342A8AD21649FC500EFD1E6 /* OneTextFieldViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneTextFieldViewController.swift; sourceTree = "<group>"; };
+		1342A8B021649FC500EFD1E6 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		1342A8B121649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryPickerViewController.swift; sourceTree = "<group>"; };
+		1342A8B321649FC500EFD1E6 /* LocationSearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchResultsViewController.swift; sourceTree = "<group>"; };
+		1342A8B421649FC500EFD1E6 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		1342A8B621649FC500EFD1E6 /* SearchHistoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHistoryManager.swift; sourceTree = "<group>"; };
+		1342A8B821649FC500EFD1E6 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		1342A8B921649FC500EFD1E6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		1342A8BB21649FC500EFD1E6 /* PickerViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewViewController.swift; sourceTree = "<group>"; };
+		1342A8BD21649FC500EFD1E6 /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
+		1342A8BF21649FC500EFD1E6 /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		1342A8C121649FC500EFD1E6 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		1342A8C321649FC500EFD1E6 /* ContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
+		1342A8C521649FC500EFD1E6 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		1342A8C721649FC500EFD1E6 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		1342A8C921649FC500EFD1E6 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		1342A8CB21649FC500EFD1E6 /* ItemWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithImage.swift; sourceTree = "<group>"; };
+		1342A8CE21649FC500EFD1E6 /* PhotoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLayout.swift; sourceTree = "<group>"; };
+		1342A8CF21649FC500EFD1E6 /* TelegramPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TelegramPickerViewController.swift; sourceTree = "<group>"; };
+		1342A8D121649FC500EFD1E6 /* ItemWithPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemWithPhoto.swift; sourceTree = "<group>"; };
+		1342A8D221649FC500EFD1E6 /* LikeButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeButtonCell.swift; sourceTree = "<group>"; };
+		1342A8D421649FC500EFD1E6 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		1342A8D521649FC500EFD1E6 /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
+		1342A8D621649FC500EFD1E6 /* GradientSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientSlider.swift; sourceTree = "<group>"; };
+		1342A8D721649FC500EFD1E6 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		1342A8D821649FC500EFD1E6 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		1342A90E2164A24400EFD1E6 /* Date+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+FT.swift"; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -375,6 +487,8 @@
 				13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */,
 				1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */,
 				1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */,
+				1342A88421649CBD00EFD1E6 /* FTProfileEditDOBCell.swift */,
+				1342A88521649CBD00EFD1E6 /* FTProfileEditDOBCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -385,6 +499,282 @@
 				1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1342A88821649FC500EFD1E6 /* alerts_and_pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A88921649FC500EFD1E6 /* Extensions */,
+				1342A89B21649FC500EFD1E6 /* Viewers */,
+				1342A89F21649FC500EFD1E6 /* Pickers */,
+				1342A8D321649FC500EFD1E6 /* Views */,
+			);
+			path = alerts_and_pickers;
+			sourceTree = "<group>";
+		};
+		1342A88921649FC500EFD1E6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1342A88A21649FC500EFD1E6 /* Array+Extensions.swift */,
+				1342A88B21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift */,
+				1342A88C21649FC500EFD1E6 /* UIImageView+Extensions.swift */,
+				1342A88D21649FC500EFD1E6 /* UIViewController+Extensions.swift */,
+				1342A88E21649FC500EFD1E6 /* UIView+Extensions.swift */,
+				1342A88F21649FC500EFD1E6 /* Date+Extension.swift */,
+				1342A89021649FC500EFD1E6 /* String+Extensions.swift */,
+				1342A89121649FC500EFD1E6 /* UITextView+Extensions.swift */,
+				1342A89221649FC500EFD1E6 /* UIColor+Extensions.swift */,
+				1342A89321649FC500EFD1E6 /* UIImage+Extensions.swift */,
+				1342A89421649FC500EFD1E6 /* UISearchBar+Extensions.swift */,
+				1342A89521649FC500EFD1E6 /* UIApplication+Extensions.swift */,
+				1342A89621649FC500EFD1E6 /* UIAlertController+Extensions.swift */,
+				1342A89721649FC500EFD1E6 /* Optional+Extensions.swift */,
+				1342A89821649FC500EFD1E6 /* Common+Extensions.swift */,
+				1342A89921649FC500EFD1E6 /* Locale+Extensions.swift */,
+				1342A89A21649FC500EFD1E6 /* UITextField+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1342A89B21649FC500EFD1E6 /* Viewers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A89C21649FC500EFD1E6 /* Models */,
+				1342A89E21649FC500EFD1E6 /* TextViewController.swift */,
+			);
+			path = Viewers;
+			sourceTree = "<group>";
+		};
+		1342A89C21649FC500EFD1E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1342A89D21649FC500EFD1E6 /* AttributedTextBlock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1342A89F21649FC500EFD1E6 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8A021649FC500EFD1E6 /* Locale */,
+				1342A8AB21649FC500EFD1E6 /* TextFields */,
+				1342A8AE21649FC500EFD1E6 /* PhotoLibrary */,
+				1342A8B221649FC500EFD1E6 /* Location */,
+				1342A8BA21649FC500EFD1E6 /* PickerView */,
+				1342A8BC21649FC500EFD1E6 /* Contacts */,
+				1342A8C421649FC500EFD1E6 /* Color */,
+				1342A8C621649FC500EFD1E6 /* Date */,
+				1342A8C821649FC500EFD1E6 /* Image */,
+				1342A8CC21649FC500EFD1E6 /* Telegram */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		1342A8A021649FC500EFD1E6 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8A121649FC500EFD1E6 /* Countries.bundle */,
+				1342A8A221649FC500EFD1E6 /* Managers */,
+				1342A8A421649FC500EFD1E6 /* Models */,
+				1342A8A621649FC500EFD1E6 /* LocalePickerViewController.swift */,
+				1342A8A721649FC500EFD1E6 /* Views */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		1342A8A221649FC500EFD1E6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8A321649FC500EFD1E6 /* LocaleStore.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1342A8A421649FC500EFD1E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8A521649FC500EFD1E6 /* LocaleInfo.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1342A8A721649FC500EFD1E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8A821649FC500EFD1E6 /* PhoneCodeCell.swift */,
+				1342A8A921649FC500EFD1E6 /* CurrencyCell.swift */,
+				1342A8AA21649FC500EFD1E6 /* CountryCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1342A8AB21649FC500EFD1E6 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8AC21649FC500EFD1E6 /* TwoTextFieldsViewController.swift */,
+				1342A8AD21649FC500EFD1E6 /* OneTextFieldViewController.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		1342A8AE21649FC500EFD1E6 /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8AF21649FC500EFD1E6 /* Managers */,
+				1342A8B121649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift */,
+			);
+			path = PhotoLibrary;
+			sourceTree = "<group>";
+		};
+		1342A8AF21649FC500EFD1E6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8B021649FC500EFD1E6 /* Assets.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1342A8B221649FC500EFD1E6 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8B321649FC500EFD1E6 /* LocationSearchResultsViewController.swift */,
+				1342A8B421649FC500EFD1E6 /* LocationPickerViewController.swift */,
+				1342A8B521649FC500EFD1E6 /* Managers */,
+				1342A8B721649FC500EFD1E6 /* Models */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		1342A8B521649FC500EFD1E6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8B621649FC500EFD1E6 /* SearchHistoryManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1342A8B721649FC500EFD1E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8B821649FC500EFD1E6 /* Location.swift */,
+				1342A8B921649FC500EFD1E6 /* Address.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1342A8BA21649FC500EFD1E6 /* PickerView */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8BB21649FC500EFD1E6 /* PickerViewViewController.swift */,
+			);
+			path = PickerView;
+			sourceTree = "<group>";
+		};
+		1342A8BC21649FC500EFD1E6 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8BD21649FC500EFD1E6 /* ContactsPickerViewController.swift */,
+				1342A8BE21649FC500EFD1E6 /* Managers */,
+				1342A8C021649FC500EFD1E6 /* Models */,
+				1342A8C221649FC500EFD1E6 /* Views */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		1342A8BE21649FC500EFD1E6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8BF21649FC500EFD1E6 /* Contacts.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1342A8C021649FC500EFD1E6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8C121649FC500EFD1E6 /* Contact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1342A8C221649FC500EFD1E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8C321649FC500EFD1E6 /* ContactCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1342A8C421649FC500EFD1E6 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8C521649FC500EFD1E6 /* ColorPickerViewController.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		1342A8C621649FC500EFD1E6 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8C721649FC500EFD1E6 /* DatePickerViewController.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		1342A8C821649FC500EFD1E6 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8C921649FC500EFD1E6 /* ImagePickerViewController.swift */,
+				1342A8CA21649FC500EFD1E6 /* Views */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		1342A8CA21649FC500EFD1E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8CB21649FC500EFD1E6 /* ItemWithImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1342A8CC21649FC500EFD1E6 /* Telegram */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8CD21649FC500EFD1E6 /* Layouts */,
+				1342A8CF21649FC500EFD1E6 /* TelegramPickerViewController.swift */,
+				1342A8D021649FC500EFD1E6 /* Views */,
+			);
+			path = Telegram;
+			sourceTree = "<group>";
+		};
+		1342A8CD21649FC500EFD1E6 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8CE21649FC500EFD1E6 /* PhotoLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		1342A8D021649FC500EFD1E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8D121649FC500EFD1E6 /* ItemWithPhoto.swift */,
+				1342A8D221649FC500EFD1E6 /* LikeButtonCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1342A8D321649FC500EFD1E6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1342A8D421649FC500EFD1E6 /* Label.swift */,
+				1342A8D521649FC500EFD1E6 /* SegmentedControl.swift */,
+				1342A8D621649FC500EFD1E6 /* GradientSlider.swift */,
+				1342A8D721649FC500EFD1E6 /* TextField.swift */,
+				1342A8D821649FC500EFD1E6 /* Button.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
@@ -427,6 +817,7 @@
 				134FF11E21574F1C00551771 /* UITextField+FeedTrue.swift */,
 				1342A7E5215D443400EFD1E6 /* Notification+FT.swift */,
 				1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */,
+				1342A90E2164A24400EFD1E6 /* Date+FT.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -617,6 +1008,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1342A88821649FC500EFD1E6 /* alerts_and_pickers */,
 				134FF1A22159EF9A00551771 /* Reactions */,
 				134FF0BE2152B37300551771 /* Viewer */,
 				13BA9B1C2149794000AD06D7 /* UIImageView */,
@@ -801,8 +1193,10 @@
 				134FF1072152B37300551771 /* play@3x.png in Resources */,
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
+				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
+				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
@@ -902,71 +1296,108 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1342A8E221649FC500EFD1E6 /* UIImage+Extensions.swift in Sources */,
 				13BA9B29214BC96900AD06D7 /* String+FeedTrue.swift in Sources */,
+				1342A8E821649FC500EFD1E6 /* Locale+Extensions.swift in Sources */,
 				134FF0F72152B37300551771 /* PaginatedScrollView.swift in Sources */,
 				13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */,
 				134FF1B92159EF9B00551771 /* ReactionButtonConfig.swift in Sources */,
 				13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */,
 				13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */,
 				13BA9B102149792200AD06D7 /* UploadTask.swift in Sources */,
+				1342A8DE21649FC500EFD1E6 /* Date+Extension.swift in Sources */,
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
+				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
+				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
+				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
+				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
+				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
+				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
+				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
+				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
 				13BA9B0F2149792200AD06D7 /* DownloadTask.swift in Sources */,
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
+				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
+				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
 				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
 				134FF0EC2152B37300551771 /* ViewableControllerContainer.swift in Sources */,
 				13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */,
 				134FF0F52152B37300551771 /* UIViewExtensions.swift in Sources */,
+				1342A8D921649FC500EFD1E6 /* Array+Extensions.swift in Sources */,
 				13D2580F21428E3700E84002 /* FTSimpleCache.swift in Sources */,
+				1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */,
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
+				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
 				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
+				1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */,
 				134FF0F62152B37300551771 /* Viewable.swift in Sources */,
+				1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */,
+				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13BA9B0E2149792200AD06D7 /* FileProviderCache.swift in Sources */,
+				1342A8E521649FC500EFD1E6 /* UIAlertController+Extensions.swift in Sources */,
 				13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */,
+				1342A8DF21649FC500EFD1E6 /* String+Extensions.swift in Sources */,
+				1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */,
 				134FF0EE2152B37300551771 /* ViewerController.swift in Sources */,
+				1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
 				13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */,
 				13D2580D21428CBB00E84002 /* FTKeyChainService.swift in Sources */,
+				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
+				1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
+				1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
+				1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */,
+				1342A8E021649FC500EFD1E6 /* UITextView+Extensions.swift in Sources */,
+				1342A8F221649FC500EFD1E6 /* CountryCell.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
+				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
+				1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */,
+				1342A8E321649FC500EFD1E6 /* UISearchBar+Extensions.swift in Sources */,
 				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
+				1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
+				1342A8F421649FC500EFD1E6 /* OneTextFieldViewController.swift in Sources */,
 				13BA9B1B2149793500AD06D7 /* BECell.swift in Sources */,
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
+				1342A8E421649FC500EFD1E6 /* UIApplication+Extensions.swift in Sources */,
 				134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */,
 				1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */,
 				130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */,
 				13A2C4CE2137A47200C377C0 /* ExampleIrregularityContentView.swift in Sources */,
 				134FF0F32152B37300551771 /* VideoView.swift in Sources */,
+				1342A8FF21649FC500EFD1E6 /* Contact.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
+				1342A8F721649FC500EFD1E6 /* LocationSearchResultsViewController.swift in Sources */,
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
 				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,
 				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
@@ -977,30 +1408,47 @@
 				134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */,
 				1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
+				1342A8FB21649FC500EFD1E6 /* Address.swift in Sources */,
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
+				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
+				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
 				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
+				1342A8EB21649FC500EFD1E6 /* TextViewController.swift in Sources */,
+				1342A8EE21649FC500EFD1E6 /* LocaleInfo.swift in Sources */,
 				13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */,
+				1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */,
 				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
 				134FF0FF2152B37300551771 /* HeaderView.swift in Sources */,
 				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
+				1342A8F121649FC500EFD1E6 /* CurrencyCell.swift in Sources */,
 				134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
+				1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */,
 				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
 				134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */,
+				1342A8F521649FC500EFD1E6 /* Assets.swift in Sources */,
 				13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */,
+				1342A90F2164A24400EFD1E6 /* Date+FT.swift in Sources */,
 				134FF0EF2152B37300551771 /* VideoProgressView.swift in Sources */,
 				134FF0F12152B37300551771 /* SlideshowView.swift in Sources */,
 				134FF0F92152B37300551771 /* PhotosController.swift in Sources */,
 				134FF0F82152B37300551771 /* FooterView.swift in Sources */,
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				134FF0FE2152B37300551771 /* PopupController.swift in Sources */,
+				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
+				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
+				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,
+				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
+				1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
+				1342A8F621649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift in Sources */,
 				13BA9B0D2149792200AD06D7 /* FileProviderService.swift in Sources */,
+				1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */,
 				13BA9B122149792200AD06D7 /* TableView+BottomActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
