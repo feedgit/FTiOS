@@ -90,6 +90,12 @@
 		1342A90F2164A24400EFD1E6 /* Date+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A90E2164A24400EFD1E6 /* Date+FT.swift */; };
 		1342A9122164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */; };
 		1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */; };
+		1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A9292165EA3600EFD1E6 /* FTProfileEditGenderCell.swift */; };
+		1342A92C2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1342A92A2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib */; };
+		1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A92E21661C0B00EFD1E6 /* DropdownItem.swift */; };
+		1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A92F21661C0B00EFD1E6 /* DropUpMenu.swift */; };
+		1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A93221661C0B00EFD1E6 /* DropdownMenu.swift */; };
+		1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A93321661C0B00EFD1E6 /* SectionHeader.swift */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -288,6 +294,13 @@
 		1342A90E2164A24400EFD1E6 /* Date+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+FT.swift"; sourceTree = "<group>"; };
 		1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditMultipleLineCellTableViewCell.swift; sourceTree = "<group>"; };
 		1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditMultipleLineCellTableViewCell.xib; sourceTree = "<group>"; };
+		1342A9292165EA3600EFD1E6 /* FTProfileEditGenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTProfileEditGenderCell.swift; sourceTree = "<group>"; };
+		1342A92A2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTProfileEditGenderCell.xib; sourceTree = "<group>"; };
+		1342A92E21661C0B00EFD1E6 /* DropdownItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
+		1342A92F21661C0B00EFD1E6 /* DropUpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropUpMenu.swift; sourceTree = "<group>"; };
+		1342A93021661C0B00EFD1E6 /* DropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenu.h; sourceTree = "<group>"; };
+		1342A93221661C0B00EFD1E6 /* DropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
+		1342A93321661C0B00EFD1E6 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -495,6 +508,8 @@
 				1342A88521649CBD00EFD1E6 /* FTProfileEditDOBCell.xib */,
 				1342A9102164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift */,
 				1342A9112164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib */,
+				1342A9292165EA3600EFD1E6 /* FTProfileEditGenderCell.swift */,
+				1342A92A2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -783,6 +798,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		1342A92D21661C0B00EFD1E6 /* DropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1342A92E21661C0B00EFD1E6 /* DropdownItem.swift */,
+				1342A92F21661C0B00EFD1E6 /* DropUpMenu.swift */,
+				1342A93021661C0B00EFD1E6 /* DropdownMenu.h */,
+				1342A93221661C0B00EFD1E6 /* DropdownMenu.swift */,
+				1342A93321661C0B00EFD1E6 /* SectionHeader.swift */,
+			);
+			path = DropdownMenu;
+			sourceTree = "<group>";
+		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,6 +1041,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1342A92D21661C0B00EFD1E6 /* DropdownMenu */,
 				1342A88821649FC500EFD1E6 /* alerts_and_pickers */,
 				134FF1A22159EF9A00551771 /* Reactions */,
 				134FF0BE2152B37300551771 /* Viewer */,
@@ -1197,6 +1225,7 @@
 				134FF1022152B37300551771 /* 2.jpg in Resources */,
 				130E05D9212D6A3700C3E21A /* LaunchScreen.storyboard in Resources */,
 				134FF1072152B37300551771 /* play@3x.png in Resources */,
+				1342A92C2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib in Resources */,
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
 				1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
@@ -1315,6 +1344,7 @@
 				1342A8DE21649FC500EFD1E6 /* Date+Extension.swift in Sources */,
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
+				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
@@ -1329,6 +1359,7 @@
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
+				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
 				13BA9B0F2149792200AD06D7 /* DownloadTask.swift in Sources */,
@@ -1345,6 +1376,7 @@
 				13D2580F21428E3700E84002 /* FTSimpleCache.swift in Sources */,
 				1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */,
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
+				1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
@@ -1373,6 +1405,7 @@
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
+				1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
@@ -1451,6 +1484,7 @@
 				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
 				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,
+				1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */,
 				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
 				1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,

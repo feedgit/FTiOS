@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20 May 1989" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UZL-tG-sCU">
-                        <rect key="frame" x="8" y="32" width="343" height="30"/>
+                        <rect key="frame" x="8" y="32" width="121" height="30"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,7 +37,6 @@
                     <constraint firstItem="UZL-tG-sCU" firstAttribute="leading" secondItem="jwW-ng-wWd" secondAttribute="leading" id="9WI-uh-K9l"/>
                     <constraint firstItem="UZL-tG-sCU" firstAttribute="top" secondItem="jwW-ng-wWd" secondAttribute="bottom" constant="4.5" id="CDh-Ea-pit"/>
                     <constraint firstItem="jwW-ng-wWd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="FWu-Ku-6nc"/>
-                    <constraint firstItem="UZL-tG-sCU" firstAttribute="trailing" secondItem="jwW-ng-wWd" secondAttribute="trailing" id="TYv-GO-xnt"/>
                     <constraint firstAttribute="trailing" secondItem="jwW-ng-wWd" secondAttribute="trailing" constant="8" id="jNe-bi-4xH"/>
                     <constraint firstItem="jwW-ng-wWd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="xgs-lX-vNB"/>
                 </constraints>
