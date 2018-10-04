@@ -7,12 +7,17 @@
 //
 
 import UIKit
+@objc protocol GenderCellDelegate {
+    func genderCellDidChange(cell: FTProfileEditGenderCell)
+}
 
 class FTProfileEditGenderCell: UITableViewCell, BECellRenderImpl {
 
     typealias CellData = FTGenderViewModel
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genderBtn: UIButton!
+    weak var delegate: GenderCellDelegate?
+    
     var items: [DropdownItem] = []
     var menuView: DropUpMenu!
     
@@ -54,5 +59,6 @@ class FTProfileEditGenderCell: UITableViewCell, BECellRenderImpl {
 extension FTProfileEditGenderCell: DropUpMenuDelegate {
     func dropUpMenu(_ dropUpMenu: DropUpMenu, didSelectRowAt indexPath: IndexPath) {
         genderBtn.setTitle(items[indexPath.row].title, for: .normal)
+        self.delegate?.genderCellDidChange(cell: self)
     }
 }

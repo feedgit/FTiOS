@@ -7,6 +7,9 @@
 //
 
 import UIKit
+@objc protocol MutilplLinesCellDelegate {
+    func multipleLinesCellDidChange(cell: FTProfileEditMultipleLineCellTableViewCell)
+}
 
 class FTProfileEditMultipleLineCellTableViewCell: UITableViewCell, BECellRenderImpl {
 
@@ -14,7 +17,7 @@ class FTProfileEditMultipleLineCellTableViewCell: UITableViewCell, BECellRenderI
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
-    
+    weak var delegate: MutilplLinesCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -47,5 +50,6 @@ class FTProfileEditMultipleLineCellTableViewCell: UITableViewCell, BECellRenderI
 extension FTProfileEditMultipleLineCellTableViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         NSLog(textView.text ?? "")
+        self.delegate?.multipleLinesCellDidChange(cell: self)
     }
 }

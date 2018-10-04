@@ -8,12 +8,16 @@
 
 import UIKit
 
+@objc protocol SingleLineCellDelegate {
+    func singleLineCellDidChange(cell: FTProfileEditSingleLineCell)
+}
+
 class FTProfileEditSingleLineCell: UITableViewCell, BECellRenderImpl, UITextFieldDelegate {
     typealias CellData = FTSingleLineViewModel
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextField: UITextField!
-    
+    weak var delegate: SingleLineCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +42,7 @@ class FTProfileEditSingleLineCell: UITableViewCell, BECellRenderImpl, UITextFiel
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         NSLog("\(textField.text ?? "")")
+        self.delegate?.singleLineCellDidChange(cell: self)
     }
     
 }

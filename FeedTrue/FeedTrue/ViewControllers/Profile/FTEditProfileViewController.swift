@@ -13,8 +13,23 @@ import MBProgressHUD
     func didSaveSuccessful()
     func didSaveFailure()
 }
+
 class FTEditProfileViewController: UIViewController {
 
+    enum FieldData {
+        case firstname
+        case lastname
+        case nickname
+        case introduction
+        case gender
+        case dob
+        case about
+        case bio
+        case favourite
+        case email
+        case website
+    }
+    
     weak var delegate: FTEditProfileDelegate?
     var coreService: FTCoreService!
     var about: FTAboutReponse?
@@ -28,7 +43,7 @@ class FTEditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: [FTEditProfileViewModel] = []
+    var dataSource: [(FTEditProfileViewModel, FieldData)] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -88,7 +103,7 @@ class FTEditProfileViewController: UIViewController {
         let emailData = FTSingleLineViewModel.init(title: NSLocalizedString("Email", comment: ""), prefilSingleLine: about.email)
         let websiteData = FTSingleLineViewModel.init(title: NSLocalizedString("Website", comment: ""), prefilSingleLine: about.website)
         
-        dataSource = [firstNameData, lastNameData, nickNameData, introData, genderData, dobData, aboutData, biographyDate, favouriteQuoteData, emailData, websiteData]
+        dataSource = [(firstNameData, FieldData.firstname), (lastNameData, FieldData.lastname), (nickNameData, FieldData.nickname), (introData, FieldData.introduction), (genderData, FieldData.gender), (dobData, FieldData.dob), (aboutData, FieldData.about), (biographyDate, FieldData.bio), (favouriteQuoteData, FieldData.favourite), (emailData, FieldData.email), (websiteData, FieldData.website)]
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,12 +123,12 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let data = dataSource[indexPath.row]
+        let data = dataSource[indexPath.row].0
         return data.cellHeight()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = dataSource[indexPath.row]
+        let content = dataSource[indexPath.row].0
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
         if let editingCell = cell as? BECellRender {

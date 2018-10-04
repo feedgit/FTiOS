@@ -8,11 +8,16 @@
 
 import UIKit
 
+@objc protocol DOBCellDelegate {
+    func dobDidChange(cell: FTProfileEditDOBCell)
+}
+
 class FTProfileEditDOBCell: UITableViewCell, BECellRenderImpl {
 
     typealias CellData = FTDOBViewModel
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
+    weak var delegate: DOBCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,6 +49,7 @@ extension FTProfileEditDOBCell: UITextFieldDelegate {
         alert.addDatePicker(mode: .date, date: Date()) { (date) in
             NSLog(date.dateString())
             self.dateTextField.text = date.dobString()
+            self.delegate?.dobDidChange(cell: self)
         }
         alert.addAction(title: "Done", style: .default)
         alert.show()
