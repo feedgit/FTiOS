@@ -60,5 +60,7 @@ extension FTProfileEditGenderCell: DropUpMenuDelegate {
     func dropUpMenu(_ dropUpMenu: DropUpMenu, didSelectRowAt indexPath: IndexPath) {
         genderBtn.setTitle(items[indexPath.row].title, for: .normal)
         self.delegate?.genderCellDidChange(cell: self)
+        self.contentData?.dataDidChange?()
+        self.contentData?.outputGender = items[indexPath.row].title
     }
 }

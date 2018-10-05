@@ -22,8 +22,6 @@
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
 		13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AFA213A959500D74C47 /* FTEditProfileViewController.swift */; };
 		13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */; };
-		13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */; };
-		13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */; };
 		13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */; };
 		13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B05213C120900D74C47 /* FTAboutReponse.swift */; };
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
@@ -226,8 +224,6 @@
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
 		13353AFA213A959500D74C47 /* FTEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewController.swift; sourceTree = "<group>"; };
 		13353AFB213A959500D74C47 /* FTEditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTEditProfileViewController.xib; sourceTree = "<group>"; };
-		13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextTableViewCell.swift; sourceTree = "<group>"; };
-		13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTextTableViewCell.xib; sourceTree = "<group>"; };
 		13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserProfileResponse.swift; sourceTree = "<group>"; };
 		13353B05213C120900D74C47 /* FTAboutReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAboutReponse.swift; sourceTree = "<group>"; };
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
@@ -500,8 +496,6 @@
 		13353AFE213A97BF00D74C47 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				13353AFF213A986F00D74C47 /* EditTextTableViewCell.swift */,
-				13353B00213A986F00D74C47 /* EditTextTableViewCell.xib */,
 				1342A880216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift */,
 				1342A881216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib */,
 				1342A88421649CBD00EFD1E6 /* FTProfileEditDOBCell.swift */,
@@ -1243,7 +1237,6 @@
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				134FF1062152B37300551771 /* pause@2x.png in Resources */,
-				13353B02213A986F00D74C47 /* EditTextTableViewCell.xib in Resources */,
 				134FF1102152B37300551771 /* repeat@2x.png in Resources */,
 				13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */,
 				134FF1092152B37300551771 /* dark-circle@3x.png in Resources */,
@@ -1336,7 +1329,6 @@
 				13BA9B29214BC96900AD06D7 /* String+FeedTrue.swift in Sources */,
 				1342A8E821649FC500EFD1E6 /* Locale+Extensions.swift in Sources */,
 				134FF0F72152B37300551771 /* PaginatedScrollView.swift in Sources */,
-				13353B01213A986F00D74C47 /* EditTextTableViewCell.swift in Sources */,
 				134FF1B92159EF9B00551771 /* ReactionButtonConfig.swift in Sources */,
 				13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */,
 				13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */,

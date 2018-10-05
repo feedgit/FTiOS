@@ -33,6 +33,7 @@ class FTEditProfileViewModel: BECellDataSource {
     
     var title: String
     var type: EditType
+    var dataDidChange: (()->())?
     
     init(title: String, type: EditType) {
         self.title = title

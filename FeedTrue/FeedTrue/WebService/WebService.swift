@@ -336,12 +336,19 @@ class WebService: NSObject, FTCoreServiceComponent {
     }
     
     func editUserInfo(token: String, editInfo: FTEditUserInfo, completion: @escaping (Bool, FTEditUserResponse?)->()) {
+        
         let params:[String: Any] = [
             "first_name": editInfo.fistname ?? "",
             "last_name": editInfo.lastname ?? "",
+            "nickname": editInfo.nickname ?? "",
             "gender": editInfo.gender ?? "",
             "intro": editInfo.intro ?? "",
-            "about": editInfo.about ?? ""
+            "about": editInfo.about ?? "",
+            "date_of_birth": editInfo.dob ?? "",
+            "bio": editInfo.bio ?? "",
+            "quotes": editInfo.quotes ?? "",
+            "email": editInfo.email ?? "",
+            "website": editInfo.website ?? ""
         ]
         
         let headers: HTTPHeaders = [

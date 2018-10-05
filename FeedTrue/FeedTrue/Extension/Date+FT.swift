@@ -19,4 +19,14 @@ extension Date {
         
         return dobString
     }
+    
+    func dobAPIString() -> String {
+        let noTimeDate = Calendar.current.startOfDay(for: self)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dobAPIString = dateFormatter.string(from: noTimeDate)
+        
+        return dobAPIString
+    }
 }

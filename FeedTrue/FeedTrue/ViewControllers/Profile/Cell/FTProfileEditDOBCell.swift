@@ -39,6 +39,7 @@ class FTProfileEditDOBCell: UITableViewCell, BECellRenderImpl {
         
         let prefill = data.prefil
         dateTextField.text = prefill?.toFTDate()?.dobString()
+        contentData?.outputDOB = prefill
     }
 }
 
@@ -49,7 +50,9 @@ extension FTProfileEditDOBCell: UITextFieldDelegate {
         alert.addDatePicker(mode: .date, date: Date()) { (date) in
             NSLog(date.dateString())
             self.dateTextField.text = date.dobString()
+            self.contentData?.outputDOB = date.dobAPIString()
             self.delegate?.dobDidChange(cell: self)
+            self.contentData?.dataDidChange?()
         }
         alert.addAction(title: "Done", style: .default)
         alert.show()

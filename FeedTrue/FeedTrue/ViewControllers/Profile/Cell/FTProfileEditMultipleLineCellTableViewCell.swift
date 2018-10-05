@@ -39,10 +39,7 @@ class FTProfileEditMultipleLineCellTableViewCell: UITableViewCell, BECellRenderI
         
         let prefill = data.prefil
         detailTextView.text = prefill
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        NSLog("\(textField.text ?? "")")
+        self.contentData?.outputMultipleLines = prefill
     }
     
 }
@@ -51,5 +48,7 @@ extension FTProfileEditMultipleLineCellTableViewCell: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         NSLog(textView.text ?? "")
         self.delegate?.multipleLinesCellDidChange(cell: self)
+        self.contentData?.outputMultipleLines = textView.text
+        self.contentData?.dataDidChange?()
     }
 }

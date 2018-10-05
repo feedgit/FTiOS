@@ -38,11 +38,14 @@ class FTProfileEditSingleLineCell: UITableViewCell, BECellRenderImpl, UITextFiel
         
         let prefill = data.prefil
         detailTextField.text = prefill
+        contentData?.outputSingleLine = prefill
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         NSLog("\(textField.text ?? "")")
         self.delegate?.singleLineCellDidChange(cell: self)
+        self.contentData?.outputSingleLine = textField.text
+        self.contentData?.dataDidChange?()
     }
     
 }

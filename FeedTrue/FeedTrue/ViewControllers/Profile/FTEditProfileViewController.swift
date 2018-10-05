@@ -92,18 +92,80 @@ class FTEditProfileViewController: UIViewController {
     func prepareDataSource() {
         guard let about = self.about else { return }
         let firstNameData = FTSingleLineViewModel.init(title: NSLocalizedString("First Name", comment: ""), prefilSingleLine: about.first_name)
+        firstNameData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let lastNameData = FTSingleLineViewModel.init(title: NSLocalizedString("Last Name", comment: ""), prefilSingleLine: about.last_name)
+        lastNameData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let nickNameData = FTSingleLineViewModel.init(title: NSLocalizedString("Nick Name", comment: ""), prefilSingleLine: about.nickname)
+        nickNameData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let introData = FTSingleLineViewModel.init(title: NSLocalizedString("Introduction", comment: ""), prefilSingleLine: about.intro)
+        introData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let genderData = FTGenderViewModel(title: NSLocalizedString("Gender", comment: ""), prefilGender: genderList[about.gender ?? 0])
+        genderData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let dobData = FTDOBViewModel(title: NSLocalizedString("Date of Birth", comment: ""), prefilDOB: about.date_of_birth)
+        dobData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let aboutData = FTMultipleLinesViewModel(title: NSLocalizedString("About you", comment: ""), prefilMultipleLines: about.about)
+        aboutData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let biographyDate = FTMultipleLinesViewModel(title: NSLocalizedString("Biography", comment: ""), prefilMultipleLines: about.bio)
+        biographyDate.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let favouriteQuoteData = FTMultipleLinesViewModel(title: NSLocalizedString("Favourite Quote", comment: ""), prefilMultipleLines: about.quotes)
+        favouriteQuoteData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let emailData = FTSingleLineViewModel.init(title: NSLocalizedString("Email", comment: ""), prefilSingleLine: about.email)
+        emailData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         let websiteData = FTSingleLineViewModel.init(title: NSLocalizedString("Website", comment: ""), prefilSingleLine: about.website)
+        websiteData.dataDidChange = { [weak self] in
+            self?.doneBarBtn.isEnabled = true
+        }
         
         dataSource = [(firstNameData, FieldData.firstname), (lastNameData, FieldData.lastname), (nickNameData, FieldData.nickname), (introData, FieldData.introduction), (genderData, FieldData.gender), (dobData, FieldData.dob), (aboutData, FieldData.about), (biographyDate, FieldData.bio), (favouriteQuoteData, FieldData.favourite), (emailData, FieldData.email), (websiteData, FieldData.website)]
+    }
+    
+    func collectionInfo() {
+        for item in dataSource {
+            switch item.1 {
+            case .firstname:
+                editInfo.fistname = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            case .lastname:
+                editInfo.lastname = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            case .nickname:
+                editInfo.nickname = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            case .introduction:
+                editInfo.intro = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            case .gender:
+                editInfo.gender = genderList.indexes(of: (item.0 as! FTGenderViewModel).outputGender ?? genderList[0]).first
+            case .dob:
+                editInfo.dob = (item.0 as! FTDOBViewModel).outputDOB ?? ""
+            case .about:
+                editInfo.about = (item.0 as! FTMultipleLinesViewModel).outputMultipleLines ?? ""
+            case .bio:
+                editInfo.bio = (item.0 as! FTMultipleLinesViewModel).outputMultipleLines ?? ""
+            case .favourite:
+                editInfo.quotes = (item.0 as! FTMultipleLinesViewModel).outputMultipleLines ?? ""
+            case .email:
+                editInfo.email = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            case .website:
+                editInfo.website = (item.0 as! FTSingleLineViewModel).outputSingleLine ?? ""
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -144,6 +206,7 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     @objc func done(_ sender: Any) {
+        self.collectionInfo()
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Saving...", comment: "")
@@ -155,9 +218,16 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
                     self?.about?.username = info.username
                     self?.about?.first_name = info.first_name
                     self?.about?.last_name = info.last_name
+                    self?.about?.nickname = info.nickname
                     self?.about?.gender = info.gender
+                    self?.about?.date_of_birth = info.date_of_birth
                     self?.about?.intro = info.intro
                     self?.about?.about = info.about
+                    self?.about?.bio = info.bio
+                    self?.about?.quotes = info.quotes
+                    self?.about?.email = info.email
+                    self?.about?.website = info.website
+                    self?.prepareDataSource()
                     DispatchQueue.main.async {
                         self?.progressHub?.detailsLabel.text = NSLocalizedString("Successful", comment: "")
                         self?.progressHub?.hide(animated: true, afterDelay: 1)
@@ -189,36 +259,5 @@ extension FTEditProfileViewController: UITableViewDelegate, UITableViewDataSourc
         if editInfo.username != about?.username {
             // TODO: save user name
         }
-    }
-}
-
-extension FTEditProfileViewController: EditTextDelegate {
-    
-    func usernameDidChange(username: String?) {
-        editInfo.username = username
-    }
-    
-    func firstnameDidChange(firstname: String?) {
-        editInfo.fistname = firstname
-    }
-    
-    func lastnameDidChange(lastname: String?) {
-        editInfo.lastname = lastname
-    }
-    
-    func genderDidChange(gender: String?) {
-        //editInfo.gender = gender
-    }
-    
-    func introDidChange(intro: String?) {
-        editInfo.intro = intro
-    }
-    
-    func aboutDidChange(about: String?) {
-        editInfo.about = about
-    }
-    
-    func textDidChange() {
-        doneBarBtn.isEnabled = true
     }
 }
