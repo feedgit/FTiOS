@@ -94,6 +94,11 @@
 		1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A92F21661C0B00EFD1E6 /* DropUpMenu.swift */; };
 		1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A93221661C0B00EFD1E6 /* DropdownMenu.swift */; };
 		1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A93321661C0B00EFD1E6 /* SectionHeader.swift */; };
+		13477461216793C40026B048 /* CommonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13477460216793C30026B048 /* CommonProtocols.swift */; };
+		13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13477463216793DD0026B048 /* ChatAccessoryView.swift */; };
+		13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13477464216793DE0026B048 /* ChatAccessoryView.xib */; };
+		1347746A2167946D0026B048 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134774682167946D0026B048 /* CommentController.swift */; };
+		1347746B2167946D0026B048 /* CommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134774692167946D0026B048 /* CommentController.xib */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -297,6 +302,11 @@
 		1342A93021661C0B00EFD1E6 /* DropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropdownMenu.h; sourceTree = "<group>"; };
 		1342A93221661C0B00EFD1E6 /* DropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownMenu.swift; sourceTree = "<group>"; };
 		1342A93321661C0B00EFD1E6 /* SectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		13477460216793C30026B048 /* CommonProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonProtocols.swift; sourceTree = "<group>"; };
+		13477463216793DD0026B048 /* ChatAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatAccessoryView.swift; sourceTree = "<group>"; };
+		13477464216793DE0026B048 /* ChatAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatAccessoryView.xib; sourceTree = "<group>"; };
+		134774682167946D0026B048 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		134774692167946D0026B048 /* CommentController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentController.xib; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -804,6 +814,18 @@
 			path = DropdownMenu;
 			sourceTree = "<group>";
 		};
+		1342B19321675E5000EFD1E6 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				13477463216793DD0026B048 /* ChatAccessoryView.swift */,
+				13477464216793DE0026B048 /* ChatAccessoryView.xib */,
+				13477460216793C30026B048 /* CommonProtocols.swift */,
+				134774682167946D0026B048 /* CommentController.swift */,
+				134774692167946D0026B048 /* CommentController.xib */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,6 +989,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1342B19321675E5000EFD1E6 /* Comment */,
 				13BA9A842147C33B00AD06D7 /* Feed */,
 				13D257FF21426DC500E84002 /* Settings */,
 				13353AF3213A89A200D74C47 /* Profile */,
@@ -1208,6 +1231,7 @@
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
+				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
 				134FF1002152B37300551771 /* 4.jpg in Resources */,
 				134FF10F2152B37300551771 /* seek.png in Resources */,
 				134FF1132152B37300551771 /* seek@2x.png in Resources */,
@@ -1228,6 +1252,7 @@
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
+				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
@@ -1270,6 +1295,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableSegmentedControl/ScrollableSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1291,6 +1317,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1350,6 +1377,7 @@
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
+				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
@@ -1372,12 +1400,14 @@
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
+				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
 				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
 				1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */,
 				134FF0F62152B37300551771 /* Viewable.swift in Sources */,
 				1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */,
 				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
+				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,

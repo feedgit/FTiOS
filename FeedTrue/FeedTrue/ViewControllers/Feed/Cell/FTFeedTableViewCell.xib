@@ -134,6 +134,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6W-dH-OYj">
                                 <rect key="frame" x="68" y="0.0" width="44" height="44"/>
                                 <state key="normal" image="comment"/>
+                                <connections>
+                                    <action selector="commentTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ci3-mY-cqh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32G-Ax-Mom">
                                 <rect key="frame" x="128" y="0.0" width="44" height="44"/>

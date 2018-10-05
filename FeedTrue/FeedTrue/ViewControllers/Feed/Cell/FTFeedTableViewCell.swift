@@ -21,6 +21,8 @@ import SwiftMoment
     func feedCellDidRemoveReaction(cell: FTFeedTableViewCell)
     func feedCellDidSave(cell: FTFeedTableViewCell)
     func feedCellDidUnSave(cell: FTFeedTableViewCell)
+    
+    func feedCellDidTouchUpComment(cell: FTFeedTableViewCell)
 }
 
 public enum FTReactionTypes: String {
@@ -394,6 +396,11 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         self.feed.saved = true
         self.delegate?.feedCellDidSave(cell: self)
     }
+    
+    @IBAction func commentTouchUpAction(_ sender: Any) {
+        self.delegate?.feedCellDidTouchUpComment(cell: self)
+    }
+    
     
 }
 

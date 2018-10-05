@@ -10,6 +10,7 @@ import UIKit
 import ScrollableSegmentedControl
 import MBProgressHUD
 import SwiftMoment
+import STPopup
 
 class FTTabFeedViewController: FTTabViewController {
     
@@ -312,5 +313,14 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
                 }
             }
         })
+    }
+    
+    func feedCellDidTouchUpComment(cell: FTFeedTableViewCell) {
+        // TODO: show comment view
+        let commentVC = CommentController.init(nibName: "CommentController", bundle: nil)
+        commentVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.75)
+        let popupController = STPopupController(rootViewController: commentVC)
+        popupController.style = .bottomSheet
+        popupController.present(in: self)
     }
 }

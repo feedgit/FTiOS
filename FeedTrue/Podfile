@@ -16,4 +16,5 @@ pod 'DTGradientButton'
 pod 'SwiftMoment'
 pod 'SwiftyJSON', '~> 4.0'
 pod 'Alamofire-SwiftyJSON'
+pod 'STPopup'
 end
