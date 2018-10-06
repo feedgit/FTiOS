@@ -786,4 +786,38 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    
+    func deleteComment(token: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        let urlString = "\(host)/api/v1/comments/\(ct_id)/delete/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .delete, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                guard let value = response.result.value as? [String: String] else {
+                    completion(false, nil)
+                    return
+                }
+                if let msg = value["message"] {
+                    completion(true, msg)
+                    return
+                } else if let error_msg = value["error"] {
+                    completion(false, error_msg)
+                    return
+                }
+                completion(false, nil)
+        }
+    }
 }

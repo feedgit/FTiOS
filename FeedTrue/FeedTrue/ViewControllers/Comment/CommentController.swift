@@ -13,9 +13,10 @@ class CommentController: UITableViewController {
     var coreService: FTCoreService!
     var datasource: [FTCommentViewModel] = []
     
-    init(c: FTCoreService, f: FTFeedInfo) {
+    init(c: FTCoreService, f: FTFeedInfo, comments: [FTCommentViewModel]) {
         feed = f
         coreService = c
+        datasource = comments
         super.init(nibName: "CommentController", bundle: nil)
     }
     
@@ -100,5 +101,28 @@ class CommentController: UITableViewController {
         let content = datasource[indexPath.row]
         return content.cellHeight()
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            NSLog("delete at index: \(indexPath.row)")
+            let content = self.datasource[indexPath.row]
+            guard let ct_id = content.comment.id else { return }
+            guard let token = self.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+            self.coreService.webService?.deleteComment(token: token, ct_id: ct_id, completion: { [weak self] (success, msg) in
+                if success {
+                    self?.datasource.remove(at: indexPath.row)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                }
+            })
+        }
+        return [deleteAction]
+    }
+    
     
 }

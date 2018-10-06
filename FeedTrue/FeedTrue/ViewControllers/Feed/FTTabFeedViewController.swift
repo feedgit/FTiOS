@@ -317,9 +317,17 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     
     func feedCellDidTouchUpComment(cell: FTFeedTableViewCell) {
         // TODO: show comment view
+        var comments: [FTCommentViewModel] = []
         guard let feed = cell.feed else { return }
         guard let coreService = self.rootViewController.coreService else { return }
-        let commentVC = CommentController(c: coreService, f: feed)
+        if let items = feed.comment?.comments {
+            for item in items {
+                let cmv = FTCommentViewModel(comment: item, type: .text)
+                comments.append(cmv)
+            }
+        }
+        
+        let commentVC = CommentController(c: coreService, f: feed, comments: comments)
         commentVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.75)
         let popupController = STPopupController(rootViewController: commentVC)
         popupController.style = .bottomSheet
