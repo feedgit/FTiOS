@@ -209,14 +209,14 @@ class FTReactions: Mappable {
 class FTComment: Mappable {
     
     var count: Int?
-    var data: [FTCommentData]?
+    var comments: [FTCommentMappable]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
         count <- map["count"]
-        data <- map["data"]
+        comments <- map["data"]
     }
 }
 

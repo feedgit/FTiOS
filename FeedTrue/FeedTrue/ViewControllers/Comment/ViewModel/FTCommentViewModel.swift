@@ -35,7 +35,7 @@ class FTCommentViewModel: BECellDataSource {
         return type.cellIdentifier
     }
     
-    var preferCellHeight = CGFloat(64)
+    var preferCellHeight = CGFloat(44)
     func cellHeight() -> CGFloat {
         return preferCellHeight
     }

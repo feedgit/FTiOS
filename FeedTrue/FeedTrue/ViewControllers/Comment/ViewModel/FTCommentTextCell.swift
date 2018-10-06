@@ -21,6 +21,7 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         super.awakeFromNib()
         // Initialization code
         avatarImageView.round()
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,9 +40,20 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         } else {
             self.avatarImageView.image = UIImage(named: "1000x1000")
         }
+        let lastname = data.comment.user?.last_name ?? ""
+        let lastnameAttribute = [ NSAttributedStringKey.foregroundColor: UIColor.blue ]
+        let lastnameAttrString = NSAttributedString(string: lastname, attributes: lastnameAttribute)
         
-        contentLabel.text = "\(data.comment.user?.last_name ?? "") \(data.comment.comment ?? "")"
+        let content = data.comment.comment?.htmlToString ?? ""
+        let contentAttribute = [ NSAttributedStringKey.foregroundColor: UIColor.black ]
+        let contentAttrString = NSAttributedString(string: content, attributes: contentAttribute)
         
+        let attString = NSMutableAttributedString(attributedString: lastnameAttrString)
+        attString.append(NSAttributedString(string: " "))
+        attString.append(contentAttrString)
+
+        //contentLabel.text = "\(lastname) \(data.comment.comment?.htmlToString ?? "")"
+        contentLabel.attributedText = attString
         if let post_on = data.comment.posted_on {
             dateLabel.text = moment(post_on)?.fromNowFT()
         } else {

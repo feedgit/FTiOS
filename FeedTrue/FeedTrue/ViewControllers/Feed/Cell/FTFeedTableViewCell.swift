@@ -64,7 +64,9 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     
     @IBOutlet weak var privacyImageView: UIImageView!
     
-
+    @IBOutlet weak var commentTableView: UITableView!
+    var datasource: [FTCommentViewModel] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -95,6 +97,13 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         }
         
         reactionButton.reactionSelector?.feedbackDelegate = self
+        
+        // comment tableview
+        FTCommentViewModel.register(tableView: commentTableView)
+        commentTableView.delegate = self
+        commentTableView.dataSource = self
+        commentTableView.separatorStyle = .none
+        commentTableView.tableFooterView = UIView()
     }
     
     
@@ -324,6 +333,15 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             }
         }
         privacyImageView.image = UIImage(named: privacyType.rawValue)
+        if let commments = data.feed.comment?.comments {
+            for c in commments {
+                let commentMV = FTCommentViewModel(comment: c, type: .text)
+                self.datasource.append(commentMV)
+            }
+            self.commentTableView.reloadData()
+        }
+        // config comment tableview
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -573,5 +591,30 @@ extension FTFeedTableViewCell: ReactionFeedbackDelegate {
             ftReactionType = .love
         }
         self.delegate?.feedCellDidChangeReactionType(cell: self)
+    }
+}
+
+extension FTFeedTableViewCell: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datasource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let content = datasource[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
+        
+        if let commentCell = cell as? BECellRender {
+            commentCell.renderCell(data: content)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let content = datasource[indexPath.row]
+        return content.cellHeight()
     }
 }
