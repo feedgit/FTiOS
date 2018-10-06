@@ -642,6 +642,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
+        
         let params:[String: Any] = [
             "content_type": ct_name,
             "object_id" : ct_id
@@ -743,6 +744,46 @@ class WebService: NSObject, FTCoreServiceComponent {
                     return
                 }
                 completion(false, nil)
+        }
+    }
+    
+    func sendComment(token: String, ct_name: String, ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let params:[String: Any] = [
+            "content_type": ct_name,
+            "object_id" : ct_id,
+            "comment": comment
+        ]
+        
+        let urlString = "\(host)/api/v1/comments/create/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTCommentMappable>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.comment == comment {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(true, value)
         }
     }
 }

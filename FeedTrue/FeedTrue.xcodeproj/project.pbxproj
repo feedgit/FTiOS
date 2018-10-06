@@ -99,6 +99,10 @@
 		13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13477464216793DE0026B048 /* ChatAccessoryView.xib */; };
 		1347746A2167946D0026B048 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134774682167946D0026B048 /* CommentController.swift */; };
 		1347746B2167946D0026B048 /* CommentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134774692167946D0026B048 /* CommentController.xib */; };
+		1347746D216864B20026B048 /* FTComment+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347746C216864B20026B048 /* FTComment+Mappable.swift */; };
+		1347747021686BDE0026B048 /* FTCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347746F21686BDE0026B048 /* FTCommentViewModel.swift */; };
+		1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1347747121686C8B0026B048 /* FTCommentTextCell.swift */; };
+		1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1347747221686C8B0026B048 /* FTCommentTextCell.xib */; };
 		13489DE5212EB9FA00C72BD3 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE4212EB9FA00C72BD3 /* WebService.swift */; };
 		13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DE7212EC65100C72BD3 /* SignInResponse.swift */; };
 		13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */; };
@@ -307,6 +311,10 @@
 		13477464216793DE0026B048 /* ChatAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatAccessoryView.xib; sourceTree = "<group>"; };
 		134774682167946D0026B048 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		134774692167946D0026B048 /* CommentController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentController.xib; sourceTree = "<group>"; };
+		1347746C216864B20026B048 /* FTComment+Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FTComment+Mappable.swift"; sourceTree = "<group>"; };
+		1347746F21686BDE0026B048 /* FTCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCommentViewModel.swift; sourceTree = "<group>"; };
+		1347747121686C8B0026B048 /* FTCommentTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCommentTextCell.swift; sourceTree = "<group>"; };
+		1347747221686C8B0026B048 /* FTCommentTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTCommentTextCell.xib; sourceTree = "<group>"; };
 		13489DE4212EB9FA00C72BD3 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		13489DE7212EC65100C72BD3 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		13489DEA212ED7BA00C72BD3 /* SignUpInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInfo.swift; sourceTree = "<group>"; };
@@ -817,6 +825,7 @@
 		1342B19321675E5000EFD1E6 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				1347746E21686BA10026B048 /* ViewModel */,
 				13477463216793DD0026B048 /* ChatAccessoryView.swift */,
 				13477464216793DE0026B048 /* ChatAccessoryView.xib */,
 				13477460216793C30026B048 /* CommonProtocols.swift */,
@@ -824,6 +833,16 @@
 				134774692167946D0026B048 /* CommentController.xib */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		1347746E21686BA10026B048 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1347746F21686BDE0026B048 /* FTCommentViewModel.swift */,
+				1347747121686C8B0026B048 /* FTCommentTextCell.swift */,
+				1347747221686C8B0026B048 /* FTCommentTextCell.xib */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		13489DE3212EB92400C72BD3 /* WebService */ = {
@@ -844,6 +863,7 @@
 				13353B05213C120900D74C47 /* FTAboutReponse.swift */,
 				13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */,
 				13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */,
+				1347746C216864B20026B048 /* FTComment+Mappable.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1252,6 +1272,7 @@
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
+				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
@@ -1386,6 +1407,7 @@
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
 				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
+				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
 				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
@@ -1468,6 +1490,7 @@
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
+				1347746D216864B20026B048 /* FTComment+Mappable.swift in Sources */,
 				134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */,
 				1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
@@ -1499,6 +1522,7 @@
 				1342A90F2164A24400EFD1E6 /* Date+FT.swift in Sources */,
 				134FF0EF2152B37300551771 /* VideoProgressView.swift in Sources */,
 				134FF0F12152B37300551771 /* SlideshowView.swift in Sources */,
+				1347747021686BDE0026B048 /* FTCommentViewModel.swift in Sources */,
 				134FF0F92152B37300551771 /* PhotosController.swift in Sources */,
 				134FF0F82152B37300551771 /* FooterView.swift in Sources */,
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftMoment
 
 extension String {
     var htmlToAttributedString: NSAttributedString? {

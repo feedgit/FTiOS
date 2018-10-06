@@ -9,6 +9,27 @@
 import UIKit
 
 class CommentController: UITableViewController {
+    var feed: FTFeedInfo!
+    var coreService: FTCoreService!
+    var datasource: [FTCommentViewModel] = []
+    
+    init(c: FTCoreService, f: FTFeedInfo) {
+        feed = f
+        coreService = c
+        super.init(nibName: "CommentController", bundle: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        FTCommentViewModel.register(tableView: self.tableView)
+        self.tableView.separatorStyle = .none
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var messageInputView: ChatAccessoryView! = {
         let footerView = ChatAccessoryView.getView(target: self, actionName: "SEND", action: #selector(sendMessage))
         return footerView
@@ -28,12 +49,28 @@ class CommentController: UITableViewController {
     }
     
     @objc func sendMessage() {
-        //get message from textview
         if let text = self.messageInputView.textView.text {
             let messageText =  text.trimmingCharacters(in: .whitespacesAndNewlines)
             // do something with message view
             self.messageInputView.textView.text = ""
             self.messageInputView.textViewDidChange(messageInputView.textView)
+            
+            guard let ct_name = feed.ct_name else { return }
+            guard let ct_id = feed.id else { return }
+            guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
+            coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: nil, completion: { [weak self] (success, comment) in
+                if success {
+                    guard let c = comment else { return }
+                    let cm = FTCommentViewModel(comment: c, type: .text)
+                    self?.datasource.append(cm)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                    
+                } else {
+                    // TODO: remove error comment
+                }
+            })
         }
         // hide keyboard after send (just to show how accessory view behave when keyboard hides)
         self.messageInputView.textView.resignFirstResponder()
@@ -42,21 +79,26 @@ class CommentController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return datasource.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "Hello world"
-        // Configure the cell...
+        let content = datasource[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
+        if let commentCell = cell as? BECellRender {
+            commentCell.renderCell(data: content)
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let content = datasource[indexPath.row]
+        return content.cellHeight()
     }
     
 }
