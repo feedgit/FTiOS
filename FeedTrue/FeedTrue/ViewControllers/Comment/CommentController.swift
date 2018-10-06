@@ -103,6 +103,11 @@ class CommentController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let content = self.datasource[indexPath.row]
+        if content.comment.editable == false {
+            return false
+        }
+        
         return true
     }
     
@@ -121,7 +126,11 @@ class CommentController: UITableViewController {
                 }
             })
         }
-        return [deleteAction]
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            // TODO: show edit view
+        }
+        return [deleteAction, editAction]
     }
     
     

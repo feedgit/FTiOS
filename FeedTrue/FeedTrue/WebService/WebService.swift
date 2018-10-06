@@ -820,4 +820,38 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(false, nil)
         }
     }
+    
+    func editComment(token: String, ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1//comments/\(ct_id)/edit/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTCommentMappable>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.comment == comment {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
 }
