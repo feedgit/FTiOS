@@ -9,14 +9,24 @@
 import UIKit
 
 class CommentController: UITableViewController {
+    enum CommentDataType {
+        case comment
+        case reply
+    }
+    
+    var type: CommentDataType = .comment
     var feed: FTFeedInfo!
     var coreService: FTCoreService!
-    var datasource: [FTCommentViewModel] = []
+    var datasource: [[FTCommentViewModel]] = []
+    var replyComment: FTCommentViewModel?
     
     init(c: FTCoreService, f: FTFeedInfo, comments: [FTCommentViewModel]) {
         feed = f
         coreService = c
-        datasource = comments
+        for cm in comments {
+            datasource.append([cm])
+        }
+        
         super.init(nibName: "CommentController", bundle: nil)
     }
     
@@ -59,17 +69,25 @@ class CommentController: UITableViewController {
             guard let ct_name = feed.ct_name else { return }
             guard let ct_id = feed.id else { return }
             guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
-            coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: nil, completion: { [weak self] (success, comment) in
+            let parentID = self.replyComment?.comment.id
+            coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: parentID, completion: { [weak self] (success, comment) in
                 if success {
                     guard let c = comment else { return }
                     let cm = FTCommentViewModel(comment: c, type: .text)
-                    self?.datasource.append(cm)
+                    self?.addComment(c: cm, parentID: parentID)
                     DispatchQueue.main.async {
                         self?.tableView.reloadData()
+                        self?.type = .comment
+                        self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
+                        self?.replyComment = nil
                     }
                     
                 } else {
-                    // TODO: remove error comment
+                    DispatchQueue.main.async {
+                        self?.type = .comment
+                        self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
+                        self?.replyComment = nil
+                    }
                 }
             })
         }
@@ -77,33 +95,65 @@ class CommentController: UITableViewController {
         self.messageInputView.textView.resignFirstResponder()
     }
     
+    
+    func addComment(c: FTCommentViewModel, parentID: Int?) {
+        switch type {
+        case .comment:
+            datasource.append([c])
+        case .reply:
+            for i in 0..<datasource.count {
+                guard let item_id = datasource[i].first?.comment.id else { continue }
+                guard let parent_id = parentID else { continue }
+                if item_id == parent_id {
+                    datasource[i].append(c)
+                }
+            }
+        }
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datasource[section].count
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = datasource[indexPath.row]
+        let content = datasource[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
         if let commentCell = cell as? BECellRender {
             commentCell.renderCell(data: content)
         }
+        
+        content.reply = { (comment) in
+            self.messageInputView.actionButton.setTitle("REPLY", for: .normal)
+            self.type = .reply
+            self.replyComment = comment
+        }
+        
+            if let c = cell as? FTCommentTextCell {
+                if indexPath.row == 0 {
+                    c.paddingLeftLayoutConstraint.constant = 8
+                    c.replyBtn.isHidden = false
+                } else {
+                    c.paddingLeftLayoutConstraint.constant = 32
+                    c.replyBtn.isHidden = true
+                }
+            }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let content = datasource[indexPath.row]
+        let content = datasource[indexPath.section][indexPath.row]
         return content.cellHeight()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        let content = self.datasource[indexPath.row]
+        let content = datasource[indexPath.section][indexPath.row]
         if content.comment.editable == false {
             return false
         }
@@ -114,7 +164,7 @@ class CommentController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             NSLog("delete at index: \(indexPath.row)")
-            let content = self.datasource[indexPath.row]
+            let content = self.datasource[indexPath.section][indexPath.row]
             guard let ct_id = content.comment.id else { return }
             guard let token = self.coreService.registrationService?.authenticationProfile?.accessToken else { return }
             self.coreService.webService?.deleteComment(token: token, ct_id: ct_id, completion: { [weak self] (success, msg) in

@@ -25,6 +25,7 @@ class FTCommentViewModel: BECellDataSource {
     var comment: FTCommentMappable
     var type: CommentType = .text
     var dataDidChange: (()->())?
+    var reply: ((FTCommentViewModel?) -> ())?
     
     init(comment: FTCommentMappable, type: CommentType) {
         self.comment = comment
@@ -35,7 +36,7 @@ class FTCommentViewModel: BECellDataSource {
         return type.cellIdentifier
     }
     
-    var preferCellHeight = CGFloat(44)
+    var preferCellHeight = CGFloat(64)
     func cellHeight() -> CGFloat {
         return preferCellHeight
     }

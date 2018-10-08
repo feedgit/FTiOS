@@ -12,11 +12,13 @@ import SwiftMoment
 class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
     
     typealias CellData = FTCommentViewModel
-    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+
+    @IBOutlet weak var paddingLeftLayoutConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var replyBtn: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -59,6 +61,13 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         } else {
             dateLabel.text = nil
         }
+        
+        paddingLeftLayoutConstraint.constant = 8
     }
+    
+    @IBAction func replyTouchUpAction(_ sender: Any) {
+        contentData?.reply?(contentData)
+    }
+    
     
 }
