@@ -144,6 +144,32 @@ class CommentController: UITableViewController {
                 }
             }
         
+        content.more = { (contentCell) in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                NSLog("delete at index: \(indexPath.row)")
+                guard let content = contentCell else { return }
+                guard let ct_id = content.comment.id else { return }
+                guard let token = self.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+                self.coreService.webService?.deleteComment(token: token, ct_id: ct_id, completion: { [weak self] (success, msg) in
+                    if success {
+                        self?.datasource.remove(at: indexPath.row)
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                        }
+                    }
+                })
+            })
+            
+            let editAction = UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: .default, handler: { (action) in
+                
+            })
+            
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { (action) in
+                
+            })
+            
+            FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: [deleteAction, editAction, cancelAction], view: self)
+        }
         return cell
     }
     
@@ -158,7 +184,7 @@ class CommentController: UITableViewController {
             return false
         }
         
-        return true
+        return false
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

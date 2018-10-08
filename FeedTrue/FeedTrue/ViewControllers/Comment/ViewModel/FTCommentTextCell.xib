@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="66" id="KGk-i7-Jjw" customClass="FTCommentTextCell" customModule="FeedTrue" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="418" height="66"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="FTCommentTextCell" customModule="FeedTrue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="446" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="418" height="65.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="446" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wFE-cF-q6G">
@@ -27,19 +27,19 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itp-Va-uLF">
-                        <rect key="frame" x="46" y="8" width="364" height="18"/>
+                        <rect key="frame" x="46" y="8" width="357" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5p-Le-bOL">
-                        <rect key="frame" x="46" y="34" width="35.5" height="17"/>
+                        <rect key="frame" x="83" y="34" width="36" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4g-vp-6QF">
-                        <rect key="frame" x="97.5" y="29" width="39" height="29"/>
+                        <rect key="frame" x="127" y="33" width="39" height="29"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                         <state key="normal" title="Reply">
                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -48,17 +48,56 @@
                             <action selector="replyTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m7M-ge-xgY"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBp-FO-tVn">
+                        <rect key="frame" x="407" y="7.5" width="35" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="Wj6-Fl-sdk"/>
+                            <constraint firstAttribute="width" secondItem="GBp-FO-tVn" secondAttribute="height" constant="16" id="zGj-fz-S5X"/>
+                        </constraints>
+                        <state key="normal" image="more_btn"/>
+                        <connections>
+                            <action selector="moreBtnTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Q2E-eh-axg"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpW-pJ-lM4">
+                        <rect key="frame" x="46" y="30" width="33" height="33"/>
+                        <subviews>
+                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="RzW-MH-6mT" customClass="ReactionButton" customModule="FeedTrue" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="8bD-sM-CqG"/>
+                                    <constraint firstAttribute="width" secondItem="RzW-MH-6mT" secondAttribute="height" id="Prk-EC-9Jv"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="HVt-9a-s4k"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RzW-MH-6mT" firstAttribute="top" secondItem="DpW-pJ-lM4" secondAttribute="top" id="Kdr-z4-maZ"/>
+                            <constraint firstAttribute="trailing" secondItem="RzW-MH-6mT" secondAttribute="trailing" id="MOr-LG-OND"/>
+                            <constraint firstItem="RzW-MH-6mT" firstAttribute="leading" secondItem="DpW-pJ-lM4" secondAttribute="leading" id="RZq-sq-IiH"/>
+                            <constraint firstAttribute="bottom" secondItem="RzW-MH-6mT" secondAttribute="bottom" id="SC8-Uw-bdL"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="RzW-MH-6mT" firstAttribute="top" secondItem="itp-Va-uLF" secondAttribute="bottom" constant="4" id="B83-sm-dt6"/>
                     <constraint firstItem="wFE-cF-q6G" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="DyI-St-uhu"/>
                     <constraint firstItem="itp-Va-uLF" firstAttribute="top" secondItem="wFE-cF-q6G" secondAttribute="top" id="J8Z-bw-ofl"/>
-                    <constraint firstAttribute="trailing" secondItem="itp-Va-uLF" secondAttribute="trailing" constant="8" id="Jww-yF-iWK"/>
+                    <constraint firstItem="L5p-Le-bOL" firstAttribute="leading" secondItem="RzW-MH-6mT" secondAttribute="trailing" constant="4" id="KLK-5z-AxA"/>
+                    <constraint firstAttribute="trailing" secondItem="GBp-FO-tVn" secondAttribute="trailing" constant="4" id="Vo9-Pr-8Qt"/>
                     <constraint firstItem="wFE-cF-q6G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Xy6-Vz-2Xo"/>
+                    <constraint firstItem="GBp-FO-tVn" firstAttribute="centerY" secondItem="itp-Va-uLF" secondAttribute="centerY" id="i5X-pn-ucl"/>
+                    <constraint firstItem="L5p-Le-bOL" firstAttribute="centerY" secondItem="RzW-MH-6mT" secondAttribute="centerY" id="lej-qC-9js"/>
                     <constraint firstItem="L5p-Le-bOL" firstAttribute="top" secondItem="itp-Va-uLF" secondAttribute="bottom" constant="8" id="mx1-76-Npl"/>
                     <constraint firstItem="g4g-vp-6QF" firstAttribute="centerY" secondItem="L5p-Le-bOL" secondAttribute="centerY" constant="1" id="uQe-p2-t9D"/>
                     <constraint firstItem="itp-Va-uLF" firstAttribute="leading" secondItem="wFE-cF-q6G" secondAttribute="trailing" constant="8" id="xpj-Cb-p0g"/>
-                    <constraint firstItem="g4g-vp-6QF" firstAttribute="leading" secondItem="L5p-Le-bOL" secondAttribute="trailing" constant="16" id="yGU-a9-n7A"/>
-                    <constraint firstItem="L5p-Le-bOL" firstAttribute="leading" secondItem="itp-Va-uLF" secondAttribute="leading" id="zwS-5F-G0W"/>
+                    <constraint firstItem="g4g-vp-6QF" firstAttribute="leading" secondItem="L5p-Le-bOL" secondAttribute="trailing" constant="8" id="yGU-a9-n7A"/>
+                    <constraint firstItem="RzW-MH-6mT" firstAttribute="leading" secondItem="itp-Va-uLF" secondAttribute="leading" id="yPW-ek-rdI"/>
+                    <constraint firstItem="GBp-FO-tVn" firstAttribute="leading" secondItem="itp-Va-uLF" secondAttribute="trailing" constant="4" id="yed-f6-hSb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -67,9 +106,13 @@
                 <outlet property="contentLabel" destination="itp-Va-uLF" id="vOS-S7-vMq"/>
                 <outlet property="dateLabel" destination="L5p-Le-bOL" id="4rr-HP-xN6"/>
                 <outlet property="paddingLeftLayoutConstraint" destination="DyI-St-uhu" id="g6K-4n-Inc"/>
+                <outlet property="reactionButton" destination="RzW-MH-6mT" id="x40-rQ-gda"/>
                 <outlet property="replyBtn" destination="g4g-vp-6QF" id="jz9-j8-2rC"/>
             </connections>
-            <point key="canvasLocation" x="-32" y="48"/>
+            <point key="canvasLocation" x="-30.399999999999999" y="39.580209895052477"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="more_btn" width="23" height="7"/>
+    </resources>
 </document>

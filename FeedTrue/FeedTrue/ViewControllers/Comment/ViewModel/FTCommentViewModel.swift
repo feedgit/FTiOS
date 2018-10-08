@@ -26,6 +26,7 @@ class FTCommentViewModel: BECellDataSource {
     var type: CommentType = .text
     var dataDidChange: (()->())?
     var reply: ((FTCommentViewModel?) -> ())?
+    var more: ((FTCommentViewModel?) -> ())?
     
     init(comment: FTCommentMappable, type: CommentType) {
         self.comment = comment
