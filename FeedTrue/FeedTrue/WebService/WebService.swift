@@ -854,4 +854,72 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    //https://api.feedtrue.com/api/v1/comments/feed/102/
+    
+    func getComments(token: String, ct_id: Int, completion: @escaping (Bool, FTCommentReplies?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/comments/feed/\(ct_id)/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTCommentReplies>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.count > 0 {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func getMoreComments(token: String, nextString: String, completion: @escaping (Bool, FTCommentReplies?)->()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        guard let url = URL(string: nextString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTCommentReplies>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.count > 0 {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
 }

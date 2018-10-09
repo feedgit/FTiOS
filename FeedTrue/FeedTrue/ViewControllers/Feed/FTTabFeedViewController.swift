@@ -71,7 +71,10 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     func loadMore() {
-        guard let nextURL = self.nextURLString else { return }
+        guard let nextURL = self.nextURLString else {
+            self.tableView.removeBottomActivityView()
+            return
+        }
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
             return
         }
@@ -91,11 +94,11 @@ class FTTabFeedViewController: FTTabViewController {
                             self?.tableView.removeBottomActivityView()
                         }
                     } else {
-                        self?.tableView.removeFromSuperview()
+                        self?.tableView.removeBottomActivityView()
                     }
                 }
             } else {
-                self?.tableView.removeFromSuperview()
+                self?.tableView.removeBottomActivityView()
             }
         })
         

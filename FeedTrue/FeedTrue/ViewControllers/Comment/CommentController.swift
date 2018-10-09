@@ -19,14 +19,11 @@ class CommentController: UITableViewController {
     var coreService: FTCoreService!
     var datasource: [[FTCommentViewModel]] = []
     var replyComment: FTCommentViewModel?
+    var nextURLString: String?
     
     init(c: FTCoreService, f: FTFeedInfo, comments: [FTCommentViewModel]) {
         feed = f
         coreService = c
-        for cm in comments {
-            datasource.append([cm])
-        }
-        
         super.init(nibName: "CommentController", bundle: nil)
     }
     
@@ -35,6 +32,84 @@ class CommentController: UITableViewController {
         
         FTCommentViewModel.register(tableView: self.tableView)
         self.tableView.separatorStyle = .none
+        self.loadComment()
+    }
+    
+    func loadComment() {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        guard let feedID = feed.id else { return }
+        coreService.webService?.getComments(token: token, ct_id: feedID, completion: { [weak self] (success, response) in
+            if success {
+                // TODO: init datasource
+                guard let results = response?.results else { return }
+                self?.nextURLString = response?.next
+                self?.datasource.removeAll()
+                for item in results {
+                    var comments:[ FTCommentViewModel] = []
+                    comments.append(FTCommentViewModel(comment: item, type: .text))
+                    if let replies = item.replies {
+                        for rp in replies {
+                            comments.append([FTCommentViewModel(comment: rp, type: .text)])
+                        }
+                    }
+                    
+                    self?.datasource.append(comments)
+                }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                    self?.tableView.addBotomActivityView {
+                        self?.loadMore()
+                    }
+                }
+            } else {
+                // TODO:
+            }
+        })
+    }
+    
+    func loadMore() {
+        guard let nextURL = self.nextURLString, !nextURL.isEmpty else {
+            self.tableView.removeBottomActivityView()
+            return
+        }
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        coreService.webService?.getMoreComments(token: token, nextString: nextURL, completion: { [weak self] (success, response) in
+            if success {
+                NSLog("Load more comment successful \(response?.next ?? "")")
+                self?.nextURLString = response?.next
+                DispatchQueue.main.async {
+                    if let results = response?.results {
+                        if results.count > 0 {
+                            self?.tableView.endBottomActivity()
+                            for item in results {
+                                var comments:[ FTCommentViewModel] = []
+                                comments.append(FTCommentViewModel(comment: item, type: .text))
+                                if let replies = item.replies {
+                                    for rp in replies {
+                                        comments.append([FTCommentViewModel(comment: rp, type: .text)])
+                                    }
+                                }
+                                
+                                self?.datasource.append(comments)
+                            }
+                            self?.tableView.reloadData()
+                        } else {
+                            self?.tableView.removeBottomActivityView()
+                        }
+                    }
+                    
+                    
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.tableView.removeBottomActivityView()
+                }
+            }
+        })
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

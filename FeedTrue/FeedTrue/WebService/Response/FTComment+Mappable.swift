@@ -43,7 +43,7 @@ class FTCommentMappable: Mappable {
     var attachItems: [String]?
     var posted_on: String? // "2018-10-06T03:32:19.331827Z"
     var reply_count: Int?
-    var replies: [String]?
+    var replies: [FTCommentMappable]?
     var reacts_count: Int?
     
     required init?(map: Map) {
