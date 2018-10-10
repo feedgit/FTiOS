@@ -937,7 +937,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)",
-            "Content-type": "multipart/form-data"
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
         ]
         
         let _: [String: Any] = [
@@ -954,7 +954,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             multipartFormData.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
-            
+
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
             switch result{
             case .success(let upload, _, _):

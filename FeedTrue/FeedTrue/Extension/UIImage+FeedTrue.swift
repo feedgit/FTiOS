@@ -21,4 +21,8 @@ extension UIImage {
         
         self.init(cgImage: cgImage)
     }
+    
+    class func defaultImage() -> UIImage? {
+        return UIImage(named: "1000x1000")
+    }
 }

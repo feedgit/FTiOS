@@ -358,8 +358,8 @@ extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigat
                 NSLog("\(#function) upload avatart successful")
             } else {
                 // TODO: rollback
-                NSLog("\(#function) upload avatart failure")
-                self.updateProfileInfo()
+                NSLog("\(#function) upload avatar failure")
+                self.avatarImageView.loadImage(fromURL: URL(string: self.profile?.avatar ?? ""), defaultImage: UIImage.defaultImage())
             }
         })
     }
