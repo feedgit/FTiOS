@@ -9,8 +9,13 @@
 import UIKit
 import SwiftMoment
 
+@objc protocol FTCommentTextCellDelegate {
+    func commentCellDidChangeReactionType(cell: FTCommentTextCell)
+    func commentCellDidRemoveReaction(cell: FTCommentTextCell)
+}
 class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
     
+    weak var delegate: FTCommentTextCellDelegate?
     typealias CellData = FTCommentViewModel
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
@@ -30,7 +35,7 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         
         reactionButton.reactionSelector = ReactionSelector()
         reactionButton.config           = ReactionButtonConfig() {
-            $0.iconMarging      = 10
+            $0.iconMarging      = 8
             $0.spacing          = 0
             $0.font             = UIFont(name: "HelveticaNeue", size: 0)
             $0.neutralTintColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)
@@ -109,9 +114,9 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         reactionButton.reaction   = Reaction.facebook.like
         ftReactionType = .love
         if reactionButton.isSelected == false {
-            //self.delegate?.feedCellDidRemoveReaction(cell: self)
+            self.delegate?.commentCellDidRemoveReaction(cell: self)
         } else {
-            //self.delegate?.feedCellDidChangeReactionType(cell: self)
+            self.delegate?.commentCellDidChangeReactionType(cell: self)
         }
     }
     
@@ -140,5 +145,7 @@ extension FTCommentTextCell: ReactionFeedbackDelegate {
         default:
             ftReactionType = .love
         }
+        
+        self.delegate?.commentCellDidChangeReactionType(cell: self)
     }
 }

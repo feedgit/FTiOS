@@ -238,7 +238,8 @@ class CommentController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let content = datasource[indexPath.section][indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTCommentTextCell
+        cell.delegate = self
         
         if let commentCell = cell as? BECellRender {
             commentCell.renderCell(data: content)
@@ -330,4 +331,48 @@ class CommentController: UITableViewController {
     }
     
     
+}
+
+extension CommentController: FTCommentTextCellDelegate {
+    func commentCellDidRemoveReaction(cell: FTCommentTextCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        guard let comment = cell.contentData?.comment else { return }
+        guard let ct_id = comment.id else { return }
+        guard let ct_name = comment.ct_name else { return }
+        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
+    
+    func commentCellDidChangeReactionType(cell: FTCommentTextCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let comment = cell.contentData?.comment else { return }
+        guard let ct_id = comment.id else { return }
+        guard let ct_name = comment.ct_name else { return }
+        let react_type = cell.ftReactionType.rawValue
+        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+            } else {
+                NSLog("did react failed \(react_type)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
 }
