@@ -8,7 +8,12 @@
 
 import UIKit
 
+@objc protocol ChatAccessoryViewDelegate {
+    func clearDidTouchUpAction()
+}
+
 final class ChatAccessoryView: UIView {
+    weak var delegate: ChatAccessoryViewDelegate?
     static let maxHeight: CGFloat = 125.0
     static let minHeight: CGFloat = 49.0
     static let paddingTop: CGFloat = 8.0
@@ -16,6 +21,7 @@ final class ChatAccessoryView: UIView {
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var placeholder: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var clearBtn: UIImageView!
     static func getView(target: UIViewController, text: String? = nil, placeholder: String? = "Type a message",
                         actionName: String, action: Selector) -> ChatAccessoryView? {
         let nib = ChatAccessoryView.nib()
@@ -29,6 +35,7 @@ final class ChatAccessoryView: UIView {
                 view.placeholder.isHidden = true
                 view.textView.text = text
             }
+            view.clearBtn.isHidden = true
             return view
         } else {
             return nil

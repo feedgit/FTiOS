@@ -12,6 +12,7 @@ class CommentController: UITableViewController {
     enum CommentDataType {
         case comment
         case reply
+        case edit
     }
     
     var type: CommentDataType = .comment
@@ -19,6 +20,7 @@ class CommentController: UITableViewController {
     var coreService: FTCoreService!
     var datasource: [[FTCommentViewModel]] = []
     var replyComment: FTCommentViewModel?
+    var editComment: FTCommentViewModel?
     var nextURLString: String?
     
     init(c: FTCoreService, f: FTFeedInfo, comments: [FTCommentViewModel]) {
@@ -33,6 +35,9 @@ class CommentController: UITableViewController {
         FTCommentViewModel.register(tableView: self.tableView)
         self.tableView.separatorStyle = .none
         self.loadComment()
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(clearTouchUpAction(_:)))
+        messageInputView.clearBtn.isUserInteractionEnabled = true
+        messageInputView.clearBtn.addGestureRecognizer(singleTap)
     }
     
     func loadComment() {
@@ -121,6 +126,15 @@ class CommentController: UITableViewController {
         return footerView
     }()
     
+    @objc func clearTouchUpAction(_ sender: UIImageView) {
+        messageInputView.clearBtn.isHidden = true
+        self.type = .comment
+        self.messageInputView.textView.text = ""
+        self.messageInputView.actionButton.setTitle("SEND", for: .normal)
+        self.replyComment = nil
+        
+    }
+    
     override var canBecomeFirstResponder: Bool {
         return true
     }
@@ -140,31 +154,56 @@ class CommentController: UITableViewController {
             // do something with message view
             self.messageInputView.textView.text = ""
             self.messageInputView.textViewDidChange(messageInputView.textView)
-            
+            self.messageInputView.clearBtn.isHidden = true
             guard let ct_name = feed.ct_name else { return }
             guard let ct_id = feed.id else { return }
             guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
             let parentID = self.replyComment?.comment.id
-            coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: parentID, completion: { [weak self] (success, comment) in
-                if success {
-                    guard let c = comment else { return }
-                    let cm = FTCommentViewModel(comment: c, type: .text)
-                    self?.addComment(c: cm, parentID: parentID)
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                        self?.type = .comment
-                        self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
-                        self?.replyComment = nil
+            if self.type == .edit {
+                self.messageInputView.clearBtn.isHidden = true
+                guard let comment_id = self.editComment?.comment.id else { return }
+                coreService.webService?.editComment(token: token, ct_id: comment_id, comment: messageText, parentID: nil, completion: { (success, response) in
+                    if success {
+                        // TODO: update edited comment
+                        guard let editComment = response?.comment else { return }
+                        for i in 0..<self.datasource.count {
+                            for j in 0..<self.datasource[i].count {
+                                guard let item_id = self.datasource[i][j].comment.id else { continue }
+                                if item_id == comment_id {
+                                    self.datasource[i][j].comment.comment = editComment
+                                    DispatchQueue.main.async {
+                                        self.tableView.reloadData()
+                                    }
+                                    return
+                                }
+                            }
+                        }
+                    } else {
+                        
                     }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                        self?.type = .comment
-                        self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
-                        self?.replyComment = nil
+                })
+            } else {
+                coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: parentID, completion: { [weak self] (success, comment) in
+                    if success {
+                        guard let c = comment else { return }
+                        let cm = FTCommentViewModel(comment: c, type: .text)
+                        self?.addComment(c: cm, parentID: parentID)
+                        DispatchQueue.main.async {
+                            self?.tableView.reloadData()
+                            self?.type = .comment
+                            self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
+                            self?.replyComment = nil
+                        }
+                        
+                    } else {
+                        DispatchQueue.main.async {
+                            self?.type = .comment
+                            self?.messageInputView.actionButton.setTitle("SEND", for: .normal)
+                            self?.replyComment = nil
+                        }
                     }
-                }
-            })
+                })
+            }
         }
         // hide keyboard after send (just to show how accessory view behave when keyboard hides)
         self.messageInputView.textView.resignFirstResponder()
@@ -183,6 +222,8 @@ class CommentController: UITableViewController {
                     datasource[i].append(c)
                 }
             }
+        case .edit:
+            break
         }
     }
     // MARK: - Table view data source
@@ -236,7 +277,11 @@ class CommentController: UITableViewController {
             })
             
             let editAction = UIAlertAction(title: NSLocalizedString("Edit", comment: ""), style: .default, handler: { (action) in
-                
+                self.messageInputView.clearBtn.isHidden = false
+                self.messageInputView.textView.text = contentCell?.comment.comment
+                self.messageInputView.placeholder.isHidden = true
+                self.type = .edit
+                self.editComment = contentCell
             })
             
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { (action) in

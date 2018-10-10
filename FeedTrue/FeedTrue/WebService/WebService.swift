@@ -826,14 +826,18 @@ class WebService: NSObject, FTCoreServiceComponent {
             "Authorization": "JWT \(token)"
         ]
         
-        let urlString = "\(host)/api/v1//comments/\(ct_id)/edit/"
+        let urlString = "\(host)/api/v1/comments/\(ct_id)/edit/"
+        
+        let params:[String: Any] = [
+            "comment": comment
+        ]
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
         }
         
-        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
+        Alamofire.request(url, method: .patch, parameters: params, encoding: URLEncoding.default, headers: headers)
             .responseObject { (response: DataResponse<FTCommentMappable>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
@@ -851,7 +855,7 @@ class WebService: NSObject, FTCoreServiceComponent {
                     return
                 }
                 
-                completion(true, value)
+                completion(false, value)
         }
     }
     
