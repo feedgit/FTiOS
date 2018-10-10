@@ -37,7 +37,7 @@ class FTCommentMappable: Mappable {
     var id: Int?
     var ct_name: String?
     var editable: Bool?
-    var request_reacted: Bool?
+    var request_reacted: String?
     var user: UserProfile?
     var comment: String?
     var attachItems: [String]?

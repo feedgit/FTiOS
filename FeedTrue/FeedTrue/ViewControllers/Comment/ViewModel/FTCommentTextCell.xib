@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="width" secondItem="RzW-MH-6mT" secondAttribute="height" id="Prk-EC-9Jv"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="HVt-9a-s4k"/>
+                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wwm-9q-3Fq"/>
                                 </connections>
                             </view>
                         </subviews>

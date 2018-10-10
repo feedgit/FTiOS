@@ -76,32 +76,29 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         }
         
         paddingLeftLayoutConstraint.constant = 8
-        
-        /*
-         // config react icon
-         if let reactType = feed.request_reacted {
-         switch reactType {
-         case "LOVE":
-         ftReactionType = .love
-         reactionButton.reaction   = Reaction.facebook.like
-         case "LAUGH":
-         ftReactionType = .laugh
-         reactionButton.reaction   = Reaction.facebook.laugh
-         case "WOW":
-         ftReactionType = .wow
-         reactionButton.reaction   = Reaction.facebook.wow
-         case "SAD":
-         ftReactionType = .sad
-         reactionButton.reaction   = Reaction.facebook.sad
-         case "ANGRY":
-         ftReactionType = .angry
-         reactionButton.reaction   = Reaction.facebook.angry
-         default:
-         ftReactionType = .love
-         reactionButton.reaction   = Reaction.facebook.like
-         }
-         }
-         */
+        // config react icon
+        if let reactType = data.comment.request_reacted {
+            switch reactType {
+            case "LOVE":
+                ftReactionType = .love
+                reactionButton.reaction   = Reaction.facebook.like
+            case "LAUGH":
+                ftReactionType = .laugh
+                reactionButton.reaction   = Reaction.facebook.laugh
+            case "WOW":
+                ftReactionType = .wow
+                reactionButton.reaction   = Reaction.facebook.wow
+            case "SAD":
+                ftReactionType = .sad
+                reactionButton.reaction   = Reaction.facebook.sad
+            case "ANGRY":
+                ftReactionType = .angry
+                reactionButton.reaction   = Reaction.facebook.angry
+            default:
+                ftReactionType = .love
+                reactionButton.reaction   = Reaction.facebook.like
+            }
+        }
     }
     
     @IBAction func replyTouchUpAction(_ sender: Any) {
