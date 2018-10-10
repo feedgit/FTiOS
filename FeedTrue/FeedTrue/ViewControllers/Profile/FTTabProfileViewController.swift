@@ -37,6 +37,8 @@ class FTTabProfileViewController: FTTabViewController {
     @IBOutlet weak var followBtn: UIButton!
     
     @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
+    
+    var imagePicker: UIImagePickerController!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,6 +52,45 @@ class FTTabProfileViewController: FTTabViewController {
             navigationItem.leftBarButtonItem = leftBarButton
             self.loadUserInfoWithUsername(username: username!)
         }
+        
+        self.avatarImageView.isUserInteractionEnabled = true
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(editAvatar))
+        self.avatarImageView.addGestureRecognizer(singleTap)
+        
+        // image pikcer
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+    }
+    
+    @objc func editAvatar() {
+        let takePhotoAction = UIAlertAction(title: NSLocalizedString("Take a photo", comment: ""), style: .default) { (action) in
+            // TODO: take a photo
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .camera
+                self.imagePicker.cameraCaptureMode = .photo
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let chooseFromGalleryAction = UIAlertAction(title: NSLocalizedString("Choose from gallery", comment: ""), style: .default) { (action) in
+            // TODO: choose from gallery
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.sourceType = .photoLibrary
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let deleteAction = UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .default) { (action) in
+            // TODO: delete avatar
+        }
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (action) in
+            // TODO: cancel action
+        }
+        
+        FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: [takePhotoAction, chooseFromGalleryAction, deleteAction, cancelAction], view: self.view)
     }
     
     @objc func popView() {
@@ -290,5 +331,36 @@ extension FTTabProfileViewController: FTEditProfileDelegate {
     
     func didSaveFailure() {
         
+    }
+}
+
+extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    //MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        // dismiss picker view controller
+        self.dismiss(animated: true, completion: nil)
+        
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        avatarImageView.image = image
+        uploadAvatar(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadAvatar(image: UIImage) {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        
+        rootViewController.coreService.webService?.uploadAvatar(token: token, image: image, completion: { (success, response) in
+            if success {
+                // TODO: save new avatar
+                NSLog("\(#function) upload avatart successful")
+            } else {
+                // TODO: rollback
+                NSLog("\(#function) upload avatart failure")
+                self.updateProfileInfo()
+            }
+        })
     }
 }

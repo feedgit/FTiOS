@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireObjectMapper
+import SwiftMoment
 
 class WebService: NSObject, FTCoreServiceComponent {
     
@@ -923,7 +924,103 @@ class WebService: NSObject, FTCoreServiceComponent {
                     return
                 }
                 
-                completion(true, value)
+                completion(false, value)
         }
+    }
+    
+    func uploadAvatar(token: String, image: UIImage, completion: @escaping (Bool, String?) -> ()) {
+        
+        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
+            completion(false, nil)
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let params: [String: Any] = [
+            "file": imageData//,
+            //"filename": "\(moment().description).jpg"
+        ]
+        
+        let urlString = "\(host)/api/v1/users/account/upload_avatar/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+
+                guard let value = response.result.value as? [String: Any] else {
+                    completion(false, nil)
+                    return
+                }
+                if let avatar = value["avatar"] as? [String] {
+                    completion(true, avatar.first)
+                    return
+                } else if let error_msg = value["file"] as? [String] {
+                    completion(false, error_msg.first)
+                    return
+                }
+
+                completion(false, nil)
+        }
+        
+//        Alamofire.upload(imageData, to: url, method: .post, headers: headers)
+//            .responseJSON { (response) in
+//                guard response.result.isSuccess else {
+//                    completion(false, nil)
+//                    return
+//                }
+//
+//
+//                guard let value = response.result.value as? [String: Any] else {
+//                    completion(false, nil)
+//                    return
+//                }
+//
+//                if let avatar = value["avatar"] as? String {
+//                    completion(true, avatar)
+//                    return
+//                } else if let error_msg = value["file"] as? String {
+//                    completion(false, error_msg)
+//                    return
+//                }
+//
+//                completion(true, nil)
+//        }
+        
+//        Alamofire.upload(
+//            multipartFormData: { multipartFormData in
+//                let imageData = UIImageJPEGRepresentation(image, 0.8)
+//                multipartFormData.append(imageData!, withName: "image", fileName: "photo.jpg", mimeType: "jpg/png")
+//                for (key, value) in parameters {
+//                    if value is String || value is Int {
+//                        multipartFormData.append("\(value)".data(using: .utf8)!, withName: key)
+//                    }
+//                }
+//        },
+//            to: url,
+//            headers: headers,
+//            encodingCompletion: { encodingResult in
+//                switch encodingResult {
+//                case .success(let upload, _, _):
+//                    upload.responseJSON { response in
+//                        debugPrint(response)
+//                        completion(true, "")
+//                    }
+//                case .failure(let encodingError):
+//                    print("encoding Error : \(encodingError)")
+//                    completion(false, "")
+//                }
+//        })
+        
     }
 }
