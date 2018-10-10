@@ -40,6 +40,7 @@ PODS:
   - STPopup (1.8.3)
   - SwiftMoment (0.7)
   - SwiftyJSON (4.0.0)
+  - YKPhotoCircleCrop (1.3.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - STPopup
   - SwiftMoment
   - SwiftyJSON (~> 4.0)
+  - YKPhotoCircleCrop
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -78,6 +80,7 @@ SPEC REPOS:
     - STPopup
     - SwiftMoment
     - SwiftyJSON
+    - YKPhotoCircleCrop
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -99,7 +102,8 @@ SPEC CHECKSUMS:
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  YKPhotoCircleCrop: 490de96b999aef44cea6d6dca8e0bc199a430e63
 
-PODFILE CHECKSUM: 677a88f971bc25a4ec839ac6e613701efaec7e73
+PODFILE CHECKSUM: e97331fe8461a328120a2cc3fdd5b12d59af211b
 
 COCOAPODS: 1.5.3

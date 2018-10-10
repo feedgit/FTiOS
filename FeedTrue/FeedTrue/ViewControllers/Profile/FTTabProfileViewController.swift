@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import ScrollableSegmentedControl
+import YKPhotoCircleCrop
 
 enum ProfileDisplayType {
     case owner
@@ -341,8 +342,11 @@ extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigat
         self.dismiss(animated: true, completion: nil)
         
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        avatarImageView.image = image
-        uploadAvatar(image: image)
+        let circleCropController = YKCircleCropViewController()
+        circleCropController.image = image
+        circleCropController.delegate = self
+        present(circleCropController, animated: true, completion: nil)
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -362,5 +366,16 @@ extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigat
                 self.avatarImageView.loadImage(fromURL: URL(string: self.profile?.avatar ?? ""), defaultImage: UIImage.defaultImage())
             }
         })
+    }
+}
+
+extension FTTabProfileViewController: YKCircleCropViewControllerDelegate {
+    func circleCropDidCancel() {
+        print("User canceled the crop flow")
+    }
+    
+    func circleCropDidCropImage(_ image: UIImage) {
+        avatarImageView.image = image
+        uploadAvatar(image: image)
     }
 }
