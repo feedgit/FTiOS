@@ -143,6 +143,13 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
         print("Segment at index \(sender.selectedSegmentIndex)  selected")
+        switch sender.selectedSegmentIndex {
+        case 2: // video
+            let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
+            self.navigationController?.pushViewController(videoVC, animated: true)
+        default:
+            break
+        }
     }
     
     @objc func feedTabTouchAction() {

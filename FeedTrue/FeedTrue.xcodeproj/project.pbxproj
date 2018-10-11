@@ -17,6 +17,10 @@
 		130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */; };
 		130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */; };
 		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
+		132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */; };
+		132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */; };
+		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
+		132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -229,6 +233,10 @@
 		130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewCell.xib; sourceTree = "<group>"; };
+		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
+		132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewController.xib; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -1074,6 +1082,8 @@
 				13BA9B1F214A60CE00AD06D7 /* Cell */,
 				13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */,
 				13BA9A862147C35C00AD06D7 /* FTTabFeedViewController.xib */,
+				132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */,
+				132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -1153,6 +1163,8 @@
 			children = (
 				13BA9B20214A614600AD06D7 /* FTFeedTableViewCell.swift */,
 				13BA9B21214A614600AD06D7 /* FTFeedTableViewCell.xib */,
+				132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */,
+				132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1253,6 +1265,7 @@
 			files = (
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
+				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
 				134FF1002152B37300551771 /* 4.jpg in Resources */,
@@ -1275,6 +1288,7 @@
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
+				132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */,
 				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
@@ -1438,6 +1452,7 @@
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
+				132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13BA9B0E2149792200AD06D7 /* FileProviderCache.swift in Sources */,
 				1342A8E521649FC500EFD1E6 /* UIAlertController+Extensions.swift in Sources */,
@@ -1522,6 +1537,7 @@
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 				1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */,
 				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
+				132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */,
 				134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */,
 				1342A8F521649FC500EFD1E6 /* Assets.swift in Sources */,
 				13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */,
