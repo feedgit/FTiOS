@@ -21,7 +21,6 @@ import SwiftMoment
     func feedCellDidRemoveReaction(cell: FTFeedTableViewCell)
     func feedCellDidSave(cell: FTFeedTableViewCell)
     func feedCellDidUnSave(cell: FTFeedTableViewCell)
-    
     func feedCellDidTouchUpComment(cell: FTFeedTableViewCell)
 }
 
@@ -437,7 +436,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count > 2 ? 2 : photos.count
+        return photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -485,6 +484,9 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         #endif
         
         //self.present(self.viewerController!, animated: false, completion: nil)
+        if let topVC = UIApplication.topViewController() {
+            topVC.present(self.viewerController!, animated: false, completion: nil)
+        }
         NSLog("\(#function) at index path: \(indexPath.row)")
     }
     
