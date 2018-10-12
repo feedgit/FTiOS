@@ -50,6 +50,9 @@
                                     <constraint firstAttribute="width" constant="35" id="8YD-lr-yPC"/>
                                     <constraint firstAttribute="width" secondItem="5BY-gW-JuO" secondAttribute="height" id="eAh-b6-gZT"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="reactButtonTouchUpAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Fv3-VB-fST"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOZ-Aa-a4R">
                                 <rect key="frame" x="105.5" y="18" width="35" height="35"/>
@@ -85,7 +88,11 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vff-mz-tVB">
-                        <rect key="frame" x="94.5" y="94.5" width="57" height="57"/>
+                        <rect key="frame" x="107" y="107" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="PBk-AY-Drt"/>
+                            <constraint firstAttribute="width" secondItem="Vff-mz-tVB" secondAttribute="height" multiplier="1:1" id="Uxe-XJ-CYN"/>
+                        </constraints>
                         <state key="normal" image="ic_play_video"/>
                     </button>
                 </subviews>

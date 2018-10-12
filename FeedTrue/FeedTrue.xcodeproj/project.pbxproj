@@ -21,6 +21,7 @@
 		132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */; };
 		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
 		132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */; };
+		132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -237,6 +238,7 @@
 		132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
 		132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewController.xib; sourceTree = "<group>"; };
+		132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideo.swift; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -875,6 +877,7 @@
 				13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */,
 				1347746C216864B20026B048 /* FTComment+Mappable.swift */,
 				13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */,
+				132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1419,6 +1422,7 @@
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
+				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,

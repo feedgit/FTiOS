@@ -973,4 +973,33 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
         
     }
+    
+    func getFeedVideo(username: String?, token: String, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = "\(host)/api/v1/media/video/feed/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTFeedVideo>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
 }

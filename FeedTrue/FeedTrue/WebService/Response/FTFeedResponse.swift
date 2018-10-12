@@ -191,19 +191,84 @@ class FTFeedContent: Mappable {
     }
 }
 
+/*
+ "data": [
+ {
+ "user": {
+ "id": 21,
+ "full_name": "Dương Nữ Hạ Băng",
+ "avatar": "https://api.feedtrue.com/media/CACHE/images/avatar/profile/21/avatar/e4673c5d05ff882867ad078f40c59122.jpg"
+ },
+ "react_type": "LOVE"
+ },
+ {
+ "user": {
+ "id": 1,
+ "full_name": "Công Toàn Lê",
+ "avatar": "https://api.feedtrue.com/media/CACHE/images/avatar/profile/1/avatar/2d93ff2414a22888af288b3160ac6c8f.jpg"
+ },
+ "react_type": "LOVE"
+ }
+ ]
+ */
 class FTReactions: Mappable {
-    //var type: String?
     var count: Int?
-    var data: Any?
+    var data: [FTReactData]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        //type <- map["type"]
         count <- map["count"]
         data <- map["data"]
     }
+}
+
+/*
+ "user": {
+ "id": 1,
+ "full_name": "Công Toàn Lê",
+ "avatar": "https://api.feedtrue.com/media/CACHE/images/avatar/profile/1/avatar/2d93ff2414a22888af288b3160ac6c8f.jpg"
+ },
+ "react_type": "LOVE"
+ */
+class FTReactData: Mappable {
+    var user: FTReactUser?
+    var react_type = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        user <- map["user"]
+        react_type <- map["react_type"]
+    }
+}
+
+/*
+ {
+ "id": 1,
+ "full_name": "Công Toàn Lê",
+ "avatar": "https://api.feedtrue.com/media/CACHE/images/avatar/profile/1/avatar/2d93ff2414a22888af288b3160ac6c8f.jpg"
+ }
+ */
+class FTReactUser: Mappable {
+    var id: Int = -1
+    var full_name = ""
+    var avatar = ""
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        full_name <- map["full_name"]
+        avatar <- map["avatar"]
+    }
+    
+    
 }
 
 class FTComment: Mappable {

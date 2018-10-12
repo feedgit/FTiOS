@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "FTFeedVideoCollectionViewCell"
 
 class FTFeedVideoCollectionViewController: UICollectionViewController {
-    var datasource: [FTFeedInfo] = []
+    var datasource: [FTFeedVideoContent] = []
     var coreService: FTCoreService!
     var nextURLString: String?
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -47,12 +47,12 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
             return
         }
-        coreService.webService?.getFeed(page: 1, per_page: 5, username: nil, token: token, completion: { [weak self] (success, response) in
+        coreService.webService?.getFeedVideo(username: nil, token: token, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
                 DispatchQueue.main.async {
-                    if let feeds = response?.feeds {
+                    if let feeds = response?.results {
                         self?.datasource.removeAll()
                         self?.datasource = feeds
                         self?.collectionView?.reloadData()
@@ -93,9 +93,8 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FTFeedVideoCollectionViewCell
     
         // Configure the cell
-        let feed = datasource[indexPath.row]
-        cell.imageView.image = UIImage.defaultImage()
-        cell.contentLabel.text = feed.text?.htmlToString
+        cell.render(content: datasource[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -148,5 +147,48 @@ extension FTFeedVideoCollectionViewController: UICollectionViewDelegateFlowLayou
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
+    }
+}
+
+extension FTFeedVideoCollectionViewController: VideoCellDelegate {
+    func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.contetnData?.id else { return }
+        guard let ct_name = cell.contetnData?.ct_name else { return }
+        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+                    self.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
+        })
+    }
+    
+    func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.contetnData?.id else { return }
+        guard let ct_name = cell.contetnData?.ct_name else { return }
+        let react_type = cell.ftReactionType.rawValue
+        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+            } else {
+                NSLog("did react failed \(react_type)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+                    self.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
+        })
     }
 }
