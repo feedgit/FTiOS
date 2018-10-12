@@ -151,6 +151,48 @@ extension FTFeedVideoCollectionViewController: UICollectionViewDelegateFlowLayou
 }
 
 extension FTFeedVideoCollectionViewController: VideoCellDelegate {
+    func videoCellDidSaved(cell: FTFeedVideoCollectionViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.contetnData?.id else { return }
+        guard let ct_name = cell.contetnData?.ct_name else { return }
+        coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+                    cell.contetnData?.saved = false
+                    self.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
+        })
+    }
+    
+    func videoCellDidUnSaved(cell: FTFeedVideoCollectionViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        guard let ct_id = cell.contetnData?.id else { return }
+        guard let ct_name = cell.contetnData?.ct_name else { return }
+        coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+                    cell.contetnData?.saved = true
+                    self.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
+        })
+    }
+    
     func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell) {
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
             return

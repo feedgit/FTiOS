@@ -9,8 +9,13 @@
 import UIKit
 
 @objc protocol VideoCellDelegate {
+    // reaction
     func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell)
     func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell)
+    
+    // saved
+    func videoCellDidSaved(cell: FTFeedVideoCollectionViewCell)
+    func videoCellDidUnSaved(cell: FTFeedVideoCollectionViewCell)
 }
 class FTFeedVideoCollectionViewCell: UICollectionViewCell {
 
@@ -68,12 +73,31 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
             ftReactionType = .love
             reactionButton.reaction   = Reaction.facebook.like
         }
+        
+        // config save icon
+        if content.saved {
+            // icon saved
+            saveBtn.backgroundColor = UIColor.navigationBarColor()
+        } else {
+            // icon save
+            saveBtn.backgroundColor = .clear
+        }
     }
     @IBAction func commentBtnTouchUpAction(_ sender: Any) {
         
     }
     @IBAction func saveBtnTouchUpAction(_ sender: Any) {
-        
+        if let saved = contetnData?.saved {
+            if saved {
+                self.delegate?.videoCellDidUnSaved(cell: self)
+                self.saveBtn.backgroundColor = .clear
+                self.contetnData?.saved = false
+                return
+            }
+        }
+        self.saveBtn.backgroundColor = UIColor.navigationBarColor()
+        self.contetnData?.saved = true
+        self.delegate?.videoCellDidSaved(cell: self)
     }
     
     @IBAction func reactButtonTouchUpAction(_ sender: Any) {
