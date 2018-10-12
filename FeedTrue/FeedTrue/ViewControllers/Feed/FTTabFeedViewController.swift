@@ -62,7 +62,6 @@ class FTTabFeedViewController: FTTabViewController {
                             self?.loadMore()
                         }
                     }
-                    
                 }
             } else {
                 NSLog("load feed failure")
@@ -146,6 +145,7 @@ class FTTabFeedViewController: FTTabViewController {
         switch sender.selectedSegmentIndex {
         case 2: // video
             let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
+            videoVC.delegate = self
             self.navigationController?.pushViewController(videoVC, animated: true)
         default:
             break
@@ -342,5 +342,11 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         let popupController = STPopupController(rootViewController: commentVC)
         popupController.style = .bottomSheet
         popupController.present(in: self)
+    }
+}
+
+extension FTTabFeedViewController: VideoControllerDelegate {
+    func videoGoHome() {
+        self.segmentedControl.selectedSegmentIndex = 0
     }
 }

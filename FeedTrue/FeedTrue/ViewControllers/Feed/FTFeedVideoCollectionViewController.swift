@@ -10,12 +10,18 @@ import UIKit
 
 private let reuseIdentifier = "FTFeedVideoCollectionViewCell"
 
+@objc protocol VideoControllerDelegate {
+    func videoGoHome()
+}
+
 class FTFeedVideoCollectionViewController: UICollectionViewController {
+    weak var delegate: VideoControllerDelegate?
     var datasource: [FTFeedVideoContent] = []
     var coreService: FTCoreService!
     var nextURLString: String?
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate var backBarBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +30,23 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-//        self.collectionView!.register(FTFeedVideoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView?.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.delegate = self
         collectionView?.dataSource = self
         // Do any additional setup after loading the view.
         self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
         self.loadFeed()
+        
+        //backBarBtn = UIBarButtonItem(title: NSLocalizedString("Home", comment: ""), style: .plain, target: self, action: #selector(back(_:)))
+        backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
+        backBarBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = backBarBtn
+        navigationItem.title = NSLocalizedString("Videos", comment: "")
+    }
+    
+    @objc func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        self.delegate?.videoGoHome()
     }
     
     init(coreService c: FTCoreService) {
