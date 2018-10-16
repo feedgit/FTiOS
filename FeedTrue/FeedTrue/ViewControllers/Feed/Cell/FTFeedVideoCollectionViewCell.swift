@@ -77,10 +77,10 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
         // config save icon
         if content.saved {
             // icon saved
-            saveBtn.backgroundColor = UIColor.navigationBarColor()
+            self.saveBtn.setImage(UIImage(named: "saved"), for: .normal)
         } else {
             // icon save
-            saveBtn.backgroundColor = .clear
+            self.saveBtn.setImage(UIImage(named: "save"), for: .normal)
         }
     }
     @IBAction func commentBtnTouchUpAction(_ sender: Any) {
@@ -90,12 +90,12 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
         if let saved = contetnData?.saved {
             if saved {
                 self.delegate?.videoCellDidUnSaved(cell: self)
-                self.saveBtn.backgroundColor = .clear
+                self.saveBtn.setImage(UIImage(named: "save"), for: .normal)
                 self.contetnData?.saved = false
                 return
             }
         }
-        self.saveBtn.backgroundColor = UIColor.navigationBarColor()
+        self.saveBtn.setImage(UIImage(named: "saved"), for: .normal)
         self.contetnData?.saved = true
         self.delegate?.videoCellDidSaved(cell: self)
     }

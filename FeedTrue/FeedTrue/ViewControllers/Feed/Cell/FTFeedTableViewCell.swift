@@ -302,14 +302,14 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         if let saved = feed.saved {
             if saved {
                 // icon saved
-                savedBtn.backgroundColor = UIColor.navigationBarColor()
+                savedBtn.setImage(UIImage(named: "saved"), for: .normal)
             } else {
                 // icon save
-                savedBtn.backgroundColor = .clear
+                savedBtn.setImage(UIImage(named: "save"), for: .normal)
             }
         } else {
             // icon save
-            savedBtn.backgroundColor = .clear
+            savedBtn.setImage(UIImage(named: "save"), for: .normal)
         }
         
         // config privacy icon
@@ -404,12 +404,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         if let saved = feed.saved {
             if saved {
                 self.delegate?.feedCellDidUnSave(cell: self)
-                self.savedBtn.backgroundColor = .clear
+                self.savedBtn.setImage(UIImage(named: "save"), for: .normal)
                 self.feed.saved = false
                 return
             }
         }
-        self.savedBtn.backgroundColor = UIColor.navigationBarColor()
+        self.savedBtn.setImage(UIImage(named: "saved"), for: .normal)
         self.feed.saved = true
         self.delegate?.feedCellDidSave(cell: self)
     }
