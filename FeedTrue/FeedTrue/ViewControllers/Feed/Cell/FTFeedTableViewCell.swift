@@ -64,6 +64,9 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var privacyImageView: UIImageView!
     
     @IBOutlet weak var commentTableView: UITableView!
+    @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var reactionCountLabel: UILabel!
+    
     var datasource: [FTCommentViewModel] = []
     
     override func awakeFromNib() {
@@ -279,6 +282,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         collectionView.reloadData()
         
         // config react icon
+        if let reactCount = feed.reactions?.count {
+            self.reactionCountLabel.text = reactCount > 0 ? "\(reactCount)" : nil
+        } else {
+            self.reactionCountLabel.text = nil
+        }
+        
         if let reactType = feed.request_reacted {
             switch reactType {
             case "LOVE":
@@ -336,14 +345,18 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             }
         }
         privacyImageView.image = UIImage(named: privacyType.rawValue)
-        if let commments = data.feed.comment?.comments {
-            for c in commments {
+        if let comments = data.feed.comment?.comments {
+            self.commentCountLabel.text = comments.count > 0 ? "\(comments.count)" : nil
+            for c in comments {
                 let commentMV = FTCommentViewModel(comment: c, type: .text)
                 if self.datasource.count < 3 {
                     self.datasource.append(commentMV)
                 }
             }
+        } else {
+            self.commentCountLabel.text = nil
         }
+        
         self.commentTableView.reloadData()
         // config comment tableview
         
