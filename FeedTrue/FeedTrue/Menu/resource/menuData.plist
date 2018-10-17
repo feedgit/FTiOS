@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title</key>
+		<string>Video</string>
+		<key>image</key>
+		<string>ic_video</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Blog</string>
+		<key>image</key>
+		<string>ic_blog</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>SingSong</string>
+		<key>image</key>
+		<string>ic_singsong</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Talking</string>
+		<key>image</key>
+		<string>ic_talking</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Travel</string>
+		<key>image</key>
+		<string>ic_travel</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Dating</string>
+		<key>image</key>
+		<string>ic_dating</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>MIAB</string>
+		<key>image</key>
+		<string>ic_miab</string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>Celebrity</string>
+		<key>image</key>
+		<string>ic_celeb</string>
+	</dict>
+</array>
+</plist>

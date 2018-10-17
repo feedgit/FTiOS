@@ -43,12 +43,12 @@ class FeedTrueRootViewController: UIViewController {
         cameraBtn.addTarget(self, action: #selector(camera(_:)), for: .touchUpInside)
         cameraBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         self.cameraBarBtn = UIBarButtonItem(customView: cameraBtn)
-        navigationController?.topViewController?.navigationItem.leftBarButtonItem = self.cameraBarBtn
+        //navigationController?.topViewController?.navigationItem.leftBarButtonItem = self.cameraBarBtn
         
         let messageBtn = UIButton.init(type: .custom)
-        messageBtn.setImage(UIImage(named: "message")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        messageBtn.setImage(UIImage(named: "ic_add")?.withRenderingMode(.alwaysOriginal), for: .normal)
         messageBtn.addTarget(self, action: #selector(message(_:)), for: .touchUpInside)
-        messageBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        messageBtn.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
         self.messageBarBtn = UIBarButtonItem(customView: messageBtn)
         customNavigationController?.topViewController?.navigationItem.rightBarButtonItem = self.messageBarBtn
         
@@ -60,7 +60,8 @@ class FeedTrueRootViewController: UIViewController {
         searchTextField.backgroundColor = .white
         searchTextField.borderStyle = .roundedRect
         searchTextField.delegate = self
-        customNavigationController?.topViewController?.navigationItem.titleView = searchTextField
+        //customNavigationController?.topViewController?.navigationItem.titleView = searchTextField
+        customNavigationController?.topViewController?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
         
         // services
         coreService = FTCoreService()

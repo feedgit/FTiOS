@@ -58,7 +58,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var moreBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
-    
+    @IBOutlet weak var commentConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var savedBtn: UIButton!
     
     @IBOutlet weak var privacyImageView: UIImageView!
@@ -266,12 +266,16 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         _ = collectionView
         if photos.count == 0 {
             collectionLayoutConstraintHieght.constant = 0
+            data.imageHeight = 0
         } else if photos.count == 1 {
             let h = collectionViewWidth * (9.0/16.0)
             collectionLayoutConstraintHieght.constant = h
+            data.imageHeight = h
         } else if photos.count >= 2 {
             collectionLayoutConstraintHieght.constant = collectionViewWidth / 2
+            data.imageHeight = collectionViewWidth / 2
         }
+        self.setNeedsLayout()
         collectionView.reloadData()
         
         // config react icon
@@ -335,10 +339,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         if let commments = data.feed.comment?.comments {
             for c in commments {
                 let commentMV = FTCommentViewModel(comment: c, type: .text)
-                self.datasource.append(commentMV)
+                if self.datasource.count < 3 {
+                    self.datasource.append(commentMV)
+                }
             }
-            self.commentTableView.reloadData()
         }
+        self.commentTableView.reloadData()
         // config comment tableview
         
     }
@@ -607,11 +613,8 @@ extension FTFeedTableViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let content = datasource[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
-        
-        if let commentCell = cell as? BECellRender {
-            commentCell.renderCell(data: content)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTCommentTextCell
+        cell.renderCell(data: content)
         return cell
     }
     

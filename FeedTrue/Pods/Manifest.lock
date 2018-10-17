@@ -14,7 +14,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - DTGradientButton (0.1.0)
   - DTTextField (0.3.0)
-  - ESTabBarController-swift (2.6.2)
+  - ESTabBarController-swift (2.6.3)
   - FacebookCore (0.4.0):
     - Bolts (~> 1.9)
     - FBSDKCoreKit (~> 4.36)
@@ -89,7 +89,7 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DTGradientButton: ec700b5d33fdc6c6886f8f7f44023c6087b50a8b
   DTTextField: c26deead1a51c92156e2a638ac7d2c702c2f345e
-  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
+  ESTabBarController-swift: edb8d8bc2cd043a8ddb43ab501fefdf9865ac519
   FacebookCore: 770e57cfe250a4de4458b682191c0ff062dee247
   FacebookLogin: eb0f2251aca835a94d70a5f7e580edc46d1e1603
   FacebookShare: ec48492ba748f971c6a13661963f7aae38140111

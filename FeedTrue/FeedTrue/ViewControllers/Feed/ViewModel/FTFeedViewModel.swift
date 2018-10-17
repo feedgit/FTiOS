@@ -11,7 +11,8 @@ import UIKit
 class FTFeedViewModel: BECellDataSource {
     static let feedCellId = "FTFeedTableViewCell"
     var feed: FTFeedInfo
-    
+    var imageHeight: CGFloat = (UIScreen.main.bounds.width - 16) * 9 / 16
+    var commentHeight: CGFloat = 192.0
     init(f: FTFeedInfo) {
         feed = f
     }
@@ -21,16 +22,7 @@ class FTFeedViewModel: BECellDataSource {
     }
     
     func cellHeight() -> CGFloat {
-        /*
-         96 + // avatar view
-         44 + // text: 2 lines
-         50 + // collection view
-         44 + // love|comment
-         44 + // write comment
-         200 + // comment view
-         8*5 // vertical space
-         */
-        return 96 + 44 + 50 + 44 + 44 + 200 + 40
+        return 180.0 + imageHeight + commentHeight
         
     }
     

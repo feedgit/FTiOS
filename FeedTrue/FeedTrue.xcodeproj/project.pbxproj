@@ -22,6 +22,12 @@
 		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
 		132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */; };
 		132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */; };
+		132C7ADA217662EB00EE11AD /* CoolSlidingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AD6217662EB00EE11AD /* CoolSlidingMenuView.swift */; };
+		132C7ADB217662EB00EE11AD /* CoolSlidingMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AD7217662EB00EE11AD /* CoolSlidingMenuManager.swift */; };
+		132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AD8217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift */; };
+		132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AD9217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib */; };
+		132C7B222176632300EE11AD /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B002176632300EE11AD /* menuData.plist */; };
+		132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -239,6 +245,12 @@
 		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
 		132C7AAB216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewController.xib; sourceTree = "<group>"; };
 		132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideo.swift; sourceTree = "<group>"; };
+		132C7AD6217662EB00EE11AD /* CoolSlidingMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoolSlidingMenuView.swift; sourceTree = "<group>"; };
+		132C7AD7217662EB00EE11AD /* CoolSlidingMenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoolSlidingMenuManager.swift; sourceTree = "<group>"; };
+		132C7AD8217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoolSlidingMenuCollectionViewCell.swift; sourceTree = "<group>"; };
+		132C7AD9217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoolSlidingMenuCollectionViewCell.xib; sourceTree = "<group>"; };
+		132C7B002176632300EE11AD /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
+		132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTMenuTableViewCell.swift; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -475,6 +487,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				132C7AD4217662DC00EE11AD /* Menu */,
 				13BA9AE22149646400AD06D7 /* vendor */,
 				13A2C4D12137B56200C377C0 /* Services */,
 				13A2C4B92135507300C377C0 /* ViewControllers */,
@@ -507,6 +520,43 @@
 				13D25812214299B300E84002 /* FTLoadingViewController.xib */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		132C7AD4217662DC00EE11AD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				132C7AE02176632300EE11AD /* resource */,
+				132C7B012176632300EE11AD /* view */,
+				132C7AD5217662EB00EE11AD /* CoolSlidingMenu */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		132C7AD5217662EB00EE11AD /* CoolSlidingMenu */ = {
+			isa = PBXGroup;
+			children = (
+				132C7AD6217662EB00EE11AD /* CoolSlidingMenuView.swift */,
+				132C7AD7217662EB00EE11AD /* CoolSlidingMenuManager.swift */,
+				132C7AD8217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift */,
+				132C7AD9217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib */,
+			);
+			path = CoolSlidingMenu;
+			sourceTree = "<group>";
+		};
+		132C7AE02176632300EE11AD /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				132C7B002176632300EE11AD /* menuData.plist */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		132C7B012176632300EE11AD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		13353AF3213A89A200D74C47 /* Profile */ = {
@@ -1275,6 +1325,7 @@
 				134FF10F2152B37300551771 /* seek.png in Resources */,
 				134FF1132152B37300551771 /* seek@2x.png in Resources */,
 				13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */,
+				132C7B222176632300EE11AD /* menuData.plist in Resources */,
 				134FF1052152B37300551771 /* 0.jpg in Resources */,
 				134FF10B2152B37300551771 /* DINNextLTPro-Regular.otf in Resources */,
 				134FF10D2152B37300551771 /* dark-circle.png in Resources */,
@@ -1301,6 +1352,7 @@
 				1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */,
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
+				132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				134FF1062152B37300551771 /* pause@2x.png in Resources */,
 				134FF1102152B37300551771 /* repeat@2x.png in Resources */,
@@ -1414,6 +1466,7 @@
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
+				132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
 				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
@@ -1478,6 +1531,7 @@
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
+				132C7ADA217662EB00EE11AD /* CoolSlidingMenuView.swift in Sources */,
 				1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */,
@@ -1511,11 +1565,13 @@
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
 				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,
 				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
+				132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
 				1347746D216864B20026B048 /* FTComment+Mappable.swift in Sources */,
+				132C7ADB217662EB00EE11AD /* CoolSlidingMenuManager.swift in Sources */,
 				134FF1BF2159EF9B00551771 /* ReactionAlignment.swift in Sources */,
 				1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,

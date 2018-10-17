@@ -34,6 +34,7 @@ class CommentController: UITableViewController {
         
         FTCommentViewModel.register(tableView: self.tableView)
         self.tableView.separatorStyle = .none
+        self.tableView.tableFooterView = UIView()
         self.loadComment()
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(clearTouchUpAction(_:)))
         messageInputView.clearBtn.isUserInteractionEnabled = true
@@ -241,9 +242,7 @@ class CommentController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTCommentTextCell
         cell.delegate = self
         
-        if let commentCell = cell as? BECellRender {
-            commentCell.renderCell(data: content)
-        }
+        cell.renderCell(data: content)
         
         content.reply = { (comment) in
             self.messageInputView.actionButton.setTitle("REPLY", for: .normal)
@@ -251,15 +250,13 @@ class CommentController: UITableViewController {
             self.replyComment = comment
         }
         
-            if let c = cell as? FTCommentTextCell {
-                if indexPath.row == 0 {
-                    c.paddingLeftLayoutConstraint.constant = 8
-                    c.replyBtn.isHidden = false
-                } else {
-                    c.paddingLeftLayoutConstraint.constant = 32
-                    c.replyBtn.isHidden = true
-                }
-            }
+        if indexPath.row == 0 {
+            cell.paddingLeftLayoutConstraint.constant = 8
+            cell.replyBtn.isHidden = false
+        } else {
+            cell.paddingLeftLayoutConstraint.constant = 32
+            cell.replyBtn.isHidden = true
+        }
         
         content.more = { (contentCell) in
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in

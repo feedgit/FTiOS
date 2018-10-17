@@ -21,6 +21,16 @@ class FTTabFeedViewController: FTTabViewController {
     var refreshControl: UIRefreshControl?
     private var progressHub: MBProgressHUD?
     
+    var dataDic:Dictionary<String, Any>! = nil
+    var arrIcon:Array<Any>! = nil
+    var arrMenu:Array<Any> = Array()
+    public var pgCtrlNormalColor: UIColor!
+    public var pgCtrlSelectedColor: UIColor!
+    public var pgCtrlShouldHidden: Bool!
+    public var countRow:Int!
+    public var countCol:Int!
+    public var countItem:Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,6 +47,18 @@ class FTTabFeedViewController: FTTabViewController {
         self.setUpSegmentControl()
         self.setUpRefreshControl()
         NotificationCenter.default.addObserver(self, selector: #selector(feedTabTouchAction), name: .FeedTabTouchAction, object: nil)
+        
+        // menu
+        pgCtrlNormalColor = .gray
+        pgCtrlSelectedColor = .black
+        pgCtrlShouldHidden = false
+        countRow = 1
+        countCol = 6
+        countItem = 8
+
+        self.setData()
+        tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,24 +185,63 @@ class FTTabFeedViewController: FTTabViewController {
             self.loadFeed()
         }
     }
+    
+    // MARK: - Menu
+    func setData() {
+        let plistPath = Bundle.main.path(forResource: "menuData", ofType: "plist")
+        let arrayAllMenu: Array<Any> = NSArray(contentsOfFile: plistPath!) as!  Array<Any>
+        for index in (0..<countItem) {
+            arrMenu.append(arrayAllMenu[index])
+        }
+        tableView.reloadData()
+    }
 
 }
 
 extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        
         return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FTMenuTableViewCell
+            cell.pgCtrlShouldHidden = pgCtrlShouldHidden
+            cell.pgCtrlNormalColor = pgCtrlNormalColor
+            cell.pgCtrlSelectedColor = pgCtrlSelectedColor
+            cell.countRow = countRow
+            cell.countCol = countCol
+            cell.arrMenu = arrMenu
+            cell.delegate = self
+            return cell
+        }
+        
         let content = dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTFeedTableViewCell
         cell.delegate = self
         cell.renderCell(data: content)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 10
+            }
+            else {
+                return 50.0
+            }
+        }
+        let content = dataSource[indexPath.row]
+        return content.cellHeight()
     }
 }
 
@@ -343,10 +404,24 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         popupController.style = .bottomSheet
         popupController.present(in: self)
     }
+    
 }
 
 extension FTTabFeedViewController: VideoControllerDelegate {
     func videoGoHome() {
         self.segmentedControl.selectedSegmentIndex = 0
+    }
+}
+
+extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
+    func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
+        switch index {
+        case 0: // video
+            let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
+            videoVC.delegate = self
+            self.navigationController?.pushViewController(videoVC, animated: true)
+        default:
+            break
+        }
     }
 }
