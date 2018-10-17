@@ -953,17 +953,18 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData, withName: "image", fileName: "image.png", mimeType: "image/png")
+            multipartFormData.append(imageData, withName: "file", fileName: "image.png", mimeType: "image/png")
 
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
             switch result{
             case .success(let upload, _, _):
                 upload.responseJSON { response in
-                    print("Succesfully uploaded")
-                    if let _ = response.error {
+                    if let error = response.error {
+                        print("Error in upload: \(error.localizedDescription)")
                         completion(false, nil)
                         return
                     }
+                    print("Succesfully uploaded")
                     completion(true, nil)
                 }
             case .failure(let error):
