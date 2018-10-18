@@ -51,7 +51,7 @@ class FTTabFeedViewController: FTTabViewController {
         // menu
         pgCtrlNormalColor = .gray
         pgCtrlSelectedColor = .black
-        pgCtrlShouldHidden = false
+        pgCtrlShouldHidden = true
         countRow = 1
         countCol = 6
         countItem = 8
@@ -234,7 +234,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 10
+                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 4
             }
             else {
                 return 50.0
