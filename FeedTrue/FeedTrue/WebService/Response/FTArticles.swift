@@ -1,21 +1,19 @@
 //
-//  FTFeedVideo.swift
+//  FTArticles.swift
 //  FeedTrue
 //
-//  Created by Quoc Le on 10/12/18.
+//  Created by Quoc Le on 10/19/18.
 //  Copyright © 2018 toanle. All rights reserved.
 //
 
 import UIKit
 import ObjectMapper
 
-class FTFeedVideo: Mappable {
+class FTArticles: Mappable {
     var count = 0
-    var itemOnPage = 0
-    var current = 0
     var next = ""
     var previous = ""
-    var results: [FTFeedVideoContent]?
+    var results: [FTArticleContent]?
     
     required init?(map: Map) {
         
@@ -23,24 +21,22 @@ class FTFeedVideo: Mappable {
     
     func mapping(map: Map) {
         count <- map["count"]
-        itemOnPage <- map["itemOnPage"]
-        current <- map["current"]
         next <- map["next"]
         previous <- map["previous"]
         results <- map["results"]
     }
 }
 
-class FTFeedVideoContent: Mappable {
+class FTArticleContent: Mappable {
     var id = -1
+    var ct_name = "ct_name"
     var uid = ""
-    var ct_name = "video"
-    var user: UserProfile?
-    var thumbnail = ""
     var title = ""
-    var duration = ""
-    var views = 0
-    var timestamp = ""
+    var description = ""
+    var thumbnail = ""
+    var slug = ""
+    var user: UserProfile?
+    var create_date = ""
     var editable = false
     var comments: FTComment?
     var reactions: FTReactions?
@@ -53,14 +49,14 @@ class FTFeedVideoContent: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        uid <- map["uid"]
         ct_name <- map["ct_name"]
+        uid <- map["uid"]
         user <- map["user"]
         thumbnail <- map["thumbnail"]
         title <- map["title"]
-        duration <- map["duration"]
-        views <- map["views"]
-        timestamp <- map["timestamp"]
+        description <- map["description"]
+        slug <- map["slug"]
+        create_date <- map["create_date"]
         editable <- map["editable"]
         comments <- map["comments"]
         reactions <- map["reactions"]

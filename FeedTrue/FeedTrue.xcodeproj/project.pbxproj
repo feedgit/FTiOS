@@ -31,6 +31,9 @@
 		132C7B27217993BF00EE11AD /* FTAriticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B26217993BF00EE11AD /* FTAriticleViewModel.swift */; };
 		132C7B2B2179948800EE11AD /* FTAriticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B292179948800EE11AD /* FTAriticleTableViewCell.swift */; };
 		132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B2A2179948800EE11AD /* FTAriticleTableViewCell.xib */; };
+		132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B2D2179D18F00EE11AD /* FTArticles.swift */; };
+		132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B2F2179D95E00EE11AD /* FTArticlesViewController.swift */; };
+		132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B302179D95E00EE11AD /* FTArticlesViewController.xib */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -257,6 +260,9 @@
 		132C7B26217993BF00EE11AD /* FTAriticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAriticleViewModel.swift; sourceTree = "<group>"; };
 		132C7B292179948800EE11AD /* FTAriticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAriticleTableViewCell.swift; sourceTree = "<group>"; };
 		132C7B2A2179948800EE11AD /* FTAriticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTAriticleTableViewCell.xib; sourceTree = "<group>"; };
+		132C7B2D2179D18F00EE11AD /* FTArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticles.swift; sourceTree = "<group>"; };
+		132C7B2F2179D95E00EE11AD /* FTArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticlesViewController.swift; sourceTree = "<group>"; };
+		132C7B302179D95E00EE11AD /* FTArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTArticlesViewController.xib; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -570,6 +576,8 @@
 			children = (
 				132C7B282179947000EE11AD /* Cell */,
 				132C7B252179938500EE11AD /* ViewModel */,
+				132C7B2F2179D95E00EE11AD /* FTArticlesViewController.swift */,
+				132C7B302179D95E00EE11AD /* FTArticlesViewController.xib */,
 			);
 			path = Articles;
 			sourceTree = "<group>";
@@ -960,6 +968,7 @@
 				1347746C216864B20026B048 /* FTComment+Mappable.swift */,
 				13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */,
 				132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */,
+				132C7B2D2179D18F00EE11AD /* FTArticles.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1352,6 +1361,7 @@
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
+				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
 				134FF1002152B37300551771 /* 4.jpg in Resources */,
@@ -1493,6 +1503,7 @@
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
+				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
@@ -1614,6 +1625,7 @@
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
+				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
 				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
 				1342A8EB21649FC500EFD1E6 /* TextViewController.swift in Sources */,
