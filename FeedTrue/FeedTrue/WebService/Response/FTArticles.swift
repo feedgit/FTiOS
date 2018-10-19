@@ -29,7 +29,7 @@ class FTArticles: Mappable {
 
 class FTArticleContent: Mappable {
     var id = -1
-    var ct_name = "ct_name"
+    var ct_name = ""
     var uid = ""
     var title = ""
     var description = ""

@@ -130,11 +130,43 @@ extension FTArticlesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension FTArticlesViewController: FTAticleCellDelegate {
     func articleCellDidChangeReaction(cell: FTAriticleTableViewCell) {
-        
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        let ct_id = cell.article.id
+        let ct_name = cell.article.ct_name
+        let react_type = cell.ftReactionType.rawValue
+        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+            } else {
+                NSLog("did react failed \(react_type)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
     }
     
     func articleCellDidRemoveReaction(cell: FTAriticleTableViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
         
+        let ct_id = cell.article.id
+        let ct_name = cell.article.ct_name
+        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
     }
     
     
