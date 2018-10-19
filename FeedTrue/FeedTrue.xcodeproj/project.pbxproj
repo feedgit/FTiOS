@@ -28,6 +28,9 @@
 		132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AD9217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib */; };
 		132C7B222176632300EE11AD /* menuData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B002176632300EE11AD /* menuData.plist */; };
 		132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */; };
+		132C7B27217993BF00EE11AD /* FTAriticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B26217993BF00EE11AD /* FTAriticleViewModel.swift */; };
+		132C7B2B2179948800EE11AD /* FTAriticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B292179948800EE11AD /* FTAriticleTableViewCell.swift */; };
+		132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B2A2179948800EE11AD /* FTAriticleTableViewCell.xib */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -251,6 +254,9 @@
 		132C7AD9217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoolSlidingMenuCollectionViewCell.xib; sourceTree = "<group>"; };
 		132C7B002176632300EE11AD /* menuData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = menuData.plist; sourceTree = "<group>"; };
 		132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FTMenuTableViewCell.swift; sourceTree = "<group>"; };
+		132C7B26217993BF00EE11AD /* FTAriticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAriticleViewModel.swift; sourceTree = "<group>"; };
+		132C7B292179948800EE11AD /* FTAriticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAriticleTableViewCell.swift; sourceTree = "<group>"; };
+		132C7B2A2179948800EE11AD /* FTAriticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTAriticleTableViewCell.xib; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -557,6 +563,32 @@
 				132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		132C7B242179937000EE11AD /* Articles */ = {
+			isa = PBXGroup;
+			children = (
+				132C7B282179947000EE11AD /* Cell */,
+				132C7B252179938500EE11AD /* ViewModel */,
+			);
+			path = Articles;
+			sourceTree = "<group>";
+		};
+		132C7B252179938500EE11AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				132C7B26217993BF00EE11AD /* FTAriticleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		132C7B282179947000EE11AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				132C7B292179948800EE11AD /* FTAriticleTableViewCell.swift */,
+				132C7B2A2179948800EE11AD /* FTAriticleTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13353AF3213A89A200D74C47 /* Profile */ = {
@@ -1073,6 +1105,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				132C7B242179937000EE11AD /* Articles */,
 				1342B19321675E5000EFD1E6 /* Comment */,
 				13BA9A842147C33B00AD06D7 /* Feed */,
 				13D257FF21426DC500E84002 /* Settings */,
@@ -1340,6 +1373,7 @@
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
+				132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
 				132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */,
@@ -1592,7 +1626,9 @@
 				1342A8F121649FC500EFD1E6 /* CurrencyCell.swift in Sources */,
 				134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
+				132C7B27217993BF00EE11AD /* FTAriticleViewModel.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
+				132C7B2B2179948800EE11AD /* FTAriticleTableViewCell.swift in Sources */,
 				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 				1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */,
