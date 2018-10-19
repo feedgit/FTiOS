@@ -105,12 +105,14 @@ class FeedTrueRootViewController: UIViewController {
         let tabBarController = ESTabBarController()
         tabBarController.delegate = delegate
         tabBarController.tabBar.backgroundColor = .white
+        // remove top border line
+        tabBarController.tabBar.clipsToBounds = true
         
         tabBarController.shouldHijackHandler = {
             tabbarController, viewController, index in
-            if index == 2 {
-                return true
-            }
+//            if index == 2 {
+//                return true
+//            }
             if index == 0 {
                 // Feed Tab
                 NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
@@ -129,8 +131,8 @@ class FeedTrueRootViewController: UIViewController {
         feedVC.view.backgroundColor = UIColor.backgroundColor()
 
         let notificationVC = UIViewController()
-        let composeVC = UIViewController()
-        composeVC.view.backgroundColor = UIColor.backgroundColor()
+        let messageVC = UIViewController()
+        messageVC.view.backgroundColor = UIColor.backgroundColor()
 
         profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
         profileVC.rootViewController = self
@@ -148,31 +150,31 @@ class FeedTrueRootViewController: UIViewController {
         notificationItem.contentView?.backdropColor = UIColor.clear
         notificationItem.contentView?.highlightBackdropColor = UIColor.clear
         notificationVC.tabBarItem = notificationItem
+        
+        let messageItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_message"), selectedImage: UIImage(named: "ic_message_selected"))
+        messageItem.contentView?.renderingMode = .alwaysOriginal
+        messageItem.contentView?.backdropColor = .clear
+        messageItem.contentView?.highlightBackdropColor = .clear
+        messageVC.tabBarItem = messageItem
 
-        let composeItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "compose"), selectedImage: UIImage(named: "compose"))
-        composeItem.contentView?.renderingMode = .alwaysOriginal
-        composeItem.contentView?.backdropColor = UIColor.clear
-        composeItem.contentView?.highlightBackdropColor = UIColor.clear
-        composeVC.tabBarItem = composeItem
-
-        let profileItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "profile_unselected"), selectedImage: UIImage(named: "profile_selected"))
+        let profileItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_user"), selectedImage: UIImage(named: "ic_user_selected"))
         profileItem.contentView?.renderingMode = .alwaysOriginal
         profileItem.contentView?.backdropColor = UIColor.clear
         profileItem.contentView?.highlightBackdropColor = UIColor.clear
         profileVC.tabBarItem = profileItem
 
 
-        let settingVC = FTTabSettingsViewController(nibName: "FTTabSettingsViewController", bundle: nil)
-        settingVC.rootViewController = self
-        settingVC.rootViewController.coreService = self.coreService
+        let searchVC = FTTabSettingsViewController(nibName: "FTTabSettingsViewController", bundle: nil)
+        searchVC.rootViewController = self
+        searchVC.rootViewController.coreService = self.coreService
 
-        let settingItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "setting_unselected"), selectedImage: UIImage(named: "setting_selected"))
+        let settingItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_search"), selectedImage: UIImage(named: "ic_search_selected"))
         settingItem.contentView?.renderingMode = .alwaysOriginal
         settingItem.contentView?.backdropColor = UIColor.clear
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
-        settingVC.tabBarItem = settingItem
+        searchVC.tabBarItem = settingItem
         
-        tabBarController.viewControllers = [feedVC, notificationVC, composeVC, profileVC, settingVC]
+        tabBarController.viewControllers = [feedVC, notificationVC, messageVC, searchVC, profileVC]
         feedtrueTabBarController = tabBarController
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
