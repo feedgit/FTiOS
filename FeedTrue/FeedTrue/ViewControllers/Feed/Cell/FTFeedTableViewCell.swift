@@ -130,10 +130,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         feed = data.feed
         if let urlString = feed.user?.avatar {
             if let url = URL(string: urlString) {
-                self.userAvatarImageview.loadImage(fromURL: url)
+                self.userAvatarImageview.loadImage(fromURL: url, defaultImage: UIImage.userImage())
+            } else {
+                self.userAvatarImageview.image = UIImage.userImage()
             }
         } else {
-            self.userAvatarImageview.image = UIImage(named: "1000x1000")
+            self.userAvatarImageview.image = UIImage.userImage()
         }
         self.nameLabel.text = feed.user?.last_name
         if let dateString = feed.date {

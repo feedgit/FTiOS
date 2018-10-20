@@ -262,9 +262,14 @@ class FTTabProfileViewController: FTTabViewController {
         introLabel.text = p.intro
         if let urlString = p.avatar {
             if let url = URL(string: urlString) {
-                avatarImageView.loadImage(fromURL: url)
+                avatarImageView.loadImage(fromURL: url, defaultImage: UIImage.userImage())
+            } else {
+                avatarImageView.image = UIImage.userImage()
             }
+        } else {
+            avatarImageView.image = UIImage.userImage()
         }
+        
         if p.isEditable() {
             followBtn.setTitle(NSLocalizedString("Edit Profile", comment: ""), for: .normal)
         } else {

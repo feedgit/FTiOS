@@ -55,10 +55,12 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         contentData = data
         if let urlString = data.comment.user?.avatar {
             if let url = URL(string: urlString) {
-                self.avatarImageView.loadImage(fromURL: url)
+                self.avatarImageView.loadImage(fromURL: url, defaultImage: UIImage.userImage())
+            } else {
+                self.avatarImageView.image = UIImage.userImage()
             }
         } else {
-            self.avatarImageView.image = UIImage(named: "1000x1000")
+            self.avatarImageView.image = UIImage.userImage()
         }
         let lastname = data.comment.user?.last_name ?? ""
         let lastnameAttribute = [ NSAttributedStringKey.foregroundColor: UIColor.blue ]
