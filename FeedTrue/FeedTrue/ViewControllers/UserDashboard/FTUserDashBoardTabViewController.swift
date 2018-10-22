@@ -15,6 +15,7 @@ class FTUserDashBoardTabViewController: FTTabViewController {
     var countRow = 3
     var countCol = 4
     var progressHub: MBProgressHUD?
+    var profile: FTUserProfileResponse?
     
     @IBOutlet weak var tableView: UITableView!
     /*
@@ -39,8 +40,10 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         tableView.separatorInset = .zero
         tableView.layer.cornerRadius = 8
         tableView.clipsToBounds = true
+        tableView.separatorStyle = .none
         
         generateDatasource()
+        self.loadUserInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +98,44 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         dataSource.append([setting, logout])
         
     }
+    
+    @objc func loadUserInfo() {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+            if success {
+                self?.profile = response
+                DispatchQueue.main.async {
+                    self?.updateUI()
+                    guard let v = self?.view else { return }
+                    MBProgressHUD.hide(for: v, animated: true)
+                }
+            } else {
+                NSLog("\(#function) FAILURE")
+                guard let v = self?.view else { return }
+                MBProgressHUD.hide(for: v, animated: true)
+            }
+            
+        })
+    }
+    
+    fileprivate func updateUI() {
+        if let p = profile {
+            if let profileVM = dataSource[0][0] as? FTUserDashBoardViewModel {
+                profileVM.profile = p
+            }
+            
+            if let followVM = dataSource[1][0] as? FTUserDashBoardViewModel {
+                followVM.profile = p
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        
+    }
 
 }
 
@@ -136,7 +177,7 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             if indexPath.row == 0 {
-                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 10
+                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow)
             }
             else {
                 return 50.0
