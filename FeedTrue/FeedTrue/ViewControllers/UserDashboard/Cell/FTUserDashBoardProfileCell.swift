@@ -14,7 +14,7 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    var contentData: FTUserProfileResponse!
+    var contentData: FTUserProfileResponse?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,13 +23,13 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
     
     func renderCell(data: FTUserDashBoardViewModel) {
         contentData = data.profile
-        if let urlString = contentData.avatar {
+        if let urlString = contentData?.avatar {
             avatarImageView.loadImage(fromURL: URL(string: urlString), defaultImage: UIImage.userImage())
         } else {
             avatarImageView.image = UIImage.userImage()
         }
         
-        usernameLabel.text = contentData.last_name
+        usernameLabel.text = contentData?.last_name ?? "Le Cong Toan"
         statusLabel.text = NSLocalizedString("Status now", comment: "")
     }
 

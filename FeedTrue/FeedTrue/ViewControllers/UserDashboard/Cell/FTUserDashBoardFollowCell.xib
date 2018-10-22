@@ -20,37 +20,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="67" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-mj-PXg">
-                        <rect key="frame" x="166.5" y="4" width="20" height="21"/>
+                        <rect key="frame" x="166.5" y="8" width="20" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follow" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4C-Bl-v6Y">
-                        <rect key="frame" x="152" y="33" width="49" height="21"/>
+                        <rect key="frame" x="152" y="37" width="49" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09J-pJ-G6j">
-                        <rect key="frame" x="261" y="4" width="8" height="21"/>
+                        <rect key="frame" x="261" y="8" width="8" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Follower" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-kw-8dy">
-                        <rect key="frame" x="233" y="33" width="64" height="21"/>
+                        <rect key="frame" x="233" y="37" width="64" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB5-NI-4YN">
-                        <rect key="frame" x="83" y="4" width="11" height="21"/>
+                        <rect key="frame" x="83" y="8" width="11" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HWY-rI-3va">
-                        <rect key="frame" x="65" y="33" width="47" height="21"/>
+                        <rect key="frame" x="65" y="37" width="47" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -63,9 +63,9 @@
                     <constraint firstItem="MB5-NI-4YN" firstAttribute="top" secondItem="ZbK-mj-PXg" secondAttribute="top" id="G8r-e2-Paq"/>
                     <constraint firstItem="MB5-NI-4YN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" multiplier="1/2" id="Y3J-vd-Rvh"/>
                     <constraint firstItem="C3e-kw-8dy" firstAttribute="top" secondItem="09J-pJ-G6j" secondAttribute="bottom" constant="8" id="cJA-bY-OOK"/>
+                    <constraint firstItem="09J-pJ-G6j" firstAttribute="top" secondItem="ZbK-mj-PXg" secondAttribute="top" id="cd3-ow-ert"/>
                     <constraint firstItem="HWY-rI-3va" firstAttribute="centerX" secondItem="MB5-NI-4YN" secondAttribute="centerX" id="obd-Kh-hhs"/>
-                    <constraint firstItem="09J-pJ-G6j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="pJO-3R-lgt"/>
-                    <constraint firstItem="ZbK-mj-PXg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="sTz-Ji-Jd5"/>
+                    <constraint firstItem="ZbK-mj-PXg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="sTz-Ji-Jd5"/>
                     <constraint firstItem="C3e-kw-8dy" firstAttribute="centerX" secondItem="09J-pJ-G6j" secondAttribute="centerX" id="u39-eW-cbH"/>
                     <constraint firstItem="w4C-Bl-v6Y" firstAttribute="centerX" secondItem="ZbK-mj-PXg" secondAttribute="centerX" id="wnZ-QY-y4g"/>
                     <constraint firstItem="w4C-Bl-v6Y" firstAttribute="top" secondItem="ZbK-mj-PXg" secondAttribute="bottom" constant="8" id="xRU-Lf-dFN"/>

@@ -19,6 +19,7 @@ class FeedTrueRootViewController: UIViewController {
     var searchTextField: UITextField!
     var progressHub: MBProgressHUD?
     var profileVC: FTTabProfileViewController!
+    var userDashBoardVC: FTUserDashBoardTabViewController!
     var feedVC: FTTabFeedViewController!
     
     override func viewDidLoad() {
@@ -133,7 +134,11 @@ class FeedTrueRootViewController: UIViewController {
         let notificationVC = UIViewController()
         let messageVC = UIViewController()
         messageVC.view.backgroundColor = UIColor.backgroundColor()
-
+        //FTUserDashBoardTabViewController
+        userDashBoardVC = FTUserDashBoardTabViewController(nibName: "FTUserDashBoardTabViewController", bundle: nil)
+        userDashBoardVC.rootViewController = self
+        userDashBoardVC.rootViewController.coreService = self.coreService
+        
         profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
         profileVC.rootViewController = self
         profileVC.rootViewController.coreService = self.coreService
@@ -162,6 +167,7 @@ class FeedTrueRootViewController: UIViewController {
         profileItem.contentView?.backdropColor = UIColor.clear
         profileItem.contentView?.highlightBackdropColor = UIColor.clear
         profileVC.tabBarItem = profileItem
+        userDashBoardVC.tabBarItem = profileItem
 
 
         let searchVC = FTTabSettingsViewController(nibName: "FTTabSettingsViewController", bundle: nil)
@@ -174,7 +180,7 @@ class FeedTrueRootViewController: UIViewController {
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
         searchVC.tabBarItem = settingItem
         
-        tabBarController.viewControllers = [feedVC, notificationVC, messageVC, searchVC, profileVC]
+        tabBarController.viewControllers = [feedVC, notificationVC, messageVC, searchVC, userDashBoardVC]
         feedtrueTabBarController = tabBarController
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)

@@ -14,7 +14,7 @@ class FTUserDashBoardFollowCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var followLabel: UILabel!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var loverLabel: UILabel!
-    var contentData: FTUserProfileResponse!
+    var contentData: FTUserProfileResponse?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,22 +22,22 @@ class FTUserDashBoardFollowCell: UITableViewCell, BECellRenderImpl {
     }
     func renderCell(data: FTUserDashBoardViewModel) {
         contentData = data.profile
-        if let lovedCount = contentData.loved, lovedCount > 0 {
+        if let lovedCount = contentData?.loved, lovedCount > 0 {
             loverLabel.text = "\(lovedCount)"
         } else {
-            loverLabel.text = nil
+            loverLabel.text = "0"
         }
         
-        if let followCount = contentData.follows_viewer, followCount > 0 {
+        if let followCount = contentData?.follows_viewer, followCount > 0 {
             followLabel.text = "\(followCount)"
         } else {
-            followLabel.text = nil
+            followLabel.text = "0"
         }
         
-        if let followerCount = contentData.followed_by_viewer, followerCount > 0 {
+        if let followerCount = contentData?.followed_by_viewer, followerCount > 0 {
             followerLabel.text = "\(followerCount)"
         } else {
-            followerLabel.text = nil
+            followerLabel.text = "0"
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
