@@ -19,6 +19,15 @@ class FTTabSettingsViewController: FTTabViewController {
 
         // Do any additional setup after loading the view.
         setupButtons()
+        signOutBtn.isHidden = true
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.navigationItem.leftBarButtonItem = nil
+        self.parent?.navigationItem.title = NSLocalizedString("Search", comment: "")
+        self.parent?.navigationItem.rightBarButtonItem = nil
     }
 
     override func didReceiveMemoryWarning() {

@@ -19,6 +19,8 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
+        avatarImageView.round()
     }
     
     func renderCell(data: FTUserDashBoardViewModel) {

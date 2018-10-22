@@ -70,6 +70,7 @@ class FTUserDashBoardViewModel: BECellDataSource {
 class FTUserDashBoardSettingViewModel: FTUserDashBoardViewModel {
     var title: String
     var icon: UIImage
+    var settingType: SettingType = .settings
     
     init(title t: String, icon ic: UIImage) {
         self.title = t

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class FTUserDashBoardTabViewController: FTTabViewController {
     var dataSource: [[BECellDataSource]] = []
     var arrMenu: Array<Any> = []
     var countRow = 3
     var countCol = 4
+    var progressHub: MBProgressHUD?
     
     @IBOutlet weak var tableView: UITableView!
     /*
@@ -41,6 +43,25 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         generateDatasource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let qrCodeBarBtn = UIBarButtonItem(image: UIImage(named: "ic_qr_code"), style: .plain, target: self, action: #selector(qrCodeAction))
+        qrCodeBarBtn.tintColor = .white
+        self.parent?.navigationItem.leftBarButtonItem = qrCodeBarBtn
+        self.parent?.navigationItem.title = NSLocalizedString("Profile", comment: "")
+        let followBarBtn = UIBarButtonItem(image: UIImage(named: "ic_who_to_follow"), style: .plain, target: self, action: #selector(followAction))
+        followBarBtn.tintColor = .white
+        self.parent?.navigationItem.rightBarButtonItem = followBarBtn
+    }
+    
+    @objc func qrCodeAction() {
+        
+    }
+    
+    @objc func followAction() {
+        
+    }
+    
     fileprivate func generateDatasource() {
         // section 0: profile
         let profile = FTUserDashBoardViewModel(type: .profile)
@@ -67,7 +88,10 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         
         // section 3: setting + logout
         let setting = FTUserDashBoardSettingViewModel(title: "Settings", icon: UIImage(named: "ic_setting")!)
+        setting.settingType = .settings
         let logout = FTUserDashBoardSettingViewModel(title: "Log out", icon: UIImage(named: "ic_logout")!)
+        logout.settingType = .logout
+        
         dataSource.append([setting, logout])
         
     }
@@ -98,6 +122,10 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
         let content = dataSource[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
+        if let settingCell = cell as? FTUserDashBoardSettingCell {
+            settingCell.delegate = self
+        }
+        
         if let editingCell = cell as? BECellRender {
             editingCell.renderCell(data: content)
         }
@@ -117,6 +145,50 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
         let content = dataSource[indexPath.section][indexPath.row]
         return content.cellHeight()
     }
+}
+
+extension FTUserDashBoardTabViewController: UserDashBoardSettingDelegate {
+    func userDashBoardSettingDidTouchUpAction(type: SettingType) {
+        switch type {
+        case .settings:
+            break
+        case .logout:
+            logout()
+        }
+    }
     
-    
+    func logout() {
+        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // user cancel
+        }
+        
+        let logoutAction = UIAlertAction(title: NSLocalizedString("Log Out", comment: ""), style: .default) { [weak self] (action) in
+            DispatchQueue.main.async {
+                self?.progressHub = MBProgressHUD.showAdded(to: self!.view, animated: true)
+                self?.progressHub?.detailsLabel.text = NSLocalizedString("Log Out ...", comment: "")
+                self?.progressHub?.show(animated: true)
+                self?.rootViewController.coreService.webService?.logOut(token: token, completion: { (success, message) in
+                    self?.progressHub?.hide(animated: true)
+                    if success {
+                        DispatchQueue.main.async {
+                            self?.rootViewController.showLogin()
+                            self?.rootViewController.coreService.registrationService?.reset()
+                            self?.rootViewController.coreService.keychainService?.reset()
+                        }
+                    } else {
+                        self?.rootViewController.showLogin()
+                        self?.rootViewController.coreService.registrationService?.reset()
+                        self?.rootViewController.coreService.keychainService?.reset()
+                    }
+                })
+            }
+        }
+        
+        FTAlertViewManager.defaultManager.showActions("Log Out", message: "Are you sure you wan to log out?", actions: [cancelAction, logoutAction], view: self.view)
+        
+    }
 }

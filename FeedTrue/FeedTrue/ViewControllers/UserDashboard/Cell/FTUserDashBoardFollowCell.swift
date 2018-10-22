@@ -19,6 +19,7 @@ class FTUserDashBoardFollowCell: UITableViewCell, BECellRenderImpl {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        selectionStyle = .none
     }
     func renderCell(data: FTUserDashBoardViewModel) {
         contentData = data.profile

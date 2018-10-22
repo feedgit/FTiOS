@@ -60,6 +60,18 @@ class FTTabFeedViewController: FTTabViewController {
         tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.navigationItem.leftBarButtonItem = nil
+        self.parent?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
+        let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_add")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addAction))
+        self.parent?.navigationItem.rightBarButtonItem = addBarBtn
+    }
+    
+    @objc func addAction() {
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -240,6 +252,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
                 return 50.0
             }
         }
+        if indexPath.row > dataSource.count - 1 { return 0 }
         let content = dataSource[indexPath.row]
         return content.cellHeight()
     }
