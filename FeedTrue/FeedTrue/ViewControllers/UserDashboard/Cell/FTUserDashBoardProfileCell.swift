@@ -8,8 +8,12 @@
 
 import UIKit
 
+@objc protocol FTUserDashBoardProfileCellDelegate {
+    func userSelected()
+}
 class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
     
+    weak var delegate: FTUserDashBoardProfileCellDelegate?
     typealias CellData = FTUserDashBoardViewModel
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -39,6 +43,10 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        NSLog("\(#function) selected: \(selected)")
+        if selected {
+            self.delegate?.userSelected()
+        }
     }
     
 }

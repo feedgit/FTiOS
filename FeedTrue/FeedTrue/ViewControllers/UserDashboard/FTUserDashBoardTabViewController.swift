@@ -167,6 +167,10 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
             settingCell.delegate = self
         }
         
+        if let profileCell = cell as? FTUserDashBoardProfileCell {
+            profileCell.delegate = self
+        }
+        
         if let editingCell = cell as? BECellRender {
             editingCell.renderCell(data: content)
         }
@@ -177,7 +181,7 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 2 {
             if indexPath.row == 0 {
-                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow)
+                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 12
             }
             else {
                 return 50.0
@@ -231,5 +235,19 @@ extension FTUserDashBoardTabViewController: UserDashBoardSettingDelegate {
         
         FTAlertViewManager.defaultManager.showActions("Log Out", message: "Are you sure you wan to log out?", actions: [cancelAction, logoutAction], view: self.view)
         
+    }
+}
+
+extension FTUserDashBoardTabViewController: FTUserDashBoardProfileCellDelegate {
+    func userSelected() {
+        // TODO: open username
+        let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
+        profileVC.rootViewController = self.rootViewController
+        profileVC.rootViewController.coreService = rootViewController.coreService
+        profileVC.displayType = .owner
+        profileVC.username = nil
+        profileVC.profile = profile
+        self.navigationController?.pushViewController(profileVC, animated: true)
+
     }
 }

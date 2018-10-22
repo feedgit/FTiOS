@@ -52,6 +52,8 @@ class FTTabProfileViewController: FTTabViewController {
             leftBarButton.tintColor = .white
             navigationItem.leftBarButtonItem = leftBarButton
             self.loadUserInfoWithUsername(username: username!)
+        } else {
+            self.updateProfileInfo()
         }
         
         self.avatarImageView.isUserInteractionEnabled = true
@@ -61,6 +63,19 @@ class FTTabProfileViewController: FTTabViewController {
         // image pikcer
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
+        backBarBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = backBarBtn
+        navigationItem.title = NSLocalizedString("About", comment: "")
+    }
+    
+    @objc func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func editAvatar() {
