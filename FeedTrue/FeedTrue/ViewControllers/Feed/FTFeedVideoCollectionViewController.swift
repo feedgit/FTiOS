@@ -34,7 +34,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         // Do any additional setup after loading the view.
-        self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        self.collectionView?.backgroundColor = .white
         self.loadFeed()
         
         //backBarBtn = UIBarButtonItem(title: NSLocalizedString("Home", comment: ""), style: .plain, target: self, action: #selector(back(_:)))
@@ -42,6 +42,10 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Videos", comment: "")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
     }
     
     @objc func back(_ sender: Any) {
