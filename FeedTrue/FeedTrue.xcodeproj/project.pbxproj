@@ -228,6 +228,8 @@
 		13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C028217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib */; };
 		13D0C02D217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D0C02B217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift */; };
 		13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C02C217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib */; };
+		13D0C035217F29D300F745B9 /* FTComposerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */; };
+		13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */; };
 		13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */; };
 		13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257FC2141324500E84002 /* FTAlertViewManager.swift */; };
 		13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */; };
@@ -468,6 +470,8 @@
 		13D0C028217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTUserDashBoardFollowCell.xib; sourceTree = "<group>"; };
 		13D0C02B217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDashBoardSettingCell.swift; sourceTree = "<group>"; };
 		13D0C02C217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTUserDashBoardSettingCell.xib; sourceTree = "<group>"; };
+		13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTComposerPopupViewController.swift; sourceTree = "<group>"; };
+		13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTComposerPopupViewController.xib; sourceTree = "<group>"; };
 		13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserInfo.swift; sourceTree = "<group>"; };
 		13D257FC2141324500E84002 /* FTAlertViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlertViewManager.swift; sourceTree = "<group>"; };
 		13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabSettingsViewController.swift; sourceTree = "<group>"; };
@@ -1132,6 +1136,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13D0C032217F299C00F745B9 /* Composer */,
 				13D0C01A217DD3C200F745B9 /* UserDashboard */,
 				132C7B242179937000EE11AD /* Articles */,
 				1342B19321675E5000EFD1E6 /* Comment */,
@@ -1315,6 +1320,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		13D0C032217F299C00F745B9 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */,
+				13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
 		13D257F4213FC1E200E84002 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,6 +1426,7 @@
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
+				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
 				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
@@ -1663,6 +1678,7 @@
 				1342A8FF21649FC500EFD1E6 /* Contact.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
+				13D0C035217F29D300F745B9 /* FTComposerPopupViewController.swift in Sources */,
 				1342A8F721649FC500EFD1E6 /* LocationSearchResultsViewController.swift in Sources */,
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
 				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,

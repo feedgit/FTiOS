@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKCoreKit
+import STPopup
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,12 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UINavigationBar.appearance().setBackgroundImage(UIImage(color: UIColor.navigationBarColor()), for: UIBarMetrics.default)
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        
         // Facebook configure
         //[[FBSDKApplicationDelegate sharedInstance] application:application
         //didFinishLaunchingWithOptions:launchOptions];
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        
+        // STPopup
+        STPopupNavigationBar.appearance().setBackgroundImage(UIImage(color: UIColor.white), for: UIBarMetrics.default)
+        STPopupNavigationBar.appearance().barTintColor = .white
+        STPopupNavigationBar.appearance().tintColor = .gray
+        STPopupNavigationBar.appearance().barStyle = .default
+    
         return true
     }
 

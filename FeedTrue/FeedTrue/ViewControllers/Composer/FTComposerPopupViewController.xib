@@ -10,9 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTUserDashBoardTabViewController" customModule="FeedTrue" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTComposerPopupViewController" customModule="FeedTrue" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="7lc-FD-AWO" id="8qc-WM-1EP"/>
+                <outlet property="tableView" destination="mDU-jN-uZt" id="eTf-Fa-Wvv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,17 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7lc-FD-AWO">
-                    <rect key="frame" x="16" y="20" width="343" height="647"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mDU-jN-uZt">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="7lc-FD-AWO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="AGD-cA-T7f"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7lc-FD-AWO" secondAttribute="bottom" id="NK0-Fd-Gwa"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7lc-FD-AWO" secondAttribute="trailing" constant="16" id="gYi-Mr-nDL"/>
-                <constraint firstItem="7lc-FD-AWO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jVS-qo-ylS"/>
+                <constraint firstItem="mDU-jN-uZt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="aca-kS-ZyC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="mDU-jN-uZt" secondAttribute="bottom" id="iyc-mJ-kcE"/>
+                <constraint firstItem="mDU-jN-uZt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kMo-VN-06G"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="mDU-jN-uZt" secondAttribute="trailing" id="yVm-bP-2Q0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

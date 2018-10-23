@@ -70,7 +70,11 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     @objc func addAction() {
-        
+        let composerVC = FTComposerPopupViewController()
+        composerVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.85)
+        let popupController = STPopupController(rootViewController: composerVC)
+        popupController.style = .bottomSheet
+        popupController.present(in: self)
     }
 
     override func didReceiveMemoryWarning() {
