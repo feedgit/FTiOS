@@ -29,6 +29,7 @@ class FTComposerPopupViewController: UIViewController {
         tableView.separatorStyle = .none
         countCol = 3
         countRow = 3
+        navigationItem.title = NSLocalizedString("Composer", comment: "")
     }
     
     fileprivate func generateDatasource() {
@@ -82,6 +83,18 @@ extension FTComposerPopupViewController: UITableViewDataSource, UITableViewDeleg
             return ((UIScreen.main.bounds.size.width - 32) / CGFloat(countCol)) * CGFloat(countRow) + 12
         }
         return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = NSLocalizedString("Choose type you want create", comment: "")
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.textAlignment = .center
+        return label
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 128
     }
 }
 

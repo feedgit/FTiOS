@@ -29,8 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // STPopup
         STPopupNavigationBar.appearance().setBackgroundImage(UIImage(color: UIColor.white), for: UIBarMetrics.default)
         STPopupNavigationBar.appearance().barTintColor = .white
-        STPopupNavigationBar.appearance().tintColor = .gray
+        STPopupNavigationBar.appearance().tintColor = .black
         STPopupNavigationBar.appearance().barStyle = .default
+        STPopupNavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        STPopupNavigationBar.appearance().shadowImage = UIImage(color: .clear)
     
         return true
     }
