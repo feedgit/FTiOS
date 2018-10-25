@@ -72,6 +72,7 @@ class FTTabFeedViewController: FTTabViewController {
     @objc func addAction() {
         let composerVC = FTComposerPopupViewController()
         composerVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.85)
+        composerVC.delegate = self
         let popupController = STPopupController(rootViewController: composerVC)
         popupController.style = .bottomSheet
         popupController.present(in: self)
@@ -442,6 +443,18 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
             self.navigationController?.pushViewController(articleVC, animated: true)
         default:
             break
+        }
+    }
+}
+
+extension FTTabFeedViewController: ComposerDelegate {
+    func composerDidSelectedItemAt(_ index: Int) {
+        if index == 0 {
+            // photo
+            let photoVC = FTPhotoComposerViewController()
+            DispatchQueue.main.async {
+                self.navigationController?.pushViewController(photoVC, animated: true)
+            }
         }
     }
 }

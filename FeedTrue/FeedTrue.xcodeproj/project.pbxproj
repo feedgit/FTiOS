@@ -200,6 +200,10 @@
 		13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D22137B59300C377C0 /* FTCoreService.swift */; };
 		13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */; };
 		13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */; };
+		13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */; };
+		13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */; };
+		13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */; };
+		13B009062181C264000E7FA5 /* FTPhotoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */; };
 		13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */; };
 		13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */; };
 		13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */; };
@@ -442,6 +446,10 @@
 		13A2C4D22137B59300C377C0 /* FTCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCoreService.swift; sourceTree = "<group>"; };
 		13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDefaultService.swift; sourceTree = "<group>"; };
 		13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationService.swift; sourceTree = "<group>"; };
+		13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoComposerViewController.swift; sourceTree = "<group>"; };
+		13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoComposerViewController.xib; sourceTree = "<group>"; };
+		13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoPickerViewController.swift; sourceTree = "<group>"; };
+		13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoPickerViewController.xib; sourceTree = "<group>"; };
 		13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFileProviderService.swift; sourceTree = "<group>"; };
 		13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedResponse.swift; sourceTree = "<group>"; };
 		13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabFeedViewController.swift; sourceTree = "<group>"; };
@@ -1194,6 +1202,24 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		13B008FD2181B084000E7FA5 /* PhotoComposer */ = {
+			isa = PBXGroup;
+			children = (
+				13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */,
+				13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */,
+			);
+			path = PhotoComposer;
+			sourceTree = "<group>";
+		};
+		13B009022181C249000E7FA5 /* PhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */,
+				13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */,
+			);
+			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
 		13BA9A842147C33B00AD06D7 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -1323,6 +1349,8 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				13B009022181C249000E7FA5 /* PhotoPicker */,
+				13B008FD2181B084000E7FA5 /* PhotoComposer */,
 				13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */,
 				13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */,
 			);
@@ -1426,6 +1454,7 @@
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
+				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
@@ -1448,6 +1477,7 @@
 				134FF1072152B37300551771 /* play@3x.png in Resources */,
 				1342A92C2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib in Resources */,
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
+				13B009062181C264000E7FA5 /* FTPhotoPickerViewController.xib in Resources */,
 				1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
@@ -1491,17 +1521,23 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CLImageEditor/CLImageEditor.framework",
+				"${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework",
+				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/DTGradientButton/DTGradientButton.framework",
 				"${BUILT_PRODUCTS_DIR}/DTTextField/DTTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/ESTabBarController-swift/ESTabBarController_swift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableSegmentedControl/ScrollableSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
@@ -1514,17 +1550,23 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CLImageEditor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKCamera.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTGradientButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DTTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTabBarController_swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
@@ -1594,6 +1636,7 @@
 				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
+				13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
 				13BA9B0F2149792200AD06D7 /* DownloadTask.swift in Sources */,
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
@@ -1740,6 +1783,7 @@
 				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
 				1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
+				13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */,
 				1342A8F621649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift in Sources */,
 				13BA9B0D2149792200AD06D7 /* FileProviderService.swift in Sources */,
 				1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */,

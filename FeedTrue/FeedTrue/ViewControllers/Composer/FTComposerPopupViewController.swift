@@ -8,7 +8,12 @@
 
 import UIKit
 
+@objc protocol ComposerDelegate {
+    func composerDidSelectedItemAt(_ index: Int)
+}
+
 class FTComposerPopupViewController: UIViewController {
+    weak var delegate: ComposerDelegate?
     @IBOutlet weak var tableView: UITableView!
     var dataSource: Array<Any> = []
     var countRow: Int!
@@ -100,8 +105,8 @@ extension FTComposerPopupViewController: UITableViewDataSource, UITableViewDeleg
 
 extension FTComposerPopupViewController: FTMenuTableViewCellDelegate {
     func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
-        
+        self.dismiss(animated: true) {
+            self.delegate?.composerDidSelectedItemAt(index)
+        }
     }
-    
-    
 }

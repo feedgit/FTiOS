@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import STPopup
+import DKImagePickerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
