@@ -18,5 +18,5 @@ class FTPhotoComposerViewModel: BECollectionCellDataSource {
         collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     }
     
-    var datasource: [UIImage] = []
+    var image: UIImage?
 }

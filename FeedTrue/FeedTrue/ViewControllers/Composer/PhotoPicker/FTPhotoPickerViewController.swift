@@ -9,7 +9,12 @@
 import UIKit
 import DKImagePickerController
 
+@objc protocol PhotoPickerDelegate {
+    func photoPickerDidSelectedAssets(assets: [DKAsset])
+}
+
 class FTPhotoPickerViewController: UIViewController {
+    weak var delegate: PhotoPickerDelegate?
     var pickerController: DKImagePickerController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +29,13 @@ class FTPhotoPickerViewController: UIViewController {
         pickerController = DKImagePickerController(groupDataManager: groupDataManager)
         
         pickerController.inline = true
-        //pickerController.UIDelegate = CustomInlineLayoutUIDelegate(imagePickerController: pickerController)
-        pickerController
+        pickerController.delegate = self
         pickerController.assetType = .allPhotos
         pickerController.sourceType = .photo
         pickerController.maxSelectableCount = 10
+        pickerController.selectedChanged = {
+            print(self.pickerController.selectedAssets.debugDescription)
+        }
         let pickerView = pickerController.view!
         pickerView.frame = CGRect(x: 0, y: 88, width: self.view.bounds.width, height: self.view.bounds.height - 88)
         self.view.addSubview(pickerView)
@@ -38,7 +45,7 @@ class FTPhotoPickerViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Photos", comment: "")
         
-        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(back(_:)))
+        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
     
         self.navigationItem.rightBarButtonItem = nextBarBtn
@@ -47,16 +54,13 @@ class FTPhotoPickerViewController: UIViewController {
     @objc func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @objc func next(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+        self.delegate?.photoPickerDidSelectedAssets(assets: pickerController.selectedAssets)
     }
-    */
+}
 
+extension FTPhotoPickerViewController: UINavigationControllerDelegate {
+    
 }
