@@ -204,6 +204,9 @@
 		13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */; };
 		13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */; };
 		13B009062181C264000E7FA5 /* FTPhotoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */; };
+		13B0090A2182191D000E7FA5 /* FTPhotoComposerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */; };
+		13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */; };
+		13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */; };
 		13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */; };
 		13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */; };
 		13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */; };
@@ -450,6 +453,9 @@
 		13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoComposerViewController.xib; sourceTree = "<group>"; };
 		13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoPickerViewController.swift; sourceTree = "<group>"; };
 		13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoPickerViewController.xib; sourceTree = "<group>"; };
+		13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoComposerViewModel.swift; sourceTree = "<group>"; };
+		13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFileProviderService.swift; sourceTree = "<group>"; };
 		13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedResponse.swift; sourceTree = "<group>"; };
 		13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabFeedViewController.swift; sourceTree = "<group>"; };
@@ -1205,6 +1211,8 @@
 		13B008FD2181B084000E7FA5 /* PhotoComposer */ = {
 			isa = PBXGroup;
 			children = (
+				13B00908218218F6000E7FA5 /* ViewModel */,
+				13B009072182180B000E7FA5 /* Cell */,
 				13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */,
 				13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */,
 			);
@@ -1218,6 +1226,23 @@
 				13B009042181C264000E7FA5 /* FTPhotoPickerViewController.xib */,
 			);
 			path = PhotoPicker;
+			sourceTree = "<group>";
+		};
+		13B009072182180B000E7FA5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */,
+				13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		13B00908218218F6000E7FA5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		13BA9A842147C33B00AD06D7 /* Feed */ = {
@@ -1452,6 +1477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
+				13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
@@ -1624,6 +1650,7 @@
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
 				132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */,
+				13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
 				13D0C025217DD6AB00F745B9 /* FTUserDashBoardProfileCell.swift in Sources */,
 				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
@@ -1666,6 +1693,7 @@
 				1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */,
 				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
+				13B0090A2182191D000E7FA5 /* FTPhotoComposerViewModel.swift in Sources */,
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,

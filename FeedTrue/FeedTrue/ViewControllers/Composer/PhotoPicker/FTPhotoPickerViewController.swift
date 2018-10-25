@@ -25,6 +25,7 @@ class FTPhotoPickerViewController: UIViewController {
         
         pickerController.inline = true
         //pickerController.UIDelegate = CustomInlineLayoutUIDelegate(imagePickerController: pickerController)
+        pickerController
         pickerController.assetType = .allPhotos
         pickerController.sourceType = .photo
         pickerController.maxSelectableCount = 10

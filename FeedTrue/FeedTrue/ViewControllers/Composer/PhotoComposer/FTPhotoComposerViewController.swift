@@ -10,6 +10,8 @@ import UIKit
 import DKImagePickerController
 
 class FTPhotoComposerViewController: UIViewController {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     var pickerController: DKImagePickerController!
     var backBarBtn: UIBarButtonItem!
     override func viewDidLoad() {
@@ -19,7 +21,12 @@ class FTPhotoComposerViewController: UIViewController {
         backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("Photos", comment: "")
+        navigationItem.title = NSLocalizedString("Add Photos", comment: "")
+        
+        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(back(_:)))
+        nextBarBtn.tintColor = .white
+        
+        self.navigationItem.rightBarButtonItem = nextBarBtn
         openPhoto()
     }
     

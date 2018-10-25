@@ -12,3 +12,8 @@ public protocol BECellDataSource {
     func cellHeight() -> CGFloat
     static func register(tableView: UITableView)
 }
+
+public protocol BECollectionCellDataSource {
+    func cellIdemtifier() -> String
+    static func register(collectionView: UICollectionView)
+}
