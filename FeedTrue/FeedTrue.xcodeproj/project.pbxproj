@@ -42,6 +42,9 @@
 		13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */; };
 		13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B05213C120900D74C47 /* FTAboutReponse.swift */; };
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
+		1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */; };
+		1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */; };
+		1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */; };
 		1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E5215D443400EFD1E6 /* Notification+FT.swift */; };
 		1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */; };
 		1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */; };
@@ -289,6 +292,9 @@
 		13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserProfileResponse.swift; sourceTree = "<group>"; };
 		13353B05213C120900D74C47 /* FTAboutReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAboutReponse.swift; sourceTree = "<group>"; };
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
+		1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingViewModel.swift; sourceTree = "<group>"; };
+		1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingTableViewCell.swift; sourceTree = "<group>"; };
+		1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoSettingTableViewCell.xib; sourceTree = "<group>"; };
 		1342A7E5215D443400EFD1E6 /* Notification+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+FT.swift"; sourceTree = "<group>"; };
 		1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+FT.swift"; sourceTree = "<group>"; };
 		1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -1233,6 +1239,8 @@
 			children = (
 				13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */,
 				13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */,
+				1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */,
+				1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1241,6 +1249,7 @@
 			isa = PBXGroup;
 			children = (
 				13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */,
+				1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1482,6 +1491,7 @@
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
+				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
 				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
@@ -1727,6 +1737,7 @@
 				1342A8F221649FC500EFD1E6 /* CountryCell.swift in Sources */,
 				1342A9122164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
+				1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */,
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
 				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
 				1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */,
@@ -1757,6 +1768,7 @@
 				132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
+				1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */,
 				13D0C029217DD9B700F745B9 /* FTUserDashBoardFollowCell.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,

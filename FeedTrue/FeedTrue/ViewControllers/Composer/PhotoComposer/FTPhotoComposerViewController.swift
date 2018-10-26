@@ -12,7 +12,10 @@ import DKImagePickerController
 class FTPhotoComposerViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
+    
     var datasource: [FTPhotoComposerViewModel] = []
+    var settings: [FTPhotoSettingViewModel] = []
     var pickerController: DKImagePickerController!
     var backBarBtn: UIBarButtonItem!
     fileprivate let sectionInsets = UIEdgeInsets.zero
@@ -33,6 +36,17 @@ class FTPhotoComposerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         FTPhotoComposerViewModel.register(collectionView: collectionView)
+        
+        generateSettings()
+        tableView.dataSource = self
+        tableView.delegate = self
+        FTPhotoSettingViewModel.register(tableView: tableView)
+        tableView.tableFooterView = UIView()
+        tableView.separatorInset = .zero
+        tableView.layer.cornerRadius = 8
+        tableView.clipsToBounds = true
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         openPhoto()
     }
     
@@ -43,8 +57,17 @@ class FTPhotoComposerViewController: UIViewController {
     func openPhoto() {
         let photoPicker = FTPhotoPickerViewController()
         photoPicker.delegate = self
-        //present(photoPicker, animated: true, completion: nil)
         self.navigationController?.pushViewController(photoPicker, animated: true)
+    }
+    
+    func generateSettings() {
+        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: "ic_tick")
+        
+        let privacy = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: "")
+        
+        let checkin = FTPhotoSettingViewModel(icon: "ic_checkin", title: NSLocalizedString("Check-In", comment: ""), markIcon: "")
+        
+        settings = [postFeed, privacy, checkin]
     }
     
 }
@@ -100,4 +123,22 @@ extension FTPhotoComposerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+}
+
+extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FTPhotoSettingViewModel.cellID) as! FTPhotoSettingTableViewCell
+        cell.renderCell(data: settings[indexPath.row])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return settings[indexPath.row].cellHeight()
+    }
+    
 }
