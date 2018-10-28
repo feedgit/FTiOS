@@ -61,7 +61,7 @@ class FTPhotoComposerViewController: UIViewController {
     }
     
     func generateSettings() {
-        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: "ic_tick")
+        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: "")
         
         let privacy = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: "")
         
@@ -101,6 +101,7 @@ extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
+        cell.delegate = self
         
         // Configure the cell
         cell.renderCell(data: datasource[indexPath.row])
@@ -141,4 +142,20 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
         return settings[indexPath.row].cellHeight()
     }
     
+}
+
+extension FTPhotoComposerViewController: PhotoCellDelegate {
+    func photoCellDidDelete(_ cell: FTPhotoCollectionViewCell) {
+        guard let image = cell.image else { return }
+        for vm in datasource {
+            guard let icon = vm.image else { continue }
+            if icon.isEqual(image) {
+                datasource.remove(vm)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                return
+            }
+        }
+    }
 }

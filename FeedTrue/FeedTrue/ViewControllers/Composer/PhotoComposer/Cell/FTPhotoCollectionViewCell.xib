@@ -20,22 +20,35 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9QJ-g1-Kvk">
-                        <rect key="frame" x="0.0" y="0.0" width="109" height="106"/>
+                        <rect key="frame" x="4" y="4" width="101" height="98"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_delete" translatesAutoresizingMaskIntoConstraints="NO" id="VRx-eo-fWX">
+                        <rect key="frame" x="77" y="0.0" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="M1R-gZ-EJP"/>
+                            <constraint firstAttribute="width" secondItem="VRx-eo-fWX" secondAttribute="height" id="p0g-V1-f7Q"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="9QJ-g1-Kvk" secondAttribute="leading" id="26R-Qt-MxY"/>
-                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="In8-FS-CFA"/>
-                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" id="lh2-MS-dqM"/>
-                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="qZV-0e-GoM"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="9QJ-g1-Kvk" secondAttribute="leading" constant="-4" id="26R-Qt-MxY"/>
+                <constraint firstItem="VRx-eo-fWX" firstAttribute="top" secondItem="9QJ-g1-Kvk" secondAttribute="top" constant="-4" id="CSJ-xg-RZo"/>
+                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="4" id="In8-FS-CFA"/>
+                <constraint firstItem="VRx-eo-fWX" firstAttribute="trailing" secondItem="9QJ-g1-Kvk" secondAttribute="trailing" constant="4" id="NJw-6p-oyh"/>
+                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="-4" id="lh2-MS-dqM"/>
+                <constraint firstItem="9QJ-g1-Kvk" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" constant="-4" id="qZV-0e-GoM"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="109" height="106"/>
             <connections>
+                <outlet property="deleteImageView" destination="VRx-eo-fWX" id="M0K-ah-7ck"/>
                 <outlet property="imageViewIcon" destination="9QJ-g1-Kvk" id="1U0-Pk-WKk"/>
             </connections>
-            <point key="canvasLocation" x="42" y="47"/>
+            <point key="canvasLocation" x="40.799999999999997" y="46.776611694152926"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="ic_delete" width="48" height="48"/>
+    </resources>
 </document>
