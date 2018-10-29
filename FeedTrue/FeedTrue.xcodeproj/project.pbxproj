@@ -45,6 +45,11 @@
 		1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */; };
 		1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */; };
 		1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */; };
+		1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D8222186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift */; };
+		1338D8252186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D8232186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib */; };
+		1338D8282186F38B0065B552 /* FTPrivacyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D8272186F38B0065B552 /* FTPrivacyViewModel.swift */; };
+		1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D8292186F4CC0065B552 /* FTPrivacyPickerViewController.swift */; };
+		1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D82A2186F4CC0065B552 /* FTPrivacyPickerViewController.xib */; };
 		1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E5215D443400EFD1E6 /* Notification+FT.swift */; };
 		1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */; };
 		1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */; };
@@ -295,6 +300,11 @@
 		1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingViewModel.swift; sourceTree = "<group>"; };
 		1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoSettingTableViewCell.xib; sourceTree = "<group>"; };
+		1338D8222186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrivacyPickerTableViewCell.swift; sourceTree = "<group>"; };
+		1338D8232186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPrivacyPickerTableViewCell.xib; sourceTree = "<group>"; };
+		1338D8272186F38B0065B552 /* FTPrivacyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrivacyViewModel.swift; sourceTree = "<group>"; };
+		1338D8292186F4CC0065B552 /* FTPrivacyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrivacyPickerViewController.swift; sourceTree = "<group>"; };
+		1338D82A2186F4CC0065B552 /* FTPrivacyPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPrivacyPickerViewController.xib; sourceTree = "<group>"; };
 		1342A7E5215D443400EFD1E6 /* Notification+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+FT.swift"; sourceTree = "<group>"; };
 		1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+FT.swift"; sourceTree = "<group>"; };
 		1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -668,6 +678,34 @@
 				1342A92A2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1338D8202186F16E0065B552 /* PrivacyPicker */ = {
+			isa = PBXGroup;
+			children = (
+				1338D8262186F3620065B552 /* ViewModel */,
+				1338D8212186F19A0065B552 /* Cell */,
+				1338D8292186F4CC0065B552 /* FTPrivacyPickerViewController.swift */,
+				1338D82A2186F4CC0065B552 /* FTPrivacyPickerViewController.xib */,
+			);
+			path = PrivacyPicker;
+			sourceTree = "<group>";
+		};
+		1338D8212186F19A0065B552 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1338D8222186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift */,
+				1338D8232186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1338D8262186F3620065B552 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1338D8272186F38B0065B552 /* FTPrivacyViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		1342A8752163832400EFD1E6 /* ViewModel */ = {
@@ -1383,6 +1421,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				1338D8202186F16E0065B552 /* PrivacyPicker */,
 				13B009022181C249000E7FA5 /* PhotoPicker */,
 				13B008FD2181B084000E7FA5 /* PhotoComposer */,
 				13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */,
@@ -1489,6 +1528,7 @@
 				13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
+				1338D8252186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
@@ -1518,6 +1558,7 @@
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
+				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
@@ -1682,6 +1723,7 @@
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
+				1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */,
 				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,
 				134FF0EC2152B37300551771 /* ViewableControllerContainer.swift in Sources */,
@@ -1708,6 +1750,7 @@
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */,
+				1338D8282186F38B0065B552 /* FTPrivacyViewModel.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13BA9B0E2149792200AD06D7 /* FileProviderCache.swift in Sources */,
 				1342A8E521649FC500EFD1E6 /* UIAlertController+Extensions.swift in Sources */,
@@ -1817,6 +1860,7 @@
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				134FF0FE2152B37300551771 /* PopupController.swift in Sources */,
 				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
+				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
 				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,
 				1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */,

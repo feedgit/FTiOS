@@ -203,6 +203,15 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
         return settings[indexPath.row].cellHeight()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            // privacy
+            let privacyVC = FTPrivacyPickerViewController()
+            privacyVC.delegate = self
+            self.navigationController?.pushViewController(privacyVC, animated: true)
+        }
+    }
+    
 }
 
 extension FTPhotoComposerViewController: PhotoCellDelegate {
@@ -219,5 +228,14 @@ extension FTPhotoComposerViewController: PhotoCellDelegate {
                 return
             }
         }
+    }
+}
+
+extension FTPhotoComposerViewController: PrivacyPickerDelegate {
+    func privacyDidSave(vc: FTPrivacyPickerViewController) {
+        guard let privacy = vc.selectedPrivacy else { return }
+        let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
+        settings[1] = privacyItem
+        tableView.reloadData()
     }
 }
