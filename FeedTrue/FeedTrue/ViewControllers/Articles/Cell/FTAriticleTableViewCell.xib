@@ -73,6 +73,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sJc-aX-UX5">
                                 <rect key="frame" x="375" y="0.0" width="44" height="44"/>
                                 <state key="normal" image="comment"/>
+                                <connections>
+                                    <action selector="commentTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="TP6-Xg-eui"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxX-pH-3YR">
                                 <rect key="frame" x="8" y="0.0" width="44" height="44"/>
@@ -173,6 +176,7 @@
                 <outlet property="contentLabel" destination="MpX-Z5-hhr" id="H0I-hh-vHG"/>
                 <outlet property="loveLabel" destination="h7y-zw-7My" id="JvB-AH-NPL"/>
                 <outlet property="reactionButton" destination="a48-n9-298" id="dUa-Ud-tja"/>
+                <outlet property="savedBtn" destination="5l5-Sd-zFF" id="W8b-47-DcY"/>
                 <outlet property="thumbImageView" destination="Jty-yA-67k" id="puh-un-Aaq"/>
                 <outlet property="timeLabel" destination="xiR-qi-rmS" id="otM-vW-ax7"/>
                 <outlet property="titleLabel" destination="X4R-gV-aFX" id="dZ3-Gs-5Nh"/>
@@ -184,10 +188,10 @@
     </objects>
     <resources>
         <image name="1000x1000" width="150" height="150"/>
-        <image name="comment" width="24" height="24"/>
-        <image name="ic_user" width="32" height="32"/>
+        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
+        <image name="ic_user" width="51.200000762939453" height="51.200000762939453"/>
         <image name="more_btn" width="23" height="7"/>
-        <image name="save" width="22" height="22"/>
-        <image name="share" width="22" height="22"/>
+        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
+        <image name="share" width="35.200000762939453" height="35.200000762939453"/>
     </resources>
 </document>

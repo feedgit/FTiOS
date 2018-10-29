@@ -16,16 +16,19 @@ class CommentController: UITableViewController {
     }
     
     var type: CommentDataType = .comment
-    var feed: FTFeedInfo!
+    //var feed: FTFeedInfo!
+    var contentID: Int?
+    var ctName: String?
     var coreService: FTCoreService!
     var datasource: [[FTCommentViewModel]] = []
     var replyComment: FTCommentViewModel?
     var editComment: FTCommentViewModel?
     var nextURLString: String?
     
-    init(c: FTCoreService, f: FTFeedInfo, comments: [FTCommentViewModel]) {
-        feed = f
+    init(c: FTCoreService, contentID id: Int?, ctName ct_name: String?) {
         coreService = c
+        contentID = id
+        ctName = ct_name
         super.init(nibName: "CommentController", bundle: nil)
     }
     
@@ -43,7 +46,7 @@ class CommentController: UITableViewController {
     
     func loadComment() {
         guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
-        guard let feedID = feed.id else { return }
+        guard let feedID = contentID else { return }
         coreService.webService?.getComments(token: token, ct_id: feedID, completion: { [weak self] (success, response) in
             if success {
                 // TODO: init datasource
@@ -156,8 +159,8 @@ class CommentController: UITableViewController {
             self.messageInputView.textView.text = ""
             self.messageInputView.textViewDidChange(messageInputView.textView)
             self.messageInputView.clearBtn.isHidden = true
-            guard let ct_name = feed.ct_name else { return }
-            guard let ct_id = feed.id else { return }
+            guard let ct_name = ctName else { return }
+            guard let ct_id = contentID else { return }
             guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
             let parentID = self.replyComment?.comment.id
             if self.type == .edit {

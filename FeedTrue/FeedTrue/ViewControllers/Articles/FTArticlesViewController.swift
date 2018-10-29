@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import STPopup
 
 class FTArticlesViewController: UIViewController {
     var datasource: [FTAriticleViewModel] = []
@@ -169,5 +170,53 @@ extension FTArticlesViewController: FTAticleCellDelegate {
         })
     }
     
+    func articleCellDidTouchComment(cell: FTAriticleTableViewCell) {
+        let commentVC = CommentController(c: coreService, contentID: cell.article.id, ctName: cell.article.ct_name)
+        commentVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.75)
+        let popupController = STPopupController(rootViewController: commentVC)
+        popupController.style = .bottomSheet
+        popupController.present(in: self)
+    }
     
+    func articleCellDidSave(cell: FTAriticleTableViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        let ct_id = cell.article.id
+        let ct_name = cell.article.ct_name
+        coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    cell.article.saved = false
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
+    
+    func articleCellDidUnSave(cell: FTAriticleTableViewCell) {
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        
+        let ct_id = cell.article.id
+        let ct_name = cell.article.ct_name
+        coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+                    cell.article.saved = true
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
 }

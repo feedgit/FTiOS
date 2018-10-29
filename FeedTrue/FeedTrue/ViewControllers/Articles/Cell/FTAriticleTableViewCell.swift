@@ -12,6 +12,9 @@ import SwiftMoment
 @objc protocol FTAticleCellDelegate {
     func articleCellDidChangeReaction(cell: FTAriticleTableViewCell)
     func articleCellDidRemoveReaction(cell: FTAriticleTableViewCell)
+    func articleCellDidTouchComment(cell: FTAriticleTableViewCell)
+    func articleCellDidSave(cell: FTAriticleTableViewCell)
+    func articleCellDidUnSave(cell: FTAriticleTableViewCell)
 }
 
 class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
@@ -29,6 +32,8 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var loveLabel: UILabel!
     @IBOutlet weak var reactionButton: ReactionButton!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var savedBtn: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -86,6 +91,15 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
             ftReactionType = .love
             reactionButton.reaction   = Reaction.facebook.like
         }
+        
+        // config save icon
+        if article.saved {
+            // icon saved
+            savedBtn.setImage(UIImage(named: "saved"), for: .normal)
+        } else {
+            // icon save
+            savedBtn.setImage(UIImage(named: "save"), for: .normal)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -100,8 +114,20 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
         
     }
     
+    @IBAction func commentTouchUpAction(_ sender: Any) {
+        self.delegate?.articleCellDidTouchComment(cell: self)
+    }
+    
     @IBAction func saveTouchUpAction(_ sender: Any) {
-        
+        if article.saved {
+            self.delegate?.articleCellDidUnSave(cell: self)
+            self.savedBtn.setImage(UIImage(named: "save"), for: .normal)
+            self.article.saved = false
+            return
+        }
+        self.savedBtn.setImage(UIImage(named: "saved"), for: .normal)
+        self.article.saved = true
+        self.delegate?.articleCellDidSave(cell: self)
     }
     
     @IBAction func reactionButtonTouchUpAction(_ sender: Any) {

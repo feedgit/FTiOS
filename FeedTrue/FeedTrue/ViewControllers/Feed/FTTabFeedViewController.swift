@@ -416,7 +416,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
             }
         }
         
-        let commentVC = CommentController(c: coreService, f: feed, comments: comments)
+        let commentVC = CommentController(c: coreService, contentID: feed.id, ctName: feed.ct_name)
         commentVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.75)
         let popupController = STPopupController(rootViewController: commentVC)
         popupController.style = .bottomSheet
