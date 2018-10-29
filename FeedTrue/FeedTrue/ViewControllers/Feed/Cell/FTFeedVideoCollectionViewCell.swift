@@ -50,7 +50,7 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
         contetnData = content
         contentLabel.text = content.title.htmlToString
         // video content
-        imageView.loadImage(fromURL: URL(string: content.thumbnail), defaultImage: UIImage.defaultImage())
+        imageView.loadImage(fromURL: URL(string: content.thumbnail), defaultImage: UIImage.noImage())
         
         // config react icon
         switch content.request_reacted {

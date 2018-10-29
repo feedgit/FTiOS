@@ -49,7 +49,7 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
     
     func renderCell(data: FTAriticleViewModel) {
         article = data.article
-        thumbImageView.loadImage(fromURL: URL(string: article.thumbnail), defaultImage: UIImage.defaultImage())
+        thumbImageView.loadImage(fromURL: URL(string: article.thumbnail), defaultImage: UIImage.noImage())
         titleLabel.text = article.title
         contentLabel.text = article.description
         userImageView.loadImage(fromURL: URL(string: article.user?.avatar ?? ""), defaultImage: UIImage.userImage())

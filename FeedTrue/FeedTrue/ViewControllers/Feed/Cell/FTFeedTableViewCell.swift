@@ -467,15 +467,15 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         switch type {
         case .image:
             if let url = URL(string: cell.photo?.url ?? "") {
-                cell.imageView.loadImage(fromURL: url)
+                cell.imageView.loadImage(fromURL: url, defaultImage: UIImage.noImage())
             } else {
-                cell.imageView.image = nil
+                cell.imageView.image = UIImage.noImage()
             }
         case .video:
             if let url = URL(string: cell.photo?.thumbnailURL ?? "") {
-                cell.imageView.loadImage(fromURL: url)
+                cell.imageView.loadImage(fromURL: url, defaultImage: UIImage.noImage())
             } else {
-                cell.imageView.image = nil
+                cell.imageView.image = UIImage.noImage()
             }
         }
         if photos.count > 2 && indexPath.row == 1 {

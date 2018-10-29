@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="246" height="316"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-M1-ixI">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_noimage" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-M1-ixI">
                         <rect key="frame" x="0.0" y="0.0" width="246" height="246"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="bHF-M1-ixI" secondAttribute="height" id="b3s-K7-ph2"/>
@@ -120,8 +120,9 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="comment" width="17" height="15"/>
+        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
+        <image name="ic_noimage" width="389.25" height="346.5"/>
         <image name="ic_play_video" width="57" height="57"/>
-        <image name="save" width="13" height="15"/>
+        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
     </resources>
 </document>

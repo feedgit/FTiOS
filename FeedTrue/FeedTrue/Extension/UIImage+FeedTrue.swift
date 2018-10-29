@@ -23,10 +23,14 @@ extension UIImage {
     }
     
     class func defaultImage() -> UIImage? {
-        return UIImage(named: "1000x1000")
+        return UIImage(named: "ic_noimage")
     }
     
     class func userImage() -> UIImage? {
         return UIImage(named: "ic_user")
+    }
+    
+    class func noImage() -> UIImage {
+        return UIImage(named: "ic_noimage")!
     }
 }
