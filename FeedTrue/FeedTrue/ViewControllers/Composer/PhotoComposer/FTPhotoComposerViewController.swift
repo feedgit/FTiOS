@@ -96,16 +96,34 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
 
 extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count
+        return datasource.count > 0 ? datasource.count + 1 : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        var content: FTPhotoComposerViewModel!
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
         cell.delegate = self
         
+        if indexPath.row == datasource.count {
+            // add button
+            let vm = FTPhotoComposerViewModel()
+            vm.image = UIImage(named: "ic_add_new")
+            content = vm
+            cell.deleteImageView.isHidden = true
+        } else {
+            content = datasource[indexPath.row]
+            cell.deleteImageView.isHidden = false
+        }
         // Configure the cell
-        cell.renderCell(data: datasource[indexPath.row])
+        cell.renderCell(data: content)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == datasource.count {
+            // add button
+            openPhoto()
+        }
     }
 }
 
