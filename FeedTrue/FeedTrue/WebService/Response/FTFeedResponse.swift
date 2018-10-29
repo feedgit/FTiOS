@@ -281,7 +281,7 @@ class FTComment: Mappable {
     
     func mapping(map: Map) {
         count <- map["count"]
-        comments <- map["data"]
+        comments <- map["results"]
     }
 }
 
