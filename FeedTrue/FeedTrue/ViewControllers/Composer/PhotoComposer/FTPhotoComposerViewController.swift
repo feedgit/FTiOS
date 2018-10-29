@@ -13,6 +13,8 @@ class FTPhotoComposerViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collecttionViewHeightConstraint: NSLayoutConstraint!
+    fileprivate var longPressGesture: UILongPressGestureRecognizer!
     
     var datasource: [FTPhotoComposerViewModel] = []
     var settings: [FTPhotoSettingViewModel] = []
@@ -36,6 +38,9 @@ class FTPhotoComposerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         FTPhotoComposerViewModel.register(collectionView: collectionView)
+        collectionView.dragInteractionEnabled = true
+        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        collectionView.addGestureRecognizer(longPressGesture)
         
         generateSettings()
         tableView.dataSource = self
@@ -70,6 +75,26 @@ class FTPhotoComposerViewController: UIViewController {
         settings = [postFeed, privacy, checkin]
     }
     
+    func updateCollectViewHeight() {
+        self.collecttionViewHeightConstraint.constant = (UIScreen.main.bounds.width / 3 ) * CGFloat((self.datasource.count / 3))
+    }
+    
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+            
+        case .began:
+            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed: collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
+    
 }
 
 extension FTPhotoComposerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -86,6 +111,7 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
                     vm.image = im
                     self.datasource.append(vm)
                     DispatchQueue.main.async {
+                        self.updateCollectViewHeight()
                         self.collectionView.reloadData()
                     }
                 }
@@ -96,7 +122,7 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
 
 extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count > 0 ? datasource.count + 1 : 0
+        return datasource.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -125,6 +151,22 @@ extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectio
             openPhoto()
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let moveItem = datasource[sourceIndexPath.row]
+        let destinationItem = datasource[destinationIndexPath.row]
+        datasource[sourceIndexPath.row] = destinationItem
+        datasource[destinationIndexPath.row] = moveItem
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == datasource.count { return false }
+        return true
+    }
 }
 
 extension FTPhotoComposerViewController: UICollectionViewDelegateFlowLayout {
@@ -142,6 +184,7 @@ extension FTPhotoComposerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
     }
+    
 }
 
 extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSource {
@@ -170,6 +213,7 @@ extension FTPhotoComposerViewController: PhotoCellDelegate {
             if icon.isEqual(image) {
                 datasource.remove(vm)
                 DispatchQueue.main.async {
+                    self.updateCollectViewHeight()
                     self.collectionView.reloadData()
                 }
                 return
