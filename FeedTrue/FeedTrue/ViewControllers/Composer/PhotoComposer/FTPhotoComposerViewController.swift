@@ -15,6 +15,7 @@ class FTPhotoComposerViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collecttionViewHeightConstraint: NSLayoutConstraint!
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
+    var postText = ""
     
     var datasource: [FTPhotoComposerViewModel] = []
     var settings: [FTPhotoSettingViewModel] = []
@@ -204,7 +205,12 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
+            // post in feed
+            let postVC = FTPostInFeedViewController(postText: postText)
+            postVC.delegate = self
+            self.navigationController?.pushViewController(postVC, animated: true)
+        } else if indexPath.row == 1 {
             // privacy
             let privacyVC = FTPrivacyPickerViewController()
             privacyVC.delegate = self
@@ -236,6 +242,20 @@ extension FTPhotoComposerViewController: PrivacyPickerDelegate {
         guard let privacy = vc.selectedPrivacy else { return }
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
         settings[1] = privacyItem
+        tableView.reloadData()
+    }
+}
+
+extension FTPhotoComposerViewController: PostInFeedDelegate {
+    func postInFeedDidSave(viewController: FTPostInFeedViewController) {
+        postText = viewController.getPostText()
+        var markIcontName = ""
+        if postText != "" {
+            markIcontName = "ic_tick"
+        }
+        
+        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
+        settings[0] = postFeed
         tableView.reloadData()
     }
 }

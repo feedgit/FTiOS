@@ -255,6 +255,8 @@
 		13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D25811214299B300E84002 /* FTLoadingViewController.swift */; };
 		13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D25812214299B300E84002 /* FTLoadingViewController.xib */; };
 		13E94AA2216D1A1C00D2AF29 /* FTCommentReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */; };
+		13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */; };
+		13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
@@ -512,6 +514,8 @@
 		13D25811214299B300E84002 /* FTLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTLoadingViewController.swift; sourceTree = "<group>"; };
 		13D25812214299B300E84002 /* FTLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTLoadingViewController.xib; sourceTree = "<group>"; };
 		13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCommentReplies.swift; sourceTree = "<group>"; };
+		13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPostInFeedViewController.swift; sourceTree = "<group>"; };
+		13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPostInFeedViewController.xib; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1421,6 +1425,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				13F5C8A5218763BF006DD345 /* PostInFeed */,
 				1338D8202186F16E0065B552 /* PrivacyPicker */,
 				13B009022181C249000E7FA5 /* PhotoPicker */,
 				13B008FD2181B084000E7FA5 /* PhotoComposer */,
@@ -1445,6 +1450,15 @@
 				13D2580121426E0000E84002 /* FTTabSettingsViewController.xib */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		13F5C8A5218763BF006DD345 /* PostInFeed */ = {
+			isa = PBXGroup;
+			children = (
+				13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */,
+				13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */,
+			);
+			path = PostInFeed;
 			sourceTree = "<group>";
 		};
 		5B3456877620078CB0C3AD68 /* Pods */ = {
@@ -1573,6 +1587,7 @@
 				1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */,
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
+				13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */,
 				132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				134FF1062152B37300551771 /* pause@2x.png in Resources */,
@@ -1701,6 +1716,7 @@
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
 				132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */,
+				13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */,
 				13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
 				13D0C025217DD6AB00F745B9 /* FTUserDashBoardProfileCell.swift in Sources */,
