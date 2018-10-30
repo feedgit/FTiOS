@@ -34,7 +34,14 @@ class FTComposerPopupViewController: UIViewController {
         tableView.separatorStyle = .none
         countCol = 3
         countRow = 3
+        let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
+        backBarBtn.tintColor = .white
+        navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Composer", comment: "")
+    }
+    
+    @objc func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     fileprivate func generateDatasource() {
@@ -90,23 +97,22 @@ extension FTComposerPopupViewController: UITableViewDataSource, UITableViewDeleg
         return 50.0
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.text = NSLocalizedString("Choose type you want create", comment: "")
-        label.font = UIFont.systemFont(ofSize: 17)
-        label.textAlignment = .center
-        return label
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 128
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let label = UILabel()
+//        label.text = NSLocalizedString("Choose type you want create", comment: "")
+//        label.font = UIFont.systemFont(ofSize: 17)
+//        label.textAlignment = .center
+//        return label
+//    }
+//    
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 128
+//    }
 }
 
 extension FTComposerPopupViewController: FTMenuTableViewCellDelegate {
     func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
-        self.dismiss(animated: true) {
-            self.delegate?.composerDidSelectedItemAt(index)
-        }
+        self.navigationController?.popViewController(animated: false)
+        self.delegate?.composerDidSelectedItemAt(index)
     }
 }

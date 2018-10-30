@@ -37,7 +37,7 @@ class FTPhotoPickerViewController: UIViewController {
             print(self.pickerController.selectedAssets.debugDescription)
         }
         let pickerView = pickerController.view!
-        pickerView.frame = CGRect(x: 0, y: 88, width: self.view.bounds.width, height: self.view.bounds.height - 88)
+        pickerView.frame = CGRect(x: 0, y: 90, width: self.view.bounds.width, height: self.view.bounds.height - 90)
         self.view.addSubview(pickerView)
         
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
