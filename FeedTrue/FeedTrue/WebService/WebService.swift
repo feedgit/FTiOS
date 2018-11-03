@@ -952,27 +952,29 @@ class WebService: NSObject, FTCoreServiceComponent {
             return
         }
         
+        let fileName = Date().dateTimeString()
+        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(imageData, withName: "file", fileName: "image.png", mimeType: "image/png")
+            multipartFormData.append(imageData, withName: "file", fileName: "\(fileName).png", mimeType: "image/png")
 
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
-            switch result{
+            switch result {
             case .success(let upload, _, _):
-                upload.responseJSON { response in
+                upload.responseJSON(completionHandler: { (response) in
                     if let error = response.error {
-                        print("Error in upload: \(error.localizedDescription)")
+                        print(error.localizedDescription)
                         completion(false, nil)
-                        return
+                    } else {
+                        print("Succesfully uploaded")
+                        completion(true, nil)
                     }
-                    print("Succesfully uploaded")
-                    completion(true, nil)
-                }
+                })
+                
             case .failure(let error):
                 print("Error in upload: \(error.localizedDescription)")
                 completion(false, nil)
             }
         }
-        
     }
     
     func getFeedVideo(username: String?, token: String, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
