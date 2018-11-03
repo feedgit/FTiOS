@@ -347,16 +347,20 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             }
         }
         privacyImageView.image = UIImage(named: privacyType.rawValue)
+        
+        if let count = data.feed.comment?.count {
+            self.commentCountLabel.text = count > 0 ? "\(count)" : nil
+        } else {
+            self.commentCountLabel.text = nil
+        }
+        
         if let comments = data.feed.comment?.comments {
-            self.commentCountLabel.text = comments.count > 0 ? "\(comments.count)" : nil
             for c in comments {
                 let commentMV = FTCommentViewModel(comment: c, type: .text)
                 if self.datasource.count < 3 {
                     self.datasource.append(commentMV)
                 }
             }
-        } else {
-            self.commentCountLabel.text = nil
         }
         
         self.commentTableView.reloadData()
