@@ -8,6 +8,12 @@
 
 import UIKit
 
+enum PrivacyIconName: String {
+    case `public` = "privacy_public"
+    case `private` = "privacy_private"
+    case follow = "privacy_follow"
+}
+
 @objc protocol PrivacyPickerDelegate {
     func privacyDidSave(vc: FTPrivacyPickerViewController)
 }
@@ -55,11 +61,11 @@ class FTPrivacyPickerViewController: UIViewController {
     }
     
     fileprivate func generateDatasource() {
-        let privacyPublic = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("PUBLIC", comment: ""), detail: NSLocalizedString("Everyone can see this", comment: ""), imageName: "privacy_public"))
+        let privacyPublic = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("PUBLIC", comment: ""), detail: NSLocalizedString("Everyone can see this", comment: ""), imageName: PrivacyIconName.public.rawValue))
         
-        let privacyPrivate = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("PRIVATE", comment: ""), detail: NSLocalizedString("Only you can see this", comment: ""), imageName: "privacy_private"))
+        let privacyPrivate = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("PRIVATE", comment: ""), detail: NSLocalizedString("Only you can see this", comment: ""), imageName: PrivacyIconName.private.rawValue))
         
-        let privacyFollower = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("FOLLOWER", comment: ""), detail: NSLocalizedString("People who follow you can see this", comment: ""), imageName: "privacy_follow"))
+        let privacyFollower = FTPrivacyViewModel(privace: FTPrivacy(title: NSLocalizedString("FOLLOWER", comment: ""), detail: NSLocalizedString("People who follow you can see this", comment: ""), imageName: PrivacyIconName.follow.rawValue))
         
         datasource = [privacyPublic, privacyPrivate, privacyFollower]
     }
