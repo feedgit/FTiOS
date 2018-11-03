@@ -112,7 +112,7 @@ extension FTComposerPopupViewController: UITableViewDataSource, UITableViewDeleg
 
 extension FTComposerPopupViewController: FTMenuTableViewCellDelegate {
     func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
-        self.navigationController?.popViewController(animated: false)
+        //self.navigationController?.popViewController(animated: false)
         self.delegate?.composerDidSelectedItemAt(index)
     }
 }

@@ -448,10 +448,14 @@ extension FTTabFeedViewController: ComposerDelegate {
     func composerDidSelectedItemAt(_ index: Int) {
         if index == 0 {
             // photo
-            let photoVC = FTPhotoComposerViewController()
-            DispatchQueue.main.async {
-                self.navigationController?.pushViewController(photoVC, animated: true)
-            }
+//            let photoVC = FTPhotoComposerViewController()
+//            DispatchQueue.main.async {
+//                self.navigationController?.pushViewController(photoVC, animated: true)
+//            }
+            
+            let photoPicker = FTPhotoPickerViewController()
+            //photoPicker.delegate = self
+            self.navigationController?.pushViewController(photoPicker, animated: true)
         }
     }
 }

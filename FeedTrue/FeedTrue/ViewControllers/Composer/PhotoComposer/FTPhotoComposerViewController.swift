@@ -23,6 +23,8 @@ class FTPhotoComposerViewController: UIViewController {
     var backBarBtn: UIBarButtonItem!
     fileprivate let sectionInsets = UIEdgeInsets.zero
     fileprivate let itemsPerRow: CGFloat = 3
+    var assets: [DKAsset] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -53,7 +55,34 @@ class FTPhotoComposerViewController: UIViewController {
         tableView.clipsToBounds = true
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        openPhoto()
+        loadAssets()
+    }
+    
+    init(assets a: [DKAsset]) {
+        self.assets = a
+        super.init(nibName: "FTPhotoComposerViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func loadAssets() {
+        for asset in assets {
+            asset.fetchOriginalImage { (image, info) in
+                print(info?.debugDescription ?? "")
+                if let im = image {
+                    let vm = FTPhotoComposerViewModel()
+                    vm.image = im
+                    self.datasource.append(vm)
+                    DispatchQueue.main.async {
+                        self.updateCollectViewHeight()
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+
     }
     
     @objc func back(_ sender: Any) {
@@ -77,7 +106,11 @@ class FTPhotoComposerViewController: UIViewController {
     }
     
     func updateCollectViewHeight() {
-        self.collecttionViewHeightConstraint.constant = (UIScreen.main.bounds.width / 3 ) * CGFloat((self.datasource.count / 3))
+        if datasource.count > 0 && datasource.count < 3 {
+            self.collecttionViewHeightConstraint.constant = 0
+        } else {
+            self.collecttionViewHeightConstraint.constant = (UIScreen.main.bounds.width / 3 ) * CGFloat((self.datasource.count / 3 + (self.datasource.count % 3 != 0 ? 1 : 0) - 1))
+        }
     }
     
     @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
@@ -123,24 +156,14 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
 
 extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count + 1
+        return datasource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var content: FTPhotoComposerViewModel!
+        let content = datasource[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
         cell.delegate = self
         
-        if indexPath.row == datasource.count {
-            // add button
-            let vm = FTPhotoComposerViewModel()
-            vm.image = UIImage(named: "ic_add_new")
-            content = vm
-            cell.deleteImageView.isHidden = true
-        } else {
-            content = datasource[indexPath.row]
-            cell.deleteImageView.isHidden = false
-        }
         // Configure the cell
         cell.renderCell(data: content)
         return cell

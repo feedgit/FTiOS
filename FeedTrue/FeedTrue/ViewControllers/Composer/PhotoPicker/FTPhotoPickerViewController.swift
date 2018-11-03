@@ -56,8 +56,11 @@ class FTPhotoPickerViewController: UIViewController {
     }
     
     @objc func next(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        self.delegate?.photoPickerDidSelectedAssets(assets: pickerController.selectedAssets)
+        //self.navigationController?.popViewController(animated: true)
+        //self.delegate?.photoPickerDidSelectedAssets(assets: pickerController.selectedAssets)
+        
+        let photoVC = FTPhotoComposerViewController(assets: pickerController.selectedAssets)
+        self.navigationController?.pushViewController(photoVC, animated: true)
     }
 }
 
