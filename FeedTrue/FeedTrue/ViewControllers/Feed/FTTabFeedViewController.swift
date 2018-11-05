@@ -447,15 +447,15 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
 extension FTTabFeedViewController: ComposerDelegate {
     func composerDidSelectedItemAt(_ index: Int) {
         if index == 0 {
-            // photo
-//            let photoVC = FTPhotoComposerViewController()
-//            DispatchQueue.main.async {
-//                self.navigationController?.pushViewController(photoVC, animated: true)
-//            }
-            
             let photoPicker = FTPhotoPickerViewController()
             //photoPicker.delegate = self
             self.navigationController?.pushViewController(photoPicker, animated: true)
+        } else if index == 1 {
+            // video
+            let picker = FTPhotoPickerViewController()
+            picker.assetType = .allVideos
+            picker.maxSelectableCount = 1
+            self.navigationController?.pushViewController(picker, animated: true)
         }
     }
 }

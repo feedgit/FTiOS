@@ -195,6 +195,11 @@
 		134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */; };
 		134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */; };
 		134FF1C42159EF9B00551771 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B32159EF9A00551771 /* Components.swift */; };
+		136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A464D2190960300EB9AC9 /* FTVideoComposerViewController.swift */; };
+		136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A464E2190960300EB9AC9 /* FTVideoComposerViewController.xib */; };
+		136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */; };
+		136A46552190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */; };
+		136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
@@ -453,6 +458,11 @@
 		134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedbackDelegate.swift; sourceTree = "<group>"; };
 		134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelectorConfig.swift; sourceTree = "<group>"; };
 		134FF1B32159EF9A00551771 /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		136A464D2190960300EB9AC9 /* FTVideoComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerViewController.swift; sourceTree = "<group>"; };
+		136A464E2190960300EB9AC9 /* FTVideoComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoComposerViewController.xib; sourceTree = "<group>"; };
+		136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerTableViewCell.swift; sourceTree = "<group>"; };
+		136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoComposerTableViewCell.xib; sourceTree = "<group>"; };
+		136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerViewModel.swift; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1195,6 +1205,34 @@
 			path = Reactions;
 			sourceTree = "<group>";
 		};
+		136A464C219095D500EB9AC9 /* VideoComposer */ = {
+			isa = PBXGroup;
+			children = (
+				136A4656219099D800EB9AC9 /* ViewModel */,
+				136A46512190971300EB9AC9 /* Cell */,
+				136A464D2190960300EB9AC9 /* FTVideoComposerViewController.swift */,
+				136A464E2190960300EB9AC9 /* FTVideoComposerViewController.xib */,
+			);
+			path = VideoComposer;
+			sourceTree = "<group>";
+		};
+		136A46512190971300EB9AC9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */,
+				136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		136A4656219099D800EB9AC9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,6 +1463,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				136A464C219095D500EB9AC9 /* VideoComposer */,
 				13F5C8A5218763BF006DD345 /* PostInFeed */,
 				1338D8202186F16E0065B552 /* PrivacyPicker */,
 				13B009022181C249000E7FA5 /* PhotoPicker */,
@@ -1572,6 +1611,7 @@
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
+				136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */,
 				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */,
@@ -1591,6 +1631,7 @@
 				132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				134FF1062152B37300551771 /* pause@2x.png in Resources */,
+				136A46552190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib in Resources */,
 				134FF1102152B37300551771 /* repeat@2x.png in Resources */,
 				13353AFD213A959500D74C47 /* FTEditProfileViewController.xib in Resources */,
 				134FF1092152B37300551771 /* dark-circle@3x.png in Resources */,
@@ -1747,11 +1788,13 @@
 				134FF0F52152B37300551771 /* UIViewExtensions.swift in Sources */,
 				1342A8D921649FC500EFD1E6 /* Array+Extensions.swift in Sources */,
 				13D2580F21428E3700E84002 /* FTSimpleCache.swift in Sources */,
+				136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */,
 				1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */,
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */,
 				13D0C01D217DD3ED00F745B9 /* FTUserDashBoardTabViewController.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
+				136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
 				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
@@ -1841,6 +1884,7 @@
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
+				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
 				13D0C021217DD45C00F745B9 /* FTUserDashBoardViewModel.swift in Sources */,
 				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,

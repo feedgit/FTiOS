@@ -16,6 +16,10 @@ import DKImagePickerController
 class FTPhotoPickerViewController: UIViewController {
     weak var delegate: PhotoPickerDelegate?
     var pickerController: DKImagePickerController!
+    var assetType: DKImagePickerControllerAssetType = .allPhotos
+    var sourceType: DKImagePickerControllerSourceType = .photo
+    var navTitle = "Photos"
+    var maxSelectableCount = 10
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,9 +34,9 @@ class FTPhotoPickerViewController: UIViewController {
         
         pickerController.inline = true
         pickerController.delegate = self
-        pickerController.assetType = .allPhotos
-        pickerController.sourceType = .photo
-        pickerController.maxSelectableCount = 10
+        pickerController.assetType = assetType
+        pickerController.sourceType = sourceType
+        pickerController.maxSelectableCount = maxSelectableCount
         pickerController.selectedChanged = {
             print(self.pickerController.selectedAssets.debugDescription)
         }
@@ -43,7 +47,7 @@ class FTPhotoPickerViewController: UIViewController {
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("Photos", comment: "")
+        navigationItem.title = NSLocalizedString(navTitle, comment: "")
         
         let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
@@ -56,11 +60,15 @@ class FTPhotoPickerViewController: UIViewController {
     }
     
     @objc func next(_ sender: Any) {
-        //self.navigationController?.popViewController(animated: true)
-        //self.delegate?.photoPickerDidSelectedAssets(assets: pickerController.selectedAssets)
-        
-        let photoVC = FTPhotoComposerViewController(assets: pickerController.selectedAssets)
-        self.navigationController?.pushViewController(photoVC, animated: true)
+        if assetType == .allPhotos {
+            let photoVC = FTPhotoComposerViewController(assets: pickerController.selectedAssets)
+            self.navigationController?.pushViewController(photoVC, animated: true)
+        } else if assetType == .allVideos {
+            if let asset = pickerController.selectedAssets.first {
+                let videoVC = FTVideoComposerViewController(asset: asset)
+                self.navigationController?.pushViewController(videoVC, animated: true)
+            }
+        }
     }
 }
 
