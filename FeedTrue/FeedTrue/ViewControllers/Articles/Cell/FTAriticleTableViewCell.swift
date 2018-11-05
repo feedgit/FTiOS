@@ -58,7 +58,7 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
         titleLabel.text = article.title
         contentLabel.text = article.description
         userImageView.loadImage(fromURL: URL(string: article.user?.avatar ?? ""), defaultImage: UIImage.userImage())
-        timeLabel.text = moment(article.create_date)?.fromNowFT()
+        timeLabel.text = moment(article.create_date, timeZone: TimeZone(secondsFromGMT: 0)!, locale: .current)?.fromNowFT()
         if let reactionCount = article.reactions?.count, reactionCount > 0 {
             loveLabel.text = "\(reactionCount)"
         } else {

@@ -139,7 +139,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         }
         self.nameLabel.text = feed.user?.last_name
         if let dateString = feed.date {
-            self.dateLabel.text = moment(dateString)?.fromNowFT()
+            self.dateLabel.text = moment(dateString, timeZone: TimeZone(secondsFromGMT: 0)!, locale: .current)?.fromNowFT()
         } else {
             self.dateLabel.text = nil
         }

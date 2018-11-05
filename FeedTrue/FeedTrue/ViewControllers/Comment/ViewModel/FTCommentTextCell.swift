@@ -77,7 +77,7 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
         //contentLabel.text = "\(lastname) \(data.comment.comment?.htmlToString ?? "")"
         contentLabel.attributedText = attString
         if let post_on = data.comment.posted_on {
-            dateLabel.text = moment(post_on)?.fromNowFT()
+            dateLabel.text = moment(post_on, timeZone: TimeZone(secondsFromGMT: 0)!, locale: .current)?.fromNowFT()
         } else {
             dateLabel.text = nil
         }
