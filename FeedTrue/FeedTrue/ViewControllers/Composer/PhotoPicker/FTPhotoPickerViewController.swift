@@ -19,7 +19,7 @@ class FTPhotoPickerViewController: UIViewController {
     var assetType: DKImagePickerControllerAssetType = .allPhotos
     var sourceType: DKImagePickerControllerSourceType = .photo
     var navTitle = "Photos"
-    var maxSelectableCount = 10
+    var maxSelectableCount = 20
     override func viewDidLoad() {
         super.viewDidLoad()
 

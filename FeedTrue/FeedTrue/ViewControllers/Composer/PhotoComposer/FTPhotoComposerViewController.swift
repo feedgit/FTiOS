@@ -11,14 +11,12 @@ import DKImagePickerController
 
 class FTPhotoComposerViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var collecttionViewHeightConstraint: NSLayoutConstraint!
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
     var postText = ""
     
     var datasource: [FTPhotoComposerViewModel] = []
-    var settings: [FTPhotoSettingViewModel] = []
+    var settings: [BECellDataSource] = []
     var pickerController: DKImagePickerController!
     var backBarBtn: UIBarButtonItem!
     fileprivate let sectionInsets = UIEdgeInsets.zero
@@ -34,21 +32,16 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Add Photos", comment: "")
         
-        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(back(_:)))
+        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
         
         self.navigationItem.rightBarButtonItem = nextBarBtn
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        FTPhotoComposerViewModel.register(collectionView: collectionView)
-        collectionView.dragInteractionEnabled = true
-        longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
-        collectionView.addGestureRecognizer(longPressGesture)
         
         generateSettings()
         tableView.dataSource = self
         tableView.delegate = self
         FTPhotoSettingViewModel.register(tableView: tableView)
+        FTPhotosViewModel.register(tableView: tableView)
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
         tableView.layer.cornerRadius = 8
@@ -75,9 +68,12 @@ class FTPhotoComposerViewController: UIViewController {
                     let vm = FTPhotoComposerViewModel()
                     vm.image = im
                     self.datasource.append(vm)
+                    let photos = FTPhotosViewModel()
+                    photos.datasource = self.datasource
+                    self.settings[0] = photos
+                    
                     DispatchQueue.main.async {
-                        self.updateCollectViewHeight()
-                        self.collectionView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             }
@@ -89,6 +85,10 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @objc func next(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+    
     func openPhoto() {
         let photoPicker = FTPhotoPickerViewController()
         photoPicker.delegate = self
@@ -96,39 +96,17 @@ class FTPhotoComposerViewController: UIViewController {
     }
     
     func generateSettings() {
+        let photos = FTPhotosViewModel()
+        photos.datasource = self.datasource
+        
         let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: "")
         
         let privacy = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: PrivacyIconName.public.rawValue)
         
         let checkin = FTPhotoSettingViewModel(icon: "ic_checkin", title: NSLocalizedString("Check-In", comment: ""), markIcon: "")
         
-        settings = [postFeed, privacy, checkin]
+        settings = [photos, postFeed, privacy, checkin]
     }
-    
-    func updateCollectViewHeight() {
-        if datasource.count > 0 && datasource.count < 3 {
-            self.collecttionViewHeightConstraint.constant = 0
-        } else {
-            self.collecttionViewHeightConstraint.constant = (UIScreen.main.bounds.width / 3 ) * CGFloat((self.datasource.count / 3 + (self.datasource.count % 3 != 0 ? 1 : 0) - 1))
-        }
-    }
-    
-    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-        switch(gesture.state) {
-            
-        case .began:
-            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
-                break
-            }
-            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-        case .changed: collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-        case .ended:
-            collectionView.endInteractiveMovement()
-        default:
-            collectionView.cancelInteractiveMovement()
-        }
-    }
-    
 }
 
 extension FTPhotoComposerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -145,8 +123,7 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
                     vm.image = im
                     self.datasource.append(vm)
                     DispatchQueue.main.async {
-                        self.updateCollectViewHeight()
-                        self.collectionView.reloadData()
+                        self.tableView.reloadData()
                     }
                 }
             }
@@ -167,13 +144,6 @@ extension FTPhotoComposerViewController: UICollectionViewDataSource, UICollectio
         // Configure the cell
         cell.renderCell(data: content)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == datasource.count {
-            // add button
-            openPhoto()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -217,8 +187,11 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FTPhotoSettingViewModel.cellID) as! FTPhotoSettingTableViewCell
-        cell.renderCell(data: settings[indexPath.row])
+        let content = settings[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
+        if let renderCell = cell as? BECellRender {
+            renderCell.renderCell(data: content)
+        }
         
         return cell
     }
@@ -228,12 +201,12 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 1 {
             // post in feed
             let postVC = FTPostInFeedViewController(postText: postText)
             postVC.delegate = self
             self.navigationController?.pushViewController(postVC, animated: true)
-        } else if indexPath.row == 1 {
+        } else if indexPath.row == 2 {
             // privacy
             let privacyVC = FTPrivacyPickerViewController()
             privacyVC.delegate = self
@@ -251,8 +224,7 @@ extension FTPhotoComposerViewController: PhotoCellDelegate {
             if icon.isEqual(image) {
                 datasource.remove(vm)
                 DispatchQueue.main.async {
-                    self.updateCollectViewHeight()
-                    self.collectionView.reloadData()
+                    self.tableView.reloadData()
                 }
                 return
             }
@@ -264,8 +236,9 @@ extension FTPhotoComposerViewController: PrivacyPickerDelegate {
     func privacyDidSave(vc: FTPrivacyPickerViewController) {
         guard let privacy = vc.selectedPrivacy else { return }
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
-        settings[1] = privacyItem
-        tableView.reloadData()
+        settings[2] = privacyItem
+        let indexPath = IndexPath(row: 2, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 
@@ -278,7 +251,8 @@ extension FTPhotoComposerViewController: PostInFeedDelegate {
         }
         
         let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
-        settings[0] = postFeed
-        tableView.reloadData()
+        settings[1] = postFeed
+        let indexPath = IndexPath(row: 1, section: 0)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

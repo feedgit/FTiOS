@@ -34,6 +34,9 @@
 		132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B2D2179D18F00EE11AD /* FTArticles.swift */; };
 		132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7B2F2179D95E00EE11AD /* FTArticlesViewController.swift */; };
 		132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7B302179D95E00EE11AD /* FTArticlesViewController.xib */; };
+		133011C02190B3A300AB5FAB /* FTPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133011BE2190B3A300AB5FAB /* FTPhotosTableViewCell.swift */; };
+		133011C12190B3A300AB5FAB /* FTPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133011BF2190B3A300AB5FAB /* FTPhotosTableViewCell.xib */; };
+		133011C32190B67E00AB5FAB /* FTPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */; };
 		13353AF6213A89D200D74C47 /* FTTabProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */; };
 		13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */; };
 		13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */; };
@@ -296,6 +299,9 @@
 		132C7B2D2179D18F00EE11AD /* FTArticles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticles.swift; sourceTree = "<group>"; };
 		132C7B2F2179D95E00EE11AD /* FTArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticlesViewController.swift; sourceTree = "<group>"; };
 		132C7B302179D95E00EE11AD /* FTArticlesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTArticlesViewController.xib; sourceTree = "<group>"; };
+		133011BE2190B3A300AB5FAB /* FTPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotosTableViewCell.swift; sourceTree = "<group>"; };
+		133011BF2190B3A300AB5FAB /* FTPhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotosTableViewCell.xib; sourceTree = "<group>"; };
+		133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotosViewModel.swift; sourceTree = "<group>"; };
 		13353AF4213A89D200D74C47 /* FTTabProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabProfileViewController.swift; sourceTree = "<group>"; };
 		13353AF5213A89D200D74C47 /* FTTabProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTTabProfileViewController.xib; sourceTree = "<group>"; };
 		13353AF8213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTViewControllerWithCustomNavibar.swift; sourceTree = "<group>"; };
@@ -1321,6 +1327,8 @@
 				13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */,
 				1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */,
 				1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */,
+				133011BE2190B3A300AB5FAB /* FTPhotosTableViewCell.swift */,
+				133011BF2190B3A300AB5FAB /* FTPhotosTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1330,6 +1338,7 @@
 			children = (
 				13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */,
 				1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */,
+				133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1616,6 +1625,7 @@
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
+				133011C12190B3A300AB5FAB /* FTPhotosTableViewCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
 				132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */,
 				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
@@ -1827,6 +1837,7 @@
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
+				133011C32190B67E00AB5FAB /* FTPhotosViewModel.swift in Sources */,
 				1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
@@ -1853,6 +1864,7 @@
 				13BA9B1B2149793500AD06D7 /* BECell.swift in Sources */,
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
+				133011C02190B3A300AB5FAB /* FTPhotosTableViewCell.swift in Sources */,
 				1342A8E421649FC500EFD1E6 /* UIApplication+Extensions.swift in Sources */,
 				134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */,
 				1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */,

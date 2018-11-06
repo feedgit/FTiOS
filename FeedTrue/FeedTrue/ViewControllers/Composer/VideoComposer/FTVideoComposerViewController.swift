@@ -24,7 +24,7 @@ class FTVideoComposerViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Add Video", comment: "")
         
-        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(back(_:)))
+        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
         
         self.navigationItem.rightBarButtonItem = nextBarBtn
@@ -44,6 +44,10 @@ class FTVideoComposerViewController: UIViewController {
     
     @objc func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func next(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     init(asset a: DKAsset) {
