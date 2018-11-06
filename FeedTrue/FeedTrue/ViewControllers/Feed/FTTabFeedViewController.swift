@@ -447,12 +447,12 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
 extension FTTabFeedViewController: ComposerDelegate {
     func composerDidSelectedItemAt(_ index: Int) {
         if index == 0 {
-            let photoPicker = FTPhotoPickerViewController()
+            let photoPicker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
             //photoPicker.delegate = self
             self.navigationController?.pushViewController(photoPicker, animated: true)
         } else if index == 1 {
             // video
-            let picker = FTPhotoPickerViewController()
+            let picker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
             picker.assetType = .allVideos
             picker.maxSelectableCount = 1
             self.navigationController?.pushViewController(picker, animated: true)

@@ -20,6 +20,8 @@ class FTPhotoPickerViewController: UIViewController {
     var sourceType: DKImagePickerControllerSourceType = .photo
     var navTitle = "Photos"
     var maxSelectableCount = 20
+    var coreService: FTCoreService!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,13 +57,22 @@ class FTPhotoPickerViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = nextBarBtn
     }
     
+    init(coreService service: FTCoreService) {
+        coreService = service
+        super.init(nibName: "FTPhotoPickerViewController", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     @objc func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func next(_ sender: Any) {
         if assetType == .allPhotos {
-            let photoVC = FTPhotoComposerViewController(assets: pickerController.selectedAssets)
+            let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
             self.navigationController?.pushViewController(photoVC, animated: true)
         } else if assetType == .allVideos {
             if let asset = pickerController.selectedAssets.first {

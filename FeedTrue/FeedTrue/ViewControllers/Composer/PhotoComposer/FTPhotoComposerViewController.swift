@@ -22,6 +22,7 @@ class FTPhotoComposerViewController: UIViewController {
     fileprivate let sectionInsets = UIEdgeInsets.zero
     fileprivate let itemsPerRow: CGFloat = 3
     var assets: [DKAsset] = []
+    var coreService: FTCoreService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,8 @@ class FTPhotoComposerViewController: UIViewController {
         loadAssets()
     }
     
-    init(assets a: [DKAsset]) {
+    init(coreService service: FTCoreService, assets a: [DKAsset]) {
+        self.coreService = service
         self.assets = a
         super.init(nibName: "FTPhotoComposerViewController", bundle: nil)
     }
@@ -87,10 +89,27 @@ class FTPhotoComposerViewController: UIViewController {
     
     @objc func next(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
+        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
+        var imageFiles: [UIImage] = []
+        var imageDatas: [[String: String]] = []
+        for i in 0..<datasource.count {
+            if let image = datasource[i].image {
+                imageFiles.append(image)
+                // { id: <filename_with_extension_1>, caption: <caption_text1> }
+                let name = Date().dateTimeString().appending("\(i).png")
+                let caption = "caption_text\(i)"
+                let dict = ["id": name, "caption": caption]
+                imageDatas.append(dict)
+            }
+        }
+        
+        coreService.webService?.composerPhoto(token: token, imageFiles: imageFiles, imageDatas: imageDatas, privacy: 0, feedText: postText, completion: { (success, response) in
+            NSLog(success ? "SUCCESS" : "FAILED")
+        })
     }
     
     func openPhoto() {
-        let photoPicker = FTPhotoPickerViewController()
+        let photoPicker = FTPhotoPickerViewController(coreService: coreService)
         photoPicker.delegate = self
         self.navigationController?.pushViewController(photoPicker, animated: true)
     }

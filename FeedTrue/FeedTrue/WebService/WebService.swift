@@ -1063,4 +1063,73 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    /*
+         POST /composer/photo/
+     
+         Type: MultiPart FormData
+         Request data:
+     
+         image_files: [<Image File>, <Image File>, <Image File>]: Array of uploaded images, limit 10.
+         image_data: [{ id: <filename_with_extension_1>, caption: <caption_text1> }, { id: <filename_with_extension_2>, caption: <caption_text2> }]: Json type
+         privacy: 0, 1 or 2 - View Privacy API Documentation - required
+         feed.text: 'Example Text' - No required Have key if active PostFeed
+         Response:
+     
+         If have PostInFeed, response is Feed, else response is success or error
+     */
+    
+    func composerPhoto(token: String, imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool, [String: Any]?) -> ()) {
+        var image_files: [Data] = []
+        for i in 0..<imageFiles.count {
+            if let imageData = UIImageJPEGRepresentation(imageFiles[i], 0.8) {
+                image_files.append(imageData)
+            }
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+        ]
+        
+        let urlString = "\(host)/api/v1/composer/photo/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for i in 0..<imageFiles.count {
+                let fileName = imageDatas[i]["id"]!
+                multipartFormData.append(image_files[i], withName: "image_file", fileName: fileName, mimeType: "image/png")
+            }
+            
+            multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
+            if let ft = feedText {
+                multipartFormData.append(ft.data(using: String.Encoding.utf8)!, withName: "feed.text")
+            }
+        }, to: url, headers: headers)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                    print(progress.debugDescription)
+                })
+                
+                upload.responseJSON { response in
+                    //print response.result
+                    print(response.result.debugDescription)
+                }
+                
+            case .failure(let encodingError):
+                //print encodingError.description
+                print(encodingError.localizedDescription)
+            }
+        }
+        
+    }
+    
 }
