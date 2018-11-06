@@ -9,11 +9,18 @@
 import UIKit
 import DKImagePickerController
 
+enum PrivacyType: Int {
+    case `public` = 0
+    case `private` = 1
+    case follow = 2
+}
+
 class FTPhotoComposerViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
     var postText = ""
+    var selectedPrivacy:PrivacyType = .public // default is public
     
     var datasource: [FTPhotoComposerViewModel] = []
     var settings: [BECellDataSource] = []
@@ -33,7 +40,7 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Add Photos", comment: "")
         
-        let nextBarBtn = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(next(_:)))
+        let nextBarBtn = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
         
         self.navigationItem.rightBarButtonItem = nextBarBtn
@@ -103,8 +110,12 @@ class FTPhotoComposerViewController: UIViewController {
             }
         }
         
-        coreService.webService?.composerPhoto(token: token, imageFiles: imageFiles, imageDatas: imageDatas, privacy: 0, feedText: postText, completion: { (success, response) in
+        coreService.webService?.composerPhoto(token: token, imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
             NSLog(success ? "SUCCESS" : "FAILED")
+            if !self.postText.isEmpty {
+                // get new feed, notify to feed screen
+                NotificationCenter.default.post(name: .ComposerPhotoCompleted, object: nil)
+            }
         })
     }
     
@@ -254,6 +265,16 @@ extension FTPhotoComposerViewController: PhotoCellDelegate {
 extension FTPhotoComposerViewController: PrivacyPickerDelegate {
     func privacyDidSave(vc: FTPrivacyPickerViewController) {
         guard let privacy = vc.selectedPrivacy else { return }
+        let iconName = PrivacyIconName(rawValue: privacy.imageName)!
+        switch iconName {
+        case .public:
+            selectedPrivacy = .public
+        case .private:
+            selectedPrivacy = .private
+        case .follow:
+            selectedPrivacy = .follow
+        }
+        
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
         settings[2] = privacyItem
         let indexPath = IndexPath(row: 2, section: 0)

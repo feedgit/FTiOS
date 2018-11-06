@@ -47,6 +47,7 @@ class FTTabFeedViewController: FTTabViewController {
         self.setUpSegmentControl()
         self.setUpRefreshControl()
         NotificationCenter.default.addObserver(self, selector: #selector(feedTabTouchAction), name: .FeedTabTouchAction, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadFeed), name: .ComposerPhotoCompleted, object: nil)
         
         // menu
         pgCtrlNormalColor = .gray

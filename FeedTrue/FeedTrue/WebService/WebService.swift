@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireObjectMapper
 import SwiftMoment
+import SwiftyJSON
 
 class WebService: NSObject, FTCoreServiceComponent {
     
@@ -1079,7 +1080,7 @@ class WebService: NSObject, FTCoreServiceComponent {
          If have PostInFeed, response is Feed, else response is success or error
      */
     
-    func composerPhoto(token: String, imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool, [String: Any]?) -> ()) {
+    func composerPhoto(token: String, imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool,Any?) -> ()) {
         var image_files: [Data] = []
         for i in 0..<imageFiles.count {
             if let imageData = UIImageJPEGRepresentation(imageFiles[i], 0.8) {
@@ -1106,7 +1107,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             }
             
             multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
-            if let ft = feedText {
+            if let ft = feedText, !ft.isEmpty {
                 multipartFormData.append(ft.data(using: String.Encoding.utf8)!, withName: "feed.text")
             }
         }, to: url, headers: headers)
@@ -1122,11 +1123,13 @@ class WebService: NSObject, FTCoreServiceComponent {
                 upload.responseJSON { response in
                     //print response.result
                     print(response.result.debugDescription)
+                    completion(true, response.result.value)
                 }
                 
             case .failure(let encodingError):
                 //print encodingError.description
                 print(encodingError.localizedDescription)
+                completion(false, nil)
             }
         }
         
