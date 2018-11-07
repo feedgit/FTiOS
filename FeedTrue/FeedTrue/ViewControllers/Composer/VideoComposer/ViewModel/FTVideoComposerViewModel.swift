@@ -15,7 +15,7 @@ class FTVideoComposerViewModel: BECellDataSource {
     }
     
     func cellHeight() -> CGFloat {
-        return 128
+        return 512
     }
     
     static func register(tableView: UITableView) {
