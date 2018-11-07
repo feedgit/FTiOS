@@ -56,7 +56,7 @@ public class FTKeyChainService: NSObject, FTCoreServiceComponent {
     }
     
     public func accessToken() -> String? {
-        if let accessToken: String = get(key: "accessToken") {
+        if let accessToken: String = get(key: "accessToken"), !accessToken.isEmpty {
             return accessToken
         }
         

@@ -45,9 +45,8 @@ class CommentController: UITableViewController {
     }
     
     func loadComment() {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let feedID = contentID else { return }
-        coreService.webService?.getComments(token: token, ct_id: feedID, completion: { [weak self] (success, response) in
+        coreService.webService?.getComments(ct_id: feedID, completion: { [weak self] (success, response) in
             if success {
                 // TODO: init datasource
                 guard let results = response?.results else { return }
@@ -85,7 +84,7 @@ class CommentController: UITableViewController {
             return
         }
         
-        coreService.webService?.getMoreComments(token: token, nextString: nextURL, completion: { [weak self] (success, response) in
+        coreService.webService?.getMoreComments(nextString: nextURL, completion: { [weak self] (success, response) in
             if success {
                 NSLog("Load more comment successful \(response?.next ?? "")")
                 self?.nextURLString = response?.next
@@ -161,12 +160,11 @@ class CommentController: UITableViewController {
             self.messageInputView.clearBtn.isHidden = true
             guard let ct_name = ctName else { return }
             guard let ct_id = contentID else { return }
-            guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
             let parentID = self.replyComment?.comment.id
             if self.type == .edit {
                 self.messageInputView.clearBtn.isHidden = true
                 guard let comment_id = self.editComment?.comment.id else { return }
-                coreService.webService?.editComment(token: token, ct_id: comment_id, comment: messageText, parentID: nil, completion: { (success, response) in
+                coreService.webService?.editComment(ct_id: comment_id, comment: messageText, parentID: nil, completion: { (success, response) in
                     if success {
                         // TODO: update edited comment
                         guard let editComment = response?.comment else { return }
@@ -187,7 +185,7 @@ class CommentController: UITableViewController {
                     }
                 })
             } else {
-                coreService.webService?.sendComment(token: token, ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: parentID, completion: { [weak self] (success, comment) in
+                coreService.webService?.sendComment(ct_name: ct_name, ct_id: ct_id, comment: messageText, parentID: parentID, completion: { [weak self] (success, comment) in
                     if success {
                         guard let c = comment else { return }
                         let cm = FTCommentViewModel(comment: c, type: .text)
@@ -266,8 +264,7 @@ class CommentController: UITableViewController {
                 NSLog("delete at index: \(indexPath.row)")
                 guard let content = contentCell else { return }
                 guard let ct_id = content.comment.id else { return }
-                guard let token = self.coreService.registrationService?.authenticationProfile?.accessToken else { return }
-                self.coreService.webService?.deleteComment(token: token, ct_id: ct_id, completion: { [weak self] (success, msg) in
+                self.coreService.webService?.deleteComment(ct_id: ct_id, completion: { [weak self] (success, msg) in
                     if success {
                         self?.datasource.remove(at: indexPath.row)
                         DispatchQueue.main.async {
@@ -313,8 +310,7 @@ class CommentController: UITableViewController {
             NSLog("delete at index: \(indexPath.row)")
             let content = self.datasource[indexPath.section][indexPath.row]
             guard let ct_id = content.comment.id else { return }
-            guard let token = self.coreService.registrationService?.authenticationProfile?.accessToken else { return }
-            self.coreService.webService?.deleteComment(token: token, ct_id: ct_id, completion: { [weak self] (success, msg) in
+            self.coreService.webService?.deleteComment(ct_id: ct_id, completion: { [weak self] (success, msg) in
                 if success {
                     self?.datasource.remove(at: indexPath.row)
                     DispatchQueue.main.async {
@@ -335,13 +331,10 @@ class CommentController: UITableViewController {
 
 extension CommentController: FTCommentTextCellDelegate {
     func commentCellDidRemoveReaction(cell: FTCommentTextCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
         guard let comment = cell.contentData?.comment else { return }
         guard let ct_id = comment.id else { return }
         guard let ct_name = comment.ct_name else { return }
-        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
             } else {
@@ -355,15 +348,11 @@ extension CommentController: FTCommentTextCellDelegate {
     }
     
     func commentCellDidChangeReactionType(cell: FTCommentTextCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let comment = cell.contentData?.comment else { return }
         guard let ct_id = comment.id else { return }
         guard let ct_name = comment.ct_name else { return }
         let react_type = cell.ftReactionType.rawValue
-        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
             } else {

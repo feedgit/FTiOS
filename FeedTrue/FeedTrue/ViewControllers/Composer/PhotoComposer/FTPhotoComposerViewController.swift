@@ -96,7 +96,6 @@ class FTPhotoComposerViewController: UIViewController {
     
     @objc func next(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         var imageFiles: [UIImage] = []
         var imageDatas: [[String: String]] = []
         for i in 0..<datasource.count {
@@ -110,7 +109,7 @@ class FTPhotoComposerViewController: UIViewController {
             }
         }
         
-        coreService.webService?.composerPhoto(token: token, imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
+        coreService.webService?.composerPhoto(imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
             NSLog(success ? "SUCCESS" : "FAILED")
             if !self.postText.isEmpty {
                 // get new feed, notify to feed screen

@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginWithFacebookButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var useWithoutLoginButton: UIButton!
+    @IBOutlet weak var closeImageView: UIImageView!
+    
     
     fileprivate var progressHub: MBProgressHUD?
     let usernameErrorMessage = NSLocalizedString("Username field is require.", comment: "")
@@ -39,7 +41,16 @@ class LoginViewController: UIViewController {
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
         self.view.addGestureRecognizer(singleTap)
         self.view.isUserInteractionEnabled = true
+        
+        let closeTap = UITapGestureRecognizer(target: self, action: #selector(close(_:)))
+        closeImageView.isUserInteractionEnabled = true
+        closeImageView.addGestureRecognizer(closeTap)
+        
         self.setupUI()
+    }
+    
+    @objc func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func setupUI() {
@@ -137,15 +148,11 @@ class LoginViewController: UIViewController {
                     if success {
                         self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
                         DispatchQueue.main.async {
-                            //self?.progressHub?.label.text = NSLocalizedString("Successful", comment: "")
-                            //self?.progressHub?.hide(animated: true, afterDelay: 1.0)
-//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let homeVC = storyboard.instantiateViewController(withIdentifier: "homeVC") as! HomeViewController
-//                            homeVC.signInData = response
-//                            self?.navigationController?.pushViewController(homeVC, animated: true)
                             self?.progressHub?.hide(animated: true)
                             self?.dismiss(animated: true, completion: nil)
-                            self?.delegate?.didLoginSuccess()
+                            if let token = response?.token {                                self?.coreService.keychainService?.accessToken(value: token)
+                                self?.delegate?.didLoginSuccess()
+                            }
                         }
                     } else {
                         DispatchQueue.main.async {

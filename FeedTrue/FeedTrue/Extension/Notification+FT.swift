@@ -14,4 +14,7 @@ extension Notification.Name {
     
     /// Posted when a `New Feed` is created.
     public static let ComposerPhotoCompleted = Notification.Name(rawValue: "com.toanle.ComposerPhoto.Completed")
+    
+    /// Posted when a "Show Login" is require
+    public static let ShowLogin = Notification.Name("com.toanle.Show.Login")
 }

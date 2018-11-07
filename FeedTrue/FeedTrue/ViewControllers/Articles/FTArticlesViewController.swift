@@ -50,11 +50,8 @@ class FTArticlesViewController: UIViewController {
     
     @objc func loadArticel() {
         _ = self.view
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
         
-        coreService.webService?.getArticles(username: nil, token: token, completion: {[weak self] (success, response) in
+        coreService.webService?.getArticles(username: nil, completion: {[weak self] (success, response) in
             if success {
                 NSLog("load articles success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
@@ -79,10 +76,7 @@ class FTArticlesViewController: UIViewController {
             self.tableView.removeBottomActivityView()
             return
         }
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        coreService.webService?.loadMoreArticles(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
+        coreService.webService?.loadMoreArticles(nextURL: nextURL, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load more articles successful \(response?.next ?? "")")
                 self?.nextURLString = response?.next
@@ -131,13 +125,10 @@ extension FTArticlesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension FTArticlesViewController: FTAticleCellDelegate {
     func articleCellDidChangeReaction(cell: FTAriticleTableViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
         let ct_id = cell.article.id
         let ct_name = cell.article.ct_name
         let react_type = cell.ftReactionType.rawValue
-        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
             } else {
@@ -151,13 +142,9 @@ extension FTArticlesViewController: FTAticleCellDelegate {
     }
     
     func articleCellDidRemoveReaction(cell: FTAriticleTableViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         let ct_id = cell.article.id
         let ct_name = cell.article.ct_name
-        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
             } else {
@@ -179,13 +166,9 @@ extension FTArticlesViewController: FTAticleCellDelegate {
     }
     
     func articleCellDidSave(cell: FTAriticleTableViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         let ct_id = cell.article.id
         let ct_name = cell.article.ct_name
-        coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        coreService.webService?.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -200,13 +183,9 @@ extension FTArticlesViewController: FTAticleCellDelegate {
     }
     
     func articleCellDidUnSave(cell: FTAriticleTableViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         let ct_id = cell.article.id
         let ct_name = cell.article.ct_name
-        coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        coreService.webService?.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {

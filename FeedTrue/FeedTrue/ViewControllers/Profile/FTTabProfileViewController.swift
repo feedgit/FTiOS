@@ -147,12 +147,10 @@ class FTTabProfileViewController: FTTabViewController {
             case .follow_back, .follow:
                 // TODO: call follow API
                 let secretFollowAction = UIAlertAction(title: NSLocalizedString("Secret Follow", comment: ""), style: .default) { [weak self] (action) in
-                    // TODO: secret follow API
-                    guard let token = self?.rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
                     guard let username = self?.profile?.username else { return }
                     MBProgressHUD.showAdded(to: self?.view ?? UIView(), animated: true)
                     self?.followBtn.setTitle(NSLocalizedString(FollowState.secret_following.rawValue, comment: ""), for: .normal)
-                    self?.rootViewController.coreService.webService?.secretFollow(token: token, username: username, completion: { [weak self] (success, message) in
+                    self?.rootViewController.coreService.webService?.secretFollow(username: username, completion: { [weak self] (success, message) in
                         if success {
                             // update status
                             self?.followState = .secret_following
@@ -173,11 +171,10 @@ class FTTabProfileViewController: FTTabViewController {
                 
                 let followAction = UIAlertAction(title: NSLocalizedString("Folow", comment: ""), style: .default) { [weak self] (action) in
                     // TODO: follow API
-                    guard let token = self?.rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
                     guard let username = self?.profile?.username else { return }
                     MBProgressHUD.showAdded(to: self?.view ?? UIView(), animated: true)
                     self?.followBtn.setTitle(NSLocalizedString(FollowState.following.rawValue, comment: ""), for: .normal)
-                    self?.rootViewController.coreService.webService?.follow(token: token, username: username, completion: { [weak self] (success, message) in
+                    self?.rootViewController.coreService.webService?.follow(username: username, completion: { [weak self] (success, message) in
                         if success {
                             // update status
                             self?.followState = .secret_following
@@ -200,11 +197,10 @@ class FTTabProfileViewController: FTTabViewController {
                 
                 FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: [secretFollowAction, followAction, cancelAction], view: self.view)
             case .secret_following, .following:
-                guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
                 guard let username = profile?.username else { return }
                 MBProgressHUD.showAdded(to: self.view, animated: true)
                 followBtn.setTitle(NSLocalizedString(FollowState.follow.rawValue, comment: ""), for: .normal)
-                rootViewController.coreService.webService?.unfollow(token: token, username: username, completion: { [weak self] (success, message) in
+                rootViewController.coreService.webService?.unfollow(username: username, completion: { [weak self] (success, message) in
                     if success {
                         // update status
                         self?.followState = .follow
@@ -227,11 +223,10 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     @objc func loadUserInfo() {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
 
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+        rootViewController.coreService.webService?.getUserInfo(username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.profile = response
                 DispatchQueue.main.async {
@@ -249,9 +244,8 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     @objc func loadUserInfoWithUsername(username: String) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+        rootViewController.coreService.webService?.getUserInfo(username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.profile = response
                 DispatchQueue.main.async {
@@ -374,9 +368,7 @@ extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigat
     }
     
     func uploadAvatar(image: UIImage) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
-        
-        rootViewController.coreService.webService?.uploadAvatar(token: token, image: image, completion: { (success, response) in
+        rootViewController.coreService.webService?.uploadAvatar(image: image, completion: { (success, response) in
             if success {
                 // TODO: save new avatar
                 NSLog("\(#function) upload avatart successful")

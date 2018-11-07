@@ -64,10 +64,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     
     @objc func loadFeed() {
         _ = self.view
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        coreService.webService?.getFeedVideo(username: nil, token: token, completion: { [weak self] (success, response) in
+        coreService.webService?.getFeedVideo(username: nil, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
@@ -172,13 +169,9 @@ extension FTFeedVideoCollectionViewController: UICollectionViewDelegateFlowLayou
 
 extension FTFeedVideoCollectionViewController: VideoCellDelegate {
     func videoCellDidSaved(cell: FTFeedVideoCollectionViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.contetnData?.id else { return }
         guard let ct_name = cell.contetnData?.ct_name else { return }
-        coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        coreService.webService?.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -193,13 +186,9 @@ extension FTFeedVideoCollectionViewController: VideoCellDelegate {
     }
     
     func videoCellDidUnSaved(cell: FTFeedVideoCollectionViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.contetnData?.id else { return }
         guard let ct_name = cell.contetnData?.ct_name else { return }
-        coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        coreService.webService?.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -214,13 +203,9 @@ extension FTFeedVideoCollectionViewController: VideoCellDelegate {
     }
     
     func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.contetnData?.id else { return }
         guard let ct_name = cell.contetnData?.ct_name else { return }
-        coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
             } else {
@@ -234,14 +219,10 @@ extension FTFeedVideoCollectionViewController: VideoCellDelegate {
     }
     
     func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell) {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.contetnData?.id else { return }
         guard let ct_name = cell.contetnData?.ct_name else { return }
         let react_type = cell.ftReactionType.rawValue
-        coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
             } else {

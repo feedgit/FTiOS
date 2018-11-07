@@ -68,10 +68,9 @@ class FTEditProfileViewController: UIViewController {
     }
     
     private func loadUserInfo() {
-        guard let token = coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = coreService.registrationService?.authenticationProfile?.profile?.username else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        coreService.webService?.getUserAbout(token: token, username: username, completion: {[weak self] (success, response) in
+        coreService.webService?.getUserAbout(username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.about = response
                 self?.prepareDataSource()

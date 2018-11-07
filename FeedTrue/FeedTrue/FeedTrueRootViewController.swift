@@ -69,6 +69,7 @@ class FeedTrueRootViewController: UIViewController {
         coreService.setup()
         coreService.start()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: .ShowLogin, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -188,7 +189,7 @@ class FeedTrueRootViewController: UIViewController {
         return navigationController
     }
     
-    func showLogin() {
+    @objc func showLogin() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let signInVC = storyboard.instantiateViewController(withIdentifier: "loginScreen") as! LoginViewController
         signInVC.coreService = coreService
@@ -196,26 +197,38 @@ class FeedTrueRootViewController: UIViewController {
         self.navigationController?.present(signInVC, animated: true, completion: nil)
     }
     
+    func loadDefaultData() {
+        self.feedtrueTabBarController?.selectedIndex = 0
+        self.feedVC.loadFeed()
+        self.profileVC.loadUserInfo()
+    }
+    
     func silentlyLogin() {
-            if let password = self.coreService.keychainService?.password(), !password.isEmpty, let username = self.coreService.keychainService?.username(), !username.isEmpty {
+        if let password = self.coreService.keychainService?.password(), !password.isEmpty, let username = self.coreService.keychainService?.username(), !username.isEmpty {
             //self.progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
             //self.progressHub?.detailsLabel.text = NSLocalizedString("Login...", comment: "")
             self.coreService.webService?.signIn(username: username, password: password, completion: { [weak self] (success, response) in
                 //self?.progressHub?.hide(animated: true)
                 if success {
                     self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
-                    self?.feedtrueTabBarController?.selectedIndex = 0
-                    self?.feedVC.loadFeed()
-                    self?.profileVC.loadUserInfo()
+                    //                    self?.feedtrueTabBarController?.selectedIndex = 0
+                    //                    self?.feedVC.loadFeed()
+                    //                    self?.profileVC.loadUserInfo()
                 } else {
                     // show login
-                    DispatchQueue.main.async {
-                        self?.showLogin()
-                    }
+                    //                    DispatchQueue.main.async {
+                    //                        self?.showLogin()
+                    //                    }
                 }
+                self?.feedtrueTabBarController?.selectedIndex = 0
+                self?.feedVC.loadFeed()
+                self?.profileVC.loadUserInfo()
             })
         } else {
-            self.showLogin()
+            //self.showLogin()
+            self.feedtrueTabBarController?.selectedIndex = 0
+            self.feedVC.loadFeed()
+            self.profileVC.loadUserInfo()
         }
     }
     

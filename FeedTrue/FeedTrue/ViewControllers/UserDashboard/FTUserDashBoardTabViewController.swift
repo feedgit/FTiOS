@@ -100,11 +100,10 @@ class FTUserDashBoardTabViewController: FTTabViewController {
     }
     
     @objc func loadUserInfo() {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else { return }
         guard let username = rootViewController.coreService.registrationService?.authenticationProfile?.profile?.username else { return }
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getUserInfo(token: token, username: username, completion: {[weak self] (success, response) in
+        rootViewController.coreService.webService?.getUserInfo(username: username, completion: {[weak self] (success, response) in
             if success {
                 self?.profile = response
                 DispatchQueue.main.async {
@@ -220,12 +219,12 @@ extension FTUserDashBoardTabViewController: UserDashBoardSettingDelegate {
                     self?.progressHub?.hide(animated: true)
                     if success {
                         DispatchQueue.main.async {
-                            self?.rootViewController.showLogin()
+                            self?.rootViewController.loadDefaultData()
                             self?.rootViewController.coreService.registrationService?.reset()
                             self?.rootViewController.coreService.keychainService?.reset()
                         }
                     } else {
-                        self?.rootViewController.showLogin()
+                        self?.rootViewController.loadDefaultData()
                         self?.rootViewController.coreService.registrationService?.reset()
                         self?.rootViewController.coreService.keychainService?.reset()
                     }

@@ -21,6 +21,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         
     }
     
+    func getToken() -> String? {
+        return FTKeyChainService.shared.accessToken()
+    }
+    
+    func showLogin() {
+        NotificationCenter.default.post(name: .ShowLogin, object: nil)
+    }
+    
     func signIn(username: String, password: String, completion: @escaping (Bool, SignInResponse?)->()) {
         let params:[String: Any] = [
             "username": username,
@@ -276,13 +284,13 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getUserInfo(token: String, username: String, completion: @escaping (Bool, FTUserProfileResponse?)->()) {
-        let params:[String: Any] = [
-            "access_token": "\(token)"
-        ]
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
+    func getUserInfo(username: String, completion: @escaping (Bool, FTUserProfileResponse?)->()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         let urlString = "\(host)/api/v1/users/\(username)/"
         
@@ -291,7 +299,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             return
         }
         
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
             .responseObject { (response: DataResponse<FTUserProfileResponse>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
@@ -308,11 +316,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getUserAbout(token: String, username: String, completion: @escaping (Bool, FTAboutReponse?)->()) {
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
-        
+    func getUserAbout(username: String, completion: @escaping (Bool, FTAboutReponse?)->()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+
         let urlString = "\(host)/api/v1/users/\(username)/about/"
         
         guard let url = URL(string: urlString) else {
@@ -353,6 +364,12 @@ class WebService: NSObject, FTCoreServiceComponent {
             "website": editInfo.website ?? ""
         ]
         
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -385,16 +402,18 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getFeed(page: Int?, per_page: Int?, username: String?, token: String, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
+    func getFeed(page: Int?, per_page: Int?, username: String?, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
         // https://api.feedtrue.com/api/v1/f/?page=1&per_page=1
         let params:[String: Any] = [
             "page": page ?? 1,
             "per_page" : per_page ?? 5
         ]
-        
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         let urlString = "\(host)/api/v1/f/"
         
@@ -449,7 +468,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func deleteFeed(feedID: String, token: String, completion: @escaping (Bool, Any?) -> ()) {
+    func deleteFeed(feedID: String, completion: @escaping (Bool, Any?) -> ()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -492,7 +518,14 @@ class WebService: NSObject, FTCoreServiceComponent {
      POST /api/v1/users/${username}/unfollow/
      */
     
-    func follow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+    func follow(username: String, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -523,7 +556,12 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func secretFollow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+    func secretFollow(username: String, completion: @escaping (Bool, String?)->()) {
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -555,7 +593,13 @@ class WebService: NSObject, FTCoreServiceComponent {
         
     }
     
-    func unfollow(token: String, username: String, completion: @escaping (Bool, String?)->()) {
+    func unfollow(username: String, completion: @escaping (Bool, String?)->()) {
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -598,7 +642,13 @@ class WebService: NSObject, FTCoreServiceComponent {
      
      Example: If you want to react LOVE with video 44, transmit: { content_type: 'video', object_id: 6, react_type: 'LOVE' }
      */
-    func react(token: String, ct_name: String, ct_id: Int, react_type: String, completion: @escaping (Bool, String?)->()) {
+    func react(ct_name: String, ct_id: Int, react_type: String, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -640,7 +690,13 @@ class WebService: NSObject, FTCoreServiceComponent {
      
      Demo data tranmit: { content_type: {ct_name}, object_id: {ct_id} }
      */
-    func removeReact(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+    func removeReact(ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -675,7 +731,14 @@ class WebService: NSObject, FTCoreServiceComponent {
      
      Example: If you save feed with ID = 98, POST /api/v1/saved/feed/98/
      */
-    func saveFeed(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+    func saveFeed(ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -715,7 +778,14 @@ class WebService: NSObject, FTCoreServiceComponent {
      POST /api/v1/saved/<ct_name>/<ct_id>/unsave/
      */
     
-    func removeSaveFeed(token: String, ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+    func removeSaveFeed(ct_name: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -749,7 +819,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func sendComment(token: String, ct_name: String, ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+    func sendComment(ct_name: String, ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -790,7 +867,14 @@ class WebService: NSObject, FTCoreServiceComponent {
     }
     
     
-    func deleteComment(token: String, ct_id: Int, completion: @escaping (Bool, String?)->()) {
+    func deleteComment(ct_id: Int, completion: @escaping (Bool, String?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -823,7 +907,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func editComment(token: String, ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+    func editComment(ct_id: Int, comment: String, parentID: Int?, completion: @escaping (Bool, FTCommentMappable?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -863,7 +954,14 @@ class WebService: NSObject, FTCoreServiceComponent {
     
     //https://api.feedtrue.com/api/v1/comments/feed/102/
     
-    func getComments(token: String, ct_id: Int, completion: @escaping (Bool, FTCommentReplies?)->()) {
+    func getComments(ct_id: Int, completion: @escaping (Bool, FTCommentReplies?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -897,7 +995,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getMoreComments(token: String, nextString: String, completion: @escaping (Bool, FTCommentReplies?)->()) {
+    func getMoreComments(nextString: String, completion: @escaping (Bool, FTCommentReplies?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         let headers: HTTPHeaders = [
             "Authorization": "JWT \(token)"
         ]
@@ -929,7 +1034,13 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func uploadAvatar(token: String, image: UIImage, completion: @escaping (Bool, String?) -> ()) {
+    func uploadAvatar(image: UIImage, completion: @escaping (Bool, String?) -> ()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
         
         guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
             completion(false, nil)
@@ -980,10 +1091,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getFeedVideo(username: String?, token: String, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
+    func getFeedVideo(username: String?, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
+        
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         let urlString = "\(host)/api/v1/media/video/feed/"
         
@@ -1009,10 +1124,13 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getArticles(username: String?, token: String, completion: @escaping (Bool, FTArticles?) -> ()) {
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
+    func getArticles(username: String?, completion: @escaping (Bool, FTArticles?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         let urlString = "\(host)/api/v1/articles/"
         
@@ -1038,10 +1156,13 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func loadMoreArticles(nextURL: String, token: String, completion: @escaping (Bool, FTArticles?) -> ()) {
-        let headers: HTTPHeaders = [
-            "Authorization": "JWT \(token)"
-        ]
+    func loadMoreArticles(nextURL: String, completion: @escaping (Bool, FTArticles?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         let urlString = nextURL
         
@@ -1082,7 +1203,14 @@ class WebService: NSObject, FTCoreServiceComponent {
          If have PostInFeed, response is Feed, else response is success or error
      */
     
-    func composerPhoto(token: String, imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool,Any?) -> ()) {
+    func composerPhoto(imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool,Any?) -> ()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
         var image_files: [Data] = []
         for i in 0..<imageFiles.count {
             if let imageData = UIImageJPEGRepresentation(imageFiles[i], 0.8) {

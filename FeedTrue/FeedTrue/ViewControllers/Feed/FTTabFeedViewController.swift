@@ -83,10 +83,7 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func loadFeed() {
         _ = self.view
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        self.rootViewController.coreService.webService?.getFeed(page: 1, per_page: 5, username: nil, token: token, completion: { [weak self] (success, response) in
+        self.rootViewController.coreService.webService?.getFeed(page: 1, per_page: 5, username: nil, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
@@ -296,12 +293,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feeddCellPermanentlyDelete(cell: FTFeedTableViewCell) {
         // TODO: delete
         guard let feedID = cell.feed.id else { return }
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Delete...", comment: "")
-        self.rootViewController.coreService.webService?.deleteFeed(feedID: "\(feedID)", token: token, completion: { [weak self] (success, response) in
+        self.rootViewController.coreService.webService?.deleteFeed(feedID: "\(feedID)", completion: { [weak self] (success, response) in
             if success {
                 // Reload feed
                 self?.dataSource = (self?.dataSource.filter { $0.feed.id != cell.feed.id })!
@@ -320,14 +314,10 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     }
     
     func feedCellDidChangeReactionType(cell: FTFeedTableViewCell) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
         let react_type = cell.ftReactionType.rawValue
-        rootViewController.coreService.webService?.react(token: token, ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+        rootViewController.coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
             } else {
@@ -341,13 +331,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     }
     
     func feedCellDidRemoveReaction(cell: FTFeedTableViewCell) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.removeReact(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        rootViewController.coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
             } else {
@@ -361,13 +347,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     }
     
     func feedCellDidSave(cell: FTFeedTableViewCell) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.saveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        rootViewController.coreService.webService?.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -382,13 +364,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     }
     
     func feedCellDidUnSave(cell: FTFeedTableViewCell) {
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
-            return
-        }
-        
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.removeSaveFeed(token: token, ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        rootViewController.coreService.webService?.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
