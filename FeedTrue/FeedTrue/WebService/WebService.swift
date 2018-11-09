@@ -1265,4 +1265,77 @@ class WebService: NSObject, FTCoreServiceComponent {
         
     }
     
+    /*
+     POST /composer/video/
+     
+     Type: MultiPart FormData
+     Request data:
+     
+     file: <Video File>: Object uploaded video.
+     title - No required
+     description - No required
+     thumbnail - No required
+     privacy: 0, 1 or 2 - View Privacy API Documentation - required
+     feed.text: 'Example Text' - No required
+     */
+    func composerVideo(videoFile: Data, title: String?, description: String?, thumbnail: UIImage?, privacy: Int, feedText: String?, completion: @escaping (Bool,Any?) -> ()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)",
+            "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+        ]
+        
+        let urlString = "\(host)/api/v1/composer/photo/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        let fileName = Date().dateTimeString().appending(".png")
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(videoFile, withName: "file", fileName: fileName, mimeType: "image/png")
+            
+            multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
+            if let ft = feedText, !ft.isEmpty {
+                multipartFormData.append(ft.data(using: String.Encoding.utf8)!, withName: "feed.text")
+            }
+            
+            if let t = title {
+                multipartFormData.append(t.data(using: String.Encoding.utf8)!, withName: "title")
+            }
+            
+            if let d = description {
+                multipartFormData.append(d.data(using: String.Encoding.utf8)!, withName: "description")
+            }
+        }, to: url, headers: headers)
+        { (result) in
+            switch result {
+            case .success(let upload, _, _):
+                
+                upload.uploadProgress(closure: { (progress) in
+                    //Print progress
+                    print(progress.debugDescription)
+                })
+                
+                upload.responseJSON { response in
+                    //print response.result
+                    print(response.result.debugDescription)
+                    completion(true, response.result.value)
+                }
+                
+            case .failure(let encodingError):
+                //print encodingError.description
+                print(encodingError.localizedDescription)
+                completion(false, nil)
+            }
+        }
+        
+    }
+    
 }

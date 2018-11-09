@@ -17,6 +17,8 @@
 		130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */; };
 		130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */; };
 		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
+		1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */; };
+		1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */; };
 		132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */; };
 		132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */; };
 		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
@@ -282,6 +284,8 @@
 		130E05E5212D7D5E00C3E21A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		130E05E7212DC5DB00C3E21A /* SignUpUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUsernameViewController.swift; sourceTree = "<group>"; };
 		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
+		1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoPickerViewController.swift; sourceTree = "<group>"; };
+		1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoPickerViewController.xib; sourceTree = "<group>"; };
 		132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -604,6 +608,15 @@
 				13D25812214299B300E84002 /* FTLoadingViewController.xib */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		1314C24F2195939E00FBBE32 /* VideoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */,
+				1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */,
+			);
+			path = VideoPicker;
 			sourceTree = "<group>";
 		};
 		132C7AD4217662DC00EE11AD /* Menu */ = {
@@ -1472,6 +1485,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				1314C24F2195939E00FBBE32 /* VideoPicker */,
 				136A464C219095D500EB9AC9 /* VideoComposer */,
 				13F5C8A5218763BF006DD345 /* PostInFeed */,
 				1338D8202186F16E0065B552 /* PrivacyPicker */,
@@ -1620,6 +1634,7 @@
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
+				1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */,
 				136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */,
 				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
@@ -1858,6 +1873,7 @@
 				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
+				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
 				1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
 				1342A8F421649FC500EFD1E6 /* OneTextFieldViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import ScrollableSegmentedControl
 import MBProgressHUD
 import SwiftMoment
 import STPopup
+import MobileCoreServices
 
 class FTTabFeedViewController: FTTabViewController {
     
@@ -20,6 +21,7 @@ class FTTabFeedViewController: FTTabViewController {
     var nextURLString: String?
     var refreshControl: UIRefreshControl?
     private var progressHub: MBProgressHUD?
+    var videoPicker: UIImagePickerController!
     
     var dataDic:Dictionary<String, Any>! = nil
     var arrIcon:Array<Any>! = nil
@@ -431,10 +433,38 @@ extension FTTabFeedViewController: ComposerDelegate {
             self.navigationController?.pushViewController(photoPicker, animated: true)
         } else if index == 1 {
             // video
-            let picker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
-            picker.assetType = .allVideos
-            picker.maxSelectableCount = 1
-            self.navigationController?.pushViewController(picker, animated: true)
+//            let picker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
+//            picker.assetType = .allVideos
+//            picker.maxSelectableCount = 1
+//            self.navigationController?.pushViewController(picker, animated: true)
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                videoPicker = UIImagePickerController()
+                videoPicker.delegate = self
+                videoPicker.sourceType = .photoLibrary
+                videoPicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+                self.present(videoPicker, animated: true, completion: nil)
+            }
         }
+    }
+}
+
+extension FTTabFeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+        NSLog(info.debugDescription)
+        let mediaType = info[UIImagePickerControllerMediaType] as AnyObject
+        
+        if mediaType as! String == kUTTypeMovie as String || mediaType as! String == kUTTypeVideo as String {
+            if let videoURL = info[UIImagePickerControllerMediaURL] as? URL {
+                print("VIDEO URL: \(videoURL)")
+                let videoVC = FTVideoComposerViewController(videoURL: videoURL)
+                self.navigationController?.pushViewController(videoVC, animated: true)
+            }
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+        NSLog(#function)
     }
 }

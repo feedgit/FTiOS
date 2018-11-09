@@ -85,8 +85,8 @@ class FTPhotoPickerViewController: UIViewController {
                 self.navigationController?.pushViewController(photoVC, animated: true)
             } else if assetType == .allVideos {
                 if let asset = pickerController.selectedAssets.first {
-                    let videoVC = FTVideoComposerViewController(asset: asset)
-                    self.navigationController?.pushViewController(videoVC, animated: true)
+                    //let videoVC = FTVideoComposerViewController(asset: asset)
+                    //self.navigationController?.pushViewController(videoVC, animated: true)
                 }
             }
         case .modify:

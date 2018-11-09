@@ -8,12 +8,16 @@
 
 import UIKit
 import DKImagePickerController
+import AVFoundation
 
 class FTVideoComposerViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [BECellDataSource] = []
-    var asset: DKAsset?
+    var videoURL: URL?
     var postText = ""
+    var selectedPrivacy: PrivacyType = .public
+    var videoTilte: String?
+    var videoDescription: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +52,13 @@ class FTVideoComposerViewController: UIViewController {
     
     @objc func next(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: false)
+        
+        // collect info
+        
     }
     
-    init(asset a: DKAsset) {
-        asset = a
+    init(videoURL url: URL) {
+        videoURL = url
         super.init(nibName: "FTVideoComposerViewController", bundle: nil)
     }
     
@@ -71,18 +78,52 @@ class FTVideoComposerViewController: UIViewController {
     }
     
     func loadAsset() {
-        asset?.fetchOriginalImage { (image, info) in
-            print(info?.debugDescription ?? "")
-                if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
-                    videoVM.image = image
-                    videoVM.thumbnail = image
-                    self.dataSource[0] = videoVM
-                }
-            
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+//        asset?.fetchOriginalImage { (image, info) in
+//            print(info?.debugDescription ?? "")
+//                if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
+//                    videoVM.image = image
+//                    videoVM.thumbnail = image
+//                    self.dataSource[0] = videoVM
+//                }
+//
+//                DispatchQueue.main.async {
+//                    self.tableView.reloadData()
+//                }
+//        }
+        
+        if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
+            if let url = videoURL {
+                videoVM.thumbnail = getThumbnailFrom(path: url)
+            } else {
+                videoVM.thumbnail = nil
+            }
+            videoVM.image = videoVM.thumbnail // default is first
+            self.dataSource[0] = videoVM
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
+    }
+    
+    func getThumbnailFrom(path: URL) -> UIImage? {
+        
+        do {
+            
+            let asset = AVURLAsset(url: path , options: nil)
+            let imgGenerator = AVAssetImageGenerator(asset: asset)
+            imgGenerator.appliesPreferredTrackTransform = true
+            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+            let thumbnail = UIImage(cgImage: cgImage)
+            
+            return thumbnail
+            
+        } catch let error {
+            
+            print("*** Error generating thumbnail: \(error.localizedDescription)")
+            return nil
+            
+        }
+        
     }
 
 }
@@ -129,6 +170,16 @@ extension FTVideoComposerViewController: UITableViewDelegate, UITableViewDataSou
 extension FTVideoComposerViewController: PrivacyPickerDelegate {
     func privacyDidSave(vc: FTPrivacyPickerViewController) {
         guard let privacy = vc.selectedPrivacy else { return }
+        let iconName = PrivacyIconName(rawValue: privacy.imageName)!
+        switch iconName {
+        case .public:
+            selectedPrivacy = .public
+        case .private:
+            selectedPrivacy = .private
+        case .follow:
+            selectedPrivacy = .follow
+        }
+        
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
         dataSource[2] = privacyItem
         tableView.reloadData()
@@ -181,6 +232,14 @@ extension FTVideoComposerViewController: PhotoPickerDelegate {
 
 
 extension FTVideoComposerViewController: VideoComposerCellDelegate {
+    func videoComposerCellDidChangeTitle(_ title: String) {
+        videoTilte = title
+    }
+    
+    func videoComposerCellDidChangeDescription(_ description: String) {
+        videoDescription = description
+    }
+    
     func thumbnailTouchUpAction(cell: FTVideoComposerTableViewCell) {
         let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService())
         photoPicker.delegate = self

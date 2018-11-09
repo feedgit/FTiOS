@@ -11,6 +11,8 @@ import DKImagePickerController
 
 @objc protocol VideoComposerCellDelegate {
     func thumbnailTouchUpAction(cell: FTVideoComposerTableViewCell)
+    func videoComposerCellDidChangeTitle(_ title: String)
+    func videoComposerCellDidChangeDescription(_ description: String)
 }
 
 class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
@@ -41,6 +43,9 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
         
         let thumbnailTap = UITapGestureRecognizer(target: self, action: #selector(changeThumbnail(_:)))
         thumbnailImageView.addGestureRecognizer(thumbnailTap)
+        
+        titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
+        descriptionTextField.addTarget(self, action: #selector(desriptionTextFieldDidChange(_:)), for: .editingChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,6 +70,16 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
     
     @objc func changeThumbnail(_ sender: Any) {
         self.delegate?.thumbnailTouchUpAction(cell: self)
+    }
+    
+    @objc func titleTextFieldDidChange(_ textField: UITextField) {
+        NSLog("\(textField.text ?? "")")
+        self.delegate?.videoComposerCellDidChangeTitle(textField.text ?? "")
+    }
+    
+    @objc func desriptionTextFieldDidChange(_ textField: UITextField) {
+        NSLog("\(textField.text ?? "")")
+        self.delegate?.videoComposerCellDidChangeDescription(textField.text ?? "")
     }
     
 }
