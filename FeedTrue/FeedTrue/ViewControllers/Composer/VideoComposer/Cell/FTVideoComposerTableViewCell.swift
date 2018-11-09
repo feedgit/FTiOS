@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import DKImagePickerController
+
+@objc protocol VideoComposerCellDelegate {
+    func thumbnailTouchUpAction(cell: FTVideoComposerTableViewCell)
+}
 
 class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTVideoComposerViewModel
+    weak var delegate: VideoComposerCellDelegate?
+    
     @IBOutlet weak var videoImageView: UIImageView!
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
@@ -45,7 +52,7 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
     func renderCell(data: FTVideoComposerViewModel) {
         contentData = data
         videoImageView.image = data.image
-        thumbnailImageView.image = data.image
+        thumbnailImageView.image = data.thumbnail
         titleTextField.text = data.title
         descriptionTextField.text = data.description
     }
@@ -57,7 +64,7 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
     }
     
     @objc func changeThumbnail(_ sender: Any) {
-        
+        self.delegate?.thumbnailTouchUpAction(cell: self)
     }
     
 }

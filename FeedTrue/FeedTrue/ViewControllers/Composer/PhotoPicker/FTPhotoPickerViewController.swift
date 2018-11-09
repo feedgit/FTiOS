@@ -9,8 +9,14 @@
 import UIKit
 import DKImagePickerController
 
+enum PickerType {
+    case composer
+    case modify
+}
+
 @objc protocol PhotoPickerDelegate {
     func photoPickerDidSelectedAssets(assets: [DKAsset])
+    func photoPickerChangeThumbnail(asset: DKAsset?)
 }
 
 class FTPhotoPickerViewController: UIViewController {
@@ -21,6 +27,7 @@ class FTPhotoPickerViewController: UIViewController {
     var navTitle = "Photos"
     var maxSelectableCount = 20
     var coreService: FTCoreService!
+    var type: PickerType = .composer
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,15 +78,22 @@ class FTPhotoPickerViewController: UIViewController {
     }
     
     @objc func next(_ sender: Any) {
-        if assetType == .allPhotos {
-            let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
-            self.navigationController?.pushViewController(photoVC, animated: true)
-        } else if assetType == .allVideos {
-            if let asset = pickerController.selectedAssets.first {
-                let videoVC = FTVideoComposerViewController(asset: asset)
-                self.navigationController?.pushViewController(videoVC, animated: true)
+        switch type {
+        case .composer:
+            if assetType == .allPhotos {
+                let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
+                self.navigationController?.pushViewController(photoVC, animated: true)
+            } else if assetType == .allVideos {
+                if let asset = pickerController.selectedAssets.first {
+                    let videoVC = FTVideoComposerViewController(asset: asset)
+                    self.navigationController?.pushViewController(videoVC, animated: true)
+                }
             }
+        case .modify:
+            self.navigationController?.popViewController(animated: false)
+            self.delegate?.photoPickerChangeThumbnail(asset: pickerController.selectedAssets.first)
         }
+
     }
 }
 

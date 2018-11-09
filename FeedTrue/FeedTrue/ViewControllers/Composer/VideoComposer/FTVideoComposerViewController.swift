@@ -75,6 +75,7 @@ class FTVideoComposerViewController: UIViewController {
             print(info?.debugDescription ?? "")
                 if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
                     videoVM.image = image
+                    videoVM.thumbnail = image
                     self.dataSource[0] = videoVM
                 }
             
@@ -96,6 +97,10 @@ extension FTVideoComposerViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         if let renderCell = cell as? BECellRender {
             renderCell.renderCell(data: content)
+        }
+        
+        if let videoCell = cell as? FTVideoComposerTableViewCell {
+            videoCell.delegate = self
         }
         
         return cell
@@ -141,5 +146,46 @@ extension FTVideoComposerViewController: PostInFeedDelegate {
         let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
         dataSource[1] = postFeed
         tableView.reloadData()
+    }
+}
+
+extension FTVideoComposerViewController: PhotoPickerDelegate {
+    func photoPickerChangeThumbnail(asset: DKAsset?) {
+        asset?.fetchOriginalImage(completeBlock: { (image, info) in
+            if let content = self.dataSource[0] as? FTVideoComposerViewModel {
+                content.thumbnail = image
+                self.dataSource[0] = content
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
+            }
+        })
+    }
+    
+    func photoPickerDidSelectedAssets(assets: [DKAsset]) {
+        guard let asset = assets.first else { return }
+        asset.fetchOriginalImage { (image, info) in
+            print(info?.debugDescription ?? "")
+            if let content = self.dataSource[0] as? FTVideoComposerViewModel {
+                content.thumbnail = image
+                self.dataSource[0] = content
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
+            }
+        }
+    }
+}
+
+
+extension FTVideoComposerViewController: VideoComposerCellDelegate {
+    func thumbnailTouchUpAction(cell: FTVideoComposerTableViewCell) {
+        let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService())
+        photoPicker.delegate = self
+        photoPicker.type = .modify
+        photoPicker.maxSelectableCount = 1
+        self.navigationController?.pushViewController(photoPicker, animated: true)
     }
 }

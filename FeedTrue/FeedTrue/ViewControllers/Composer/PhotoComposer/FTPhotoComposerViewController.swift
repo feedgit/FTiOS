@@ -143,6 +143,9 @@ extension FTPhotoComposerViewController: UIImagePickerControllerDelegate, UINavi
 }
 
 extension FTPhotoComposerViewController: PhotoPickerDelegate {
+    func photoPickerChangeThumbnail(asset: DKAsset?) {
+    }
+    
     func photoPickerDidSelectedAssets(assets: [DKAsset]) {
         for asset in assets {
             asset.fetchOriginalImage { (image, info) in

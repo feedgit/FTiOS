@@ -23,6 +23,7 @@ class FTVideoComposerViewModel: BECellDataSource {
     }
     
     var image: UIImage?
+    var thumbnail: UIImage?
     var title = ""
     var description = ""
 }
