@@ -457,7 +457,7 @@ extension FTTabFeedViewController: UIImagePickerControllerDelegate, UINavigation
         if mediaType as! String == kUTTypeMovie as String || mediaType as! String == kUTTypeVideo as String {
             if let videoURL = info[UIImagePickerControllerMediaURL] as? URL {
                 print("VIDEO URL: \(videoURL)")
-                let videoVC = FTVideoComposerViewController(videoURL: videoURL)
+                let videoVC = FTVideoComposerViewController(videoURL: videoURL, coreService: rootViewController.coreService)
                 self.navigationController?.pushViewController(videoVC, animated: true)
             }
         }

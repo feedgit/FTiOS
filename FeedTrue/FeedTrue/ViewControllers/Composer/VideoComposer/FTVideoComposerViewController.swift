@@ -18,6 +18,7 @@ class FTVideoComposerViewController: UIViewController {
     var selectedPrivacy: PrivacyType = .public
     var videoTilte: String?
     var videoDescription: String?
+    var coreService: FTCoreService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +55,27 @@ class FTVideoComposerViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: false)
         
         // collect info
+        guard let videoVM = self.dataSource.first as? FTVideoComposerViewModel else { return }
+        guard let url = videoURL else { return }
+        let thumbnailImage = videoVM.thumbnail
         
+        do {
+            let video = try Data(contentsOf: url, options: .mappedIfSafe)
+            coreService.webService?.composerVideo(videoFile: video, title: videoTilte, description: videoDescription, thumbnail: thumbnailImage, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
+                if success {
+                    // TODO: 
+                }
+                NSLog(response.debugDescription)
+            })
+        } catch {
+            print(error)
+            return
+        }
     }
     
-    init(videoURL url: URL) {
+    init(videoURL url: URL, coreService service: FTCoreService) {
         videoURL = url
+        coreService = service
         super.init(nibName: "FTVideoComposerViewController", bundle: nil)
     }
     
@@ -78,19 +95,6 @@ class FTVideoComposerViewController: UIViewController {
     }
     
     func loadAsset() {
-//        asset?.fetchOriginalImage { (image, info) in
-//            print(info?.debugDescription ?? "")
-//                if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
-//                    videoVM.image = image
-//                    videoVM.thumbnail = image
-//                    self.dataSource[0] = videoVM
-//                }
-//
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadData()
-//                }
-//        }
-        
         if let videoVM = self.dataSource.first as? FTVideoComposerViewModel {
             if let url = videoURL {
                 videoVM.thumbnail = getThumbnailFrom(path: url)

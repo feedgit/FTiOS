@@ -1291,15 +1291,19 @@ class WebService: NSObject, FTCoreServiceComponent {
             "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
         ]
         
-        let urlString = "\(host)/api/v1/composer/photo/"
+        let urlString = "\(host)/api/v1/composer/video/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
         }
-        let fileName = Date().dateTimeString().appending(".png")
+        let fileName = Date().dateTimeString().appending(".mp4")
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            multipartFormData.append(videoFile, withName: "file", fileName: fileName, mimeType: "image/png")
+            multipartFormData.append(videoFile, withName: "file", fileName: fileName, mimeType: "video/mp4")
+            
+            if let thumb = thumbnail, let thumbnailData = UIImageJPEGRepresentation(thumb, 1) {
+                multipartFormData.append(thumbnailData, withName: "thumbnail", mimeType: "image/png")
+            }
             
             multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
             if let ft = feedText, !ft.isEmpty {

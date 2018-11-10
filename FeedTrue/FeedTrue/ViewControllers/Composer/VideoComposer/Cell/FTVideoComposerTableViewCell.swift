@@ -15,7 +15,7 @@ import DKImagePickerController
     func videoComposerCellDidChangeDescription(_ description: String)
 }
 
-class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
+class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl, UITextFieldDelegate {
     typealias CellData = FTVideoComposerViewModel
     weak var delegate: VideoComposerCellDelegate?
     
@@ -46,6 +46,9 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
         
         titleTextField.addTarget(self, action: #selector(titleTextFieldDidChange(_:)), for: .editingChanged)
         descriptionTextField.addTarget(self, action: #selector(desriptionTextFieldDidChange(_:)), for: .editingChanged)
+        
+        titleTextField.delegate = self
+        descriptionTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -80,6 +83,11 @@ class FTVideoComposerTableViewCell: UITableViewCell, BECellRenderImpl {
     @objc func desriptionTextFieldDidChange(_ textField: UITextField) {
         NSLog("\(textField.text ?? "")")
         self.delegate?.videoComposerCellDidChangeDescription(textField.text ?? "")
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
     
 }
