@@ -1302,7 +1302,8 @@ class WebService: NSObject, FTCoreServiceComponent {
             multipartFormData.append(videoFile, withName: "file", fileName: fileName, mimeType: "video/mp4")
             
             if let thumb = thumbnail, let thumbnailData = UIImageJPEGRepresentation(thumb, 1) {
-                multipartFormData.append(thumbnailData, withName: "thumbnail", mimeType: "image/png")
+                let thumbName = Date().dateTimeString().appending(".png")
+                multipartFormData.append(thumbnailData, withName: "thumbnail", fileName: thumbName, mimeType: "image/png")
             }
             
             multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
