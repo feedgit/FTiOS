@@ -831,11 +831,20 @@ class WebService: NSObject, FTCoreServiceComponent {
             "Authorization": "JWT \(token)"
         ]
         
-        let params:[String: Any] = [
+        var params:[String: Any] = [
             "content_type": ct_name,
             "object_id" : ct_id,
             "comment": comment
         ]
+        
+        if let parent = parentID {
+            params = [
+            "content_type": ct_name,
+            "object_id" : ct_id,
+            "comment": comment,
+            "parent": parent
+            ]
+        }
         
         let urlString = "\(host)/api/v1/comments/create/"
         
