@@ -45,6 +45,7 @@ class CommentController: UITableViewController {
     }
     
     func loadComment() {
+        self.datasource = []
         guard let feedID = contentID else { return }
         coreService.webService?.getComments(ct_id: feedID, completion: { [weak self] (success, response) in
             if success {

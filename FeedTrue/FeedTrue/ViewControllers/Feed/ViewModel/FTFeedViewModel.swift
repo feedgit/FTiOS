@@ -12,7 +12,7 @@ class FTFeedViewModel: BECellDataSource {
     static let feedCellId = "FTFeedTableViewCell"
     var feed: FTFeedInfo
     var imageHeight: CGFloat = (UIScreen.main.bounds.width - 16) * 9 / 16
-    var commentHeight: CGFloat = 192.0
+    var commentHeight: CGFloat = 0
     init(f: FTFeedInfo) {
         feed = f
     }

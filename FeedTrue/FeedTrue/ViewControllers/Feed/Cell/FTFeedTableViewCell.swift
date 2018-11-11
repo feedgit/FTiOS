@@ -61,6 +61,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var commentConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var savedBtn: UIButton!
     
+    @IBOutlet weak var commentTableConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var privacyImageView: UIImageView!
     
     @IBOutlet weak var commentTableView: UITableView!
@@ -354,6 +355,9 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             self.commentCountLabel.text = nil
         }
         
+        // reset datasource for each cell
+        self.datasource = []
+        commentTableConstraintHeight.constant = 0
         if let comments = data.feed.comment?.comments {
             for c in comments {
                 let commentMV = FTCommentViewModel(comment: c, type: .text)
@@ -361,7 +365,10 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                     self.datasource.append(commentMV)
                 }
             }
+            commentTableConstraintHeight.constant = CGFloat(64 * self.datasource.count)
         }
+        
+        data.commentHeight = commentTableConstraintHeight.constant
         
         self.commentTableView.reloadData()
         // config comment tableview

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,11 +90,14 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-Tq-YYL">
-                        <rect key="frame" x="8" y="472" width="773" height="192"/>
+                        <rect key="frame" x="8" y="472" width="773" height="0.0"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MaR-WX-0Ma">
-                                <rect key="frame" x="0.0" y="0.0" width="773" height="192"/>
+                                <rect key="frame" x="0.0" y="0.0" width="773" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="UZD-HC-Rvo"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +105,6 @@
                             <constraint firstAttribute="trailing" secondItem="MaR-WX-0Ma" secondAttribute="trailing" id="FFa-Wu-1Fq"/>
                             <constraint firstItem="MaR-WX-0Ma" firstAttribute="leading" secondItem="5wk-Tq-YYL" secondAttribute="leading" id="a1b-nl-zXf"/>
                             <constraint firstItem="MaR-WX-0Ma" firstAttribute="top" secondItem="5wk-Tq-YYL" secondAttribute="top" id="agI-ai-mWz"/>
-                            <constraint firstAttribute="height" constant="192" id="eGe-Dk-FVr"/>
                             <constraint firstAttribute="bottom" secondItem="MaR-WX-0Ma" secondAttribute="bottom" id="u0i-uF-0Al"/>
                         </constraints>
                     </view>
@@ -227,8 +229,8 @@
             <connections>
                 <outlet property="collectionLayoutConstraintHieght" destination="wyx-gS-V54" id="Uzc-bQ-AkC"/>
                 <outlet property="collectionView" destination="rdZ-yz-xcJ" id="nai-dk-udy"/>
-                <outlet property="commentConstraintHeight" destination="eGe-Dk-FVr" id="N0C-PP-K2V"/>
                 <outlet property="commentCountLabel" destination="Mzf-7G-Yi5" id="Do9-W6-YlT"/>
+                <outlet property="commentTableConstraintHeight" destination="UZD-HC-Rvo" id="WLs-M5-S8j"/>
                 <outlet property="commentTableView" destination="MaR-WX-0Ma" id="tgi-A0-cKT"/>
                 <outlet property="commentTextField" destination="45o-42-AgG" id="LeN-aV-1JR"/>
                 <outlet property="commentView" destination="5wk-Tq-YYL" id="rSf-Cq-sVx"/>
@@ -247,10 +249,10 @@
     </objects>
     <resources>
         <image name="1000x1000" width="150" height="150"/>
-        <image name="comment" width="24" height="24"/>
+        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
         <image name="more_btn" width="23" height="7"/>
-        <image name="privacy_follow" width="16" height="16"/>
-        <image name="save" width="22" height="22"/>
-        <image name="share" width="22" height="22"/>
+        <image name="privacy_follow" width="25.600000381469727" height="25.600000381469727"/>
+        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
+        <image name="share" width="35.200000762939453" height="35.200000762939453"/>
     </resources>
 </document>
