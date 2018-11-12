@@ -277,9 +277,9 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             let h = collectionViewWidth * (9.0/16.0)
             collectionLayoutConstraintHieght.constant = h
             data.imageHeight = h
-        } else if photos.count >= 2 {
-            collectionLayoutConstraintHieght.constant = collectionViewWidth / 2
-            data.imageHeight = collectionViewWidth / 2
+        } else if photos.count > 1 {
+            collectionLayoutConstraintHieght.constant = (collectionViewWidth / 3) * CGFloat(ceilf(Float(photos.count / 3)))
+            data.imageHeight = collectionLayoutConstraintHieght.constant
         }
         self.setNeedsLayout()
         collectionView.reloadData()
@@ -489,13 +489,6 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
                 cell.imageView.image = UIImage.noImage()
             }
         }
-        if photos.count > 2 && indexPath.row == 1 {
-            cell.moreLabel.text = "+\(photos.count - 2)"
-            cell.moreLabel.isHidden = false
-        } else {
-            cell.moreLabel.text = nil
-            cell.moreLabel.isHidden = true
-        }
         return cell
     }
     
@@ -600,7 +593,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionViewWidth, height: (9.0/16.0) * collectionViewWidth)
         }
         // 2+ photos
-        let h = collectionViewWidth / 2.0
+        let h = collectionViewWidth / 3.0
         return CGSize(width: h - 1, height: h - 1)
     }
     
