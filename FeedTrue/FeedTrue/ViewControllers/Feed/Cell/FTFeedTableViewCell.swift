@@ -324,7 +324,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             collectionLayoutConstraintHieght.constant = h
             data.imageHeight = h
         } else if photos.count > 1 {
-            collectionLayoutConstraintHieght.constant = (collectionViewWidth / 3) * CGFloat(ceilf(Float(photos.count / 3)))
+            collectionLayoutConstraintHieght.constant = (collectionViewWidth / 3) * CGFloat(ceilf(Float(photos.count) / 3.0))
             data.imageHeight = collectionLayoutConstraintHieght.constant
         }
         self.setNeedsLayout()
