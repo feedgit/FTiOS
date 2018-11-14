@@ -287,10 +287,18 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         
         // SKPhotoBrowser
         for photo in photos {
-            guard let url = photo.url else { continue }
-            let skPhoto = SKPhoto.photoWithImageURL(url)
-            skPhoto.shouldCachePhotoURLImage = true
-            skPhotos.append(skPhoto)
+            switch photo.type {
+            case .image:
+                guard let url = photo.url else { continue }
+                let skPhoto = SKPhoto.photoWithImageURL(url)
+                skPhoto.shouldCachePhotoURLImage = true
+                skPhotos.append(skPhoto)
+            case .video:
+                guard let url = photo.thumbnailURL else { continue }
+                let skPhoto = SKPhoto.photoWithImageURL(url)
+                skPhoto.shouldCachePhotoURLImage = true
+                skPhotos.append(skPhoto)
+            }
         }
         
         _ = collectionView
