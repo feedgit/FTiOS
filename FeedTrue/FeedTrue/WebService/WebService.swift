@@ -1141,7 +1141,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/articles/"
+        let urlString = "\(host)/api/v1/blog/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
