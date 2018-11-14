@@ -172,9 +172,14 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                  */
             for image in imageDatas {
                 guard let id = image["id"] else { continue }
-                let url = image["image"] as? String
+                guard let imageDict = image["image"] as? [String: Any] else { continue }
+                guard let url = imageDict["src"] as? String else { continue }
+                guard let width = imageDict["width"] as? Int else { continue }
+                guard let height = imageDict["height"] as? Int else { continue }
                 let photo = Photo(id: "\(id)")
                 photo.url = url
+                photo.width = width
+                photo.height = height
                 photos.append(photo)
                 }
             case 2:
@@ -215,10 +220,14 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                     let title = image["title"] as? String
                     let thumbnailURL = image["thumbnail"] as? String
                     let slug = image["slug"] as? String
+                    guard let videoURL = image["file"] as? String else { continue }
                     let photo = Photo(id: "\(id)")
-                    photo.url = thumbnailURL
+                    photo.thumbnailURL = thumbnailURL
+                    photo.url = videoURL
                     photo.title = title
                     photo.slug = slug
+                    photo.type = .video
+                    
                     photos.append(photo)
                 }
             case 4:
@@ -256,11 +265,16 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 for d in imageDatas {
                     guard let feedcontent = d["feedcontent"] as? [String: Any] else { continue }
                     guard let dataArr = feedcontent["data"] as? [[String: Any]] else { continue }
-                    for i in dataArr {
-                        guard let id = i["id"] else { continue }
-                        let url = i["image"] as? String
+                    for item in dataArr {
+                        guard let id = item["id"] else { continue }
+                        guard let imageDict = item["image"] as? [String: Any] else { continue }
+                        guard let url = imageDict["src"] as? String else { continue }
+                        guard let width = imageDict["width"] as? Int else { continue }
+                        guard let height = imageDict["height"] as? Int else { continue }
                         let photo = Photo(id: "\(id)")
                         photo.url = url
+                        photo.width = width
+                        photo.height = height
                         photos.append(photo)
                     }
                 }
@@ -274,7 +288,21 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             collectionLayoutConstraintHieght.constant = 0
             data.imageHeight = 0
         } else if photos.count == 1 {
-            let h = collectionViewWidth * (9.0/16.0)
+            guard let photo = photos.first else { return }
+            var h: CGFloat = collectionViewWidth * (2.0/3.0)
+            if let width = photo.width, let height = photo.height {
+                NSLog("width: \(width), height: \(height)")
+                if width > height {
+                    // limit width = screen width / 2
+                    h = CGFloat(height) * (2.0 * collectionViewWidth / 3.0) / CGFloat(width)
+                } else if width < height {
+                    // limit height = 2/3 screen width
+                    h = collectionViewWidth
+                } else {
+                    // width = height
+                    h = 2 * collectionViewWidth / 3.0
+                }
+            }
             collectionLayoutConstraintHieght.constant = h
             data.imageHeight = h
         } else if photos.count > 1 {
@@ -590,7 +618,32 @@ extension FTFeedTableViewCell: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 0, height: 0)
         }
         if photos.count == 1 {
-            return CGSize(width: collectionViewWidth, height: (9.0/16.0) * collectionViewWidth)
+            let photo = photos[indexPath.row]
+            if let width = photo.width, let height = photo.height, photo.type == .image {
+                NSLog("\(#function) width: \(width), height: \(height)")
+                var h: CGFloat = collectionViewWidth / 2.0
+                var w: CGFloat = 2 * collectionViewWidth / 3.0
+                    NSLog("width: \(width), height: \(height)")
+                    if width > height {
+                        // limit width = screen width / 2
+                        h = CGFloat(height) * (2.0 * collectionViewWidth / 3.0) / CGFloat(width)
+                    } else if width < height {
+                        // limit height = 2/3 screen width
+                        h = collectionViewWidth
+                        w = CGFloat(width) * h / CGFloat(height)
+                    } else {
+                        // width = height
+                        h = 2 * collectionViewWidth / 3.0
+                        w = h
+                    }
+                NSLog("\(#function) size_w: \(w), size_h: \(h)")
+                return CGSize(width: w, height: h)
+            } else {
+                // video
+                let h = collectionViewWidth * 2.0 / 3.0
+                return CGSize(width: collectionViewWidth, height: h)
+            }
+            //return CGSize(width: collectionViewWidth / 2, height: collectionViewWidth / 2)
         }
         // 2+ photos
         let h = collectionViewWidth / 3.0
