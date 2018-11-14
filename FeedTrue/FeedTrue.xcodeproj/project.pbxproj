@@ -205,6 +205,29 @@
 		136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */; };
 		136A46552190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */; };
 		136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */; };
+		13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */; };
+		13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */; };
+		13919547219C8A220068F362 /* SKActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952D219C8A1F0068F362 /* SKActionView.swift */; };
+		13919548219C8A220068F362 /* SKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952E219C8A1F0068F362 /* SKIndicatorView.swift */; };
+		13919549219C8A220068F362 /* SKCaptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952F219C8A1F0068F362 /* SKCaptionView.swift */; };
+		1391954A219C8A220068F362 /* SKAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919530219C8A1F0068F362 /* SKAnimator.swift */; };
+		1391954B219C8A220068F362 /* UIApplication+UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919531219C8A1F0068F362 /* UIApplication+UIWindow.swift */; };
+		1391954C219C8A220068F362 /* SKPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919532219C8A1F0068F362 /* SKPhotoBrowser.swift */; };
+		1391954D219C8A220068F362 /* SKPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919533219C8A200068F362 /* SKPhoto.swift */; };
+		1391954F219C8A220068F362 /* SKCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919535219C8A200068F362 /* SKCache.swift */; };
+		13919550219C8A220068F362 /* SKCacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919536219C8A200068F362 /* SKCacheable.swift */; };
+		13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919538219C8A200068F362 /* UIImage+Rotation.swift */; };
+		13919552219C8A220068F362 /* UIView+Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919539219C8A200068F362 /* UIView+Radius.swift */; };
+		13919553219C8A220068F362 /* SKPaginationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391953A219C8A200068F362 /* SKPaginationView.swift */; };
+		13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1391953B219C8A210068F362 /* SKPhotoBrowser.bundle */; };
+		13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391953D219C8A210068F362 /* SKPhotoBrowserOptions.swift */; };
+		13919556219C8A220068F362 /* SKToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391953E219C8A210068F362 /* SKToolbar.swift */; };
+		13919557219C8A220068F362 /* SKZoomingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391953F219C8A210068F362 /* SKZoomingScrollView.swift */; };
+		13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919540219C8A210068F362 /* SKDetectingImageView.swift */; };
+		13919559219C8A220068F362 /* SKLocalPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919541219C8A220068F362 /* SKLocalPhoto.swift */; };
+		1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919542219C8A220068F362 /* SKDetectingView.swift */; };
+		1391955B219C8A220068F362 /* SKButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919543219C8A220068F362 /* SKButtons.swift */; };
+		1391955C219C8A220068F362 /* SKMesurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919544219C8A220068F362 /* SKMesurement.swift */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
@@ -473,6 +496,30 @@
 		136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerTableViewCell.swift; sourceTree = "<group>"; };
 		136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoComposerTableViewCell.xib; sourceTree = "<group>"; };
 		136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerViewModel.swift; sourceTree = "<group>"; };
+		1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPagingScrollView.swift; sourceTree = "<group>"; };
+		1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserDelegate.swift; sourceTree = "<group>"; };
+		1391952D219C8A1F0068F362 /* SKActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKActionView.swift; sourceTree = "<group>"; };
+		1391952E219C8A1F0068F362 /* SKIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKIndicatorView.swift; sourceTree = "<group>"; };
+		1391952F219C8A1F0068F362 /* SKCaptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCaptionView.swift; sourceTree = "<group>"; };
+		13919530219C8A1F0068F362 /* SKAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKAnimator.swift; sourceTree = "<group>"; };
+		13919531219C8A1F0068F362 /* UIApplication+UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+UIWindow.swift"; sourceTree = "<group>"; };
+		13919532219C8A1F0068F362 /* SKPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowser.swift; sourceTree = "<group>"; };
+		13919533219C8A200068F362 /* SKPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhoto.swift; sourceTree = "<group>"; };
+		13919535219C8A200068F362 /* SKCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCache.swift; sourceTree = "<group>"; };
+		13919536219C8A200068F362 /* SKCacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKCacheable.swift; sourceTree = "<group>"; };
+		13919538219C8A200068F362 /* UIImage+Rotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Rotation.swift"; sourceTree = "<group>"; };
+		13919539219C8A200068F362 /* UIView+Radius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Radius.swift"; sourceTree = "<group>"; };
+		1391953A219C8A200068F362 /* SKPaginationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPaginationView.swift; sourceTree = "<group>"; };
+		1391953B219C8A210068F362 /* SKPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SKPhotoBrowser.bundle; sourceTree = "<group>"; };
+		1391953C219C8A210068F362 /* SKPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKPhotoBrowser.h; sourceTree = "<group>"; };
+		1391953D219C8A210068F362 /* SKPhotoBrowserOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserOptions.swift; sourceTree = "<group>"; };
+		1391953E219C8A210068F362 /* SKToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKToolbar.swift; sourceTree = "<group>"; };
+		1391953F219C8A210068F362 /* SKZoomingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKZoomingScrollView.swift; sourceTree = "<group>"; };
+		13919540219C8A210068F362 /* SKDetectingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingImageView.swift; sourceTree = "<group>"; };
+		13919541219C8A220068F362 /* SKLocalPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKLocalPhoto.swift; sourceTree = "<group>"; };
+		13919542219C8A220068F362 /* SKDetectingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingView.swift; sourceTree = "<group>"; };
+		13919543219C8A220068F362 /* SKButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButtons.swift; sourceTree = "<group>"; };
+		13919544219C8A220068F362 /* SKMesurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMesurement.swift; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1252,6 +1299,45 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1391952A219C89FD0068F362 /* SKPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				13919537219C8A200068F362 /* extensions */,
+				1391952D219C8A1F0068F362 /* SKActionView.swift */,
+				13919530219C8A1F0068F362 /* SKAnimator.swift */,
+				13919543219C8A220068F362 /* SKButtons.swift */,
+				13919535219C8A200068F362 /* SKCache.swift */,
+				13919536219C8A200068F362 /* SKCacheable.swift */,
+				1391952F219C8A1F0068F362 /* SKCaptionView.swift */,
+				13919540219C8A210068F362 /* SKDetectingImageView.swift */,
+				13919542219C8A220068F362 /* SKDetectingView.swift */,
+				1391952E219C8A1F0068F362 /* SKIndicatorView.swift */,
+				13919541219C8A220068F362 /* SKLocalPhoto.swift */,
+				13919544219C8A220068F362 /* SKMesurement.swift */,
+				1391953A219C8A200068F362 /* SKPaginationView.swift */,
+				1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */,
+				13919533219C8A200068F362 /* SKPhoto.swift */,
+				1391953B219C8A210068F362 /* SKPhotoBrowser.bundle */,
+				1391953C219C8A210068F362 /* SKPhotoBrowser.h */,
+				13919532219C8A1F0068F362 /* SKPhotoBrowser.swift */,
+				1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */,
+				1391953D219C8A210068F362 /* SKPhotoBrowserOptions.swift */,
+				1391953E219C8A210068F362 /* SKToolbar.swift */,
+				1391953F219C8A210068F362 /* SKZoomingScrollView.swift */,
+				13919531219C8A1F0068F362 /* UIApplication+UIWindow.swift */,
+			);
+			path = SKPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		13919537219C8A200068F362 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13919538219C8A200068F362 /* UIImage+Rotation.swift */,
+				13919539219C8A200068F362 /* UIView+Radius.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1372,6 +1458,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1391952A219C89FD0068F362 /* SKPhotoBrowser */,
 				1342A92D21661C0B00EFD1E6 /* DropdownMenu */,
 				1342A88821649FC500EFD1E6 /* alerts_and_pickers */,
 				134FF1A22159EF9A00551771 /* Reactions */,
@@ -1609,6 +1696,7 @@
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
+				13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
 				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
@@ -1770,6 +1858,7 @@
 				13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */,
 				13BA9B102149792200AD06D7 /* UploadTask.swift in Sources */,
 				1342A8DE21649FC500EFD1E6 /* Date+Extension.swift in Sources */,
+				1391955C219C8A220068F362 /* SKMesurement.swift in Sources */,
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
@@ -1777,6 +1866,7 @@
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
+				1391954D219C8A220068F362 /* SKPhoto.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
@@ -1790,6 +1880,7 @@
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
+				1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
@@ -1802,6 +1893,7 @@
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
 				13E94AA2216D1A1C00D2AF29 /* FTCommentReplies.swift in Sources */,
 				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
+				13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */,
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
@@ -1818,8 +1910,10 @@
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */,
 				13D0C01D217DD3ED00F745B9 /* FTUserDashBoardTabViewController.swift in Sources */,
+				13919556219C8A220068F362 /* SKToolbar.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */,
+				13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
 				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
@@ -1834,6 +1928,7 @@
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */,
+				13919550219C8A220068F362 /* SKCacheable.swift in Sources */,
 				1338D8282186F38B0065B552 /* FTPrivacyViewModel.swift in Sources */,
 				130E05E2212D6E2800C3E21A /* LoginViewController.swift in Sources */,
 				13BA9B0E2149792200AD06D7 /* FileProviderCache.swift in Sources */,
@@ -1843,10 +1938,12 @@
 				1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */,
 				134FF0EE2152B37300551771 /* ViewerController.swift in Sources */,
 				1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */,
+				13919557219C8A220068F362 /* SKZoomingScrollView.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
 				13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */,
 				13D2580D21428CBB00E84002 /* FTKeyChainService.swift in Sources */,
 				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
+				13919552219C8A220068F362 /* UIView+Radius.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
 				1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
@@ -1869,10 +1966,13 @@
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
 				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
 				1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */,
+				13919547219C8A220068F362 /* SKActionView.swift in Sources */,
 				1342A8E321649FC500EFD1E6 /* UISearchBar+Extensions.swift in Sources */,
 				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
+				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
+				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
 				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
 				1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
@@ -1898,8 +1998,10 @@
 				132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
+				1391954B219C8A220068F362 /* UIApplication+UIWindow.swift in Sources */,
 				1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */,
 				13D0C029217DD9B700F745B9 /* FTUserDashBoardFollowCell.swift in Sources */,
+				1391955B219C8A220068F362 /* SKButtons.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
 				1347746D216864B20026B048 /* FTComment+Mappable.swift in Sources */,
@@ -1908,6 +2010,7 @@
 				13D0C02D217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift in Sources */,
 				1342A882216491B000EFD1E6 /* FTProfileEditSingleLineCell.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
+				13919553219C8A220068F362 /* SKPaginationView.swift in Sources */,
 				1342A8FB21649FC500EFD1E6 /* Address.swift in Sources */,
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
@@ -1915,6 +2018,7 @@
 				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
 				13D0C021217DD45C00F745B9 /* FTUserDashBoardViewModel.swift in Sources */,
+				13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */,
 				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
 				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
@@ -1924,11 +2028,13 @@
 				1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */,
 				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
 				134FF0FF2152B37300551771 /* HeaderView.swift in Sources */,
+				13919548219C8A220068F362 /* SKIndicatorView.swift in Sources */,
 				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
 				1342A8F121649FC500EFD1E6 /* CurrencyCell.swift in Sources */,
 				134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				132C7B27217993BF00EE11AD /* FTAriticleViewModel.swift in Sources */,
+				1391954C219C8A220068F362 /* SKPhotoBrowser.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				132C7B2B2179948800EE11AD /* FTAriticleTableViewCell.swift in Sources */,
 				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
@@ -1948,16 +2054,20 @@
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				134FF0FE2152B37300551771 /* PopupController.swift in Sources */,
 				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
+				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
 				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,
+				13919559219C8A220068F362 /* SKLocalPhoto.swift in Sources */,
 				1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */,
 				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
 				1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
 				13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */,
+				1391954A219C8A220068F362 /* SKAnimator.swift in Sources */,
 				1342A8F621649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift in Sources */,
 				13BA9B0D2149792200AD06D7 /* FileProviderService.swift in Sources */,
+				13919549219C8A220068F362 /* SKCaptionView.swift in Sources */,
 				1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */,
 				13BA9B122149792200AD06D7 /* TableView+BottomActivity.swift in Sources */,
 			);

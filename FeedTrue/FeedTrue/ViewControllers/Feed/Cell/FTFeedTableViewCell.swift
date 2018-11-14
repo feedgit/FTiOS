@@ -44,6 +44,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     var feed: FTFeedInfo!
     var dataSourceType: DataSourceType = .remote
     var photos = [Photo]()
+    var skPhotos = [SKPhoto]()
     var viewerController: ViewerController?
     var optionsController: OptionsController?
     let collectionViewWidth = UIScreen.main.bounds.width - 16 - 16
@@ -149,6 +150,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         let photoController = PhotosController(dataSourceType: .remote)
         photoController.collectionView?.isScrollEnabled = false
         photos.removeAll()
+        skPhotos.removeAll()
         if let type = feed.feedcontent?.display_type {
             guard let imageDatas = feed.feedcontent?.data else { return }
             switch type {
@@ -281,6 +283,14 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             default:
                 break
             }
+        }
+        
+        // SKPhotoBrowser
+        for photo in photos {
+            guard let url = photo.url else { continue }
+            let skPhoto = SKPhoto.photoWithImageURL(url)
+            skPhoto.shouldCachePhotoURLImage = true
+            skPhotos.append(skPhoto)
         }
         
         _ = collectionView
@@ -523,24 +533,33 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let collectionView = self.collectionView else { return }
         
-        self.viewerController = ViewerController(initialIndexPath: indexPath, collectionView: collectionView)
-        self.viewerController!.dataSource = self
-        self.viewerController!.delegate = self
+//        self.viewerController = ViewerController(initialIndexPath: indexPath, collectionView: collectionView)
+//        self.viewerController!.dataSource = self
+//        self.viewerController!.delegate = self
+//
+//        #if os(iOS)
+//        let headerView = HeaderView()
+//        headerView.viewDelegate = self
+//        self.viewerController?.headerView = headerView
+//        let footerView = FooterView()
+//        footerView.viewDelegate = self
+//        self.viewerController?.footerView = footerView
+//        #endif
+//
+//        //self.present(self.viewerController!, animated: false, completion: nil)
+//        if let topVC = UIApplication.topViewController() {
+//            topVC.present(self.viewerController!, animated: false, completion: nil)
+//        }
+//        NSLog("\(#function) at index path: \(indexPath.row)")
         
-        #if os(iOS)
-        let headerView = HeaderView()
-        headerView.viewDelegate = self
-        self.viewerController?.headerView = headerView
-        let footerView = FooterView()
-        footerView.viewDelegate = self
-        self.viewerController?.footerView = footerView
-        #endif
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+        let originImage = cell.imageView.image // some image for baseImage
         
-        //self.present(self.viewerController!, animated: false, completion: nil)
+        let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: skPhotos, animatedFromView: cell)
+        browser.initializePageIndex(indexPath.row)
         if let topVC = UIApplication.topViewController() {
-            topVC.present(self.viewerController!, animated: false, completion: nil)
+            topVC.present(browser, animated: false, completion: nil)
         }
-        NSLog("\(#function) at index path: \(indexPath.row)")
     }
     
 }
