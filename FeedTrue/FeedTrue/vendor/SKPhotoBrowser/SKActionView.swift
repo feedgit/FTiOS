@@ -95,8 +95,9 @@ extension SKActionView {
             addSubview(closeButton)
         }
 
-        guard let size = size else { return }
-        closeButton.setFrameSize(size)
+        //guard let size = size else { return }
+        let skSize = CGSize(width: 44, height: 44)
+        closeButton.setFrameSize(skSize)
         
         guard let image = image else { return }
         closeButton.setImage(image, for: UIControlState())
