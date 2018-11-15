@@ -19,7 +19,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     var datasource: [FTFeedVideoContent] = []
     var coreService: FTCoreService!
     var nextURLString: String?
-    fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    fileprivate let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
     fileprivate let itemsPerRow: CGFloat = 2
     fileprivate var backBarBtn: UIBarButtonItem!
     
@@ -34,7 +34,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         collectionView?.delegate = self
         collectionView?.dataSource = self
         // Do any additional setup after loading the view.
-        self.collectionView?.backgroundColor = .white
+        self.collectionView?.backgroundColor = UIColor.videoVCBackGroundCollor()
         self.loadFeed()
         
         //backBarBtn = UIBarButtonItem(title: NSLocalizedString("Home", comment: ""), style: .plain, target: self, action: #selector(back(_:)))

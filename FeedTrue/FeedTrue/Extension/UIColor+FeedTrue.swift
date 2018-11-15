@@ -24,6 +24,14 @@ extension UIColor {
     class func backgroundColor(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor(rgb: 0xF6F6F6).withAlphaComponent(alpha)
     }
+    
+    class func videoVCBackGroundCollor(alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(hex: 0xdedede).withAlphaComponent(alpha)
+    }
+    
+    class func topLineBackGround(alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor(hex: 0xf9f9f9).withAlphaComponent(alpha)
+    }
 }
 
 extension UIColor {

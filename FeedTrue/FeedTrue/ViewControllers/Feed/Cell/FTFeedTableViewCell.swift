@@ -525,6 +525,8 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         case .image:
             if let url = URL(string: cell.photo?.url ?? "") {
                 cell.imageView.loadImage(fromURL: url, defaultImage: UIImage.noImage())
+                let skphoto = SKPhoto(url: cell.photo!.url!)
+                skphoto.loadUnderlyingImageComplete()
             } else {
                 cell.imageView.image = UIImage.noImage()
             }

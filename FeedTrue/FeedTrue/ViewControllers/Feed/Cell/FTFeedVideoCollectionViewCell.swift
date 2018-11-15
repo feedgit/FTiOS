@@ -25,6 +25,7 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var reactionButton: ReactionButton!
     @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var lineView: UIView!
     
     var ftReactionType: FTReactionTypes = .love
     var contetnData: FTFeedVideoContent?
@@ -44,6 +45,9 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
         }
         
         reactionButton.reactionSelector?.feedbackDelegate = self
+        self.layer.cornerRadius = 8
+        self.layer.masksToBounds = true
+        lineView.backgroundColor = UIColor.videoVCBackGroundCollor()
     }
     
     func render(content: FTFeedVideoContent) {
