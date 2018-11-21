@@ -23,8 +23,13 @@ enum FollowState: String {
     case follow = "Follow"
 }
 
+@objc protocol ProfileDelegate {
+    func avatarDidChange(avatar: String)
+}
+
 class FTTabProfileViewController: FTTabViewController {
 
+    weak var delegate: ProfileDelegate?
     var profile: FTUserProfileResponse?
     var displayType: ProfileDisplayType = .owner
     var followState: FollowState = .follow
@@ -368,10 +373,14 @@ extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigat
     }
     
     func uploadAvatar(image: UIImage) {
-        rootViewController.coreService.webService?.uploadAvatar(image: image, completion: { (success, response) in
+        rootViewController.coreService.webService?.uploadAvatar(image: image, completion: { (success, avatar) in
             if success {
                 // TODO: save new avatar
                 NSLog("\(#function) upload avatart successful")
+                self.profile?.avatar = avatar
+                if let a = avatar {
+                    self.delegate?.avatarDidChange(avatar: a)
+                }
             } else {
                 // TODO: rollback
                 NSLog("\(#function) upload avatar failure")

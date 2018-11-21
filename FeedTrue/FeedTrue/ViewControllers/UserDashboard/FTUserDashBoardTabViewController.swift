@@ -246,7 +246,15 @@ extension FTUserDashBoardTabViewController: FTUserDashBoardProfileCellDelegate {
         profileVC.displayType = .owner
         profileVC.username = nil
         profileVC.profile = profile
+        profileVC.delegate = self
         self.navigationController?.pushViewController(profileVC, animated: true)
 
+    }
+}
+
+extension FTUserDashBoardTabViewController: ProfileDelegate {
+    func avatarDidChange(avatar: String) {
+        profile?.avatar = avatar
+        updateUI()
     }
 }

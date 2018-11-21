@@ -1089,7 +1089,19 @@ class WebService: NSObject, FTCoreServiceComponent {
                 upload.responseJSON { response in
                     //print response.result
                     print(response.result.debugDescription)
-                    completion(true, nil)
+                    guard let value = response.result.value as? [String: Any] else {
+                        completion(false, nil)
+                        return
+                    }
+                    
+                    guard let success = value["success"] as? Int else {
+                        completion(false, nil)
+                        return
+                    }
+                    
+                    let avatar = value["avatar"] as? String
+
+                    completion(success == 1, avatar)
                 }
                 
             case .failure(let encodingError):
