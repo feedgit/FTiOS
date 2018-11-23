@@ -73,6 +73,11 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     @objc func addAction() {
+        if rootViewController.coreService.registrationService?.hasAuthenticationProfile() == false {
+            NotificationCenter.default.post(name: .ShowLogin, object: nil)
+            return
+        }
+        
         let composerVC = FTComposerPopupViewController()
         composerVC.delegate = self
         self.navigationController?.pushViewController(composerVC, animated: true)

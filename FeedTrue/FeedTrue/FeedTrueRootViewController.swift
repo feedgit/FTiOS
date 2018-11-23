@@ -119,6 +119,13 @@ class FeedTrueRootViewController: UIViewController {
                 // Feed Tab
                 NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
             }
+            
+            if index == 4 {
+                // user dashboard tab
+                if self.coreService.registrationService?.hasAuthenticationProfile() == false {
+                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
+                }
+            }
             return false
         }
         
