@@ -19,4 +19,5 @@ pod 'Alamofire-SwiftyJSON'
 pod 'STPopup'
 pod 'YKPhotoCircleCrop'
 pod 'DKImagePickerController'
+pod 'RichEditorView'
 end

@@ -228,6 +228,8 @@
 		1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919542219C8A220068F362 /* SKDetectingView.swift */; };
 		1391955B219C8A220068F362 /* SKButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919543219C8A220068F362 /* SKButtons.swift */; };
 		1391955C219C8A220068F362 /* SKMesurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919544219C8A220068F362 /* SKMesurement.swift */; };
+		1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */; };
+		1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */; };
 		13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */; };
 		13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4BB2135509D00C377C0 /* HomeViewController.swift */; };
 		13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4C12137A47200C377C0 /* ExampleBackgroundContentView.swift */; };
@@ -520,6 +522,8 @@
 		13919542219C8A220068F362 /* SKDetectingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingView.swift; sourceTree = "<group>"; };
 		13919543219C8A220068F362 /* SKButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButtons.swift; sourceTree = "<group>"; };
 		13919544219C8A220068F362 /* SKMesurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMesurement.swift; sourceTree = "<group>"; };
+		1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticelComposerViewController.swift; sourceTree = "<group>"; };
+		1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTArticelComposerViewController.xib; sourceTree = "<group>"; };
 		13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FeedTrue-Bridging-Header.h"; sourceTree = "<group>"; };
 		13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+FeedTrue.swift"; sourceTree = "<group>"; };
 		13A2C4BB2135509D00C377C0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -1338,6 +1342,15 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
+		1391955E21A6C2E70068F362 /* ArticleComposer */ = {
+			isa = PBXGroup;
+			children = (
+				1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */,
+				1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */,
+			);
+			path = ArticleComposer;
+			sourceTree = "<group>";
+		};
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1572,6 +1585,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				1391955E21A6C2E70068F362 /* ArticleComposer */,
 				1314C24F2195939E00FBBE32 /* VideoPicker */,
 				136A464C219095D500EB9AC9 /* VideoComposer */,
 				13F5C8A5218763BF006DD345 /* PostInFeed */,
@@ -1688,6 +1702,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
+				1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */,
 				13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
@@ -1783,6 +1798,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableSegmentedControl/ScrollableSegmentedControl.framework",
@@ -1812,6 +1828,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichEditorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableSegmentedControl.framework",
@@ -2054,6 +2071,7 @@
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				134FF0FE2152B37300551771 /* PopupController.swift in Sources */,
 				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
+				1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */,
 				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,

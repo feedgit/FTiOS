@@ -9,6 +9,11 @@
 import UIKit
 import DKImagePickerController
 
+enum ComposerType: String {
+    case photos = "Add Photos"
+    case article = "Add Article"
+}
+
 enum PrivacyType: Int {
     case `public` = 0
     case `private` = 1
@@ -16,6 +21,9 @@ enum PrivacyType: Int {
 }
 
 class FTPhotoComposerViewController: UIViewController {
+    
+    var composerType: ComposerType = .photos
+    var articleContent: String?
     
     @IBOutlet weak var tableView: UITableView!
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
@@ -38,7 +46,7 @@ class FTPhotoComposerViewController: UIViewController {
         backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("Add Photos", comment: "")
+        navigationItem.title = NSLocalizedString(composerType.rawValue, comment: "")
         
         let nextBarBtn = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(next(_:)))
         nextBarBtn.tintColor = .white
@@ -56,6 +64,7 @@ class FTPhotoComposerViewController: UIViewController {
         tableView.clipsToBounds = true
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        
         loadAssets()
     }
     
@@ -90,6 +99,20 @@ class FTPhotoComposerViewController: UIViewController {
 
     }
     
+    func initArticleThumbnail() {
+        // init default image for thumbnail and remove button
+        let vm = FTPhotoComposerViewModel()
+        vm.image = UIImage.noImage()
+        self.datasource.append(vm)
+        let photos = FTPhotosViewModel()
+        photos.datasource = self.datasource
+        self.settings[0] = photos
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     @objc func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -109,13 +132,18 @@ class FTPhotoComposerViewController: UIViewController {
             }
         }
         
-        coreService.webService?.composerPhoto(imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
-            NSLog(success ? "SUCCESS" : "FAILED")
-            if !self.postText.isEmpty {
-                // get new feed, notify to feed screen
-                NotificationCenter.default.post(name: .ComposerPhotoCompleted, object: nil)
-            }
-        })
+        switch composerType {
+        case .photos:
+            coreService.webService?.composerPhoto(imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, completion: { (success, response) in
+                NSLog(success ? "SUCCESS" : "FAILED")
+                if !self.postText.isEmpty {
+                    // get new feed, notify to feed screen
+                    NotificationCenter.default.post(name: .ComposerPhotoCompleted, object: nil)
+                }
+            })
+        case .article:
+            break
+        }
     }
     
     func openPhoto() {

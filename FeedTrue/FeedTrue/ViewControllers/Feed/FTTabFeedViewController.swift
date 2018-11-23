@@ -429,14 +429,8 @@ extension FTTabFeedViewController: ComposerDelegate {
     func composerDidSelectedItemAt(_ index: Int) {
         if index == 0 {
             let photoPicker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
-            //photoPicker.delegate = self
             self.navigationController?.pushViewController(photoPicker, animated: true)
         } else if index == 1 {
-            // video
-//            let picker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
-//            picker.assetType = .allVideos
-//            picker.maxSelectableCount = 1
-//            self.navigationController?.pushViewController(picker, animated: true)
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                 videoPicker = UIImagePickerController()
                 videoPicker.delegate = self
@@ -444,6 +438,10 @@ extension FTTabFeedViewController: ComposerDelegate {
                 videoPicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
                 self.present(videoPicker, animated: true, completion: nil)
             }
+        } else if index == 2 {
+            // blog
+            let articleComposerVC = FTArticelComposerViewController(coreService: rootViewController.coreService)
+            self.navigationController?.pushViewController(articleComposerVC, animated: true)
         }
     }
 }

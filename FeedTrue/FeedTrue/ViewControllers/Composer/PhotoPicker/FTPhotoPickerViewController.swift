@@ -12,6 +12,7 @@ import DKImagePickerController
 enum PickerType {
     case composer
     case modify
+    case article
 }
 
 @objc protocol PhotoPickerDelegate {
@@ -28,6 +29,7 @@ class FTPhotoPickerViewController: UIViewController {
     var maxSelectableCount = 20
     var coreService: FTCoreService!
     var type: PickerType = .composer
+    var content: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +94,14 @@ class FTPhotoPickerViewController: UIViewController {
         case .modify:
             self.navigationController?.popViewController(animated: false)
             self.delegate?.photoPickerChangeThumbnail(asset: pickerController.selectedAssets.first)
+            
+        case .article:
+            if assetType == .allPhotos {
+                let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
+                photoVC.articleContent = content
+                photoVC.composerType = .article
+                self.navigationController?.pushViewController(photoVC, animated: true)
+            }
         }
 
     }
