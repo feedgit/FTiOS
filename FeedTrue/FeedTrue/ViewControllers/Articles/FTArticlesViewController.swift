@@ -15,6 +15,7 @@ class FTArticlesViewController: UIViewController {
     var nextURLString: String?
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl?
     
     init(coreService c: FTCoreService) {
         coreService = c
@@ -42,10 +43,23 @@ class FTArticlesViewController: UIViewController {
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Articles", comment: "")
+        setUpRefreshControl()
     }
     
     @objc func back(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        //refreshControl?.tintColor = UIColor.blue
+        refreshControl?.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        self.refreshControl?.endRefreshing()
+        self.loadArticel()
     }
     
     @objc func loadArticel() {

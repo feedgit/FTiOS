@@ -22,6 +22,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     fileprivate let sectionInsets = UIEdgeInsets(top: 4.0, left: 4.0, bottom: 4.0, right: 4.0)
     fileprivate let itemsPerRow: CGFloat = 2
     fileprivate var backBarBtn: UIBarButtonItem!
+    var refreshControl: UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Videos", comment: "")
+        setUpRefreshControl()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -60,6 +62,18 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        //refreshControl?.tintColor = UIColor.blue
+        refreshControl?.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        collectionView?.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        self.refreshControl?.endRefreshing()
+        self.loadFeed()
     }
     
     @objc func loadFeed() {

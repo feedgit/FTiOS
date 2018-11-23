@@ -42,6 +42,7 @@ class FTEditProfileViewController: UIViewController {
     fileprivate var doneBarBtn: UIBarButtonItem!
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl?
     
     var dataSource: [(FTEditProfileViewModel, FieldData)] = []
     override func viewDidLoad() {
@@ -170,6 +171,18 @@ class FTEditProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        //refreshControl?.tintColor = UIColor.blue
+        refreshControl?.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        self.refreshControl?.endRefreshing()
+        self.loadUserInfo()
     }
 
 }

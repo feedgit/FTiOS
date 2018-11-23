@@ -16,6 +16,7 @@ class FTUserDashBoardTabViewController: FTTabViewController {
     var countCol = 4
     var progressHub: MBProgressHUD?
     var profile: FTUserProfileResponse?
+    var refreshControl: UIRefreshControl?
     
     @IBOutlet weak var tableView: UITableView!
     /*
@@ -44,6 +45,7 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         
         generateDatasource()
         self.loadUserInfo()
+        setUpRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +136,18 @@ class FTUserDashBoardTabViewController: FTTabViewController {
             }
         }
         
+    }
+    
+    private func setUpRefreshControl() {
+        refreshControl = UIRefreshControl()
+        //refreshControl?.tintColor = UIColor.blue
+        refreshControl?.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl!)
+    }
+    
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        self.refreshControl?.endRefreshing()
+        loadUserInfo()
     }
 
 }
