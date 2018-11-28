@@ -22,6 +22,7 @@ import SwiftMoment
     func feedCellDidSave(cell: FTFeedTableViewCell)
     func feedCellDidUnSave(cell: FTFeedTableViewCell)
     func feedCellDidTouchUpComment(cell: FTFeedTableViewCell)
+    func feedCellShowDetail(cell: FTFeedTableViewCell)
 }
 
 public enum FTReactionTypes: String {
@@ -91,6 +92,10 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         userAvatarImageview.addGestureRecognizer(singleTap)
         userAvatarImageview.isUserInteractionEnabled = true
         
+        let contentTap = UITapGestureRecognizer(target: self, action: #selector(showDetail))
+        contentLabel.addGestureRecognizer(contentTap)
+        contentLabel.isUserInteractionEnabled = true
+        
         reactionButton.reactionSelector = ReactionSelector()
         reactionButton.config           = ReactionButtonConfig() {
             $0.iconMarging      = 10
@@ -126,6 +131,10 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @objc func showUserProfile() {
         guard let username = feed.user?.username else { return }
         self.delegate?.feedCellDidTapUsername(username: username)
+    }
+    
+    @objc func showDetail() {
+        self.delegate?.feedCellShowDetail(cell: self)
     }
     
     func renderCell(data: FTFeedViewModel) {

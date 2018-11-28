@@ -406,6 +406,15 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         popupController.present(in: self)
     }
     
+    func feedCellShowDetail(cell: FTFeedTableViewCell) {
+        guard let feed = cell.feed else { return }
+        guard let coreService = self.rootViewController.coreService else { return }
+        let detailVC = FTFeedDetailViewController(feedInfo: feed, coreService: coreService)
+        detailVC.photos = cell.photos
+        detailVC.skPhotos = cell.skPhotos
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
 }
 
 extension FTTabFeedViewController: VideoControllerDelegate {
