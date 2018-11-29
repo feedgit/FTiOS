@@ -10,10 +10,12 @@ import UIKit
 
 class FTFeedDetailViewController: UIViewController {
 
+    private var datas: [String] = ["Liked by 123", "Comments 456", "ReFeed 123"]
+
     @IBOutlet weak var tableView: UITableView!
     var feedInfo: FTFeedInfo!
     var coreService: FTCoreService!
-    var dataSource = [BECellDataSource]()
+    var dataSource = [[BECellDataSource]]()
     var photos: [Photo]?
     var skPhotos: [SKPhoto]?
     
@@ -50,6 +52,18 @@ class FTFeedDetailViewController: UIViewController {
         navView.addSubview(label)
         navView.addSubview(avatarImageView)
         return navView
+    }()
+    
+    lazy var swipeMenuView: SwipeMenuView = {
+        let swipeMenuView = SwipeMenuView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        swipeMenuView.delegate                        = self
+        swipeMenuView.dataSource                      = self
+        var options: SwipeMenuViewOptions             = .init()
+        options.tabView.style                         = .segmented
+        options.tabView.additionView.backgroundColor  = .white
+        options.tabView.itemView.textColor            = .black
+        options.tabView.itemView.font = UIFont.swipeMenuFont(ofSize: 17)
+        return swipeMenuView
     }()
     
     init(feedInfo info: FTFeedInfo, coreService service: FTCoreService) {
@@ -92,10 +106,9 @@ class FTFeedDetailViewController: UIViewController {
     
     fileprivate func generateDataSource() {
         let contentVM = FTDetailFeedContentViewModel(content: feedInfo.text ?? "")
-        dataSource.append(contentVM)
-        
         let photoVM = FTDetailPhotosViewModel(photos: photos ?? [])
-        dataSource.append(photoVM)
+        dataSource.append([contentVM, photoVM])
+        dataSource.append([contentVM])
     }
     
     @objc func back(_ sender: Any) {
@@ -160,12 +173,15 @@ class FTFeedDetailViewController: UIViewController {
 }
 
 extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return dataSource.count
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = dataSource[indexPath.row]
+        let content = dataSource[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
         if let renderCell = cell as? BECellRender {
@@ -176,8 +192,34 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let content = dataSource[indexPath.row]
+        let content = dataSource[indexPath.section][indexPath.row]
         return content.cellHeight()
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 { return nil }
+        return swipeMenuView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 { return 0 }
+        return swipeMenuView.bounds.height
+    }
+    
+}
+
+extension FTFeedDetailViewController: SwipeMenuViewDelegate, SwipeMenuViewDataSource {
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
+        return UIViewController()
+    }
+    
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
+        return datas[index]
+    }
+    
+    func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
+        return datas.count
+    }
+    
     
 }

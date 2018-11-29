@@ -233,6 +233,15 @@
 		1391955C219C8A220068F362 /* SKMesurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919544219C8A220068F362 /* SKMesurement.swift */; };
 		1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */; };
 		1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */; };
+		13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */; };
+		13922CB821AFF61B003161D2 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB021AFF61B003161D2 /* TabItemView.swift */; };
+		13922CB921AFF61B003161D2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB121AFF61B003161D2 /* UIColorExtension.swift */; };
+		13922CBA21AFF61B003161D2 /* SwipeMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB221AFF61B003161D2 /* SwipeMenuViewController.swift */; };
+		13922CBB21AFF61B003161D2 /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB321AFF61B003161D2 /* ContentScrollView.swift */; };
+		13922CBC21AFF61B003161D2 /* SwipeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB421AFF61B003161D2 /* SwipeMenuView.swift */; };
+		13922CBD21AFF61B003161D2 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB521AFF61B003161D2 /* TabView.swift */; };
+		13922CBE21AFF61B003161D2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB621AFF61B003161D2 /* UIViewExtension.swift */; };
+		13922CC021B04A16003161D2 /* UIFont+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CBF21B04A16003161D2 /* UIFont+FT.swift */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -535,6 +544,15 @@
 		13919544219C8A220068F362 /* SKMesurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMesurement.swift; sourceTree = "<group>"; };
 		1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticelComposerViewController.swift; sourceTree = "<group>"; };
 		1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTArticelComposerViewController.xib; sourceTree = "<group>"; };
+		13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtension.swift; sourceTree = "<group>"; };
+		13922CB021AFF61B003161D2 /* TabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
+		13922CB121AFF61B003161D2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		13922CB221AFF61B003161D2 /* SwipeMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeMenuViewController.swift; sourceTree = "<group>"; };
+		13922CB321AFF61B003161D2 /* ContentScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
+		13922CB421AFF61B003161D2 /* SwipeMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeMenuView.swift; sourceTree = "<group>"; };
+		13922CB521AFF61B003161D2 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		13922CB621AFF61B003161D2 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		13922CBF21B04A16003161D2 /* UIFont+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+FT.swift"; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -1172,6 +1190,7 @@
 				1342A7E5215D443400EFD1E6 /* Notification+FT.swift */,
 				1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */,
 				1342A90E2164A24400EFD1E6 /* Date+FT.swift */,
+				13922CBF21B04A16003161D2 /* UIFont+FT.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1367,6 +1386,21 @@
 			path = ArticleComposer;
 			sourceTree = "<group>";
 		};
+		13922CAE21AFF61B003161D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */,
+				13922CB021AFF61B003161D2 /* TabItemView.swift */,
+				13922CB121AFF61B003161D2 /* UIColorExtension.swift */,
+				13922CB221AFF61B003161D2 /* SwipeMenuViewController.swift */,
+				13922CB321AFF61B003161D2 /* ContentScrollView.swift */,
+				13922CB421AFF61B003161D2 /* SwipeMenuView.swift */,
+				13922CB521AFF61B003161D2 /* TabView.swift */,
+				13922CB621AFF61B003161D2 /* UIViewExtension.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		139DD5CA21ABFBA800C5405B /* FeedDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1519,6 +1553,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				13922CAE21AFF61B003161D2 /* Classes */,
 				1391952A219C89FD0068F362 /* SKPhotoBrowser */,
 				1342A92D21661C0B00EFD1E6 /* DropdownMenu */,
 				1342A88821649FC500EFD1E6 /* alerts_and_pickers */,
@@ -1944,6 +1979,7 @@
 				13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
 				13D0C025217DD6AB00F745B9 /* FTUserDashBoardProfileCell.swift in Sources */,
+				13922CB921AFF61B003161D2 /* UIColorExtension.swift in Sources */,
 				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
@@ -1954,6 +1990,7 @@
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
+				13922CB821AFF61B003161D2 /* TabItemView.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
@@ -1963,6 +2000,7 @@
 				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
 				13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */,
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
+				13922CC021B04A16003161D2 /* UIFont+FT.swift in Sources */,
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
 				1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */,
@@ -1993,6 +2031,7 @@
 				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
 				13B0090A2182191D000E7FA5 /* FTPhotoComposerViewModel.swift in Sources */,
+				13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */,
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
@@ -2014,12 +2053,14 @@
 				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
 				13919552219C8A220068F362 /* UIView+Radius.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
+				13922CBE21AFF61B003161D2 /* UIViewExtension.swift in Sources */,
 				1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				133011C32190B67E00AB5FAB /* FTPhotosViewModel.swift in Sources */,
 				1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */,
+				13922CBD21AFF61B003161D2 /* TabView.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
@@ -2029,6 +2070,7 @@
 				1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */,
 				1342A8E021649FC500EFD1E6 /* UITextView+Extensions.swift in Sources */,
 				1342A8F221649FC500EFD1E6 /* CountryCell.swift in Sources */,
+				13922CBA21AFF61B003161D2 /* SwipeMenuViewController.swift in Sources */,
 				1342A9122164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.swift in Sources */,
 				13A2C4CA2137A47200C377C0 /* ExampleAnimateTipsContentView.swift in Sources */,
 				1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */,
@@ -2087,6 +2129,7 @@
 				139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,
+				13922CBC21AFF61B003161D2 /* SwipeMenuView.swift in Sources */,
 				13BA9B112149792200AD06D7 /* FileProviderNetwork.swift in Sources */,
 				13D0C021217DD45C00F745B9 /* FTUserDashBoardViewModel.swift in Sources */,
 				13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */,
@@ -2112,6 +2155,7 @@
 				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 				1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */,
+				13922CBB21AFF61B003161D2 /* ContentScrollView.swift in Sources */,
 				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
 				132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */,
 				134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */,
