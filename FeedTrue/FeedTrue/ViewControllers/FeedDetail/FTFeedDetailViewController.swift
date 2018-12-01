@@ -13,11 +13,14 @@ class FTFeedDetailViewController: UIViewController {
     private var datas: [String] = ["Liked by 123", "Comments 456", "ReFeed 123"]
 
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var reactTableView: UITableView!
     var feedInfo: FTFeedInfo!
     var coreService: FTCoreService!
     var dataSource = [[BECellDataSource]]()
     var photos: [Photo]?
     var skPhotos: [SKPhoto]?
+    var reactionDataSource = [FTBottomReactionViewModel]()
     
     lazy var navTitleView: UIView = {
         let navView = UIView()
@@ -102,6 +105,17 @@ class FTFeedDetailViewController: UIViewController {
         tableView.clipsToBounds = true
         tableView.separatorStyle = .none
         generateDataSource()
+        
+        reactionDataSource = []
+        FTBottomReactionViewModel.register(tableView: reactTableView)
+        reactTableView.delegate = self
+        reactTableView.dataSource = self
+        reactTableView.tableFooterView = UIView()
+        reactTableView.separatorInset = .zero
+        reactTableView.layer.cornerRadius = 8
+        reactTableView.clipsToBounds = true
+        reactTableView.separatorStyle = .none
+        generateReactionDatasource()
     }
     
     fileprivate func generateDataSource() {
@@ -109,6 +123,11 @@ class FTFeedDetailViewController: UIViewController {
         let photoVM = FTDetailPhotosViewModel(photos: photos ?? [])
         dataSource.append([contentVM, photoVM])
         dataSource.append([contentVM])
+    }
+    
+    fileprivate func generateReactionDatasource() {
+        let reactionVM = FTBottomReactionViewModel(reactionType: .love)
+        reactionDataSource.append(reactionVM)
     }
     
     @objc func back(_ sender: Any) {
@@ -174,13 +193,29 @@ class FTFeedDetailViewController: UIViewController {
 
 extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if tableView == reactTableView {
+            return 1
+        }
         return dataSource.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == reactTableView {
+            return reactionDataSource.count
+        }
         return dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == reactTableView {
+            let content = reactionDataSource[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
+            
+            if let renderCell = cell as? BECellRender {
+                renderCell.renderCell(data: content)
+            }
+            return cell
+        }
+        
         let content = dataSource[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
@@ -192,16 +227,26 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if tableView == reactTableView {
+            let content = reactionDataSource[indexPath.row]
+            return content.cellHeight()
+        }
         let content = dataSource[indexPath.section][indexPath.row]
         return content.cellHeight()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if tableView == reactTableView {
+            return nil
+        }
         if section == 0 { return nil }
         return swipeMenuView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == reactTableView {
+            return 0
+        }
         if section == 0 { return 0 }
         return swipeMenuView.bounds.height
     }

@@ -242,6 +242,9 @@
 		13922CBD21AFF61B003161D2 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB521AFF61B003161D2 /* TabView.swift */; };
 		13922CBE21AFF61B003161D2 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB621AFF61B003161D2 /* UIViewExtension.swift */; };
 		13922CC021B04A16003161D2 /* UIFont+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CBF21B04A16003161D2 /* UIFont+FT.swift */; };
+		13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */; };
+		13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */; };
+		13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -553,6 +556,9 @@
 		13922CB521AFF61B003161D2 /* TabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		13922CB621AFF61B003161D2 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		13922CBF21B04A16003161D2 /* UIFont+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+FT.swift"; sourceTree = "<group>"; };
+		13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBottomReactionTableViewCell.swift; sourceTree = "<group>"; };
+		13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTBottomReactionTableViewCell.xib; sourceTree = "<group>"; };
+		13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBottomReactionViewModel.swift; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -1417,6 +1423,7 @@
 			children = (
 				139DD5D921AC290600C5405B /* FTDetailFeedContentViewModel.swift */,
 				133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */,
+				13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1428,6 +1435,8 @@
 				139DD5D621AC27BD00C5405B /* FTDetailContentTableViewCell.xib */,
 				133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */,
 				133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */,
+				13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */,
+				13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1791,6 +1800,7 @@
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
 				1338D8252186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
+				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
@@ -1971,6 +1981,7 @@
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
 				1391954D219C8A220068F362 /* SKPhoto.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
+				13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */,
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
@@ -1985,6 +1996,7 @@
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
 				1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */,
+				13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
