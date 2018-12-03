@@ -24,7 +24,7 @@ extension UIImage {
     }
     
     class func defaultImage() -> UIImage? {
-        return UIImage(named: "ic_noimage")
+        return UIImage.noImage()
     }
     
     class func userImage() -> UIImage? {
@@ -32,7 +32,7 @@ extension UIImage {
     }
     
     class func noImage() -> UIImage {
-        return UIImage(named: "ic_noimage")!
+        return UIImage(color: UIColor.videoVCBackGroundCollor())!//UIImage(named: "ic_noimage")!
     }
     
     class func getThumbnailFrom(path: URL) -> UIImage? {
