@@ -21,7 +21,7 @@ class FTDetailContentTableViewCell: UITableViewCell, BECellRenderImpl {
     }
     
     func renderCell(data: FTDetailFeedContentViewModel) {
-        contentTextView.text = data.content
+        contentTextView.text = data.content.htmlToString
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

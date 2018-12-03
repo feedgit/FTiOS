@@ -23,7 +23,7 @@ class FTBottomReactionViewModel: BECellDataSource {
     }
     
     var ftReactionType: FTReactionTypes = .love
-    
+    var feedInfo: FTFeedInfo?
     init(reactionType type: FTReactionTypes) {
         ftReactionType = type
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import STPopup
 
 class FTFeedDetailViewController: UIViewController {
 
@@ -122,11 +123,13 @@ class FTFeedDetailViewController: UIViewController {
         let contentVM = FTDetailFeedContentViewModel(content: feedInfo.text ?? "")
         let photoVM = FTDetailPhotosViewModel(photos: photos ?? [])
         dataSource.append([contentVM, photoVM])
-        dataSource.append([contentVM])
+        let commentVM = FTDetailFeedContentViewModel(content: "Test")
+        dataSource.append([commentVM])
     }
     
     fileprivate func generateReactionDatasource() {
         let reactionVM = FTBottomReactionViewModel(reactionType: .love)
+        reactionVM.feedInfo = feedInfo
         reactionDataSource.append(reactionVM)
     }
     
@@ -213,6 +216,10 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
             if let renderCell = cell as? BECellRender {
                 renderCell.renderCell(data: content)
             }
+            
+            if let reactionCell = cell as? FTBottomReactionTableViewCell {
+                reactionCell.delegate = self
+            }
             return cell
         }
         
@@ -265,6 +272,92 @@ extension FTFeedDetailViewController: SwipeMenuViewDelegate, SwipeMenuViewDataSo
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
         return datas.count
     }
+}
+
+extension FTFeedDetailViewController: BottomReactionCellDelegate {
+    func reactionDidRemove(cell: FTBottomReactionTableViewCell) {
+        // TODO: remove reaction
+        guard let ct_id = feedInfo.id else { return }
+        guard let ct_name = feedInfo.ct_name else { return }
+        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.reactTableView.indexPath(for: cell) else { return }
+                    self.reactTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
     
+    func reactionDidChange(cell: FTBottomReactionTableViewCell) {
+        // TODO: reaction change
+        guard let ct_id = feedInfo.id else { return }
+        guard let ct_name = feedInfo.ct_name else { return }
+        guard let react_type = cell.contentData?.ftReactionType.rawValue else { return }
+        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+            } else {
+                NSLog("did react failed \(react_type)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.reactTableView.indexPath(for: cell) else { return }
+                    self.reactTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
     
+    func commentDidTouchUpAction(cell: FTBottomReactionTableViewCell) {
+        // TODO: open comment view controller
+        var comments: [FTCommentViewModel] = []
+        if let items = feedInfo.comment?.comments {
+            for item in items {
+                let cmv = FTCommentViewModel(comment: item, type: .text)
+                comments.append(cmv)
+            }
+        }
+        
+        let commentVC = CommentController(c: coreService, contentID: feedInfo.id, ctName: feedInfo.ct_name)
+        commentVC.contentSizeInPopup = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.75)
+        let popupController = STPopupController(rootViewController: commentVC)
+        popupController.style = .bottomSheet
+        popupController.present(in: self)
+    }
+    
+    func reationDidUnSave(cell: FTBottomReactionTableViewCell) {
+        guard let ct_id = feedInfo.id else { return }
+        guard let ct_name = feedInfo.ct_name else { return }
+        coreService.webService?.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.reactTableView.indexPath(for: cell) else { return }
+                    cell.contentData?.feedInfo?.saved = true
+                    self.reactTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
+    
+    func reactionDidSave(cell: FTBottomReactionTableViewCell) {
+        guard let ct_id = feedInfo.id else { return }
+        guard let ct_name = feedInfo.ct_name else { return }
+        coreService.webService?.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    guard let indexPath = self.reactTableView.indexPath(for: cell) else { return }
+                    cell.contentData?.feedInfo?.saved = false
+                    self.reactTableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            }
+        })
+    }
 }

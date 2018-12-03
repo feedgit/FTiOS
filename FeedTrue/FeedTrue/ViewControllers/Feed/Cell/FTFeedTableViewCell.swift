@@ -502,7 +502,8 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     }
     
     @IBAction func commentTouchUpAction(_ sender: Any) {
-        self.delegate?.feedCellDidTouchUpComment(cell: self)
+        //self.delegate?.feedCellDidTouchUpComment(cell: self)
+        showDetail()
     }
     
     
