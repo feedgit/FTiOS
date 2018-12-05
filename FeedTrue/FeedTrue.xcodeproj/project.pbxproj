@@ -245,6 +245,11 @@
 		13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */; };
 		13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */; };
 		13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */; };
+		13922CCD21B52986003161D2 /* FTDetailFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CCB21B52985003161D2 /* FTDetailFileTableViewCell.swift */; };
+		13922CCE21B52986003161D2 /* FTDetailFileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13922CCC21B52985003161D2 /* FTDetailFileTableViewCell.xib */; };
+		13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CCF21B52F08003161D2 /* FTDetailFileViewController.swift */; };
+		13922CD221B52F08003161D2 /* FTDetailFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13922CD021B52F08003161D2 /* FTDetailFileViewController.xib */; };
+		13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -559,6 +564,11 @@
 		13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBottomReactionTableViewCell.swift; sourceTree = "<group>"; };
 		13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTBottomReactionTableViewCell.xib; sourceTree = "<group>"; };
 		13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTBottomReactionViewModel.swift; sourceTree = "<group>"; };
+		13922CCB21B52985003161D2 /* FTDetailFileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailFileTableViewCell.swift; sourceTree = "<group>"; };
+		13922CCC21B52985003161D2 /* FTDetailFileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailFileTableViewCell.xib; sourceTree = "<group>"; };
+		13922CCF21B52F08003161D2 /* FTDetailFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailFileViewController.swift; sourceTree = "<group>"; };
+		13922CD021B52F08003161D2 /* FTDetailFileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailFileViewController.xib; sourceTree = "<group>"; };
+		13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailFileViewModel.swift; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -1414,6 +1424,8 @@
 				139DD5CB21ABFBC400C5405B /* ViewModel */,
 				139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */,
 				139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */,
+				13922CCF21B52F08003161D2 /* FTDetailFileViewController.swift */,
+				13922CD021B52F08003161D2 /* FTDetailFileViewController.xib */,
 			);
 			path = FeedDetail;
 			sourceTree = "<group>";
@@ -1424,6 +1436,7 @@
 				139DD5D921AC290600C5405B /* FTDetailFeedContentViewModel.swift */,
 				133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */,
 				13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */,
+				13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1437,6 +1450,8 @@
 				133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */,
 				13922CC521B2372F003161D2 /* FTBottomReactionTableViewCell.swift */,
 				13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */,
+				13922CCB21B52985003161D2 /* FTDetailFileTableViewCell.swift */,
+				13922CCC21B52985003161D2 /* FTDetailFileTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1799,6 +1814,7 @@
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
 				13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */,
 				1338D8252186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib in Resources */,
+				13922CCE21B52986003161D2 /* FTDetailFileTableViewCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
@@ -1861,6 +1877,7 @@
 				134FF1092152B37300551771 /* dark-circle@3x.png in Resources */,
 				134FF1012152B37300551771 /* 5.png in Resources */,
 				134FF0FB2152B37300551771 /* clear.png in Resources */,
+				13922CD221B52F08003161D2 /* FTDetailFileViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1976,6 +1993,7 @@
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
 				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
+				13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
@@ -2002,6 +2020,7 @@
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
+				13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */,
 				13922CB821AFF61B003161D2 /* TabItemView.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */,
@@ -2199,6 +2218,7 @@
 				13919549219C8A220068F362 /* SKCaptionView.swift in Sources */,
 				1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */,
 				13BA9B122149792200AD06D7 /* TableView+BottomActivity.swift in Sources */,
+				13922CCD21B52986003161D2 /* FTDetailFileTableViewCell.swift in Sources */,
 				139DD5DA21AC290600C5405B /* FTDetailFeedContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

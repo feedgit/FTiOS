@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FTDetailFileTableViewCell" customModule="FeedTrue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cl5-Db-IlU">
+                        <rect key="frame" x="0.0" y="-0.5" width="320" height="44.5"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrV-EJ-QWO">
+                                <rect key="frame" x="243" y="0.0" width="44" height="44.5"/>
+                                <state key="normal" image="comment"/>
+                                <connections>
+                                    <action selector="commentTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="615-jt-iGr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOe-zE-090">
+                                <rect key="frame" x="8" y="0.0" width="44" height="44.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="GqC-b9-gr4"/>
+                                </constraints>
+                                <state key="normal" image="share"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zFi-Li-r0y">
+                                <rect key="frame" x="60" y="0.0" width="44" height="44.5"/>
+                                <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="savedTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Uqo-ii-zeB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-KF-f6L">
+                                <rect key="frame" x="287" y="13.5" width="25" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AO-su-iRe">
+                                <rect key="frame" x="225" y="13.5" width="10" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MDE-PN-byz" customClass="ReactionButton" customModule="FeedTrue" customModuleProvider="target">
+                                <rect key="frame" x="181" y="0.0" width="44" height="44.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MDE-PN-byz" secondAttribute="height" id="Siz-9c-0R2"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="etF-5i-44J"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="MDE-PN-byz" firstAttribute="centerY" secondItem="Cl5-Db-IlU" secondAttribute="centerY" id="1wR-bV-s8F"/>
+                            <constraint firstItem="lOe-zE-090" firstAttribute="centerY" secondItem="CrV-EJ-QWO" secondAttribute="centerY" id="57M-5R-7Ro"/>
+                            <constraint firstItem="lOe-zE-090" firstAttribute="height" secondItem="CrV-EJ-QWO" secondAttribute="height" id="7xR-JE-BPr"/>
+                            <constraint firstItem="MDE-PN-byz" firstAttribute="height" secondItem="Cl5-Db-IlU" secondAttribute="height" id="AF4-pb-7uK"/>
+                            <constraint firstAttribute="height" constant="44" id="DGj-fq-Zh1"/>
+                            <constraint firstItem="CrV-EJ-QWO" firstAttribute="centerY" secondItem="Cl5-Db-IlU" secondAttribute="centerY" id="IzA-X8-uEp"/>
+                            <constraint firstItem="8Ub-KF-f6L" firstAttribute="leading" secondItem="CrV-EJ-QWO" secondAttribute="trailing" id="M2a-Id-Jcg"/>
+                            <constraint firstItem="1AO-su-iRe" firstAttribute="leading" secondItem="MDE-PN-byz" secondAttribute="trailing" id="Sqy-QL-xif"/>
+                            <constraint firstAttribute="trailing" secondItem="8Ub-KF-f6L" secondAttribute="trailing" constant="8" id="Weh-2M-Iwe"/>
+                            <constraint firstItem="CrV-EJ-QWO" firstAttribute="height" secondItem="MDE-PN-byz" secondAttribute="height" id="ZSI-MQ-DOu"/>
+                            <constraint firstItem="zFi-Li-r0y" firstAttribute="centerY" secondItem="lOe-zE-090" secondAttribute="centerY" id="aLz-o1-URY"/>
+                            <constraint firstItem="8Ub-KF-f6L" firstAttribute="centerY" secondItem="Cl5-Db-IlU" secondAttribute="centerY" id="fzP-PH-bK5"/>
+                            <constraint firstItem="zFi-Li-r0y" firstAttribute="leading" secondItem="lOe-zE-090" secondAttribute="trailing" constant="8" id="hGN-Bi-K9s"/>
+                            <constraint firstItem="CrV-EJ-QWO" firstAttribute="centerY" secondItem="MDE-PN-byz" secondAttribute="centerY" id="k0e-A7-dbk"/>
+                            <constraint firstItem="zFi-Li-r0y" firstAttribute="width" secondItem="lOe-zE-090" secondAttribute="width" id="k0s-lv-jDt"/>
+                            <constraint firstItem="CrV-EJ-QWO" firstAttribute="width" secondItem="MDE-PN-byz" secondAttribute="width" id="lY8-0g-jrc"/>
+                            <constraint firstItem="lOe-zE-090" firstAttribute="leading" secondItem="Cl5-Db-IlU" secondAttribute="leading" constant="8" id="ms1-q0-gyk"/>
+                            <constraint firstItem="CrV-EJ-QWO" firstAttribute="leading" secondItem="1AO-su-iRe" secondAttribute="trailing" constant="8" id="pel-ZE-JRy"/>
+                            <constraint firstItem="zFi-Li-r0y" firstAttribute="height" secondItem="lOe-zE-090" secondAttribute="height" id="uZq-Ph-OnK"/>
+                            <constraint firstItem="1AO-su-iRe" firstAttribute="centerY" secondItem="CrV-EJ-QWO" secondAttribute="centerY" id="v5W-vk-qhh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Cl5-Db-IlU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1E5-2g-NAt"/>
+                    <constraint firstItem="Cl5-Db-IlU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Em3-Pv-ai9"/>
+                    <constraint firstAttribute="trailing" secondItem="Cl5-Db-IlU" secondAttribute="trailing" id="hYg-IC-K37"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentBtn" destination="CrV-EJ-QWO" id="Bel-Hc-2LV"/>
+                <outlet property="commentCountLabel" destination="8Ub-KF-f6L" id="kkU-z2-xU8"/>
+                <outlet property="reactionButton" destination="MDE-PN-byz" id="chD-yk-pqq"/>
+                <outlet property="reactionCountLabel" destination="1AO-su-iRe" id="gJD-cl-Q4F"/>
+                <outlet property="savedBtn" destination="zFi-Li-r0y" id="Yhg-U9-zUT"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
+        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
+        <image name="share" width="35.200000762939453" height="35.200000762939453"/>
+    </resources>
+</document>

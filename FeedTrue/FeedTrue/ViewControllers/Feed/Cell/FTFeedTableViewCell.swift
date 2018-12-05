@@ -576,6 +576,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         let originImage = cell.imageView.image // some image for baseImage
         
         let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: skPhotos, animatedFromView: cell)
+        browser.feedInfo = feed
         browser.initializePageIndex(indexPath.row)
         if let topVC = UIApplication.topViewController() {
             topVC.present(browser, animated: false, completion: nil)

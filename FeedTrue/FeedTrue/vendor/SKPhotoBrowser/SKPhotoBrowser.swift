@@ -16,6 +16,7 @@ open class SKPhotoBrowser: UIViewController {
     open var currentPageIndex: Int = 0
     open var activityItemProvider: UIActivityItemProvider?
     open var photos: [SKPhotoProtocol] = []
+    var feedInfo: FTFeedInfo?
     
     internal lazy var pagingScrollView: SKPagingScrollView = SKPagingScrollView(frame: self.view.frame, browser: self)
     
@@ -27,6 +28,9 @@ open class SKPhotoBrowser: UIViewController {
     fileprivate var actionView: SKActionView!
     fileprivate(set) var paginationView: SKPaginationView!
     fileprivate var toolbar: SKToolbar!
+    
+    fileprivate(set) var reactionViewController: FTDetailFileViewController!
+    fileprivate(set) var reactionView: UIView!
 
     // actions
     fileprivate var activityViewController: UIActivityViewController!
@@ -139,7 +143,7 @@ open class SKPhotoBrowser: UIViewController {
         // paging
         paginationView.updateFrame(frame: view.frame)
         pagingScrollView.updateFrame(view.bounds, currentPageIndex: currentPageIndex)
-
+        reactionViewController.updateFrame(frame: view.frame)
         isPerformingLayout = false
     }
     
@@ -555,7 +559,17 @@ private extension SKPhotoBrowser {
 
     func configurePaginationView() {
         paginationView = SKPaginationView(frame: view.frame, browser: self)
-        view.addSubview(paginationView)
+        //view.addSubview(paginationView)
+        guard let feed = feedInfo else { return }
+        reactionViewController = FTDetailFileViewController(feedInfo: feed)
+        reactionView = reactionViewController.view
+        reactionViewController.willMove(toParentViewController: self)
+        self.addChildViewController(reactionViewController)
+        view.addSubview(reactionView)
+        reactionView.isUserInteractionEnabled = true
+        reactionView.clipsToBounds = true
+        reactionView.backgroundColor = .clear
+        reactionViewController.didMove(toParentViewController: self)
     }
     
     func configureToolbar() {
@@ -569,7 +583,8 @@ private extension SKPhotoBrowser {
         
         // scroll animation
         pagingScrollView.setControlsHidden(hidden: hidden)
-
+        reactionViewController.setControlsHidden(hidden: hidden)
+        
         // paging animation
         paginationView.setControlsHidden(hidden: hidden)
         
