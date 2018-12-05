@@ -20,6 +20,7 @@ class FeedTrueRootViewController: UIViewController {
     var progressHub: MBProgressHUD?
     var profileVC: FTTabProfileViewController!
     var userDashBoardVC: FTUserDashBoardTabViewController!
+    var notificationVC: FTNotificationTabViewController!
     var feedVC: FTTabFeedViewController!
     
     override func viewDidLoad() {
@@ -139,9 +140,14 @@ class FeedTrueRootViewController: UIViewController {
         feedVC.rootViewController.coreService = self.coreService
         feedVC.view.backgroundColor = UIColor.backgroundColor()
 
-        let notificationVC = UIViewController()
         let messageVC = UIViewController()
         messageVC.view.backgroundColor = UIColor.backgroundColor()
+        
+        // Notification TAB
+        notificationVC = FTNotificationTabViewController(nibName: "FTNotificationTabViewController", bundle: nil)
+        notificationVC.rootViewController = self
+        notificationVC.rootViewController.coreService = self.coreService
+        
         //FTUserDashBoardTabViewController
         userDashBoardVC = FTUserDashBoardTabViewController(nibName: "FTUserDashBoardTabViewController", bundle: nil)
         userDashBoardVC.rootViewController = self

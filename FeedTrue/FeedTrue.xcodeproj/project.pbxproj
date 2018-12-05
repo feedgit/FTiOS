@@ -19,6 +19,9 @@
 		130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */; };
 		1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */; };
 		1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */; };
+		1321982021B7DA0600C45273 /* FTNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321981F21B7DA0600C45273 /* FTNotificationViewModel.swift */; };
+		1321982321B7DD4B00C45273 /* FTNotificationTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321982121B7DD4B00C45273 /* FTNotificationTabViewController.swift */; };
+		1321982421B7DD4B00C45273 /* FTNotificationTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1321982221B7DD4B00C45273 /* FTNotificationTabViewController.xib */; };
 		132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */; };
 		132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */; };
 		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
@@ -222,6 +225,9 @@
 		13813F1721B7C35800FB496D /* BMPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F0B21B7C35700FB496D /* BMPlayer.swift */; };
 		13813F1821B7C35800FB496D /* BMPlayerLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F0C21B7C35700FB496D /* BMPlayerLayerView.swift */; };
 		13813F1A21B7C35800FB496D /* BMPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F0E21B7C35700FB496D /* BMPlayerControlView.swift */; };
+		13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */; };
+		13813F2221B7D72800FB496D /* FTNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F2021B7D72800FB496D /* FTNotificationTableViewCell.swift */; };
+		13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13813F2121B7D72800FB496D /* FTNotificationTableViewCell.xib */; };
 		13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */; };
 		13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */; };
 		13919547219C8A220068F362 /* SKActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952D219C8A1F0068F362 /* SKActionView.swift */; };
@@ -350,6 +356,9 @@
 		130E05E9212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoPickerViewController.swift; sourceTree = "<group>"; };
 		1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoPickerViewController.xib; sourceTree = "<group>"; };
+		1321981F21B7DA0600C45273 /* FTNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationViewModel.swift; sourceTree = "<group>"; };
+		1321982121B7DD4B00C45273 /* FTNotificationTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationTabViewController.swift; sourceTree = "<group>"; };
+		1321982221B7DD4B00C45273 /* FTNotificationTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTNotificationTabViewController.xib; sourceTree = "<group>"; };
 		132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +564,9 @@
 		13813F0B21B7C35700FB496D /* BMPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayer.swift; sourceTree = "<group>"; };
 		13813F0C21B7C35700FB496D /* BMPlayerLayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayerLayerView.swift; sourceTree = "<group>"; };
 		13813F0E21B7C35700FB496D /* BMPlayerControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMPlayerControlView.swift; sourceTree = "<group>"; };
+		13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationResponse.swift; sourceTree = "<group>"; };
+		13813F2021B7D72800FB496D /* FTNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationTableViewCell.swift; sourceTree = "<group>"; };
+		13813F2121B7D72800FB496D /* FTNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTNotificationTableViewCell.xib; sourceTree = "<group>"; };
 		1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPagingScrollView.swift; sourceTree = "<group>"; };
 		1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserDelegate.swift; sourceTree = "<group>"; };
 		1391952D219C8A1F0068F362 /* SKActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKActionView.swift; sourceTree = "<group>"; };
@@ -1212,6 +1224,7 @@
 				13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */,
 				132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */,
 				132C7B2D2179D18F00EE11AD /* FTArticles.swift */,
+				13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1421,6 +1434,34 @@
 			path = CacheSupport;
 			sourceTree = "<group>";
 		};
+		13813F1D21B7D6EF00FB496D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				13813F1E21B7D70100FB496D /* Cell */,
+				13813F1F21B7D70700FB496D /* ViewModel */,
+				1321982121B7DD4B00C45273 /* FTNotificationTabViewController.swift */,
+				1321982221B7DD4B00C45273 /* FTNotificationTabViewController.xib */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		13813F1E21B7D70100FB496D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13813F2021B7D72800FB496D /* FTNotificationTableViewCell.swift */,
+				13813F2121B7D72800FB496D /* FTNotificationTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		13813F1F21B7D70700FB496D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1321981F21B7DA0600C45273 /* FTNotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1391952A219C89FD0068F362 /* SKPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -1526,6 +1567,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13813F1D21B7D6EF00FB496D /* Notification */,
 				13813EF621B78B6600FB496D /* Player */,
 				139DD5CA21ABFBA800C5405B /* FeedDetail */,
 				13D0C032217F299C00F745B9 /* Composer */,
@@ -1888,6 +1930,7 @@
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
+				13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */,
 				13813F1521B7C35800FB496D /* Pod_Asset_BMPlayer.xcassets in Resources */,
 				139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */,
 				13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */,
@@ -1930,6 +1973,7 @@
 				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
+				1321982421B7DD4B00C45273 /* FTNotificationTabViewController.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
 				13BA9A882147C35C00AD06D7 /* FTTabFeedViewController.xib in Resources */,
@@ -2071,6 +2115,7 @@
 				1391955C219C8A220068F362 /* SKMesurement.swift in Sources */,
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
+				1321982321B7DD4B00C45273 /* FTNotificationTabViewController.swift in Sources */,
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
 				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
 				13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */,
@@ -2180,6 +2225,7 @@
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
 				132C7ADA217662EB00EE11AD /* CoolSlidingMenuView.swift in Sources */,
 				1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */,
+				13813F2221B7D72800FB496D /* FTNotificationTableViewCell.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				13813EF921B78B9C00FB496D /* FTPlayerViewController.swift in Sources */,
 				1342A8EF21649FC500EFD1E6 /* LocalePickerViewController.swift in Sources */,
@@ -2191,6 +2237,7 @@
 				1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */,
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
 				13813F1821B7C35800FB496D /* BMPlayerLayerView.swift in Sources */,
+				1321982021B7DA0600C45273 /* FTNotificationViewModel.swift in Sources */,
 				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
 				1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */,
 				13919547219C8A220068F362 /* SKActionView.swift in Sources */,
@@ -2200,6 +2247,7 @@
 				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
+				13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */,
 				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
 				1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */,
 				133D029021AE10B400511D2C /* FTDetailPhotosViewModel.swift in Sources */,

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="FTNotificationTableViewCell" customModule="FeedTrue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="369" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user" translatesAutoresizingMaskIntoConstraints="NO" id="JSS-Gb-ggx">
+                        <rect key="frame" x="16" y="18" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="IRN-F6-Oox"/>
+                            <constraint firstAttribute="width" secondItem="JSS-Gb-ggx" secondAttribute="height" id="XOl-3O-DJQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vNV-iH-PuX">
+                        <rect key="frame" x="76" y="29.5" width="277" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-Vu-uDV">
+                        <rect key="frame" x="44" y="46" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="QYu-Vu-uDV" secondAttribute="height" id="Cg8-NZ-hcQ"/>
+                            <constraint firstAttribute="width" constant="20" id="buw-96-qh3"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QYu-Vu-uDV" firstAttribute="bottom" secondItem="JSS-Gb-ggx" secondAttribute="bottom" constant="4" id="2E4-Ed-xzm"/>
+                    <constraint firstItem="vNV-iH-PuX" firstAttribute="centerY" secondItem="JSS-Gb-ggx" secondAttribute="centerY" id="Svd-vy-HVa"/>
+                    <constraint firstItem="vNV-iH-PuX" firstAttribute="leading" secondItem="JSS-Gb-ggx" secondAttribute="trailing" constant="16" id="VWf-L4-jWA"/>
+                    <constraint firstItem="JSS-Gb-ggx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="dSr-Zr-6tM"/>
+                    <constraint firstItem="JSS-Gb-ggx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eQP-2k-AwU"/>
+                    <constraint firstAttribute="trailing" secondItem="vNV-iH-PuX" secondAttribute="trailing" constant="16" id="qQD-YC-7Vi"/>
+                    <constraint firstItem="QYu-Vu-uDV" firstAttribute="trailing" secondItem="JSS-Gb-ggx" secondAttribute="trailing" constant="4" id="xyD-nT-IOH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImageView" destination="JSS-Gb-ggx" id="cM3-xi-rMv"/>
+                <outlet property="notifLabel" destination="vNV-iH-PuX" id="FE4-kf-xNv"/>
+                <outlet property="reactImageView" destination="QYu-Vu-uDV" id="9t6-uN-0Q2"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="126.83658170914543"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_user" width="51.200000762939453" height="51.200000762939453"/>
+        <image name="love" width="15" height="14"/>
+    </resources>
+</document>

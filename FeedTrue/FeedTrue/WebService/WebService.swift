@@ -1364,4 +1364,76 @@ class WebService: NSObject, FTCoreServiceComponent {
         
     }
     
+    func getNotification(completion: @escaping (Bool, FTNotificationResponse?) -> ()) {
+        // https://api.feedtrue.com/api/v1/notification/
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "\(host)/api/v1/notification/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTNotificationResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func getMoreNotification(nextString: String, completion: @escaping (Bool, FTNotificationResponse?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        guard let url = URL(string: nextString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTNotificationResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.notifications?.count > 0 {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(false, value)
+        }
+    }
+    
 }
