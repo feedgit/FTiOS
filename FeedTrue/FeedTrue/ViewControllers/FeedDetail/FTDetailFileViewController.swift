@@ -43,7 +43,7 @@ class FTDetailFileViewController: UIViewController {
     }
     
     func updateFrame(frame: CGRect) {
-        //self.view.frame = CGRect(x: 0, y: frame.height - 44 - extraMargin, width: frame.width, height: frame.height)
+        self.view.frame = CGRect(x: 0, y: frame.height - 44 - extraMargin, width: frame.width, height: 44)
     }
     
     func setControlsHidden(hidden: Bool) {
