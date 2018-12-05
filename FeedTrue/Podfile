@@ -20,4 +20,5 @@ pod 'STPopup'
 pod 'YKPhotoCircleCrop'
 pod 'DKImagePickerController'
 pod 'RichEditorView'
+pod 'BMPlayer', '~> 1.0.0'
 end
