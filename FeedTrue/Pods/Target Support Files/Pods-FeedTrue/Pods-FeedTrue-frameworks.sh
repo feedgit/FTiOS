@@ -156,7 +156,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CLImageEditor/CLImageEditor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework"
@@ -175,6 +174,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
+  install_framework "${PODS_ROOT}/Reveal-SDK/RevealServer-19/iOS/RevealServer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework"
@@ -182,13 +182,14 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwipeBack/SwipeBack.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VIMediaCache/VIMediaCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YKPhotoCircleCrop/YKPhotoCircleCrop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CLImageEditor/CLImageEditor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework"
@@ -214,6 +215,8 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwipeBack/SwipeBack.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/VIMediaCache/VIMediaCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/YKPhotoCircleCrop/YKPhotoCircleCrop.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

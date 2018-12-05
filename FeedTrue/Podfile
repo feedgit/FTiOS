@@ -20,5 +20,11 @@ pod 'STPopup'
 pod 'YKPhotoCircleCrop'
 pod 'DKImagePickerController'
 pod 'RichEditorView'
-pod 'BMPlayer', '~> 1.0.0'
+#pod 'BMPlayer', '~> 1.0.0'
+#pod 'BMPlayer/CacheSupport', :git => 'https://github.com/BrikerMan/BMPlayer.git'
+pod 'NVActivityIndicatorView'
+pod 'SnapKit'
+pod 'VIMediaCache'
+pod 'Reveal-SDK', :configurations => ['Debug']
+pod 'SwipeBack'
 end

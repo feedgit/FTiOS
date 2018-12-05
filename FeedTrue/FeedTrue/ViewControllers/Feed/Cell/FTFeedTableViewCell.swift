@@ -573,6 +573,17 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
 //        NSLog("\(#function) at index path: \(indexPath.row)")
         
         let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
+        
+        if let photo = photos.first, photos.count == 1, photo.type == .video {
+            guard let videoURL = photo.url else { return }
+            guard let url = URL(string: videoURL) else { return }
+            let playerVC = FTPlayerViewController(videoURL: url)
+            if let topVC = UIApplication.topViewController() {
+                topVC.navigationController?.pushViewController(playerVC, animated: true)
+            }
+            return
+        }
+        
         let originImage = cell.imageView.image // some image for baseImage
         
         let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: skPhotos, animatedFromView: cell)
