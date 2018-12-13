@@ -19,6 +19,10 @@ class FTFeedDetailViewController: UIViewController {
     var feedInfo: FTFeedInfo!
     var coreService: FTCoreService!
     var dataSource = [[BECellDataSource]]()
+    var selectedDataSource = [BECellDataSource]()
+    var commentDataSource = [BECellDataSource]()
+    var reactedDataSource = [BECellDataSource]()
+    
     var photos: [Photo]?
     var skPhotos: [SKPhoto]?
     var reactionDataSource = [FTBottomReactionViewModel]()
@@ -98,6 +102,7 @@ class FTFeedDetailViewController: UIViewController {
         dataSource = []
         FTDetailFeedContentViewModel.register(tableView: tableView)
         FTDetailPhotosViewModel.register(tableView: tableView)
+        FTCommentViewModel.register(tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -123,8 +128,24 @@ class FTFeedDetailViewController: UIViewController {
         let contentVM = FTDetailFeedContentViewModel(content: feedInfo.text ?? "")
         let photoVM = FTDetailPhotosViewModel(photos: photos ?? [])
         dataSource.append([contentVM, photoVM])
-        let commentVM = FTDetailFeedContentViewModel(content: "Test")
-        dataSource.append([commentVM])
+        
+        // reactions | comments
+        generateCommentDataSource()
+        generateReactionDataSource()
+        dataSource.append(selectedDataSource)
+    }
+    
+    fileprivate func generateCommentDataSource() {
+        guard let comments = feedInfo.comment?.comments else { return }
+        for comment in comments {
+            let commentVM = FTCommentViewModel(comment: comment, type: .text)
+            commentDataSource.append(commentVM)
+        }
+        selectedDataSource = commentDataSource
+    }
+    
+    fileprivate func generateReactionDataSource() {
+        //guard let reaction = feedInfo.reactions else { return }
     }
     
     fileprivate func generateReactionDatasource() {
