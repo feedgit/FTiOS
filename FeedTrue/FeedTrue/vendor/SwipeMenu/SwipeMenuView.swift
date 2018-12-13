@@ -40,8 +40,8 @@ public struct SwipeMenuViewOptions {
         public struct AdditionView {
             
             public struct Underline {
-                /// Underline height if addition style select `.underline`. Defaults to `2.0`.
-                public var height: CGFloat = 2.0
+                /// Underline height if addition style select `.underline`. Defaults to `1.0`.
+                public var height: CGFloat = 1.0
             }
             
             public struct Circle {

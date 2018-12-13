@@ -1551,7 +1551,7 @@
 			path = ArticleComposer;
 			sourceTree = "<group>";
 		};
-		13922CAE21AFF61B003161D2 /* Classes */ = {
+		13922CAE21AFF61B003161D2 /* SwipeMenu */ = {
 			isa = PBXGroup;
 			children = (
 				13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */,
@@ -1563,7 +1563,7 @@
 				13922CB521AFF61B003161D2 /* TabView.swift */,
 				13922CB621AFF61B003161D2 /* UIViewExtension.swift */,
 			);
-			path = Classes;
+			path = SwipeMenu;
 			sourceTree = "<group>";
 		};
 		139DD5CA21ABFBA800C5405B /* FeedDetail */ = {
@@ -1729,7 +1729,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				13922CAE21AFF61B003161D2 /* Classes */,
+				13922CAE21AFF61B003161D2 /* SwipeMenu */,
 				1391952A219C89FD0068F362 /* SKPhotoBrowser */,
 				1342A92D21661C0B00EFD1E6 /* DropdownMenu */,
 				1342A88821649FC500EFD1E6 /* alerts_and_pickers */,

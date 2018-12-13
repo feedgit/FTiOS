@@ -9,9 +9,14 @@
 import UIKit
 import STPopup
 
+enum DetailMenuDisplayType {
+    case reacted
+    case comment
+}
+
 class FTFeedDetailViewController: UIViewController {
 
-    private var datas: [String] = ["Liked by 123", "Comments 456", "ReFeed 123"]
+    private var datas: [String] = ["Reacted (2)", "Comments (2)"]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -22,7 +27,7 @@ class FTFeedDetailViewController: UIViewController {
     var selectedDataSource = [BECellDataSource]()
     var commentDataSource = [BECellDataSource]()
     var reactedDataSource = [BECellDataSource]()
-    
+    var selectedMenuType: DetailMenuDisplayType = .comment
     var photos: [Photo]?
     var skPhotos: [SKPhoto]?
     var reactionDataSource = [FTBottomReactionViewModel]()
@@ -71,6 +76,7 @@ class FTFeedDetailViewController: UIViewController {
         options.tabView.additionView.backgroundColor  = .white
         options.tabView.itemView.textColor            = .black
         options.tabView.itemView.font = UIFont.swipeMenuFont(ofSize: 17)
+        options.tabView.needsAdjustItemViewWidth = false
         return swipeMenuView
     }()
     
@@ -293,6 +299,17 @@ extension FTFeedDetailViewController: SwipeMenuViewDelegate, SwipeMenuViewDataSo
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
         return datas.count
     }
+    
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
+        if toIndex == 0 {
+            selectedMenuType = .reacted
+            selectedDataSource = reactedDataSource
+        } else if toIndex == 1 {
+            selectedMenuType = .comment
+            selectedDataSource = commentDataSource
+        }
+    }
+    
 }
 
 extension FTFeedDetailViewController: BottomReactionCellDelegate {

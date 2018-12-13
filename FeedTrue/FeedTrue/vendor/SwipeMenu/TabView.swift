@@ -227,7 +227,8 @@ open class TabView: UIScrollView {
             case .flexible:
                 if options.needsAdjustItemViewWidth {
                     var adjustCellSize = tabItemView.frame.size
-                    adjustCellSize.width = tabItemView.titleLabel.sizeThatFits(containerView.frame.size).width + options.itemView.margin * 2
+                    //adjustCellSize.width = tabItemView.titleLabel.sizeThatFits(containerView.frame.size).width + options.itemView.margin * 2
+                    adjustCellSize.width = self.bounds.width / CGFloat(itemCount)
                     tabItemView.frame.size = adjustCellSize
 
                     containerView.addArrangedSubview(tabItemView)
