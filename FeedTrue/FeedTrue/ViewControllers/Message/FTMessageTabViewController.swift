@@ -1,26 +1,26 @@
 //
-//  FTNotificationTabViewController.swift
+//  FTMessageTabViewController.swift
 //  FeedTrue
 //
-//  Created by Quoc Le on 12/5/18.
+//  Created by Quoc Le on 12/12/18.
 //  Copyright © 2018 toanle. All rights reserved.
 //
 
 import UIKit
 import MBProgressHUD
 
-class FTNotificationTabViewController: FTTabViewController {
+class FTMessageTabViewController: FTTabViewController {
+
     @IBOutlet weak var tableView: UITableView!
     var dataSource: [BECellDataSource] = []
     var refreshControl: UIRefreshControl?
     var nextURL: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         dataSource = []
-        FTNotificationViewModel.register(tableView: tableView)
+        FTContactViewModel.register(tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -28,15 +28,14 @@ class FTNotificationTabViewController: FTTabViewController {
         tableView.layer.cornerRadius = 8
         tableView.clipsToBounds = true
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.backgroundColor()
-        
-        loadNotification()
+        tableView.backgroundColor = UIColor.videoVCBackGroundCollor()
+        loadContact()
         setUpRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.parent?.navigationItem.title = NSLocalizedString("Notification", comment: "")
+        self.parent?.navigationItem.title = NSLocalizedString("Message", comment: "")
         self.parent?.navigationItem.leftBarButtonItem = nil
         self.parent?.navigationItem.rightBarButtonItem = nil
     }
@@ -49,25 +48,25 @@ class FTNotificationTabViewController: FTTabViewController {
     
     @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
         self.refreshControl?.endRefreshing()
-        loadNotification()
+        loadContact()
     }
     
-    func loadNotification() {
+    func loadContact() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getNotification(completion: { [weak self] (success, notificationResponse) in
+        rootViewController.coreService.webService?.getContact(completion: { [weak self] (success, contactResponse) in
             if success {
-                NSLog("\(#function) load notification successful")
+                NSLog("\(#function) load contact successful")
                 self?.dataSource.removeAll()
-                self?.appedDataSource(notificationResponse: notificationResponse)
+                self?.appedDataSource(contactResponse: contactResponse)
                 DispatchQueue.main.async {
-                    if let _ = notificationResponse?.notifications, let _ = notificationResponse?.next {
+                    if let _ = contactResponse?.contacts, let _ = contactResponse?.next {
                         self?.tableView.addBotomActivityView {
                             self?.loadMore()
                         }
                     }
                 }
             } else {
-                NSLog("\(#function) load notification failed")
+                NSLog("\(#function) load contact failed")
             }
             DispatchQueue.main.async {
                 guard let v = self?.view else { return }
@@ -76,16 +75,16 @@ class FTNotificationTabViewController: FTTabViewController {
         })
     }
     
-    func appedDataSource(notificationResponse: FTNotificationResponse?) {
-        if let nextURLString = notificationResponse?.next {
+    func appedDataSource(contactResponse: FTContactResponse?) {
+        if let nextURLString = contactResponse?.next {
             self.nextURL = nextURLString
         } else {
             self.nextURL = nil
         }
         
-        guard let notifications = notificationResponse?.notifications else { return }
-        for item in notifications {
-            let vm = FTNotificationViewModel(content: item)
+        guard let contacts = contactResponse?.contacts else { return }
+        for contact in contacts {
+            let vm = FTContactViewModel(contact: contact)
             dataSource.append(vm)
         }
         DispatchQueue.main.async {
@@ -96,12 +95,12 @@ class FTNotificationTabViewController: FTTabViewController {
     func loadMore() {
         guard let nextURLString = nextURL else { return }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        rootViewController.coreService.webService?.getMoreNotification(nextString: nextURLString, completion: { [weak self] (success, notificationResponse) in
+        rootViewController.coreService.webService?.getMoreContact(nextString: nextURLString, completion: { [weak self] (success, contactResponse) in
             if success {
-                NSLog("\(#function) load more notification successful")
-                self?.appedDataSource(notificationResponse: notificationResponse)
+                NSLog("\(#function) load more contact successful")
+                self?.appedDataSource(contactResponse: contactResponse)
                 DispatchQueue.main.async {
-                    if notificationResponse?.next == nil {
+                    if contactResponse?.next == nil {
                         self?.tableView.removeBottomActivityView()
                     } else {
                         self?.tableView.endBottomActivity()
@@ -111,7 +110,8 @@ class FTNotificationTabViewController: FTTabViewController {
                 DispatchQueue.main.async {
                     self?.tableView.endBottomActivity()
                 }
-                NSLog("\(#function) load more notification failed")
+                
+                NSLog("\(#function) load more contact failed")
             }
             DispatchQueue.main.async {
                 guard let v = self?.view else { return }
@@ -121,8 +121,7 @@ class FTNotificationTabViewController: FTTabViewController {
     }
 }
 
-
-extension FTNotificationTabViewController: UITableViewDelegate, UITableViewDataSource {
+extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -136,12 +135,15 @@ extension FTNotificationTabViewController: UITableViewDelegate, UITableViewDataS
         if let editingCell = cell as? BECellRender {
             editingCell.renderCell(data: content)
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let content = dataSource[indexPath.row]
         return content.cellHeight()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 4
     }
 }

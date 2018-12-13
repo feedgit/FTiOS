@@ -1436,4 +1436,76 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func getContact(completion: @escaping (Bool, FTContactResponse?) -> ()) {
+        // https://api.feedtrue.com/api/v1/chat/contact/
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "\(host)/api/v1/chat/contact/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTContactResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func getMoreContact(nextString: String, completion: @escaping (Bool, FTContactResponse?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        guard let url = URL(string: nextString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTContactResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.contacts?.count > 0 {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(false, value)
+        }
+    }
+    
 }

@@ -140,8 +140,9 @@ class FeedTrueRootViewController: UIViewController {
         feedVC.rootViewController.coreService = self.coreService
         feedVC.view.backgroundColor = UIColor.backgroundColor()
 
-        let messageVC = UIViewController()
-        messageVC.view.backgroundColor = UIColor.backgroundColor()
+        let messageVC = FTMessageTabViewController(nibName: "FTMessageTabViewController", bundle: nil)
+        messageVC.rootViewController = self
+        messageVC.rootViewController.coreService = self.coreService
         
         // Notification TAB
         notificationVC = FTNotificationTabViewController(nibName: "FTNotificationTabViewController", bundle: nil)
@@ -194,7 +195,7 @@ class FeedTrueRootViewController: UIViewController {
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
         searchVC.tabBarItem = settingItem
         
-        tabBarController.viewControllers = [feedVC, notificationVC, messageVC, searchVC, userDashBoardVC]
+        tabBarController.viewControllers = [feedVC, notificationVC, userDashBoardVC, messageVC, searchVC]
         feedtrueTabBarController = tabBarController
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)

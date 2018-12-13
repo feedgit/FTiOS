@@ -20,7 +20,6 @@ class FTTabSettingsViewController: FTTabViewController {
         // Do any additional setup after loading the view.
         setupButtons()
         signOutBtn.isHidden = true
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

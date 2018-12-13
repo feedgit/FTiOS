@@ -22,6 +22,12 @@
 		1321982021B7DA0600C45273 /* FTNotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321981F21B7DA0600C45273 /* FTNotificationViewModel.swift */; };
 		1321982321B7DD4B00C45273 /* FTNotificationTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321982121B7DD4B00C45273 /* FTNotificationTabViewController.swift */; };
 		1321982421B7DD4B00C45273 /* FTNotificationTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1321982221B7DD4B00C45273 /* FTNotificationTabViewController.xib */; };
+		1321982A21C1076400C45273 /* FTContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321982821C1076300C45273 /* FTContactTableViewCell.swift */; };
+		1321982B21C1076400C45273 /* FTContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1321982921C1076300C45273 /* FTContactTableViewCell.xib */; };
+		1321982D21C1095A00C45273 /* FTContactResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321982C21C1095A00C45273 /* FTContactResponse.swift */; };
+		1321982F21C10E9200C45273 /* FTContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321982E21C10E9200C45273 /* FTContactViewModel.swift */; };
+		1321983221C1165400C45273 /* FTMessageTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1321983021C1165400C45273 /* FTMessageTabViewController.swift */; };
+		1321983321C1165400C45273 /* FTMessageTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1321983121C1165400C45273 /* FTMessageTabViewController.xib */; };
 		132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */; };
 		132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */; };
 		132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */; };
@@ -359,6 +365,12 @@
 		1321981F21B7DA0600C45273 /* FTNotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationViewModel.swift; sourceTree = "<group>"; };
 		1321982121B7DD4B00C45273 /* FTNotificationTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationTabViewController.swift; sourceTree = "<group>"; };
 		1321982221B7DD4B00C45273 /* FTNotificationTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTNotificationTabViewController.xib; sourceTree = "<group>"; };
+		1321982821C1076300C45273 /* FTContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTContactTableViewCell.swift; sourceTree = "<group>"; };
+		1321982921C1076300C45273 /* FTContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTContactTableViewCell.xib; sourceTree = "<group>"; };
+		1321982C21C1095A00C45273 /* FTContactResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTContactResponse.swift; sourceTree = "<group>"; };
+		1321982E21C10E9200C45273 /* FTContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTContactViewModel.swift; sourceTree = "<group>"; };
+		1321983021C1165400C45273 /* FTMessageTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMessageTabViewController.swift; sourceTree = "<group>"; };
+		1321983121C1165400C45273 /* FTMessageTabViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTMessageTabViewController.xib; sourceTree = "<group>"; };
 		132C7AA6216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		132C7AA7216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedVideoCollectionViewCell.xib; sourceTree = "<group>"; };
 		132C7AAA216FA67D00EE11AD /* FTFeedVideoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedVideoCollectionViewController.swift; sourceTree = "<group>"; };
@@ -759,6 +771,34 @@
 				1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */,
 			);
 			path = VideoPicker;
+			sourceTree = "<group>";
+		};
+		1321982521C0FBE200C45273 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1321982721C0FBFE00C45273 /* ViewModel */,
+				1321982621C0FBF800C45273 /* Cell */,
+				1321983021C1165400C45273 /* FTMessageTabViewController.swift */,
+				1321983121C1165400C45273 /* FTMessageTabViewController.xib */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		1321982621C0FBF800C45273 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1321982821C1076300C45273 /* FTContactTableViewCell.swift */,
+				1321982921C1076300C45273 /* FTContactTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		1321982721C0FBFE00C45273 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1321982E21C10E9200C45273 /* FTContactViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		132C7AD4217662DC00EE11AD /* Menu */ = {
@@ -1225,6 +1265,7 @@
 				132C7AAE21706EC300EE11AD /* FTFeedVideo.swift */,
 				132C7B2D2179D18F00EE11AD /* FTArticles.swift */,
 				13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */,
+				1321982C21C1095A00C45273 /* FTContactResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1567,6 +1608,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1321982521C0FBE200C45273 /* Message */,
 				13813F1D21B7D6EF00FB496D /* Notification */,
 				13813EF621B78B6600FB496D /* Player */,
 				139DD5CA21ABFBA800C5405B /* FeedDetail */,
@@ -1958,6 +2000,7 @@
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
 				13B009062181C264000E7FA5 /* FTPhotoPickerViewController.xib in Resources */,
 				1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */,
+				1321982B21C1076400C45273 /* FTContactTableViewCell.xib in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
@@ -1973,6 +2016,7 @@
 				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
+				1321983321C1165400C45273 /* FTMessageTabViewController.xib in Resources */,
 				1321982421B7DD4B00C45273 /* FTNotificationTabViewController.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
@@ -2160,6 +2204,7 @@
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
 				13922CC021B04A16003161D2 /* UIFont+FT.swift in Sources */,
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
+				1321983221C1165400C45273 /* FTMessageTabViewController.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
 				1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */,
 				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
@@ -2183,6 +2228,7 @@
 				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
 				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
 				1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */,
+				1321982D21C1095A00C45273 /* FTContactResponse.swift in Sources */,
 				134FF0F62152B37300551771 /* Viewable.swift in Sources */,
 				1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */,
 				139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */,
@@ -2223,6 +2269,7 @@
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
 				134FF0ED2152B37300551771 /* ViewableController.swift in Sources */,
 				13A2C4D02137A53A00C377C0 /* FeedTrueRootViewController.swift in Sources */,
+				1321982F21C10E9200C45273 /* FTContactViewModel.swift in Sources */,
 				132C7ADA217662EB00EE11AD /* CoolSlidingMenuView.swift in Sources */,
 				1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */,
 				13813F2221B7D72800FB496D /* FTNotificationTableViewCell.swift in Sources */,
@@ -2257,6 +2304,7 @@
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
 				133011C02190B3A300AB5FAB /* FTPhotosTableViewCell.swift in Sources */,
+				1321982A21C1076400C45273 /* FTContactTableViewCell.swift in Sources */,
 				1342A8E421649FC500EFD1E6 /* UIApplication+Extensions.swift in Sources */,
 				134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */,
 				1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */,
