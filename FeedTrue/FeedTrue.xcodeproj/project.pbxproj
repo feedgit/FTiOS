@@ -7,6 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13066C1721C3AB1C003FB0C6 /* BaseMessagesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */; };
+		13066C1821C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */; };
+		13066C1921C3AB1C003FB0C6 /* CellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */; };
+		13066C1A21C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */; };
+		13066C1B21C3AB1C003FB0C6 /* DemoChatMessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */; };
+		13066C1C21C3AB1C003FB0C6 /* DemoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */; };
+		13066C1D21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */; };
+		13066C1E21C3AB1C003FB0C6 /* DemoChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFC21C3AB1C003FB0C6 /* DemoChatDataSource.swift */; };
+		13066C1F21C3AB1C003FB0C6 /* DemoChatMessageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFD21C3AB1C003FB0C6 /* DemoChatMessageFactory.swift */; };
+		13066C2021C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFE21C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift */; };
+		13066C2121C3AB1C003FB0C6 /* TimeSeparatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0021C3AB1C003FB0C6 /* TimeSeparatorModel.swift */; };
+		13066C2221C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0121C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift */; };
+		13066C2321C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0221C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift */; };
+		13066C2421C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */; };
+		13066C2521C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0621C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift */; };
+		13066C2621C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0721C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift */; };
+		13066C2721C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0821C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift */; };
+		13066C2821C3AB1C003FB0C6 /* SendingStatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0A21C3AB1C003FB0C6 /* SendingStatusPresenter.swift */; };
+		13066C2921C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0B21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.swift */; };
+		13066C2A21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13066C0C21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.xib */; };
+		13066C2B21C3AB1C003FB0C6 /* DemoTextMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0E21C3AB1C003FB0C6 /* DemoTextMessageModel.swift */; };
+		13066C2C21C3AB1C003FB0C6 /* DemoTextMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0F21C3AB1C003FB0C6 /* DemoTextMessageHandler.swift */; };
+		13066C2D21C3AB1C003FB0C6 /* DemoTextMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1021C3AB1C003FB0C6 /* DemoTextMessageViewModel.swift */; };
+		13066C2E21C3AB1C003FB0C6 /* BaseMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1221C3AB1C003FB0C6 /* BaseMessageHandler.swift */; };
+		13066C2F21C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1321C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift */; };
+		13066C3121C3AB1C003FB0C6 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */; };
+		13066C3221C3AB1C003FB0C6 /* ChatExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */; };
 		130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05CE212D6A3200C3E21A /* AppDelegate.swift */; };
 		130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05D0212D6A3200C3E21A /* ViewController.swift */; };
 		130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130E05D2212D6A3200C3E21A /* Main.storyboard */; };
@@ -348,6 +375,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagesSelector.swift; sourceTree = "<group>"; };
+		13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesSelectorProtocol.swift; sourceTree = "<group>"; };
+		13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsViewController.swift; sourceTree = "<group>"; };
+		13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRandomMessageChatViewController.swift; sourceTree = "<group>"; };
+		13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatMessageSender.swift; sourceTree = "<group>"; };
+		13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatViewController.swift; sourceTree = "<group>"; };
+		13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatItemsDecorator.swift; sourceTree = "<group>"; };
+		13066BFC21C3AB1C003FB0C6 /* DemoChatDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatDataSource.swift; sourceTree = "<group>"; };
+		13066BFD21C3AB1C003FB0C6 /* DemoChatMessageFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatMessageFactory.swift; sourceTree = "<group>"; };
+		13066BFE21C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesSelectionChatViewController.swift; sourceTree = "<group>"; };
+		13066C0021C3AB1C003FB0C6 /* TimeSeparatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorModel.swift; sourceTree = "<group>"; };
+		13066C0121C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorPresenter.swift; sourceTree = "<group>"; };
+		13066C0221C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatWithTabBarExamplesViewController.swift; sourceTree = "<group>"; };
+		13066C0621C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageViewModel.swift; sourceTree = "<group>"; };
+		13066C0721C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageModel.swift; sourceTree = "<group>"; };
+		13066C0821C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageHandler.swift; sourceTree = "<group>"; };
+		13066C0A21C3AB1C003FB0C6 /* SendingStatusPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusPresenter.swift; sourceTree = "<group>"; };
+		13066C0B21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusCollectionViewCell.swift; sourceTree = "<group>"; };
+		13066C0C21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		13066C0E21C3AB1C003FB0C6 /* DemoTextMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageModel.swift; sourceTree = "<group>"; };
+		13066C0F21C3AB1C003FB0C6 /* DemoTextMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageHandler.swift; sourceTree = "<group>"; };
+		13066C1021C3AB1C003FB0C6 /* DemoTextMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageViewModel.swift; sourceTree = "<group>"; };
+		13066C1221C3AB1C003FB0C6 /* BaseMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageHandler.swift; sourceTree = "<group>"; };
+		13066C1321C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCellAvatarStyle.swift; sourceTree = "<group>"; };
+		13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
+		13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatExamplesViewController.swift; sourceTree = "<group>"; };
 		130E05CB212D6A3200C3E21A /* FeedTrue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedTrue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130E05CE212D6A3200C3E21A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		130E05D0212D6A3200C3E21A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -708,6 +762,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13066BF321C3AB1C003FB0C6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */,
+				13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */,
+				13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */,
+				13066BF721C3AB1C003FB0C6 /* Chat View Controllers */,
+				13066BFF21C3AB1C003FB0C6 /* Time Separator */,
+				13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */,
+				13066C0421C3AB1C003FB0C6 /* Chat Items */,
+				13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */,
+				13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		13066BF721C3AB1C003FB0C6 /* Chat View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */,
+				13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */,
+				13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */,
+				13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */,
+				13066BFC21C3AB1C003FB0C6 /* DemoChatDataSource.swift */,
+				13066BFD21C3AB1C003FB0C6 /* DemoChatMessageFactory.swift */,
+				13066BFE21C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift */,
+			);
+			path = "Chat View Controllers";
+			sourceTree = "<group>";
+		};
+		13066BFF21C3AB1C003FB0C6 /* Time Separator */ = {
+			isa = PBXGroup;
+			children = (
+				13066C0021C3AB1C003FB0C6 /* TimeSeparatorModel.swift */,
+				13066C0121C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift */,
+				13066C0221C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift */,
+			);
+			path = "Time Separator";
+			sourceTree = "<group>";
+		};
+		13066C0421C3AB1C003FB0C6 /* Chat Items */ = {
+			isa = PBXGroup;
+			children = (
+				13066C0521C3AB1C003FB0C6 /* Photo Messages */,
+				13066C0921C3AB1C003FB0C6 /* Sending status */,
+				13066C0D21C3AB1C003FB0C6 /* Text Messages */,
+				13066C1121C3AB1C003FB0C6 /* Base Message */,
+			);
+			path = "Chat Items";
+			sourceTree = "<group>";
+		};
+		13066C0521C3AB1C003FB0C6 /* Photo Messages */ = {
+			isa = PBXGroup;
+			children = (
+				13066C0621C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift */,
+				13066C0721C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift */,
+				13066C0821C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift */,
+			);
+			path = "Photo Messages";
+			sourceTree = "<group>";
+		};
+		13066C0921C3AB1C003FB0C6 /* Sending status */ = {
+			isa = PBXGroup;
+			children = (
+				13066C0A21C3AB1C003FB0C6 /* SendingStatusPresenter.swift */,
+				13066C0B21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.swift */,
+				13066C0C21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.xib */,
+			);
+			path = "Sending status";
+			sourceTree = "<group>";
+		};
+		13066C0D21C3AB1C003FB0C6 /* Text Messages */ = {
+			isa = PBXGroup;
+			children = (
+				13066C0E21C3AB1C003FB0C6 /* DemoTextMessageModel.swift */,
+				13066C0F21C3AB1C003FB0C6 /* DemoTextMessageHandler.swift */,
+				13066C1021C3AB1C003FB0C6 /* DemoTextMessageViewModel.swift */,
+			);
+			path = "Text Messages";
+			sourceTree = "<group>";
+		};
+		13066C1121C3AB1C003FB0C6 /* Base Message */ = {
+			isa = PBXGroup;
+			children = (
+				13066C1221C3AB1C003FB0C6 /* BaseMessageHandler.swift */,
+				13066C1321C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift */,
+			);
+			path = "Base Message";
+			sourceTree = "<group>";
+		};
 		130E05C2212D6A3200C3E21A = {
 			isa = PBXGroup;
 			children = (
@@ -776,6 +920,7 @@
 		1321982521C0FBE200C45273 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				13066BF321C3AB1C003FB0C6 /* Source */,
 				1321982721C0FBFE00C45273 /* ViewModel */,
 				1321982621C0FBF800C45273 /* Cell */,
 				1321983021C1165400C45273 /* FTMessageTabViewController.swift */,
@@ -1981,6 +2126,7 @@
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
 				13D0C01E217DD3ED00F745B9 /* FTUserDashBoardTabViewController.xib in Resources */,
+				13066C2A21C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.xib in Resources */,
 				134FF1002152B37300551771 /* 4.jpg in Resources */,
 				134FF10F2152B37300551771 /* seek.png in Resources */,
 				134FF1132152B37300551771 /* seek@2x.png in Resources */,
@@ -2152,6 +2298,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1342A8E221649FC500EFD1E6 /* UIImage+Extensions.swift in Sources */,
+				13066C2321C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift in Sources */,
+				13066C1C21C3AB1C003FB0C6 /* DemoChatViewController.swift in Sources */,
 				13BA9B29214BC96900AD06D7 /* String+FeedTrue.swift in Sources */,
 				1342A8E821649FC500EFD1E6 /* Locale+Extensions.swift in Sources */,
 				134FF0F72152B37300551771 /* PaginatedScrollView.swift in Sources */,
@@ -2167,6 +2315,8 @@
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
 				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
 				13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */,
+				13066C3221C3AB1C003FB0C6 /* ChatExamplesViewController.swift in Sources */,
+				13066C2021C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift in Sources */,
 				13813F1221B7C35800FB496D /* BMPlayerClearityChooseButton.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
@@ -2174,6 +2324,7 @@
 				1391954D219C8A220068F362 /* SKPhoto.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
 				13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */,
+				13066C1721C3AB1C003FB0C6 /* BaseMessagesSelector.swift in Sources */,
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				13813F0F21B7C35800FB496D /* BMPlayerManager.swift in Sources */,
@@ -2182,6 +2333,8 @@
 				13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */,
 				13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
+				13066C3121C3AB1C003FB0C6 /* SlidingDatasSource.swift in Sources */,
+				13066C2921C3AB1C003FB0C6 /* SendingStatusCollectionViewCell.swift in Sources */,
 				13D0C025217DD6AB00F745B9 /* FTUserDashBoardProfileCell.swift in Sources */,
 				13922CB921AFF61B003161D2 /* UIColorExtension.swift in Sources */,
 				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
@@ -2193,6 +2346,7 @@
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
+				13066C2521C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift in Sources */,
 				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */,
@@ -2206,6 +2360,7 @@
 				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
 				13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */,
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
+				13066C2621C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift in Sources */,
 				13922CC021B04A16003161D2 /* UIFont+FT.swift in Sources */,
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				1321983221C1165400C45273 /* FTMessageTabViewController.swift in Sources */,
@@ -2222,12 +2377,14 @@
 				1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */,
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */,
+				13066C2221C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift in Sources */,
 				13D0C01D217DD3ED00F745B9 /* FTUserDashBoardTabViewController.swift in Sources */,
 				13919556219C8A220068F362 /* SKToolbar.swift in Sources */,
 				13BA9B142149792D00AD06D7 /* Functions.swift in Sources */,
 				136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */,
 				13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */,
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
+				13066C2E21C3AB1C003FB0C6 /* BaseMessageHandler.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
 				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
 				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
@@ -2253,14 +2410,19 @@
 				1342A8DF21649FC500EFD1E6 /* String+Extensions.swift in Sources */,
 				1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */,
 				134FF0EE2152B37300551771 /* ViewerController.swift in Sources */,
+				13066C2B21C3AB1C003FB0C6 /* DemoTextMessageModel.swift in Sources */,
+				13066C1E21C3AB1C003FB0C6 /* DemoChatDataSource.swift in Sources */,
 				13813F1121B7C35800FB496D /* BMPlayerProtocols.swift in Sources */,
 				1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */,
 				13919557219C8A220068F362 /* SKZoomingScrollView.swift in Sources */,
 				13489DED212EDAC200C72BD3 /* SignUpResponse.swift in Sources */,
+				13066C1821C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift in Sources */,
 				13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */,
 				13D2580D21428CBB00E84002 /* FTKeyChainService.swift in Sources */,
 				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
+				13066C2421C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift in Sources */,
 				13919552219C8A220068F362 /* UIView+Radius.swift in Sources */,
+				13066C2721C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
 				13922CBE21AFF61B003161D2 /* UIViewExtension.swift in Sources */,
 				1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */,
@@ -2276,6 +2438,7 @@
 				1321982F21C10E9200C45273 /* FTContactViewModel.swift in Sources */,
 				132C7ADA217662EB00EE11AD /* CoolSlidingMenuView.swift in Sources */,
 				1342A90221649FC500EFD1E6 /* DatePickerViewController.swift in Sources */,
+				13066C1F21C3AB1C003FB0C6 /* DemoChatMessageFactory.swift in Sources */,
 				13813F2221B7D72800FB496D /* FTNotificationTableViewCell.swift in Sources */,
 				13489DF4212FE7AC00C72BD3 /* UIImage+FeedTrue.swift in Sources */,
 				13813EF921B78B9C00FB496D /* FTPlayerViewController.swift in Sources */,
@@ -2288,6 +2451,7 @@
 				1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */,
 				134FF1C42159EF9B00551771 /* Components.swift in Sources */,
 				13813F1821B7C35800FB496D /* BMPlayerLayerView.swift in Sources */,
+				13066C1B21C3AB1C003FB0C6 /* DemoChatMessageSender.swift in Sources */,
 				1321982021B7DA0600C45273 /* FTNotificationViewModel.swift in Sources */,
 				1342A8E921649FC500EFD1E6 /* UITextField+Extensions.swift in Sources */,
 				1342A8DC21649FC500EFD1E6 /* UIViewController+Extensions.swift in Sources */,
@@ -2295,6 +2459,7 @@
 				1342A8E321649FC500EFD1E6 /* UISearchBar+Extensions.swift in Sources */,
 				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
+				13066C1A21C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift in Sources */,
 				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
@@ -2305,6 +2470,7 @@
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
 				1342A8F421649FC500EFD1E6 /* OneTextFieldViewController.swift in Sources */,
 				13BA9B1B2149793500AD06D7 /* BECell.swift in Sources */,
+				13066C2C21C3AB1C003FB0C6 /* DemoTextMessageHandler.swift in Sources */,
 				13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */,
 				13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */,
 				133011C02190B3A300AB5FAB /* FTPhotosTableViewCell.swift in Sources */,
@@ -2319,6 +2485,7 @@
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
 				13D0C035217F29D300F745B9 /* FTComposerPopupViewController.swift in Sources */,
+				13066C2F21C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				1342A8F721649FC500EFD1E6 /* LocationSearchResultsViewController.swift in Sources */,
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
 				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,
@@ -2345,6 +2512,7 @@
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
 				139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */,
+				13066C2821C3AB1C003FB0C6 /* SendingStatusPresenter.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,
 				13922CBC21AFF61B003161D2 /* SwipeMenuView.swift in Sources */,
@@ -2371,6 +2539,7 @@
 				1391954C219C8A220068F362 /* SKPhotoBrowser.swift in Sources */,
 				130E05E8212DC5DB00C3E21A /* SignUpUsernameViewController.swift in Sources */,
 				132C7B2B2179948800EE11AD /* FTAriticleTableViewCell.swift in Sources */,
+				13066C2121C3AB1C003FB0C6 /* TimeSeparatorModel.swift in Sources */,
 				134FF1BC2159EF9B00551771 /* Extensions.swift in Sources */,
 				13813F1721B7C35800FB496D /* BMPlayer.swift in Sources */,
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
@@ -2395,8 +2564,10 @@
 				1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */,
 				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
+				13066C1921C3AB1C003FB0C6 /* CellsViewController.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
 				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,
+				13066C2D21C3AB1C003FB0C6 /* DemoTextMessageViewModel.swift in Sources */,
 				13919559219C8A220068F362 /* SKLocalPhoto.swift in Sources */,
 				1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */,
 				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
@@ -2406,6 +2577,7 @@
 				1391954A219C8A220068F362 /* SKAnimator.swift in Sources */,
 				1342A8F621649FC500EFD1E6 /* PhotoLibraryPickerViewController.swift in Sources */,
 				13BA9B0D2149792200AD06D7 /* FileProviderService.swift in Sources */,
+				13066C1D21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift in Sources */,
 				13919549219C8A220068F362 /* SKCaptionView.swift in Sources */,
 				1342A90A21649FC500EFD1E6 /* SegmentedControl.swift in Sources */,
 				13813F1421B7C35800FB496D /* BMTimeSlider.swift in Sources */,

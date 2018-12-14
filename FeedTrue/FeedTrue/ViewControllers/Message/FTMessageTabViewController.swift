@@ -146,4 +146,13 @@ extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 4
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let chatVC = ChatExamplesViewController()
+//        self.navigationController?.pushViewController(chatVC, animated: true)
+        let dataSource = DemoChatDataSource(count: 10, pageSize: 50)
+        let viewController = AddRandomMessagesChatViewController()
+        viewController.dataSource = dataSource
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
