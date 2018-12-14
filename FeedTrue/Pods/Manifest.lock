@@ -12,6 +12,9 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - Chatto (3.3.1)
+  - ChattoAdditions (3.3.1):
+    - Chatto
   - CLImageEditor (0.2.0):
     - CLImageEditor/Core (= 0.2.0)
   - CLImageEditor/Core (0.2.0)
@@ -106,6 +109,8 @@ DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Alamofire-SwiftyJSON
   - AlamofireObjectMapper (~> 5.0)
+  - Chatto
+  - ChattoAdditions
   - DKImagePickerController
   - DTGradientButton
   - DTTextField
@@ -132,6 +137,8 @@ SPEC REPOS:
     - Alamofire-SwiftyJSON
     - AlamofireObjectMapper
     - Bolts
+    - Chatto
+    - ChattoAdditions
     - CLImageEditor
     - DKCamera
     - DKImagePickerController
@@ -166,6 +173,8 @@ SPEC CHECKSUMS:
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Chatto: 24a6c9b0c91b08130466888b8b61563b90191c6f
+  ChattoAdditions: cc74cd3dd371aa3f70e5ab8568a4f383f0c0eb8c
   CLImageEditor: ec5ae50b3a54c9818c0bdb243b20665a1c6718e3
   DKCamera: c25552afb4bc3ef4c7966b16a44352d36475fe5d
   DKImagePickerController: debcc4eaa09b82c06fc237f1bebd6a9fd4be9fa3
@@ -195,6 +204,6 @@ SPEC CHECKSUMS:
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
   YKPhotoCircleCrop: 490de96b999aef44cea6d6dca8e0bc199a430e63
 
-PODFILE CHECKSUM: 888af91e7500e251b77f432666fcc4391e98dd4b
+PODFILE CHECKSUM: 2f4836496676dc1274e7bab50b773d14d427fcd7
 
 COCOAPODS: 1.6.0.beta.2

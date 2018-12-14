@@ -27,4 +27,9 @@ pod 'SnapKit'
 pod 'VIMediaCache'
 pod 'Reveal-SDK', :configurations => ['Debug']
 pod 'SwipeBack'
+
+# Chatto
+pod 'Chatto'
+pod 'ChattoAdditions'
+
 end
