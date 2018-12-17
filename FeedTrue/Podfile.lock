@@ -98,6 +98,7 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SnapKit (4.2.0)
+  - Starscream (3.0.6)
   - STPopup (1.8.3)
   - SwiftMoment (0.7)
   - SwiftyJSON (4.0.0)
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - RichEditorView
   - ScrollableSegmentedControl (~> 1.3.0)
   - SnapKit
+  - Starscream (~> 3.0.2)
   - STPopup
   - SwiftMoment
   - SwiftyJSON (~> 4.0)
@@ -161,6 +163,7 @@ SPEC REPOS:
     - ScrollableSegmentedControl
     - SDWebImage
     - SnapKit
+    - Starscream
     - STPopup
     - SwiftMoment
     - SwiftyJSON
@@ -197,6 +200,7 @@ SPEC CHECKSUMS:
   ScrollableSegmentedControl: a90ae91537fd670a46b177301d035223e3bd149e
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
@@ -204,6 +208,6 @@ SPEC CHECKSUMS:
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
   YKPhotoCircleCrop: 490de96b999aef44cea6d6dca8e0bc199a430e63
 
-PODFILE CHECKSUM: 2f4836496676dc1274e7bab50b773d14d427fcd7
+PODFILE CHECKSUM: 68f78843ebea815b3e3ef18e7f1fe6a292afa505
 
 COCOAPODS: 1.6.0.beta.2
