@@ -25,11 +25,15 @@
 import UIKit
 import Chatto
 import ChattoAdditions
+import SocketIO
 
 class DemoChatViewController: BaseChatViewController {
 
     var messageSender: DemoChatMessageSender!
     let messagesSelector = BaseMessagesSelector()
+    var socket: SocketIOClient!
+    var manager: SocketManager!
+    
 
     var dataSource: DemoChatDataSource! {
         didSet {
@@ -48,6 +52,38 @@ class DemoChatViewController: BaseChatViewController {
         self.title = "Chat"
         self.messagesSelector.delegate = self
         self.chatItemsDecorator = DemoChatItemsDecorator(messagesSelector: self.messagesSelector)
+        
+        setupSocket()
+    }
+    
+    private func setupSocket() {
+        manager = SocketManager(socketURL: URL(string: "https://chapi.feedtrue.com")!, config: [.log(true), .compress, .forcePolling(true)])
+        
+        socket = manager.defaultSocket
+        
+        socket.on(clientEvent: .connect) {data, ack in
+            print("socket connected")
+        }
+
+        socket.on("message") {data, ack in
+            guard let cur = data[0] as? Double else { return }
+
+            self.socket.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
+                self.socket.emit("update", ["amount": cur + 2.50])
+            }
+
+            ack.with("Got your message", "message")
+        }
+        
+        socket.on(clientEvent: .disconnect) { (data, ack) in
+            print("socket disconnect")
+        }
+        
+        socket.on(clientEvent: .error) { (data, ack) in
+            print("socket error")
+        }
+
+        socket.connect()
     }
 
     var chatInputPresenter: BasicChatInputBarPresenter!

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13030AB021C803CE00905211 /* FTWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13030AAF21C803CE00905211 /* FTWebSocketService.swift */; };
 		13066C1721C3AB1C003FB0C6 /* BaseMessagesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */; };
 		13066C1821C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */; };
 		13066C1921C3AB1C003FB0C6 /* CellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */; };
@@ -375,6 +376,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13030AAF21C803CE00905211 /* FTWebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWebSocketService.swift; sourceTree = "<group>"; };
 		13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagesSelector.swift; sourceTree = "<group>"; };
 		13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesSelectorProtocol.swift; sourceTree = "<group>"; };
 		13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsViewController.swift; sourceTree = "<group>"; };
@@ -1811,6 +1813,7 @@
 				13D2580C21428CBB00E84002 /* FTKeyChainService.swift */,
 				13D2580E21428E3700E84002 /* FTSimpleCache.swift */,
 				13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */,
+				13030AAF21C803CE00905211 /* FTWebSocketService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -2224,6 +2227,7 @@
 				"${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework",
 				"${BUILT_PRODUCTS_DIR}/ScrollableSegmentedControl/ScrollableSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMoment/SwiftMoment.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -2262,6 +2266,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/STPopup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ScrollableSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMoment.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -2432,6 +2437,7 @@
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
 				133011C32190B67E00AB5FAB /* FTPhotosViewModel.swift in Sources */,
+				13030AB021C803CE00905211 /* FTWebSocketService.swift in Sources */,
 				1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */,
 				13922CBD21AFF61B003161D2 /* TabView.swift in Sources */,
 				13BA9B25214B9D1E00AD06D7 /* FTHelpers.swift in Sources */,
