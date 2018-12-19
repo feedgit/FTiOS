@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		13030AB021C803CE00905211 /* FTWebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13030AAF21C803CE00905211 /* FTWebSocketService.swift */; };
+		13030AB221CA40FD00905211 /* FTMessageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13030AB121CA40FD00905211 /* FTMessageResponse.swift */; };
 		13066C1721C3AB1C003FB0C6 /* BaseMessagesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */; };
 		13066C1821C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */; };
 		13066C1921C3AB1C003FB0C6 /* CellsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */; };
-		13066C1A21C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */; };
 		13066C1B21C3AB1C003FB0C6 /* DemoChatMessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */; };
 		13066C1C21C3AB1C003FB0C6 /* DemoChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */; };
 		13066C1D21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */; };
@@ -21,7 +21,6 @@
 		13066C2121C3AB1C003FB0C6 /* TimeSeparatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0021C3AB1C003FB0C6 /* TimeSeparatorModel.swift */; };
 		13066C2221C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0121C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift */; };
 		13066C2321C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0221C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift */; };
-		13066C2421C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */; };
 		13066C2521C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0621C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift */; };
 		13066C2621C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0721C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift */; };
 		13066C2721C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C0821C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift */; };
@@ -34,7 +33,6 @@
 		13066C2E21C3AB1C003FB0C6 /* BaseMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1221C3AB1C003FB0C6 /* BaseMessageHandler.swift */; };
 		13066C2F21C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1321C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift */; };
 		13066C3121C3AB1C003FB0C6 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */; };
-		13066C3221C3AB1C003FB0C6 /* ChatExamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */; };
 		130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05CE212D6A3200C3E21A /* AppDelegate.swift */; };
 		130E05D1212D6A3200C3E21A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130E05D0212D6A3200C3E21A /* ViewController.swift */; };
 		130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 130E05D2212D6A3200C3E21A /* Main.storyboard */; };
@@ -377,10 +375,10 @@
 
 /* Begin PBXFileReference section */
 		13030AAF21C803CE00905211 /* FTWebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTWebSocketService.swift; sourceTree = "<group>"; };
+		13030AB121CA40FD00905211 /* FTMessageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMessageResponse.swift; sourceTree = "<group>"; };
 		13066BF421C3AB1C003FB0C6 /* BaseMessagesSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessagesSelector.swift; sourceTree = "<group>"; };
 		13066BF521C3AB1C003FB0C6 /* MessagesSelectorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesSelectorProtocol.swift; sourceTree = "<group>"; };
 		13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellsViewController.swift; sourceTree = "<group>"; };
-		13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRandomMessageChatViewController.swift; sourceTree = "<group>"; };
 		13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatMessageSender.swift; sourceTree = "<group>"; };
 		13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatViewController.swift; sourceTree = "<group>"; };
 		13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoChatItemsDecorator.swift; sourceTree = "<group>"; };
@@ -390,7 +388,6 @@
 		13066C0021C3AB1C003FB0C6 /* TimeSeparatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorModel.swift; sourceTree = "<group>"; };
 		13066C0121C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorPresenter.swift; sourceTree = "<group>"; };
 		13066C0221C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
-		13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatWithTabBarExamplesViewController.swift; sourceTree = "<group>"; };
 		13066C0621C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageViewModel.swift; sourceTree = "<group>"; };
 		13066C0721C3AB1C003FB0C6 /* DemoPhotoMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageModel.swift; sourceTree = "<group>"; };
 		13066C0821C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageHandler.swift; sourceTree = "<group>"; };
@@ -403,7 +400,6 @@
 		13066C1221C3AB1C003FB0C6 /* BaseMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageHandler.swift; sourceTree = "<group>"; };
 		13066C1321C3AB1C003FB0C6 /* BaseMessageCollectionViewCellAvatarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCellAvatarStyle.swift; sourceTree = "<group>"; };
 		13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
-		13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatExamplesViewController.swift; sourceTree = "<group>"; };
 		130E05CB212D6A3200C3E21A /* FeedTrue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeedTrue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		130E05CE212D6A3200C3E21A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		130E05D0212D6A3200C3E21A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -772,10 +768,8 @@
 				13066BF621C3AB1C003FB0C6 /* CellsViewController.swift */,
 				13066BF721C3AB1C003FB0C6 /* Chat View Controllers */,
 				13066BFF21C3AB1C003FB0C6 /* Time Separator */,
-				13066C0321C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift */,
 				13066C0421C3AB1C003FB0C6 /* Chat Items */,
 				13066C1521C3AB1C003FB0C6 /* SlidingDatasSource.swift */,
-				13066C1621C3AB1C003FB0C6 /* ChatExamplesViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -783,7 +777,6 @@
 		13066BF721C3AB1C003FB0C6 /* Chat View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				13066BF821C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift */,
 				13066BF921C3AB1C003FB0C6 /* DemoChatMessageSender.swift */,
 				13066BFA21C3AB1C003FB0C6 /* DemoChatViewController.swift */,
 				13066BFB21C3AB1C003FB0C6 /* DemoChatItemsDecorator.swift */,
@@ -1413,6 +1406,7 @@
 				132C7B2D2179D18F00EE11AD /* FTArticles.swift */,
 				13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */,
 				1321982C21C1095A00C45273 /* FTContactResponse.swift */,
+				13030AB121CA40FD00905211 /* FTMessageResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2322,7 +2316,6 @@
 				1342A93821661C0B00EFD1E6 /* SectionHeader.swift in Sources */,
 				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
 				13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */,
-				13066C3221C3AB1C003FB0C6 /* ChatExamplesViewController.swift in Sources */,
 				13066C2021C3AB1C003FB0C6 /* MessagesSelectionChatViewController.swift in Sources */,
 				13813F1221B7C35800FB496D /* BMPlayerClearityChooseButton.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
@@ -2427,7 +2420,6 @@
 				13353AF9213A94ED00D74C47 /* FTViewControllerWithCustomNavibar.swift in Sources */,
 				13D2580D21428CBB00E84002 /* FTKeyChainService.swift in Sources */,
 				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
-				13066C2421C3AB1C003FB0C6 /* ChatWithTabBarExamplesViewController.swift in Sources */,
 				13919552219C8A220068F362 /* UIView+Radius.swift in Sources */,
 				13066C2721C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
@@ -2467,7 +2459,6 @@
 				1342A8E321649FC500EFD1E6 /* UISearchBar+Extensions.swift in Sources */,
 				134FF1BD2159EF9B00551771 /* Reaction.swift in Sources */,
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
-				13066C1A21C3AB1C003FB0C6 /* AddRandomMessageChatViewController.swift in Sources */,
 				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
@@ -2529,6 +2520,7 @@
 				13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */,
 				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
+				13030AB221CA40FD00905211 /* FTMessageResponse.swift in Sources */,
 				13813F1621B7C35800FB496D /* BMSubtitles.swift in Sources */,
 				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
 				133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */,

@@ -33,7 +33,7 @@ class DemoChatViewController: BaseChatViewController {
     let messagesSelector = BaseMessagesSelector()
     var socket: SocketIOClient!
     var manager: SocketManager!
-    
+    var contact: FTContact!
 
     var dataSource: DemoChatDataSource! {
         didSet {
@@ -49,11 +49,33 @@ class DemoChatViewController: BaseChatViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Chat"
+        self.title = contact.user?.last_name ?? "Chat"
+        let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
+        backBarBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = backBarBtn
+        
         self.messagesSelector.delegate = self
         self.chatItemsDecorator = DemoChatItemsDecorator(messagesSelector: self.messagesSelector)
         
+        loadMessages()
         setupSocket()
+    }
+    
+    @objc func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    private func loadMessages() {
+        WebService.default.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
+            if success {
+                print("Load message successful \(messageResponse.debugDescription)")
+                // add message
+                guard let messages = messageResponse?.messages else { return }
+                self.dataSource.addMessages(messages.reversed())
+            } else {
+                print("Load message failure")
+            }
+        }
     }
     
     private func setupSocket() {
@@ -63,16 +85,20 @@ class DemoChatViewController: BaseChatViewController {
         
         socket.on(clientEvent: .connect) {data, ack in
             print("socket connected")
+            let id = self.contact.room?.id ?? 0
+            let user = self.contact.user?.username ?? ""
+            self.socket.emit("openRoom", ["room_id": id, "user": user])
         }
-
-        socket.on("message") {data, ack in
-            guard let cur = data[0] as? Double else { return }
-
-            self.socket.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
-                self.socket.emit("update", ["amount": cur + 2.50])
+        
+        self.socket.on("updateRoom_\(self.contact.room?.id ?? 0)") { (data, ack) in
+            print("updateRoom with data \(data)")
+            if let array = data as? [[String: Any]] {
+                for item in array {
+                    if let text = item["text"] as? String {
+                        self.dataSource.addTextMessage(text.htmlToString, isIncomming: true)
+                    }
+                }
             }
-
-            ack.with("Got your message", "message")
         }
         
         socket.on(clientEvent: .disconnect) { (data, ack) in

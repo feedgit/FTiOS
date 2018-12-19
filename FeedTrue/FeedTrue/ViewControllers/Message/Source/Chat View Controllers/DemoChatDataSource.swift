@@ -78,11 +78,41 @@ class DemoChatDataSource: ChatDataSourceProtocol {
     }
 
     func addTextMessage(_ text: String) {
+        addTextMessage(text, isIncomming: false)
+    }
+    
+    func addTextMessage(_ text: String, isIncomming: Bool) {
         let uid = "\(self.nextMessageId)"
         self.nextMessageId += 1
-        let message = DemoChatMessageFactory.makeTextMessage(uid, text: text, isIncoming: false)
+        let message = DemoChatMessageFactory.makeTextMessage(uid, text: text, isIncoming: isIncomming)
         self.messageSender.sendMessage(message)
         self.slidingWindow.insertItem(message, position: .bottom)
+        self.delegate?.chatDataSourceDidUpdate(self)
+    }
+    
+    func addTextMessages(_ texts: [String]) {
+        for text in texts {
+            let uid = "\(self.nextMessageId)"
+            self.nextMessageId += 1
+            let message = DemoChatMessageFactory.makeTextMessage(uid, text: text, isIncoming: false)
+            self.slidingWindow.insertItem(message, position: .bottom)
+        }
+        
+        self.delegate?.chatDataSourceDidUpdate(self)
+    }
+    
+    func addMessages(_ messages: [FTMessage]) {
+        guard let username = FTKeyChainService.shared.username() else { return }
+        for message in messages {
+            guard let text = message.text else { continue }
+            guard let sender = message.user?.username else { continue }
+            let isIncommning: Bool = (username != sender)
+            let uid = "\(self.nextMessageId)"
+            self.nextMessageId += 1
+            let message = DemoChatMessageFactory.makeTextMessage(uid, text: text.htmlToString, isIncoming: isIncommning)
+            self.slidingWindow.insertItem(message, position: .bottom)
+        }
+        
         self.delegate?.chatDataSourceDidUpdate(self)
     }
 

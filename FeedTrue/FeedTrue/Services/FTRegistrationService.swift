@@ -9,6 +9,7 @@
 import UIKit
 
 class FTRegistrationService: FTCoreServiceComponent {
+    static let share = FTRegistrationService()
     func setup() {
         
     }

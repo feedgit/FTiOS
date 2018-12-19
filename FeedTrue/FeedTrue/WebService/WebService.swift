@@ -1508,4 +1508,77 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    
+    func getMessage(roomID id: Int, completion: @escaping (Bool, FTMessageResponse?) -> ()) {
+        // https://api.feedtrue.com/api/v1/chat/contact/
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "\(host)/api/v1/chat/\(String(id))/messages/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTMessageResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func getMoreMessage(nextString: String, completion: @escaping (Bool, FTMessageResponse?)->()) {
+        
+        guard let token = getToken() else {
+            completion(false, nil)
+            showLogin()
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        guard let url = URL(string: nextString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTMessageResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                if value.messages?.count > 0 {
+                    completion(true, value)
+                    return
+                }
+                
+                completion(false, value)
+        }
+    }
+    
 }
