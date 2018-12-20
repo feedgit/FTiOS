@@ -156,6 +156,7 @@ class DemoChatViewController: BaseChatViewController {
         let item = TextChatInputItem()
         item.textInputHandler = { [weak self] text in
             self?.dataSource.addTextMessage(text)
+            self?.sendMessage(text)
         }
         return item
     }
@@ -166,6 +167,12 @@ class DemoChatViewController: BaseChatViewController {
             self?.dataSource.addPhotoMessage(image)
         }
         return item
+    }
+    
+    private func sendMessage(_ text: String) {
+        guard let roomID = contact.room?.id else { return }
+        guard let userID = contact.user?.id else { return }
+        self.socket.emit("send-message", ["text": text, "room_id": roomID, "user_id": userID])
     }
 }
 
