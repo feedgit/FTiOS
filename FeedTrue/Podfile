@@ -32,5 +32,6 @@ pod 'SwipeBack'
 pod 'Chatto'
 pod 'ChattoAdditions'
 pod 'Socket.IO-Client-Swift'
+pod 'JSQMessagesViewController'
 
 end
