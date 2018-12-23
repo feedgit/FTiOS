@@ -123,14 +123,14 @@ class FTMessageTabViewController: FTTabViewController {
 
 extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataSource.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return dataSource.count > 0 ? 1 : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = dataSource[indexPath.row]
+        let content = dataSource[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         if let editingCell = cell as? BECellRender {
             editingCell.renderCell(data: content)
@@ -139,7 +139,7 @@ extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let content = dataSource[indexPath.row]
+        let content = dataSource[indexPath.section]
         return content.cellHeight()
     }
     
@@ -148,11 +148,14 @@ extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chatDataSource = DemoChatDataSource(count: 0, pageSize: 0)
-        let viewController = DemoChatViewController()
-        let contact = dataSource[indexPath.row] as! FTContactViewModel
-        viewController.contact = contact.contact
-        viewController.dataSource = chatDataSource
-        self.navigationController?.pushViewController(viewController, animated: true)
+//        let chatDataSource = DemoChatDataSource(count: 0, pageSize: 0)
+//        let viewController = DemoChatViewController()
+//        let contact = dataSource[indexPath.row] as! FTContactViewModel
+//        viewController.contact = contact.contact
+//        viewController.dataSource = chatDataSource
+//        self.navigationController?.pushViewController(viewController, animated: true)
+        let chatView = ChatViewController()
+        chatView.messages = makeNormalConversation()
+        self.navigationController?.pushViewController(chatView, animated: true)
     }
 }

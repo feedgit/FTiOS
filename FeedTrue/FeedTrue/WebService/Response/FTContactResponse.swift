@@ -80,7 +80,7 @@ class FTContact: Mappable {
 class Room: Mappable {
     var id: Int?
     var name: String?
-    var last_message: Int?
+    var last_message: String?
     var thumbnail: String?
     
     required init?(map: Map) {

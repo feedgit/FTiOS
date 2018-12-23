@@ -20,13 +20,7 @@ class FTContactTableViewCell: UITableViewCell, BECellRenderImpl {
         // Initialization code
         avatarImageView.round()
         selectionStyle = .none
-        layer.cornerRadius = 10
-        let shadowPathCusomize = UIBezierPath(rect: bounds)
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: CGFloat(1.0), height: CGFloat(3.0))
-        layer.shadowOpacity = 0.5
-        layer.shadowPath = shadowPathCusomize.cgPath
+        layer.cornerRadius = 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,7 +39,7 @@ class FTContactTableViewCell: UITableViewCell, BECellRenderImpl {
         
         usernameLabel.text = contact?.user?.last_name
         if let lastMessage = contact?.room?.last_message {
-            lastMessageLabel.text = "\(lastMessage)"
+            lastMessageLabel.text = "\(lastMessage.htmlToString)"
         } else {
             lastMessageLabel.text = nil
         }

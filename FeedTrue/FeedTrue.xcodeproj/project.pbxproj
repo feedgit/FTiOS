@@ -243,6 +243,10 @@
 		136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */; };
 		136A46552190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */; };
 		136A4658219099FE00EB9AC9 /* FTVideoComposerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */; };
+		1375A9D021CEFCC000092C75 /* DemoConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1375A9CD21CEFCBF00092C75 /* DemoConversation.swift */; };
+		1375A9D121CEFCC000092C75 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1375A9CE21CEFCC000092C75 /* Conversation.swift */; };
+		1375A9D221CEFCC000092C75 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1375A9CF21CEFCC000092C75 /* ChatViewController.swift */; };
+		1375A9D821CF015500092C75 /* jsq_messages_sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 1375A9D721CF015500092C75 /* jsq_messages_sample.m4a */; };
 		13813EF921B78B9C00FB496D /* FTPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813EF721B78B9C00FB496D /* FTPlayerViewController.swift */; };
 		13813EFA21B78B9C00FB496D /* FTPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13813EF821B78B9C00FB496D /* FTPlayerViewController.xib */; };
 		13813EFC21B7921400FB496D /* BMPlayerCustomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813EFB21B7921400FB496D /* BMPlayerCustomControlView.swift */; };
@@ -613,6 +617,10 @@
 		136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerTableViewCell.swift; sourceTree = "<group>"; };
 		136A46532190973F00EB9AC9 /* FTVideoComposerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoComposerTableViewCell.xib; sourceTree = "<group>"; };
 		136A4657219099FE00EB9AC9 /* FTVideoComposerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerViewModel.swift; sourceTree = "<group>"; };
+		1375A9CD21CEFCBF00092C75 /* DemoConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoConversation.swift; sourceTree = "<group>"; };
+		1375A9CE21CEFCC000092C75 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		1375A9CF21CEFCC000092C75 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		1375A9D721CF015500092C75 /* jsq_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = jsq_messages_sample.m4a; sourceTree = "<group>"; };
 		13813EF721B78B9C00FB496D /* FTPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPlayerViewController.swift; sourceTree = "<group>"; };
 		13813EF821B78B9C00FB496D /* FTPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPlayerViewController.xib; sourceTree = "<group>"; };
 		13813EFB21B7921400FB496D /* BMPlayerCustomControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMPlayerCustomControlView.swift; sourceTree = "<group>"; };
@@ -884,6 +892,7 @@
 				130E05DA212D6A3700C3E21A /* Info.plist */,
 				13A2C4B6213421C700C377C0 /* FeedTrue-Bridging-Header.h */,
 				13A2C4CF2137A53A00C377C0 /* FeedTrueRootViewController.swift */,
+				1375A9D721CF015500092C75 /* jsq_messages_sample.m4a */,
 			);
 			path = FeedTrue;
 			sourceTree = "<group>";
@@ -915,6 +924,7 @@
 		1321982521C0FBE200C45273 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				1375A9CC21CEFCAA00092C75 /* JSQ */,
 				13066BF321C3AB1C003FB0C6 /* Source */,
 				1321982721C0FBFE00C45273 /* ViewModel */,
 				1321982621C0FBF800C45273 /* Cell */,
@@ -1578,6 +1588,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1375A9CC21CEFCAA00092C75 /* JSQ */ = {
+			isa = PBXGroup;
+			children = (
+				1375A9CF21CEFCC000092C75 /* ChatViewController.swift */,
+				1375A9CE21CEFCC000092C75 /* Conversation.swift */,
+				1375A9CD21CEFCBF00092C75 /* DemoConversation.swift */,
+			);
+			path = JSQ;
+			sourceTree = "<group>";
+		};
 		13813EF621B78B6600FB496D /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -2155,6 +2175,7 @@
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
 				133011C12190B3A300AB5FAB /* FTPhotosTableViewCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
+				1375A9D821CF015500092C75 /* jsq_messages_sample.m4a in Resources */,
 				132C7AA9216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.xib in Resources */,
 				1347747421686C8B0026B048 /* FTCommentTextCell.xib in Resources */,
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
@@ -2381,6 +2402,7 @@
 				1342A8F921649FC500EFD1E6 /* SearchHistoryManager.swift in Sources */,
 				13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */,
 				1342A93521661C0B00EFD1E6 /* DropUpMenu.swift in Sources */,
+				1375A9D221CEFCC000092C75 /* ChatViewController.swift in Sources */,
 				13066C2221C3AB1C003FB0C6 /* TimeSeparatorPresenter.swift in Sources */,
 				13D0C01D217DD3ED00F745B9 /* FTUserDashBoardTabViewController.swift in Sources */,
 				13919556219C8A220068F362 /* SKToolbar.swift in Sources */,
@@ -2516,6 +2538,7 @@
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
 				139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */,
 				13066C2821C3AB1C003FB0C6 /* SendingStatusPresenter.swift in Sources */,
+				1375A9D021CEFCC000092C75 /* DemoConversation.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,
 				13922CBC21AFF61B003161D2 /* SwipeMenuView.swift in Sources */,
@@ -2565,6 +2588,7 @@
 				13A2C4CD2137A47200C377C0 /* ExampleTipsContentView.swift in Sources */,
 				134FF0FE2152B37300551771 /* PopupController.swift in Sources */,
 				1342A8FC21649FC500EFD1E6 /* PickerViewViewController.swift in Sources */,
+				1375A9D121CEFCC000092C75 /* Conversation.swift in Sources */,
 				1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */,
 				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
