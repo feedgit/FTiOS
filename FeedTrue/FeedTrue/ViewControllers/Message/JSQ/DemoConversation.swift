@@ -65,20 +65,21 @@ let AvatarSquires = JSQMessagesAvatarImageFactory.avatarImage(withUserInitials: 
 
 // Helper Method for getting an avatar for a specific User.
 func getAvatar(_ id: String) -> JSQMessagesAvatarImage{
-    let user = User(rawValue: id)!
-    
-    switch user {
-    case .Leonard:
-        return AvatarLeonard
-    case .Squires:
-        return AvatarSquires
-    case .Cook:
-        return AvatarCook
-    case .Wozniak:
-        return AvatarWoz
-    case .Jobs:
-        return AvatarJobs
-    }
+    return AvatarSquires
+//    let user = User(rawValue: id)!
+//
+//    switch user {
+//    case .Leonard:
+//        return AvatarLeonard
+//    case .Squires:
+//        return AvatarSquires
+//    case .Cook:
+//        return AvatarCook
+//    case .Wozniak:
+//        return AvatarWoz
+//    case .Jobs:
+//        return AvatarJobs
+//    }
 }
 
 

@@ -8,6 +8,8 @@
 
 import UIKit
 import JSQMessagesViewController
+import SocketIO
+import SwiftMoment
 
 public enum Setting: String{
     case removeBubbleTails = "Remove message bubble tails"
@@ -22,6 +24,10 @@ class ChatViewController: JSQMessagesViewController {
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
     fileprivate var displayName: String!
+    var contact: FTContact!
+    var socket: SocketIOClient!
+    var manager: SocketManager!
+    var users: [UserProfile] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +74,9 @@ class ChatViewController: JSQMessagesViewController {
         collectionView?.collectionViewLayout.springinessEnabled = false
         
         automaticallyScrollsToMostRecentMessage = true
-
+        loadMessages()
+        setupSocket()
+        
         self.collectionView?.reloadData()
         self.collectionView?.layoutIfNeeded()
     }
@@ -86,6 +94,119 @@ class ChatViewController: JSQMessagesViewController {
         //dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func loadMessages() {
+        WebService.default.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
+            if success {
+                print("Load message successful \(messageResponse.debugDescription)")
+                // add message
+                guard let listMessages = messageResponse?.messages else { return }
+                //self.dataSource.addMessages(messages.reversed())
+                for item in listMessages {
+                    guard let senderID = item.user?.id else { continue }
+                    guard let senderDisplauName = item.user?.last_name else { continue }
+                    let date = Date()
+                    guard let text = item.text else { continue }
+                    guard let msg = JSQMessage(senderId: "\(senderID)", senderDisplayName: senderDisplauName, date: date, text: text.htmlToString) else { continue }
+                    self.messages.append(msg)
+                    
+                    if let u = item.user {
+                        self.addUser(user: u)
+                    }
+                }
+                
+                self.messages.reverse()
+                
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            } else {
+                print("Load message failure")
+            }
+        }
+    }
+    
+    private func addUser(user u: UserProfile) {
+        if self.users.count == 0 {
+            self.users.append(u)
+        } else {
+            for user in self.users {
+                if user.username != u.username {
+                    self.users.append(u)
+                    break
+                }
+            }
+        }
+    }
+    
+    private func getUserAvatar(userID id: Int) -> String? {
+        for user in self.users {
+            if user.id == id {
+                return user.avatar
+            }
+        }
+        return nil
+    }
+    
+    private func setupSocket() {
+        manager = SocketManager(socketURL: URL(string: "https://chapi.feedtrue.com")!, config: [.log(true), .compress, .forcePolling(true)])
+        
+        socket = manager.defaultSocket
+        
+        socket.on(clientEvent: .connect) {data, ack in
+            print("socket connected")
+            let id = self.contact.room?.id ?? 0
+            let user = self.contact.user?.username ?? ""
+            self.socket.emit("openRoom", ["room_id": id, "user": user])
+        }
+        
+        self.socket.on("updateRoom_\(self.contact.room?.id ?? 0)") { (data, ack) in
+            print("updateRoom with data \(data)")
+            if let array = data as? [[String: Any]] {
+                for item in array {
+                    //self.dataSource.addTextMessage(text.htmlToString, isIncomming: true)
+                    //guard let senderID = item.id else { continue }
+                    //guard let senderDisplauName = item.user?.last_name else { continue }
+                    //let date = Date()
+                    guard let updatedAt = item["created_at"] as? String else { continue }
+                    guard let date = moment(updatedAt)?.date else { continue }
+                    guard let text = item["text"] as? String else { continue }
+                    guard let user = item["user"] as? [String: Any] else { continue }
+                    guard let senderID = user["id"] as? Int else { continue }
+                    guard let msg = JSQMessage(senderId: "\(senderID)", senderDisplayName: "senderDisplauName", date: date, text: text.htmlToString) else { continue }
+                    self.messages.append(msg)
+                    
+                    // TODO: check & add user
+                    
+                }
+            }
+        }
+        
+        socket.on(clientEvent: .disconnect) { (data, ack) in
+            print("socket disconnect")
+        }
+        
+        socket.on(clientEvent: .error) { (data, ack) in
+            print("socket error")
+        }
+        
+        socket.connect()
+    }
+    
+    private func sendMessage(_ text: String) {
+        guard let roomID = contact.room?.id else { return }
+        //guard let userID = contact.user?.id else { return }
+        //self.socket.emit("send-message", ["text": text, "room_id": roomID, "user_id": userID])
+        WebService.default.sendMessage(text: text, roomID: roomID) { (success, message) in
+            if success {
+                NSLog("\(#function) success \(message.debugDescription)")
+            } else {
+                NSLog("\(#function) failure \(message.debugDescription)")
+                // TODO : update message status to failure
+            }
+        }
+    }
+
     
     @objc func receiveMessagePressed(_ sender: UIBarButtonItem) {
         /**
@@ -245,6 +366,7 @@ class ChatViewController: JSQMessagesViewController {
         guard let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text) else { return }
         self.messages.append(message)
         self.finishSendingMessage(animated: true)
+        self.sendMessage(text)
     }
     
     override func didPressAccessoryButton(_ sender: UIButton) {
@@ -339,11 +461,13 @@ class ChatViewController: JSQMessagesViewController {
     //MARK: JSQMessages CollectionView DataSource
     
     override func senderId() -> String {
-        return User.Wozniak.rawValue
+        let senderID = contact.user?.id ?? 0
+        return "\(senderID)"
     }
     
     override func senderDisplayName() -> String {
-        return getName(.Wozniak)
+        let displayName = contact.user?.last_name ?? ""
+        return displayName//getName(.Wozniak)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -445,6 +569,20 @@ class ChatViewController: JSQMessagesViewController {
         }
         
         return kJSQMessagesCollectionViewCellLabelHeightDefault;
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        let message = messages[indexPath.item]
+        let senderId: Int = Int(message.senderId) ?? 0
+        if let userAvatarURLString = getUserAvatar(userID: senderId) {
+            cell.avatarImageView.loadImage(fromURL: URL(string: userAvatarURLString))
+        } else {
+            cell.avatarImageView.image = UIImage.userImage()
+        }
+        
+        cell.avatarImageView.round()
+        return cell
     }
     
 }

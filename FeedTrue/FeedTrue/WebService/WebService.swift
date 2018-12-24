@@ -1581,4 +1581,45 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    /*
+     POST https://chapi.feedtrue.com/message/new/
+     Request: { text: , room_id: <ROOM_ID> }
+     */
+    
+    func sendMessage(text: String, roomID id: Int, completion: @escaping (Bool, FTMessage?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "https://chapi.feedtrue.com/message/new/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        let params:[String: Any] = [
+            "text": text,
+            "room_id" : id
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTMessage>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+
+
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+
+                completion(true, value)
+        }
+    }
 }
