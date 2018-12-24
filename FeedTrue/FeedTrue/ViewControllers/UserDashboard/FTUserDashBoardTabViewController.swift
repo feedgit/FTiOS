@@ -42,9 +42,10 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         tableView.layer.cornerRadius = 8
         tableView.clipsToBounds = true
         tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.videoVCBackGroundCollor()
         
         generateDatasource()
-        self.loadUserInfo()
+        //self.loadUserInfo()
         setUpRefreshControl()
     }
     
@@ -77,27 +78,36 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         dataSource.append([follow])
         
         // section 2: menu
-        let saved = ["title": "Saved", "image": "saved"]
-        let photo = ["title": "Photos", "image": "ic_photo"]
-        let video = ["title": "Videos", "image": "ic_video"]
-        let blog = ["title": "Blogs", "image": "ic_blog"]
-        let travel = ["title": "Travel", "image": "ic_travel"]
-        let wishlist = ["title": "Wishlist", "image": "ic_wishlist"]
-        let gift = ["title": "Gifts", "image": "ic_gift"]
-        let miab = ["title": "MIAB", "image": "ic_miab"]
-        let store = ["title": "My Store", "image": "ic_my_store"]
-        let statistic = ["title": "Statistics", "image": "ic_statistic"]
-        arrMenu = [saved, photo, video, blog, travel, wishlist, gift, miab, store, statistic]
-        let menu = FTUserDashBoardMenuViewModel(arr: arrMenu)
-        dataSource.append([menu])
+        let saved = FTUserDashBoardMenuViewModel(title: "Saved", icon: UIImage(named: "saved")!)
+        
+        let photo = FTUserDashBoardMenuViewModel(title: "Photos", icon: UIImage(named: "ic_photo")!)
+        
+        let video = FTUserDashBoardMenuViewModel(title: "Videos", icon: UIImage(named: "ic_video")!)
+        
+        let blog = FTUserDashBoardMenuViewModel(title: "Blogs", icon: UIImage(named: "ic_blog")!)
+        
+        let travel = FTUserDashBoardMenuViewModel(title: "Travel", icon: UIImage(named: "ic_travel")!)
+        
+        let wishlist = FTUserDashBoardMenuViewModel(title: "Wishlist", icon: UIImage(named: "ic_wishlist")!)
+        
+        let gift = FTUserDashBoardMenuViewModel(title: "Gifts", icon: UIImage(named: "ic_gift")!)
+        
+        let miab = FTUserDashBoardMenuViewModel(title: "MIAB", icon: UIImage(named: "ic_miab")!)
+        
+        let store = FTUserDashBoardMenuViewModel(title: "My Store", icon: UIImage(named: "ic_my_store")!)
+        
+        let statistic = FTUserDashBoardMenuViewModel(title: "Statistics", icon: UIImage(named: "ic_statistic")!)
+
+        dataSource.append([saved, photo, video, blog, travel, wishlist, gift, miab, store, statistic])
         
         // section 3: setting + logout
         let setting = FTUserDashBoardSettingViewModel(title: "Settings", icon: UIImage(named: "ic_setting")!)
         setting.settingType = .settings
+        dataSource.append([setting])
         let logout = FTUserDashBoardSettingViewModel(title: "Log out", icon: UIImage(named: "ic_logout")!)
         logout.settingType = .logout
         
-        dataSource.append([setting, logout])
+        dataSource.append([logout])
         
     }
     
@@ -161,23 +171,16 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 2 {
-            // menu
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FTMenuTableViewCell", for: indexPath) as! FTMenuTableViewCell
-            cell.pgCtrlShouldHidden = true
-            cell.pgCtrlNormalColor = .gray
-            cell.pgCtrlSelectedColor = .black
-            cell.countRow = countRow
-            cell.countCol = countCol
-            cell.arrMenu = arrMenu
-            //cell.delegate = self
-            return cell
-        }
         let content = dataSource[indexPath.section][indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
         
         if let settingCell = cell as? FTUserDashBoardSettingCell {
             settingCell.delegate = self
+            if indexPath.section == 3 || indexPath.section == 4 {
+                cell.layer.cornerRadius = 8
+            } else {
+                cell.layer.cornerRadius = 0
+            }
         }
         
         if let profileCell = cell as? FTUserDashBoardProfileCell {
@@ -192,16 +195,23 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 2 {
-            if indexPath.row == 0 {
-                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 12
-            }
-            else {
-                return 50.0
-            }
-        }
         let content = dataSource[indexPath.section][indexPath.row]
         return content.cellHeight()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 3 || section == 4 {
+            return 4
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == dataSource.count - 1 {
+            return 4
+        } else {
+            return 0
+        }
     }
 }
 

@@ -116,17 +116,17 @@ class FeedTrueRootViewController: UIViewController {
 //            if index == 2 {
 //                return true
 //            }
-            if index == 0 {
+            if index == 1 {
                 // Feed Tab
                 NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
             }
             
-            if index == 4 {
-                // user dashboard tab
-                if self.coreService.registrationService?.hasAuthenticationProfile() == false {
-                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
-                }
-            }
+//            if index == 4 {
+//                // user dashboard tab
+//                if self.coreService.registrationService?.hasAuthenticationProfile() == false {
+//                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
+//                }
+//            }
             return false
         }
         
@@ -195,7 +195,7 @@ class FeedTrueRootViewController: UIViewController {
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
         searchVC.tabBarItem = settingItem
         
-        tabBarController.viewControllers = [feedVC, notificationVC, userDashBoardVC, messageVC, searchVC]
+        tabBarController.viewControllers = [userDashBoardVC, feedVC, notificationVC, messageVC, searchVC]
         feedtrueTabBarController = tabBarController
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
@@ -237,12 +237,14 @@ class FeedTrueRootViewController: UIViewController {
                 self?.feedtrueTabBarController?.selectedIndex = 0
                 self?.feedVC.loadFeed()
                 self?.profileVC.loadUserInfo()
+                self?.userDashBoardVC.loadUserInfo()
             })
         } else {
             //self.showLogin()
             self.feedtrueTabBarController?.selectedIndex = 0
             self.feedVC.loadFeed()
             self.profileVC.loadUserInfo()
+            self.userDashBoardVC.loadUserInfo()
         }
     }
     
@@ -266,6 +268,7 @@ extension FeedTrueRootViewController: LoginDelegate {
     func didLoginSuccess() {
         self.feedtrueTabBarController.selectedIndex = 0
         self.profileVC.loadUserInfo()
+        self.userDashBoardVC.loadUserInfo()
         self.feedVC.loadFeed()
     }
     

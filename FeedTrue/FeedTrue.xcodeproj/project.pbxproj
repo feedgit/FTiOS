@@ -82,6 +82,8 @@
 		13353B04213BB16A00D74C47 /* FTUserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */; };
 		13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B05213C120900D74C47 /* FTAboutReponse.swift */; };
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
+		1337576121D0E2370028D6D5 /* FTMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337575F21D0E2370028D6D5 /* FTMenuItemTableViewCell.swift */; };
+		1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1337576021D0E2370028D6D5 /* FTMenuItemTableViewCell.xib */; };
 		1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */; };
 		1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */; };
 		1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */; };
@@ -455,6 +457,8 @@
 		13353B03213BB16A00D74C47 /* FTUserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserProfileResponse.swift; sourceTree = "<group>"; };
 		13353B05213C120900D74C47 /* FTAboutReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAboutReponse.swift; sourceTree = "<group>"; };
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
+		1337575F21D0E2370028D6D5 /* FTMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		1337576021D0E2370028D6D5 /* FTMenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTMenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingViewModel.swift; sourceTree = "<group>"; };
 		1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -1999,6 +2003,8 @@
 				13D0C028217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib */,
 				13D0C02B217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift */,
 				13D0C02C217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib */,
+				1337575F21D0E2370028D6D5 /* FTMenuItemTableViewCell.swift */,
+				1337576021D0E2370028D6D5 /* FTMenuItemTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2132,6 +2138,7 @@
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
+				1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */,
@@ -2492,6 +2499,7 @@
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
 				13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */,
 				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
+				1337576121D0E2370028D6D5 /* FTMenuItemTableViewCell.swift in Sources */,
 				1342A88621649CBE00EFD1E6 /* FTProfileEditDOBCell.swift in Sources */,
 				133D029021AE10B400511D2C /* FTDetailPhotosViewModel.swift in Sources */,
 				13A2C4CB2137A47200C377C0 /* ExampleBasicContentView.swift in Sources */,
