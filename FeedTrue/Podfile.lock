@@ -102,6 +102,7 @@ PODS:
     - Starscream (~> 3.0.2)
   - Starscream (3.0.6)
   - STPopup (1.8.3)
+  - SVPullToRefresh (0.4.1)
   - SwiftMoment (0.7)
   - SwiftyJSON (4.0.0)
   - SwipeBack (1.1.1)
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - SnapKit
   - Socket.IO-Client-Swift
   - STPopup
+  - SVPullToRefresh
   - SwiftMoment
   - SwiftyJSON (~> 4.0)
   - SwipeBack
@@ -171,6 +173,7 @@ SPEC REPOS:
     - Socket.IO-Client-Swift
     - Starscream
     - STPopup
+    - SVPullToRefresh
     - SwiftMoment
     - SwiftyJSON
     - SwipeBack
@@ -211,6 +214,7 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: 2b2720f14c92ff1237ced09bc2f2da2022624fee
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   STPopup: da1167250a01584af7bcccb898653185f223ec46
+  SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
@@ -218,6 +222,6 @@ SPEC CHECKSUMS:
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
   YKPhotoCircleCrop: 490de96b999aef44cea6d6dca8e0bc199a430e63
 
-PODFILE CHECKSUM: 5bab26b2944eb82a8ec03dfcd436e16f9e2fbd59
+PODFILE CHECKSUM: 859f77a620c4ca18b355a12bd5bfe0b65b75295b
 
 COCOAPODS: 1.6.0.beta.2

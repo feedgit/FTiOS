@@ -33,5 +33,6 @@ pod 'Chatto'
 pod 'ChattoAdditions'
 pod 'Socket.IO-Client-Swift'
 pod 'JSQMessagesViewController'
+pod 'SVPullToRefresh'
 
 end

@@ -10,6 +10,7 @@ import UIKit
 import JSQMessagesViewController
 import SocketIO
 import SwiftMoment
+import SVPullToRefresh
 
 public enum Setting: String{
     case removeBubbleTails = "Remove message bubble tails"
@@ -28,6 +29,7 @@ class ChatViewController: JSQMessagesViewController {
     var socket: SocketIOClient!
     var manager: SocketManager!
     var users: [UserProfile] = []
+    var nextURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +81,10 @@ class ChatViewController: JSQMessagesViewController {
         
         self.collectionView?.reloadData()
         self.collectionView?.layoutIfNeeded()
+        
+        self.collectionView.addPullToRefresh {
+            self.loadMore()
+        }
     }
     
     func setupBackButton() {
@@ -99,6 +105,7 @@ class ChatViewController: JSQMessagesViewController {
         WebService.default.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
             if success {
                 print("Load message successful \(messageResponse.debugDescription)")
+                self.nextURL = messageResponse?.next
                 // add message
                 guard let listMessages = messageResponse?.messages else { return }
                 //self.dataSource.addMessages(messages.reversed())
@@ -124,6 +131,56 @@ class ChatViewController: JSQMessagesViewController {
                 print("Load message failure")
             }
         }
+    }
+    
+    func loadMore() {
+        print("Load earlier messages triggered by scroll!")
+        guard let url = self.nextURL else {
+            self.collectionView.showsPullToRefresh = false
+            return
+        }
+        guard messages.count > 0 else { return }
+        
+        // start animation
+        self.collectionView.collectionViewLayout.springinessEnabled = false
+        self.collectionView.pullToRefreshView.startAnimating()
+        
+        WebService.default.getMoreMessage(nextString: url) { (success, messageResponse) in
+            
+            // stop animation
+            DispatchQueue.main.async {
+                self.collectionView.pullToRefreshView.stopAnimating()
+                self.collectionView.collectionViewLayout.springinessEnabled = true
+            }
+            let oldBottomOffset = self.collectionView.contentSize.height - self.collectionView.contentOffset.y
+            if success {
+                self.nextURL = messageResponse?.next
+                // add message
+                guard let listMessages = messageResponse?.messages else { return }
+                //self.dataSource.addMessages(messages.reversed())
+                for item in listMessages {
+                    guard let senderID = item.user?.id else { continue }
+                    guard let senderDisplauName = item.user?.last_name else { continue }
+                    let date = Date()
+                    guard let text = item.text else { continue }
+                    guard let msg = JSQMessage(senderId: "\(senderID)", senderDisplayName: senderDisplauName, date: date, text: text.htmlToString) else { continue }
+                    self.messages.insert(msg, at: 0)
+                    
+                    if let u = item.user {
+                        self.addUser(user: u)
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self.finishReceivingMessage(animated: false)
+                    self.collectionView.layoutIfNeeded()
+                    self.collectionView.contentOffset = CGPoint(x: 0, y: self.collectionView.contentSize.height - oldBottomOffset)
+                }
+            } else {
+                print("Load more message failure")
+            }
+        }
+        
     }
     
     private func addUser(user u: UserProfile) {
