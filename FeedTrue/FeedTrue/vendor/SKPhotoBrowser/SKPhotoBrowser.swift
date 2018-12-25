@@ -572,8 +572,14 @@ private extension SKPhotoBrowser {
         loveImageView = UIImageView(image: UIImage(named: "love"))
         loveImageView.frame = CGRect(x: w - 44, y: h - 300 - 64*2, width: 32, height: 32)
         
-        avatarImageView = UIImageView(image: UIImage.userImage())
-        avatarImageView.frame = CGRect(x: w - 44, y: h - 300 - 64*3, width: 32, height: 32)
+        avatarImageView = UIImageView(frame: CGRect(x: w - 44, y: h - 300 - 64*3, width: 32, height: 32))
+        
+        avatarImageView.round()
+        if let avatarURLString = feedInfo?.user?.avatar {
+            avatarImageView.loadImage(fromURL: URL(string: avatarURLString), defaultImage: UIImage.userImage())
+        } else {
+            avatarImageView = UIImageView(image: UIImage.userImage())
+        }
         
         view.addSubview(saveImageView)
         view.addSubview(commentImageView)

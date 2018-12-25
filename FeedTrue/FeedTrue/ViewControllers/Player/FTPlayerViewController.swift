@@ -16,6 +16,8 @@ class FTPlayerViewController: UIViewController {
     fileprivate var loveImageView: UIImageView!
     fileprivate var avatarImageView: UIImageView!
     
+    var feed: FTFeedInfo
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,21 +37,13 @@ class FTPlayerViewController: UIViewController {
                                      name: "",
                                      cover: nil,
                                      subtitle: nil)
-//        let token = FTKeyChainService.shared.accessToken()
-//        let header = ["Authorization": "JWT \(token ?? "")"]
-//
-//        let definition = BMPlayerResourceDefinition(url: videoURL,
-//                                                    definition: "definition",
-//                                                    options: header)
-//
-//        let asset = BMPlayerResource(name: "Video Name",
-//                                     definitions: [definition])
         player.setVideo(resource: asset)
         
         configureActionView()
     }
     
-    init(videoURL url: URL) {
+    init(feed f: FTFeedInfo, videoURL url: URL) {
+        feed = f
         videoURL = url
         super.init(nibName: "FTPlayerViewController", bundle: nil)
     }
@@ -66,16 +60,21 @@ class FTPlayerViewController: UIViewController {
         let w = self.view.frame.width
         let h = self.view.frame.height
         saveImageView = UIImageView(image: UIImage(named: "save"))
-        saveImageView.frame = CGRect(x: w - 44, y: h - 100, width: 32, height: 32)
+        saveImageView.frame = CGRect(x: w, y: h - 100, width: 32, height: 32)
         
         commentImageView = UIImageView(image: UIImage(named: "comment"))
-        commentImageView.frame = CGRect(x: w - 44, y: h - 100 - 64, width: 32, height: 32)
+        commentImageView.frame = CGRect(x: w, y: h - 100 - 64, width: 32, height: 32)
         
         loveImageView = UIImageView(image: UIImage(named: "love"))
-        loveImageView.frame = CGRect(x: w - 44, y: h - 100 - 64*2, width: 32, height: 32)
+        loveImageView.frame = CGRect(x: w, y: h - 100 - 64*2, width: 32, height: 32)
         
-        avatarImageView = UIImageView(image: UIImage.userImage())
-        avatarImageView.frame = CGRect(x: w - 44, y: h - 100 - 64*3, width: 32, height: 32)
+        avatarImageView = UIImageView(frame: CGRect(x: w, y: h - 100 - 64*3, width: 32, height: 32))
+        avatarImageView.round()
+        if let avatarURLString = feed.user?.avatar {
+            avatarImageView.loadImage(fromURL: URL(string: avatarURLString), defaultImage: UIImage.userImage())
+        } else {
+            avatarImageView = UIImageView(image: UIImage.userImage())
+        }
         
         view.addSubview(saveImageView)
         view.addSubview(commentImageView)
