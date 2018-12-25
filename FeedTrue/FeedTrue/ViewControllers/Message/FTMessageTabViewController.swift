@@ -149,14 +149,8 @@ extension FTMessageTabViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let chatDataSource = DemoChatDataSource(count: 0, pageSize: 0)
-//        let viewController = DemoChatViewController()
-        let contactVM = dataSource[indexPath.row] as! FTContactViewModel
-//        viewController.contact = contact.contact
-//        viewController.dataSource = chatDataSource
-//        self.navigationController?.pushViewController(viewController, animated: true)
+        let contactVM = dataSource[indexPath.section] as! FTContactViewModel
         let chatView = ChatViewController()
-        //chatView.messages = makeNormalConversation()
         chatView.contact = contactVM.contact
         self.navigationController?.pushViewController(chatView, animated: true)
     }

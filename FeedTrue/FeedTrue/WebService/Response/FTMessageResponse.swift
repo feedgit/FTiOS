@@ -32,6 +32,7 @@ class FTMessage: Mappable {
     var user: UserProfile?
     var room: Int?
     var text: String?
+    var createdAt: String?
     
     required init?(map: Map) {
         
@@ -42,6 +43,7 @@ class FTMessage: Mappable {
         user <- map["user"]
         room <- map["room"]
         text <- map["text"]
+        createdAt <- map["created_at"]
     }
     
     

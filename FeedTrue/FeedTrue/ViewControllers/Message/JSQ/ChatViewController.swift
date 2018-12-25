@@ -87,6 +87,12 @@ class ChatViewController: JSQMessagesViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationItem.title = NSLocalizedString(contact.user?.username ?? "Chat", comment: "")
+    }
+    
     func setupBackButton() {
 //        let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
 //        navigationItem.leftBarButtonItem = backButton
@@ -94,7 +100,6 @@ class ChatViewController: JSQMessagesViewController {
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
         backBarBtn.tintColor = .white
         self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("Chat", comment: "")
     }
     @objc func backButtonTapped() {
         //dismiss(animated: true, completion: nil)
@@ -112,7 +117,10 @@ class ChatViewController: JSQMessagesViewController {
                 for item in listMessages {
                     guard let senderID = item.user?.id else { continue }
                     guard let senderDisplauName = item.user?.last_name else { continue }
-                    let date = Date()
+                    var date = Date()
+                    if let createAt = item.createdAt {
+                        date = moment(createAt)?.date ?? Date()
+                    }
                     guard let text = item.text else { continue }
                     guard let msg = JSQMessage(senderId: "\(senderID)", senderDisplayName: senderDisplauName, date: date, text: text.htmlToString) else { continue }
                     self.messages.append(msg)
@@ -161,7 +169,10 @@ class ChatViewController: JSQMessagesViewController {
                 for item in listMessages {
                     guard let senderID = item.user?.id else { continue }
                     guard let senderDisplauName = item.user?.last_name else { continue }
-                    let date = Date()
+                    var date = Date()
+                    if let createAt = item.createdAt {
+                        date = moment(createAt)?.date ?? Date()
+                    }
                     guard let text = item.text else { continue }
                     guard let msg = JSQMessage(senderId: "\(senderID)", senderDisplayName: senderDisplauName, date: date, text: text.htmlToString) else { continue }
                     self.messages.insert(msg, at: 0)
