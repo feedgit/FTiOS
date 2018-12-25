@@ -29,12 +29,17 @@ open class SKPhotoBrowser: UIViewController {
     fileprivate(set) var paginationView: SKPaginationView!
     fileprivate var toolbar: SKToolbar!
     
-    fileprivate(set) var reactionViewController: FTDetailFileViewController!
-    fileprivate(set) var reactionView: UIView!
+    //fileprivate(set) var reactionViewController: FTDetailFileViewController!
+    //fileprivate(set) var reactionView: UIView!
 
     // actions
     fileprivate var activityViewController: UIActivityViewController!
     fileprivate var panGesture: UIPanGestureRecognizer?
+    
+    fileprivate var saveImageView: UIImageView!
+    fileprivate var commentImageView: UIImageView!
+    fileprivate var loveImageView: UIImageView!
+    fileprivate var avatarImageView: UIImageView!
 
     // for status check property
     fileprivate var isEndAnimationByToolBar: Bool = true
@@ -143,7 +148,7 @@ open class SKPhotoBrowser: UIViewController {
         // paging
         paginationView.updateFrame(frame: view.frame)
         pagingScrollView.updateFrame(view.bounds, currentPageIndex: currentPageIndex)
-        reactionViewController.updateFrame(frame: view.frame)
+        //reactionViewController.updateFrame(frame: view.frame)
         isPerformingLayout = false
     }
     
@@ -555,21 +560,74 @@ private extension SKPhotoBrowser {
     func configureActionView() {
         actionView = SKActionView(frame: view.frame, browser: self)
         view.addSubview(actionView)
+        
+        let w = self.view.frame.width
+        let h = self.view.frame.height
+        saveImageView = UIImageView(image: UIImage(named: "save"))
+        saveImageView.frame = CGRect(x: w - 44, y: h - 300, width: 32, height: 32)
+        
+        commentImageView = UIImageView(image: UIImage(named: "comment"))
+        commentImageView.frame = CGRect(x: w - 44, y: h - 300 - 64, width: 32, height: 32)
+        
+        loveImageView = UIImageView(image: UIImage(named: "love"))
+        loveImageView.frame = CGRect(x: w - 44, y: h - 300 - 64*2, width: 32, height: 32)
+        
+        avatarImageView = UIImageView(image: UIImage.userImage())
+        avatarImageView.frame = CGRect(x: w - 44, y: h - 300 - 64*3, width: 32, height: 32)
+        
+        view.addSubview(saveImageView)
+        view.addSubview(commentImageView)
+        view.addSubview(loveImageView)
+        view.addSubview(avatarImageView)
+        
+        let saveTap = UITapGestureRecognizer(target: self, action: #selector(savePressed(_:)))
+        saveImageView.isUserInteractionEnabled = true
+        saveImageView.addGestureRecognizer(saveTap)
+        
+        let commentTap = UITapGestureRecognizer(target: self, action: #selector(commentPressed(_:)))
+        commentImageView.isUserInteractionEnabled = true
+        commentImageView.addGestureRecognizer(commentTap)
+        
+        let loveTap = UITapGestureRecognizer(target: self, action: #selector(lovePressed(_:)))
+        loveImageView.isUserInteractionEnabled = true
+        loveImageView.addGestureRecognizer(loveTap)
+        
+        let avatarTap = UITapGestureRecognizer(target: self, action: #selector(avatarPressed(_:)))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(avatarTap)
+        
+        view.bringSubview(toFront: avatarImageView)
+    }
+    
+    @objc func savePressed(_ sender: Any) {
+        print(#function)
+    }
+    
+    @objc func commentPressed(_ sender: Any) {
+        print(#function)
+    }
+    
+    @objc func lovePressed(_ sender: Any) {
+        print(#function)
+    }
+    
+    @objc func avatarPressed(_ sender: Any) {
+        print(#function)
     }
 
     func configurePaginationView() {
         paginationView = SKPaginationView(frame: view.frame, browser: self)
         //view.addSubview(paginationView)
-        guard let feed = feedInfo else { return }
-        reactionViewController = FTDetailFileViewController(feedInfo: feed)
-        reactionView = reactionViewController.view
-        reactionViewController.willMove(toParentViewController: self)
-        self.addChildViewController(reactionViewController)
-        view.addSubview(reactionView)
-        reactionView.isUserInteractionEnabled = true
-        reactionView.clipsToBounds = true
-        reactionView.backgroundColor = .clear
-        reactionViewController.didMove(toParentViewController: self)
+//        guard let feed = feedInfo else { return }
+//        reactionViewController = FTDetailFileViewController(feedInfo: feed)
+//        reactionView = reactionViewController.view
+//        reactionViewController.willMove(toParentViewController: self)
+//        self.addChildViewController(reactionViewController)
+//        view.addSubview(reactionView)
+//        reactionView.isUserInteractionEnabled = true
+//        reactionView.clipsToBounds = true
+//        reactionView.backgroundColor = .clear
+//        reactionViewController.didMove(toParentViewController: self)
     }
     
     func configureToolbar() {
@@ -583,18 +641,30 @@ private extension SKPhotoBrowser {
         
         // scroll animation
         pagingScrollView.setControlsHidden(hidden: hidden)
-        reactionViewController.setControlsHidden(hidden: hidden)
+        //reactionViewController.setControlsHidden(hidden: hidden)
         
         // paging animation
         paginationView.setControlsHidden(hidden: hidden)
         
         // action view animation
         actionView.animate(hidden: hidden)
-        
+        setRightButtonsHidden(hidden: hidden)
         if !permanent {
             hideControlsAfterDelay()
         }
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    private func setRightButtonsHidden(hidden: Bool) {
+        let alpha: CGFloat = hidden ? 0.0 : 1.0
+        
+        UIView.animate(withDuration: 0.35,
+                       animations: { () -> Void in
+                        self.saveImageView.alpha = alpha
+                        self.commentImageView.alpha = alpha
+                        self.loveImageView.alpha = alpha
+                        self.avatarImageView.alpha = alpha
+        }, completion: nil)
     }
 }
 
