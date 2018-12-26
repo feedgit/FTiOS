@@ -32,6 +32,10 @@ extension UIColor {
     class func topLineBackGround(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor(hex: 0xf9f9f9).withAlphaComponent(alpha)
     }
+    
+    class func badgeTextColor(alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.white.withAlphaComponent(alpha)
+    }
 }
 
 extension UIColor {

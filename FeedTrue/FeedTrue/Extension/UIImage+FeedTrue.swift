@@ -55,4 +55,20 @@ extension UIImage {
         }
         
     }
+
+    class func saveImage() -> UIImage? {
+        return UIImage(named: "save")
+    }
+    
+    class func savedImage() -> UIImage? {
+        return UIImage(named: "saved")
+    }
+    
+    class func commentImage() -> UIImage? {
+        return UIImage(named: "comment")
+    }
+    
+    class func loveImage() -> UIImage? {
+        return UIImage(named: "love")
+    }
 }

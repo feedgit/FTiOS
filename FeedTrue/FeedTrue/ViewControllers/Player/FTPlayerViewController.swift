@@ -12,9 +12,11 @@ class FTPlayerViewController: UIViewController {
     @IBOutlet weak var player: BMCustomPlayer!
     var videoURL: URL
     fileprivate var saveImageView: UIImageView!
-    fileprivate var commentImageView: UIImageView!
-    fileprivate var loveImageView: UIImageView!
+    //fileprivate var commentImageView: UIImageView!
+    //fileprivate var loveImageView: UIImageView!
     fileprivate var avatarImageView: UIImageView!
+    fileprivate var loveButton: MIBadgeButton!
+    fileprivate var commentButton: MIBadgeButton!
     
     var feed: FTFeedInfo
     
@@ -59,16 +61,37 @@ class FTPlayerViewController: UIViewController {
     func configureActionView() {
         let w = self.view.frame.width
         let h = self.view.frame.height
-        saveImageView = UIImageView(image: UIImage(named: "save"))
-        saveImageView.frame = CGRect(x: w, y: h - 100, width: 32, height: 32)
+        let iconSize: CGFloat = 44
+        let y = h - 100
+        let x = w - 32
+        let padding: CGFloat = 64
         
-        commentImageView = UIImageView(image: UIImage(named: "comment"))
-        commentImageView.frame = CGRect(x: w, y: h - 100 - 64, width: 32, height: 32)
+        // saved
+        saveImageView = UIImageView(frame: CGRect(x: x, y: y, width: iconSize, height: iconSize))
+        if let saved = feed.saved, saved == true {
+            saveImageView.image = UIImage.savedImage()
+        } else {
+            saveImageView.image = UIImage.saveImage()
+        }
         
-        loveImageView = UIImageView(image: UIImage(named: "love"))
-        loveImageView.frame = CGRect(x: w, y: h - 100 - 64*2, width: 32, height: 32)
+        // comment
+        commentButton = MIBadgeButton(frame: CGRect(x: x, y: y - padding, width: iconSize, height: iconSize))
+        commentButton.setImage(UIImage.commentImage(), for: .normal)
+        commentButton.badgeString = "0"
+        commentButton.badgeBackgroundColor = UIColor.navigationBarColor()
+        commentButton.badgeTextColor = UIColor.badgeTextColor()
+        commentButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
         
-        avatarImageView = UIImageView(frame: CGRect(x: w, y: h - 100 - 64*3, width: 32, height: 32))
+        // love
+        loveButton = MIBadgeButton(frame: CGRect(x: x, y: y - padding*2, width: iconSize, height: iconSize))
+        loveButton.setImage(UIImage.loveImage(), for: .normal)
+        loveButton.badgeString = "0"
+        loveButton.badgeBackgroundColor = UIColor.navigationBarColor()
+        loveButton.badgeTextColor = UIColor.badgeTextColor()
+        loveButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
+        
+        // avatar
+        avatarImageView = UIImageView(frame: CGRect(x: x, y: y - padding*3, width: iconSize, height: iconSize))
         avatarImageView.round()
         if let avatarURLString = feed.user?.avatar {
             avatarImageView.loadImage(fromURL: URL(string: avatarURLString), defaultImage: UIImage.userImage())
@@ -77,22 +100,24 @@ class FTPlayerViewController: UIViewController {
         }
         
         view.addSubview(saveImageView)
-        view.addSubview(commentImageView)
-        view.addSubview(loveImageView)
+        view.addSubview(commentButton)
+        view.addSubview(loveButton)
         view.addSubview(avatarImageView)
         
         let saveTap = UITapGestureRecognizer(target: self, action: #selector(savePressed(_:)))
         saveImageView.isUserInteractionEnabled = true
         saveImageView.addGestureRecognizer(saveTap)
         
-        let commentTap = UITapGestureRecognizer(target: self, action: #selector(commentPressed(_:)))
-        commentImageView.isUserInteractionEnabled = true
-        commentImageView.addGestureRecognizer(commentTap)
+//        let commentTap = UITapGestureRecognizer(target: self, action: #selector(commentPressed(_:)))
+//        commentImageView.isUserInteractionEnabled = true
+//        commentImageView.addGestureRecognizer(commentTap)
+//
+//        let loveTap = UITapGestureRecognizer(target: self, action: #selector(lovePressed(_:)))
+//        loveImageView.isUserInteractionEnabled = true
+//        loveImageView.addGestureRecognizer(loveTap)
         
-        let loveTap = UITapGestureRecognizer(target: self, action: #selector(lovePressed(_:)))
-        loveImageView.isUserInteractionEnabled = true
-        loveImageView.addGestureRecognizer(loveTap)
-        
+        commentButton.addTarget(self, action: #selector(commentPressed(_:)), for: .touchUpInside)
+        loveButton.addTarget(self, action: #selector(lovePressed(_:)), for: .touchUpInside)
         let avatarTap = UITapGestureRecognizer(target: self, action: #selector(avatarPressed(_:)))
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(avatarTap)
@@ -121,8 +146,8 @@ class FTPlayerViewController: UIViewController {
         UIView.animate(withDuration: 0.35,
                        animations: { () -> Void in
                         self.saveImageView.alpha = alpha
-                        self.commentImageView.alpha = alpha
-                        self.loveImageView.alpha = alpha
+                        self.commentButton.alpha = alpha
+                        self.loveButton.alpha = alpha
                         self.avatarImageView.alpha = alpha
         }, completion: nil)
     }

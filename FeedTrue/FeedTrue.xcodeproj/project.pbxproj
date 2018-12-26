@@ -84,6 +84,7 @@
 		13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */; };
 		1337576121D0E2370028D6D5 /* FTMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337575F21D0E2370028D6D5 /* FTMenuItemTableViewCell.swift */; };
 		1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1337576021D0E2370028D6D5 /* FTMenuItemTableViewCell.xib */; };
+		133884AC21D37FD700D0192B /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133884AB21D37FD700D0192B /* MIBadgeButton.swift */; };
 		1338D81B21828D2E0065B552 /* FTPhotoSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */; };
 		1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */; };
 		1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */; };
@@ -459,6 +460,7 @@
 		13353B0A213FBDBE00D74C47 /* FTEditUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserResponse.swift; sourceTree = "<group>"; };
 		1337575F21D0E2370028D6D5 /* FTMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		1337576021D0E2370028D6D5 /* FTMenuItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTMenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		133884AB21D37FD700D0192B /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingViewModel.swift; sourceTree = "<group>"; };
 		1338D81C21828E290065B552 /* FTPhotoSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoSettingTableViewCell.swift; sourceTree = "<group>"; };
 		1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoSettingTableViewCell.xib; sourceTree = "<group>"; };
@@ -1047,6 +1049,14 @@
 				1342A92A2165EA3600EFD1E6 /* FTProfileEditGenderCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		133884AA21D37FC300D0192B /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				133884AB21D37FD700D0192B /* MIBadgeButton.swift */,
+			);
+			path = Badge;
 			sourceTree = "<group>";
 		};
 		1338D8202186F16E0065B552 /* PrivacyPicker */ = {
@@ -1895,6 +1905,7 @@
 		13BA9AE22149646400AD06D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				133884AA21D37FC300D0192B /* Badge */,
 				13922CAE21AFF61B003161D2 /* SwipeMenu */,
 				1391952A219C89FD0068F362 /* SKPhotoBrowser */,
 				1342A92D21661C0B00EFD1E6 /* DropdownMenu */,
@@ -2399,6 +2410,7 @@
 				1347747321686C8B0026B048 /* FTCommentTextCell.swift in Sources */,
 				1321983221C1165400C45273 /* FTMessageTabViewController.swift in Sources */,
 				134FF0FA2152B37300551771 /* PhotoCell.swift in Sources */,
+				133884AC21D37FD700D0192B /* MIBadgeButton.swift in Sources */,
 				1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */,
 				134FF1BA2159EF9B00551771 /* UIReactionControl.swift in Sources */,
 				13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */,

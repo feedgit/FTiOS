@@ -9,6 +9,7 @@
 import UIKit
 
 public let SKPHOTO_LOADING_DID_END_NOTIFICATION = "photoLoadingDidEndNotification"
+public let iconSize: CGFloat = 44
 
 // MARK: - SKPhotoBrowser
 open class SKPhotoBrowser: UIViewController {
@@ -37,8 +38,8 @@ open class SKPhotoBrowser: UIViewController {
     fileprivate var panGesture: UIPanGestureRecognizer?
     
     fileprivate var saveImageView: UIImageView!
-    fileprivate var commentImageView: UIImageView!
-    fileprivate var loveImageView: UIImageView!
+    fileprivate var commentButton: MIBadgeButton!
+    fileprivate var loveButton: MIBadgeButton!
     fileprivate var avatarImageView: UIImageView!
 
     // for status check property
@@ -563,16 +564,30 @@ private extension SKPhotoBrowser {
         
         let w = self.view.frame.width
         let h = self.view.frame.height
-        saveImageView = UIImageView(image: UIImage(named: "save"))
-        saveImageView.frame = CGRect(x: w - 44, y: h - 300, width: 32, height: 32)
+        let y: CGFloat = h - 300
+        let padding: CGFloat = 64
+        saveImageView = UIImageView(frame: CGRect(x: w - padding, y: y, width: iconSize, height: iconSize))
+        if let saved = feedInfo?.saved, saved == true {
+            saveImageView.image = UIImage.savedImage()
+        } else {
+            saveImageView.image = UIImage.saveImage()
+        }
         
-        commentImageView = UIImageView(image: UIImage(named: "comment"))
-        commentImageView.frame = CGRect(x: w - 44, y: h - 300 - 64, width: 32, height: 32)
+        commentButton = MIBadgeButton(frame: CGRect(x: w - padding, y: y - 64, width: iconSize, height: iconSize))
+        commentButton.setImage(UIImage.commentImage(), for: .normal)
+        commentButton.badgeString = "0"
+        commentButton.badgeBackgroundColor = UIColor.navigationBarColor()
+        commentButton.badgeTextColor = UIColor.badgeTextColor()
+        commentButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
         
-        loveImageView = UIImageView(image: UIImage(named: "love"))
-        loveImageView.frame = CGRect(x: w - 44, y: h - 300 - 64*2, width: 32, height: 32)
+        loveButton = MIBadgeButton(frame: CGRect(x: w - padding, y: y - 64*2, width: iconSize, height: iconSize))
+        loveButton.setImage(UIImage.loveImage(), for: .normal)
+        loveButton.badgeString = "0"
+        loveButton.badgeBackgroundColor = UIColor.navigationBarColor()
+        loveButton.badgeTextColor = UIColor.badgeTextColor()
+        loveButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
         
-        avatarImageView = UIImageView(frame: CGRect(x: w - 44, y: h - 300 - 64*3, width: 32, height: 32))
+        avatarImageView = UIImageView(frame: CGRect(x: w - padding, y: y - 64*3, width: iconSize, height: iconSize))
         
         avatarImageView.round()
         if let avatarURLString = feedInfo?.user?.avatar {
@@ -582,21 +597,17 @@ private extension SKPhotoBrowser {
         }
         
         view.addSubview(saveImageView)
-        view.addSubview(commentImageView)
-        view.addSubview(loveImageView)
+        view.addSubview(commentButton)
+        view.addSubview(loveButton)
         view.addSubview(avatarImageView)
         
         let saveTap = UITapGestureRecognizer(target: self, action: #selector(savePressed(_:)))
         saveImageView.isUserInteractionEnabled = true
         saveImageView.addGestureRecognizer(saveTap)
         
-        let commentTap = UITapGestureRecognizer(target: self, action: #selector(commentPressed(_:)))
-        commentImageView.isUserInteractionEnabled = true
-        commentImageView.addGestureRecognizer(commentTap)
+        commentButton.addTarget(self, action: #selector(commentPressed(_:)), for: .touchUpInside)
         
-        let loveTap = UITapGestureRecognizer(target: self, action: #selector(lovePressed(_:)))
-        loveImageView.isUserInteractionEnabled = true
-        loveImageView.addGestureRecognizer(loveTap)
+        loveButton.addTarget(self, action: #selector(lovePressed(_:)), for: .touchUpInside)
         
         let avatarTap = UITapGestureRecognizer(target: self, action: #selector(avatarPressed(_:)))
         avatarImageView.isUserInteractionEnabled = true
@@ -667,8 +678,8 @@ private extension SKPhotoBrowser {
         UIView.animate(withDuration: 0.35,
                        animations: { () -> Void in
                         self.saveImageView.alpha = alpha
-                        self.commentImageView.alpha = alpha
-                        self.loveImageView.alpha = alpha
+                        self.commentButton.alpha = alpha
+                        self.loveButton.alpha = alpha
                         self.avatarImageView.alpha = alpha
         }, completion: nil)
     }
