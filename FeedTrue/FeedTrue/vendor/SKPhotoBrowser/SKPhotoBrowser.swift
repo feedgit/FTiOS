@@ -575,7 +575,13 @@ private extension SKPhotoBrowser {
         
         commentButton = MIBadgeButton(frame: CGRect(x: w - padding, y: y - 64, width: iconSize, height: iconSize))
         commentButton.setImage(UIImage.commentImage(), for: .normal)
-        commentButton.badgeString = "0"
+        
+        if let feedCount = feedInfo?.comment?.comments?.count, feedCount > 0 {
+            commentButton.badgeString = "\(feedCount)"
+        } else {
+            commentButton.badgeString = nil
+        }
+        
         commentButton.badgeBackgroundColor = UIColor.navigationBarColor()
         commentButton.badgeTextColor = UIColor.badgeTextColor()
         commentButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
