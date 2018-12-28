@@ -91,7 +91,7 @@ class SignUpUsernameViewController: UIViewController {
             return
         }
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        WebService.default.validateUsername(username: text) {[weak self] (success, msg) in
+        WebService.share.validateUsername(username: text) {[weak self] (success, msg) in
             if success {
                 DispatchQueue.main.async {
                     if let v = self?.view {

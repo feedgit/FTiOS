@@ -16,10 +16,12 @@ class FTCoreService: NSObject, FTCoreServiceComponent {
     private(set) var registrationService: FTRegistrationService?
     private(set) var keychainService: FTKeyChainService?
     
+    static let share: FTCoreService = FTCoreService()
+    
     func setup() {
-        webService = WebService()
-        registrationService = FTRegistrationService()
-        keychainService = FTKeyChainService()
+        webService = WebService.share
+        registrationService = FTRegistrationService.share
+        keychainService = FTKeyChainService.shared
     }
     
     private var _hasAuthInKeychain: Bool = false

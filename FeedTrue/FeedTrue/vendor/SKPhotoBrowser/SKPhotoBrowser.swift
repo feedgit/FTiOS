@@ -645,6 +645,8 @@ private extension SKPhotoBrowser {
     
     @objc func commentPressed(_ sender: Any) {
         print(#function)
+        self.dismissPhotoBrowser(animated: false)
+        self.delegate?.didTouchCommentButton?(self)
     }
     
     @objc func lovePressed(_ sender: Any) {
@@ -674,7 +676,7 @@ private extension SKPhotoBrowser {
             loveButton.badgeString = "1"
         }
         
-        WebService.default.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
+        WebService.share.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
                 self.delegate?.feedDidChange?(self)
@@ -707,7 +709,7 @@ private extension SKPhotoBrowser {
             print("\(#function) ERROR")
         }
         
-        WebService.default.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        WebService.share.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
                 self.delegate?.feedDidChange?(self)
@@ -732,7 +734,7 @@ private extension SKPhotoBrowser {
         guard let ct_name = feedInfo?.ct_name else { return }
         feedInfo?.saved = true
         self.saveImageView.image = UIImage.savedImage()
-        WebService.default.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
                 self.delegate?.feedDidChange?(self)
@@ -751,7 +753,7 @@ private extension SKPhotoBrowser {
         guard let ct_name = feedInfo?.ct_name else { return }
         feedInfo?.saved = false
         self.saveImageView.image = UIImage.saveImage()
-        WebService.default.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
                 self.delegate?.feedDidChange?(self)

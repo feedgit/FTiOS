@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
         
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.label.text = NSLocalizedString("Login...", comment: "")
-        WebService.default.signIn(username: username, password: password) { [weak self] (success, signInResponse) in
+        WebService.share.signIn(username: username, password: password) { [weak self] (success, signInResponse) in
             NSLog("success: \(success ? "TRUE": "FALSE") response: \(signInResponse.debugDescription)")
             if success {
                 DispatchQueue.main.async {
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
             case .success(grantedPermissions: let grantedPermissions, declinedPermissions: let delinedPermissions, token: let accessToken):
                 self?.progressHub = MBProgressHUD.showAdded(to: (self?.view)!, animated: true)
                 self?.progressHub?.label.text = NSLocalizedString("Login FB", comment: "")
-                WebService.default.signInWithFacebook(token: accessToken.authenticationToken, completion: { (success, response) in
+                WebService.share.signInWithFacebook(token: accessToken.authenticationToken, completion: { (success, response) in
                     if success {
                         self?.coreService.registrationService?.storeAuthProfile(response?.token, profile: response?.user)
                         DispatchQueue.main.async {

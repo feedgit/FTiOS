@@ -245,7 +245,7 @@ extension FTVideoComposerViewController: VideoComposerCellDelegate {
     }
     
     func thumbnailTouchUpAction(cell: FTVideoComposerTableViewCell) {
-        let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService())
+        let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
         photoPicker.delegate = self
         photoPicker.type = .modify
         photoPicker.maxSelectableCount = 1

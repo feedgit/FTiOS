@@ -14,7 +14,7 @@ import SwiftyJSON
 
 class WebService: NSObject, FTCoreServiceComponent {
     
-    static let `default`: WebService = WebService()
+    static let share: WebService = WebService()
     let host = "https://api.feedtrue.com"
     
     func setup() {

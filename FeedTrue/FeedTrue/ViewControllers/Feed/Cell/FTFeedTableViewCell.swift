@@ -506,8 +506,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         //self.delegate?.feedCellDidTouchUpComment(cell: self)
         showDetail()
     }
-    
-    
 }
 
 extension FTFeedTableViewCell: UITextFieldDelegate {
@@ -755,10 +753,18 @@ extension FTFeedTableViewCell: SKPhotoBrowserDelegate {
         //guard let feedInfo = browser.feedInfo else { return }
         //renderCell(data: FTFeedViewModel(f: feedInfo))
     }
+    
+    func didTouchCommentButton(_ browser: SKPhotoBrowser) {
+        showDetail()
+    }
 }
 
 extension FTFeedTableViewCell: PlayerDelegate {
     func feedNeedReload(feed: FTFeedInfo) {
         //renderCell(data: FTFeedViewModel(f: feed))
+    }
+    
+    func feedCommentDidTouchUpAction(feed: FTFeedInfo) {
+        showDetail()
     }
 }

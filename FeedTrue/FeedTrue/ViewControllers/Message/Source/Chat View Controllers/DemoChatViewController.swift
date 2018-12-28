@@ -66,7 +66,7 @@ class DemoChatViewController: BaseChatViewController {
     }
     
     private func loadMessages() {
-        WebService.default.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
+        WebService.share.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
             if success {
                 print("Load message successful \(messageResponse.debugDescription)")
                 // add message

@@ -66,7 +66,7 @@ class FeedTrueRootViewController: UIViewController {
         customNavigationController?.topViewController?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
         
         // services
-        coreService = FTCoreService()
+        coreService = FTCoreService.share
         coreService.setup()
         coreService.start()
         

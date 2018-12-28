@@ -88,5 +88,7 @@ import UIKit
     @objc optional func captionViewForPhotoAtIndex(index: Int) -> SKCaptionView?
     
     @objc optional func feedDidChange(_ browser: SKPhotoBrowser)
+    
+    @objc optional func didTouchCommentButton(_ browser: SKPhotoBrowser)
 }
 

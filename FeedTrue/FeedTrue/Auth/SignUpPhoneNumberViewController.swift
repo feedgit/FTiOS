@@ -97,7 +97,7 @@ class SignUpPhoneNumberViewController: UIViewController {
         }
         
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        WebService.default.validatePhone(phone: phone, email: email) {[weak self] (success, dict) in
+        WebService.share.validatePhone(phone: phone, email: email) {[weak self] (success, dict) in
             if success {
                 DispatchQueue.main.async {
                     if let v = self?.view {

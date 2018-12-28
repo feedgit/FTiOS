@@ -135,7 +135,7 @@ class SignUpViewController: UIViewController {
         info.password = password
         info.gender = gender.rawValue
         progressHUB = MBProgressHUD.showAdded(to: self.view, animated: true)
-        WebService.default.signUp(info: info) {[weak self] (success, signUpResponse) in
+        WebService.share.signUp(info: info) {[weak self] (success, signUpResponse) in
             if success {
                 NSLog("\(#function) success: \(success), response: \(signUpResponse.debugDescription)")
                 DispatchQueue.main.async {

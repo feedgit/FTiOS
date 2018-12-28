@@ -107,7 +107,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     private func loadMessages() {
-        WebService.default.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
+        WebService.share.getMessage(roomID: contact.room?.id ?? 0) { (success, messageResponse) in
             if success {
                 print("Load message successful \(messageResponse.debugDescription)")
                 self.nextURL = messageResponse?.next
@@ -153,7 +153,7 @@ class ChatViewController: JSQMessagesViewController {
         self.collectionView.collectionViewLayout.springinessEnabled = false
         self.collectionView.pullToRefreshView.startAnimating()
         
-        WebService.default.getMoreMessage(nextString: url) { (success, messageResponse) in
+        WebService.share.getMoreMessage(nextString: url) { (success, messageResponse) in
             
             // stop animation
             DispatchQueue.main.async {
@@ -265,7 +265,7 @@ class ChatViewController: JSQMessagesViewController {
         guard let roomID = contact.room?.id else { return }
         //guard let userID = contact.user?.id else { return }
         //self.socket.emit("send-message", ["text": text, "room_id": roomID, "user_id": userID])
-        WebService.default.sendMessage(text: text, roomID: roomID) { (success, message) in
+        WebService.share.sendMessage(text: text, roomID: roomID) { (success, message) in
             if success {
                 NSLog("\(#function) success \(message.debugDescription)")
             } else {

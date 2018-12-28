@@ -10,6 +10,7 @@ import UIKit
 
 protocol PlayerDelegate {
     func feedNeedReload(feed: FTFeedInfo)
+    func feedCommentDidTouchUpAction(feed: FTFeedInfo)
 }
 
 class FTPlayerViewController: UIViewController {
@@ -146,6 +147,7 @@ class FTPlayerViewController: UIViewController {
     
     @objc func commentPressed(_ sender: Any) {
         print(#function)
+        self.delegate?.feedCommentDidTouchUpAction(feed: feed)
     }
     
     @objc func lovePressed(_ sender: Any) {
@@ -174,7 +176,7 @@ class FTPlayerViewController: UIViewController {
             loveButton.badgeString = "1"
         }
         
-        WebService.default.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
+        WebService.share.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
                 self.delegate?.feedNeedReload(feed: self.feed)
@@ -207,7 +209,7 @@ class FTPlayerViewController: UIViewController {
             print("\(#function) ERROR")
         }
         
-        WebService.default.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        WebService.share.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
                 self.delegate?.feedNeedReload(feed: self.feed)
@@ -232,7 +234,7 @@ class FTPlayerViewController: UIViewController {
         guard let ct_name = feed.ct_name else { return }
         feed.saved = true
         self.saveImageView.image = UIImage.savedImage()
-        WebService.default.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
                 self.delegate?.feedNeedReload(feed: self.feed)
@@ -251,7 +253,7 @@ class FTPlayerViewController: UIViewController {
         guard let ct_name = feed.ct_name else { return }
         feed.saved = false
         self.saveImageView.image = UIImage.saveImage()
-        WebService.default.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
                 self.delegate?.feedNeedReload(feed: self.feed)
