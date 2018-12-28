@@ -415,6 +415,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
+    func feedCellNeedReload(cell: FTFeedTableViewCell) {
+        self.loadFeed()
+    }
 }
 
 extension FTTabFeedViewController: VideoControllerDelegate {

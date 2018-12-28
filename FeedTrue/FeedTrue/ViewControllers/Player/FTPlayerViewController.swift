@@ -8,12 +8,16 @@
 
 import UIKit
 
+protocol PlayerDelegate {
+    func feedNeedReload(feed: FTFeedInfo)
+}
+
 class FTPlayerViewController: UIViewController {
+    var delegate: PlayerDelegate?
+    
     @IBOutlet weak var player: BMCustomPlayer!
     var videoURL: URL
     fileprivate var saveImageView: UIImageView!
-    //fileprivate var commentImageView: UIImageView!
-    //fileprivate var loveImageView: UIImageView!
     fileprivate var avatarImageView: UIImageView!
     fileprivate var loveButton: MIBadgeButton!
     fileprivate var commentButton: MIBadgeButton!
@@ -90,11 +94,21 @@ class FTPlayerViewController: UIViewController {
         // love
         loveButton = MIBadgeButton(frame: CGRect(x: x, y: y - padding*2, width: iconSize, height: iconSize))
         loveButton.setImage(UIImage.loveImage(), for: .normal)
-        loveButton.badgeString = "0"
         loveButton.badgeBackgroundColor = UIColor.navigationBarColor()
         loveButton.badgeTextColor = UIColor.badgeTextColor()
         loveButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
         
+        if feed.request_reacted != nil {
+            loveButton.setImage(UIImage.lovedImage(), for: .normal)
+        } else {
+            loveButton.setImage(UIImage.loveImage(), for: .normal)
+        }
+        
+        if let reactionsCount = feed.reactions?.count, reactionsCount > 0 {
+            loveButton.badgeString = "\(reactionsCount)"
+        } else {
+            loveButton.badgeString = nil
+        }
         // avatar
         avatarImageView = UIImageView(frame: CGRect(x: x, y: y - padding*3, width: iconSize, height: iconSize))
         avatarImageView.round()
@@ -113,14 +127,6 @@ class FTPlayerViewController: UIViewController {
         saveImageView.isUserInteractionEnabled = true
         saveImageView.addGestureRecognizer(saveTap)
         
-//        let commentTap = UITapGestureRecognizer(target: self, action: #selector(commentPressed(_:)))
-//        commentImageView.isUserInteractionEnabled = true
-//        commentImageView.addGestureRecognizer(commentTap)
-//
-//        let loveTap = UITapGestureRecognizer(target: self, action: #selector(lovePressed(_:)))
-//        loveImageView.isUserInteractionEnabled = true
-//        loveImageView.addGestureRecognizer(loveTap)
-        
         commentButton.addTarget(self, action: #selector(commentPressed(_:)), for: .touchUpInside)
         loveButton.addTarget(self, action: #selector(lovePressed(_:)), for: .touchUpInside)
         let avatarTap = UITapGestureRecognizer(target: self, action: #selector(avatarPressed(_:)))
@@ -130,6 +136,12 @@ class FTPlayerViewController: UIViewController {
     
     @objc func savePressed(_ sender: Any) {
         print(#function)
+        if let saved = feed.saved, saved == true {
+            // unsave
+            unSave()
+        } else {
+            save()
+        }
     }
     
     @objc func commentPressed(_ sender: Any) {
@@ -138,12 +150,120 @@ class FTPlayerViewController: UIViewController {
     
     @objc func lovePressed(_ sender: Any) {
         print(#function)
+        if feed.request_reacted != nil {
+            // LOVE, reactedCount += 1
+            removeReaction()
+        } else {
+            changeReactionType()
+        }
     }
     
     @objc func avatarPressed(_ sender: Any) {
         print(#function)
     }
     
+    func changeReactionType() {
+        guard let ct_id = feed.id else { return }
+        guard let ct_name = feed.ct_name else { return }
+        feed.request_reacted = "LOVE"
+        loveButton.setImage(UIImage.lovedImage(), for: .normal)
+        if let badgeString = loveButton.badgeString {
+            let badgeCount = Int(badgeString) ?? 0
+            loveButton.badgeString = "\(badgeCount + 1)"
+        } else {
+            loveButton.badgeString = "1"
+        }
+        
+        WebService.default.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+                self.delegate?.feedNeedReload(feed: self.feed)
+            } else {
+                NSLog("did react failed LOVE")
+                DispatchQueue.main.async {
+                    self.feed.request_reacted = nil
+                    self.loveButton.setImage(UIImage.loveImage(), for: .normal)
+                    if let badgeString = self.loveButton.badgeString {
+                        let badgeCount = Int(badgeString) ?? 0
+                        self.loveButton.badgeString = badgeCount > 1 ? "\(badgeCount - 1)" : nil
+                    } else {
+                        print("\(#function) ERROR")
+                    }
+                }
+            }
+        })
+    }
+    
+    func removeReaction() {
+        guard let ct_id = feed.id else { return }
+        guard let ct_name = feed.ct_name else { return }
+        guard let requestReacted = feed.request_reacted else { return }
+        feed.request_reacted = nil
+        loveButton.setImage(UIImage.loveImage(), for: .normal)
+        if let badgeString = loveButton.badgeString {
+            let badgeCount = Int(badgeString) ?? 0
+            self.loveButton.badgeString = badgeCount > 1 ? "\(badgeCount - 1)" : nil
+        } else {
+            print("\(#function) ERROR")
+        }
+        
+        WebService.default.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+                self.delegate?.feedNeedReload(feed: self.feed)
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    self.feed.request_reacted = requestReacted
+                    self.loveButton.setImage(UIImage.lovedImage(), for: .normal)
+                    if let badgeString = self.loveButton.badgeString {
+                        let badgeCount = Int(badgeString) ?? 0
+                        self.loveButton.badgeString = "\(badgeCount + 1)"
+                    } else {
+                        self.loveButton.badgeString = "1"
+                    }
+                }
+            }
+        })
+    }
+    
+    func save() {
+        guard let ct_id = feed.id else { return }
+        guard let ct_name = feed.ct_name else { return }
+        feed.saved = true
+        self.saveImageView.image = UIImage.savedImage()
+        WebService.default.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+                self.delegate?.feedNeedReload(feed: self.feed)
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    self.feed.saved = false
+                    self.saveImageView.image = UIImage.saveImage()
+                }
+            }
+        })
+    }
+    
+    func unSave() {
+        guard let ct_id = feed.id else { return }
+        guard let ct_name = feed.ct_name else { return }
+        feed.saved = false
+        self.saveImageView.image = UIImage.saveImage()
+        WebService.default.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+                self.delegate?.feedNeedReload(feed: self.feed)
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    self.feed.saved = true
+                    self.saveImageView.image = UIImage.savedImage()
+                }
+            }
+        })
+    }
     
     private func setRightButtonsHidden(hidden: Bool) {
         let alpha: CGFloat = hidden ? 0.0 : 1.0

@@ -71,4 +71,8 @@ extension UIImage {
     class func loveImage() -> UIImage? {
         return UIImage(named: "love")
     }
+    
+    class func lovedImage() -> UIImage? {
+        return UIImage(named: "like")
+    }
 }

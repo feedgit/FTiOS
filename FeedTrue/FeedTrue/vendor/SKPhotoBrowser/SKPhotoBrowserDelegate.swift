@@ -86,5 +86,7 @@ import UIKit
      - Parameter index: the index of the photo
      */
     @objc optional func captionViewForPhotoAtIndex(index: Int) -> SKCaptionView?
+    
+    @objc optional func feedDidChange(_ browser: SKPhotoBrowser)
 }
 

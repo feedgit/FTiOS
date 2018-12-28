@@ -587,8 +587,19 @@ private extension SKPhotoBrowser {
         commentButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
         
         loveButton = MIBadgeButton(frame: CGRect(x: w - padding, y: y - 64*2, width: iconSize, height: iconSize))
-        loveButton.setImage(UIImage.loveImage(), for: .normal)
-        loveButton.badgeString = "0"
+        
+        if feedInfo?.request_reacted != nil {
+            loveButton.setImage(UIImage.lovedImage(), for: .normal)
+        } else {
+            loveButton.setImage(UIImage.loveImage(), for: .normal)
+        }
+        
+        if let reactionsCount = feedInfo?.reactions?.count, reactionsCount > 0 {
+            loveButton.badgeString = "\(reactionsCount)"
+        } else {
+            loveButton.badgeString = nil
+        }
+        
         loveButton.badgeBackgroundColor = UIColor.navigationBarColor()
         loveButton.badgeTextColor = UIColor.badgeTextColor()
         loveButton.badgeEdgeInsets = UIEdgeInsets(top: 8, left: -8, bottom: 0, right: 0)
@@ -624,6 +635,12 @@ private extension SKPhotoBrowser {
     
     @objc func savePressed(_ sender: Any) {
         print(#function)
+        if let saved = feedInfo?.saved, saved == true {
+            // unsave
+            unSave()
+        } else {
+            save()
+        }
     }
     
     @objc func commentPressed(_ sender: Any) {
@@ -632,10 +649,120 @@ private extension SKPhotoBrowser {
     
     @objc func lovePressed(_ sender: Any) {
         print(#function)
+        guard let feed = feedInfo else { return }
+        if feed.request_reacted != nil {
+            // LOVE, reactedCount += 1
+            removeReaction()
+        } else {
+            changeReactionType()
+        }
     }
     
     @objc func avatarPressed(_ sender: Any) {
         print(#function)
+    }
+    
+    func changeReactionType() {
+        guard let ct_id = feedInfo?.id else { return }
+        guard let ct_name = feedInfo?.ct_name else { return }
+        feedInfo?.request_reacted = "LOVE"
+        loveButton.setImage(UIImage.lovedImage(), for: .normal)
+        if let badgeString = loveButton.badgeString {
+            let badgeCount = Int(badgeString) ?? 0
+            loveButton.badgeString = "\(badgeCount + 1)"
+        } else {
+            loveButton.badgeString = "1"
+        }
+        
+        WebService.default.react(ct_name: ct_name, ct_id: ct_id, react_type: FTReactionTypes.love.rawValue, completion: { (success, type) in
+            if success {
+                NSLog("did react successful \(type ?? "")")
+                self.delegate?.feedDidChange?(self)
+            } else {
+                NSLog("did react failed LOVE")
+                DispatchQueue.main.async {
+                    self.feedInfo?.request_reacted = nil
+                    self.loveButton.setImage(UIImage.loveImage(), for: .normal)
+                    if let badgeString = self.loveButton.badgeString {
+                        let badgeCount = Int(badgeString) ?? 0
+                        self.loveButton.badgeString = badgeCount > 1 ? "\(badgeCount - 1)" : nil
+                    } else {
+                        print("\(#function) ERROR")
+                    }
+                }
+            }
+        })
+    }
+    
+    func removeReaction() {
+        guard let ct_id = feedInfo?.id else { return }
+        guard let ct_name = feedInfo?.ct_name else { return }
+        guard let requestReacted = feedInfo?.request_reacted else { return }
+        feedInfo?.request_reacted = nil
+        loveButton.setImage(UIImage.loveImage(), for: .normal)
+        if let badgeString = loveButton.badgeString {
+            let badgeCount = Int(badgeString) ?? 0
+            self.loveButton.badgeString = badgeCount > 1 ? "\(badgeCount - 1)" : nil
+        } else {
+            print("\(#function) ERROR")
+        }
+        
+        WebService.default.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+            if success {
+                NSLog("Remove react successful")
+                self.delegate?.feedDidChange?(self)
+            } else {
+                NSLog("Remove react failed")
+                DispatchQueue.main.async {
+                    self.feedInfo?.request_reacted = requestReacted
+                    self.loveButton.setImage(UIImage.lovedImage(), for: .normal)
+                    if let badgeString = self.loveButton.badgeString {
+                        let badgeCount = Int(badgeString) ?? 0
+                        self.loveButton.badgeString = "\(badgeCount + 1)"
+                    } else {
+                        self.loveButton.badgeString = "1"
+                    }
+                }
+            }
+        })
+    }
+    
+    func save() {
+        guard let ct_id = feedInfo?.id else { return }
+        guard let ct_name = feedInfo?.ct_name else { return }
+        feedInfo?.saved = true
+        self.saveImageView.image = UIImage.savedImage()
+        WebService.default.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+                self.delegate?.feedDidChange?(self)
+            } else {
+                NSLog("Save Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    self.feedInfo?.saved = false
+                    self.saveImageView.image = UIImage.saveImage()
+                }
+            }
+        })
+    }
+    
+    func unSave() {
+        guard let ct_id = feedInfo?.id else { return }
+        guard let ct_name = feedInfo?.ct_name else { return }
+        feedInfo?.saved = false
+        self.saveImageView.image = UIImage.saveImage()
+        WebService.default.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+            if success {
+                NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
+                self.delegate?.feedDidChange?(self)
+            } else {
+                NSLog("Remove saved Feed failed ct_name: \(ct_name) ct_id: \(ct_id)")
+                DispatchQueue.main.async {
+                    self.feedInfo?.saved = true
+                    self.saveImageView.image = UIImage.savedImage()
+                }
+            }
+        })
     }
 
     func configurePaginationView() {

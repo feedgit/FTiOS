@@ -23,6 +23,7 @@ import SwiftMoment
     func feedCellDidUnSave(cell: FTFeedTableViewCell)
     func feedCellDidTouchUpComment(cell: FTFeedTableViewCell)
     func feedCellShowDetail(cell: FTFeedTableViewCell)
+    func feedCellNeedReload(cell: FTFeedTableViewCell)
 }
 
 public enum FTReactionTypes: String {
@@ -578,6 +579,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             guard let videoURL = photo.url else { return }
             guard let url = URL(string: videoURL) else { return }
             let playerVC = FTPlayerViewController(feed: feed, videoURL: url)
+            playerVC.delegate = self
             if let topVC = UIApplication.topViewController() {
                 topVC.navigationController?.pushViewController(playerVC, animated: true)
             }
@@ -589,6 +591,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: skPhotos, animatedFromView: cell)
         browser.feedInfo = feed
         browser.initializePageIndex(indexPath.row)
+        browser.delegate = self
         if let topVC = UIApplication.topViewController() {
             topVC.present(browser, animated: false, completion: nil)
         }
@@ -744,5 +747,18 @@ extension FTFeedTableViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let content = datasource[indexPath.row]
         return content.cellHeight()
+    }
+}
+
+extension FTFeedTableViewCell: SKPhotoBrowserDelegate {
+    func feedDidChange(_ browser: SKPhotoBrowser) {
+        //guard let feedInfo = browser.feedInfo else { return }
+        //renderCell(data: FTFeedViewModel(f: feedInfo))
+    }
+}
+
+extension FTFeedTableViewCell: PlayerDelegate {
+    func feedNeedReload(feed: FTFeedInfo) {
+        //renderCell(data: FTFeedViewModel(f: feed))
     }
 }
