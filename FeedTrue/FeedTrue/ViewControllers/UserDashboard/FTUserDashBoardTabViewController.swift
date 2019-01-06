@@ -78,7 +78,11 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         dataSource.append([follow])
         
         // section 2: menu
-        let saved = FTUserDashBoardMenuViewModel(title: "Saved", icon: UIImage(named: "saved")!)
+        let explore = FTUserDashBoardMenuViewModel(title: "Explore", icon: UIImage(named: "feed_selected")!)
+        
+        let travel = FTUserDashBoardMenuViewModel(title: "Travel", icon: UIImage(named: "ic_travel")!)
+        
+        let chat = FTUserDashBoardMenuViewModel(title: "Chats", icon: UIImage(named: "ic_message_selected")!)
         
         let photo = FTUserDashBoardMenuViewModel(title: "Photos", icon: UIImage(named: "ic_photo")!)
         
@@ -86,19 +90,15 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         
         let blog = FTUserDashBoardMenuViewModel(title: "Blogs", icon: UIImage(named: "ic_blog")!)
         
-        let travel = FTUserDashBoardMenuViewModel(title: "Travel", icon: UIImage(named: "ic_travel")!)
-        
-        let wishlist = FTUserDashBoardMenuViewModel(title: "Wishlist", icon: UIImage(named: "ic_wishlist")!)
-        
-        let gift = FTUserDashBoardMenuViewModel(title: "Gifts", icon: UIImage(named: "ic_gift")!)
-        
         let miab = FTUserDashBoardMenuViewModel(title: "MIAB", icon: UIImage(named: "ic_miab")!)
         
         let store = FTUserDashBoardMenuViewModel(title: "My Store", icon: UIImage(named: "ic_my_store")!)
         
+        let saved = FTUserDashBoardMenuViewModel(title: "Saved", icon: UIImage(named: "saved")!)
+        
         let statistic = FTUserDashBoardMenuViewModel(title: "Statistics", icon: UIImage(named: "ic_statistic")!)
 
-        dataSource.append([saved, photo, video, blog, travel, wishlist, gift, miab, store, statistic])
+        dataSource.append([explore, travel, chat, photo, video, blog, miab, store, saved, statistic])
         
         // section 3: setting + logout
         let setting = FTUserDashBoardSettingViewModel(title: "Settings", icon: UIImage(named: "ic_setting")!)
