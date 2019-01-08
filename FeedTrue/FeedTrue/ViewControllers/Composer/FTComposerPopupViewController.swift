@@ -49,7 +49,7 @@ class FTComposerPopupViewController: UIViewController {
         let photo = ["title": "Photos", "image": "ic_photo"]
         let video = ["title": "Videos", "image": "ic_video"]
         let blog = ["title": "Blogs", "image": "ic_blog"]
-        let wishlist = ["title": "Wishlist", "image": "ic_wishlist"]
+        let wishlist = ["title": "Wishlist", "image": "ic_message_selected"]
         let travel = ["title": "Travel", "image": "ic_travel"]
         let miab = ["title": "MIAB", "image": "ic_miab"]
         let store = ["title": "My Store", "image": "ic_my_store"]

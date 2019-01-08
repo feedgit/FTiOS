@@ -2230,7 +2230,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -2315,7 +2315,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B61CB97070C21E542134104E /* [CP] Check Pods Manifest.lock */ = {
@@ -2779,7 +2779,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XD8YQZYAN5;
+				DEVELOPMENT_TEAM = H3DP348W8X;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2798,7 +2798,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XD8YQZYAN5;
+				DEVELOPMENT_TEAM = H3DP348W8X;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
