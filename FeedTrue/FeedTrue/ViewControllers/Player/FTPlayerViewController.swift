@@ -30,7 +30,7 @@ class FTPlayerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
-        backBarBtn.tintColor = .white
+        backBarBtn.tintColor = UIColor.navigationTitleTextColor()
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Player", comment: "")
         player.backBlock = { [unowned self] (isFullScreen) in

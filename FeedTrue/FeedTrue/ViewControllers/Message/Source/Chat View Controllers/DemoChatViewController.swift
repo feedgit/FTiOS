@@ -51,7 +51,7 @@ class DemoChatViewController: BaseChatViewController {
 
         self.title = contact.user?.last_name ?? "Chat"
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
-        backBarBtn.tintColor = .white
+        backBarBtn.tintColor = UIColor.navigationTitleTextColor()
         self.navigationItem.leftBarButtonItem = backBarBtn
         
         self.messagesSelector.delegate = self

@@ -98,7 +98,7 @@ class ChatViewController: JSQMessagesViewController {
 //        navigationItem.leftBarButtonItem = backButton
         
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(backButtonTapped))
-        backBarBtn.tintColor = .white
+        backBarBtn.tintColor = UIColor.navigationTitleTextColor()
         self.navigationItem.leftBarButtonItem = backBarBtn
     }
     @objc func backButtonTapped() {

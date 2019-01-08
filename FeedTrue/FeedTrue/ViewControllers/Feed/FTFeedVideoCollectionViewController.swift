@@ -40,7 +40,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         
         //backBarBtn = UIBarButtonItem(title: NSLocalizedString("Home", comment: ""), style: .plain, target: self, action: #selector(back(_:)))
         backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
-        backBarBtn.tintColor = .white
+        backBarBtn.tintColor = UIColor.navigationTitleTextColor()
         self.navigationItem.leftBarButtonItem = backBarBtn
         navigationItem.title = NSLocalizedString("Videos", comment: "")
         setUpRefreshControl()
