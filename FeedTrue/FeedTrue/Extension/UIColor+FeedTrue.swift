@@ -18,7 +18,11 @@ extension UIColor {
     }
     
     class func navigationBarColor(alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor(rgb: 0x2AB5DC).withAlphaComponent(alpha)
+        return UIColor.white.withAlphaComponent(alpha)
+    }
+    
+    class func navigationTitleTextColor(alpha: CGFloat = 1.0) -> UIColor {
+        return UIColor.black.withAlphaComponent(alpha)
     }
     
     class func backgroundColor(alpha: CGFloat = 1.0) -> UIColor {
