@@ -50,6 +50,7 @@ class FTAriticleTableViewCell: UITableViewCell, BECellRenderImpl {
         }
         
         reactionButton.reactionSelector?.feedbackDelegate = self
+        self.selectionStyle = .none
     }
     
     func renderCell(data: FTAriticleViewModel) {

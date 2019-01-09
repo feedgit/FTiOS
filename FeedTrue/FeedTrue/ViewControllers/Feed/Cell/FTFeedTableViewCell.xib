@@ -249,10 +249,10 @@
     </objects>
     <resources>
         <image name="1000x1000" width="150" height="150"/>
-        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
-        <image name="more_btn" width="23" height="7"/>
+        <image name="comment" width="32" height="32"/>
+        <image name="more_btn" width="32" height="32"/>
         <image name="privacy_follow" width="25.600000381469727" height="25.600000381469727"/>
-        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
-        <image name="share" width="35.200000762939453" height="35.200000762939453"/>
+        <image name="save" width="48" height="48"/>
+        <image name="share" width="32" height="32"/>
     </resources>
 </document>

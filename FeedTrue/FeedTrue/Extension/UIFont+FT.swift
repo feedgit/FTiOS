@@ -18,4 +18,8 @@ extension UIFont {
     static func swipeMenuFont(ofSize size: CGFloat) -> UIFont {
         return customFont(name: "HelveticaNeue", size: size)
     }
+    
+    static func ArticleTitleFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 22)
+    }
 }

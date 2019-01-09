@@ -143,4 +143,12 @@ struct FTHelpers {
         
         return newImage!
     }
+    
+    static func textViewHeigh(text: String, font: UIFont, width: CGFloat) -> CGFloat {
+        let calculationView = UITextView()
+        calculationView.font = font
+        calculationView.text = text
+        let size = calculationView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
+        return size.height
+    }
 }

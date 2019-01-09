@@ -135,6 +135,12 @@ extension FTArticlesViewController: UITableViewDelegate, UITableViewDataSource {
         let content = datasource[indexPath.row]
         return content.cellHeight()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let content = datasource[indexPath.row]
+        let articleVC = FTArticleDetailViewController(article: content.article)
+        self.navigationController?.pushViewController(articleVC, animated: true)
+    }
 }
 
 extension FTArticlesViewController: FTAticleCellDelegate {
