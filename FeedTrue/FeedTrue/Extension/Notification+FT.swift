@@ -17,4 +17,6 @@ extension Notification.Name {
     
     /// Posted when a "Show Login" is require
     public static let ShowLogin = Notification.Name("com.toanle.Show.Login")
+    
+    public static let SelectTabBarAtIndex = Notification.Name("com.toanle.Select.Tab.Bar.At.Index")
 }

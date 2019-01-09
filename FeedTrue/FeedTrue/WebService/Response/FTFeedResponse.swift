@@ -72,6 +72,7 @@ class FTFeedInfo: Mappable {
     var feeling: String?
     var hashtag: [String]?
     var saved: Bool?
+    var location: FTLocation?
     
     required init?(map: Map) {
         
@@ -96,6 +97,7 @@ class FTFeedInfo: Mappable {
         feeling <- map["feeling"]
         hashtag <- map["hashtag"]
         saved <- map["saved"]
+        location <- map["location"]
     }
 }
 
@@ -314,5 +316,22 @@ class FTCommentData: Mappable {
         reply_count <- map["reply_count"]
         replies <- map["replies"]
         reacts_count <- map["reacts_count"]
+    }
+}
+
+class FTLocation: Mappable {
+    
+    var id: Int?
+    var name: String?
+    var thumbnail: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        thumbnail <- map["thumbnail"]
     }
 }

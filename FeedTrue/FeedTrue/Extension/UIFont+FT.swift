@@ -22,4 +22,12 @@ extension UIFont {
     static func ArticleTitleFont() -> UIFont {
         return customFont(name: "HelveticaNeue-Bold", size: 22)
     }
+    
+    static func countLabelFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Italic", size: 15)
+    }
+    
+    static func navFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 25)
+    }
 }

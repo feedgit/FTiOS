@@ -213,6 +213,17 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
             return 0
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            // profile
+        } else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                // explorer
+                NotificationCenter.default.post(name: .SelectTabBarAtIndex, object: TabType.explore)
+            }
+        }
+    }
 }
 
 extension FTUserDashBoardTabViewController: UserDashBoardSettingDelegate {

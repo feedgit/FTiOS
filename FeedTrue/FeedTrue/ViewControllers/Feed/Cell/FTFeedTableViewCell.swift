@@ -155,7 +155,10 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else {
             self.dateLabel.text = nil
         }
-        self.contentLabel.text = feed.text?.htmlToString
+        var ct = feed.text?.htmlToString ?? ""
+        ct.append(contentsOf: "At: ")
+        ct.append(contentsOf: feed.location?.name ?? "")
+        self.contentLabel.text = ct
         
         let photoController = PhotosController(dataSourceType: .remote)
         photoController.collectionView?.isScrollEnabled = false

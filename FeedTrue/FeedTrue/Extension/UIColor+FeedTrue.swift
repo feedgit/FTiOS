@@ -40,6 +40,10 @@ extension UIColor {
     class func badgeTextColor(alpha: CGFloat = 1.0) -> UIColor {
         return UIColor.white.withAlphaComponent(alpha)
     }
+    
+    class func mainColor() -> UIColor {
+        return UIColor(hex: 0x62e1fb)
+    }
 }
 
 extension UIColor {

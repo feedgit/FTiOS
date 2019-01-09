@@ -68,6 +68,16 @@ class FTTabProfileViewController: FTTabViewController {
         // image pikcer
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        
+        setStyle()
+    }
+    
+    func setStyle() {
+        feedsLabel.font = UIFont.countLabelFont()
+        feedsLabel.textColor = UIColor.mainColor()
+        photoVideoLabel.font = UIFont.countLabelFont()
+        likedLabel.font = UIFont.countLabelFont()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
