@@ -10,7 +10,12 @@ import UIKit
 
 extension UIImageView {
     public func loadImage(fromURL: URL?, defaultImage: UIImage? = nil) {
-        FileProviderService.service.imageView(self, loadImage: fromURL, defaultImage: defaultImage)
+        if let url = fromURL?.absoluteString, url.contains(".gif") {
+            self.setGifFromURL(fromURL)
+        } else {
+            FileProviderService.service.imageView(self, loadImage: fromURL, defaultImage: defaultImage)
+            SwiftyGifManager.defaultManager.deleteImageView(self)
+        }
     }
     
     func round() {

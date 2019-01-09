@@ -374,6 +374,9 @@
 		13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D25811214299B300E84002 /* FTLoadingViewController.swift */; };
 		13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D25812214299B300E84002 /* FTLoadingViewController.xib */; };
 		13E94AA2216D1A1C00D2AF29 /* FTCommentReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */; };
+		13ED3D5F21E5A96700AB9245 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D5D21E5A96600AB9245 /* UIImageView+SwiftyGif.swift */; };
+		13ED3D6021E5A96700AB9245 /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D5E21E5A96600AB9245 /* UIImage+SwiftyGif.swift */; };
+		13ED3D6221E5A9D700AB9245 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D6121E5A9D700AB9245 /* SwiftyGifManager.swift */; };
 		13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */; };
 		13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
@@ -754,6 +757,9 @@
 		13D25811214299B300E84002 /* FTLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTLoadingViewController.swift; sourceTree = "<group>"; };
 		13D25812214299B300E84002 /* FTLoadingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTLoadingViewController.xib; sourceTree = "<group>"; };
 		13E94AA1216D1A1C00D2AF29 /* FTCommentReplies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCommentReplies.swift; sourceTree = "<group>"; };
+		13ED3D5D21E5A96600AB9245 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
+		13ED3D5E21E5A96600AB9245 /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
+		13ED3D6121E5A9D700AB9245 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGifManager.swift; sourceTree = "<group>"; };
 		13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPostInFeedViewController.swift; sourceTree = "<group>"; };
 		13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPostInFeedViewController.xib; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
@@ -1446,6 +1452,8 @@
 		13489DF2212FE77E00C72BD3 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				13ED3D5E21E5A96600AB9245 /* UIImage+SwiftyGif.swift */,
+				13ED3D5D21E5A96600AB9245 /* UIImageView+SwiftyGif.swift */,
 				13489DF3212FE7AC00C72BD3 /* UIImage+FeedTrue.swift */,
 				13A2C4B72134723D00C377C0 /* UIColor+FeedTrue.swift */,
 				13D25808214271B200E84002 /* UIButton+FeedTrue.swift */,
@@ -1462,6 +1470,7 @@
 		13489DF52134060400C72BD3 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				13ED3D6121E5A9D700AB9245 /* SwiftyGifManager.swift */,
 				13489DF62134062200C72BD3 /* FTValidation.swift */,
 				13D257FC2141324500E84002 /* FTAlertViewManager.swift */,
 				13BA9B24214B9D1E00AD06D7 /* FTHelpers.swift */,
@@ -2355,6 +2364,7 @@
 				13BA9B102149792200AD06D7 /* UploadTask.swift in Sources */,
 				1342A8DE21649FC500EFD1E6 /* Date+Extension.swift in Sources */,
 				1391955C219C8A220068F362 /* SKMesurement.swift in Sources */,
+				13ED3D6221E5A9D700AB9245 /* SwiftyGifManager.swift in Sources */,
 				1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */,
 				1342A90C21649FC500EFD1E6 /* TextField.swift in Sources */,
 				1321982321B7DD4B00C45273 /* FTNotificationTabViewController.swift in Sources */,
@@ -2396,6 +2406,7 @@
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */,
 				13922CB821AFF61B003161D2 /* TabItemView.swift in Sources */,
+				13ED3D5F21E5A96700AB9245 /* UIImageView+SwiftyGif.swift in Sources */,
 				13D25809214271B200E84002 /* UIButton+FeedTrue.swift in Sources */,
 				13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */,
 				13BA9B1A2149793500AD06D7 /* BEBaseViewController.swift in Sources */,
@@ -2555,6 +2566,7 @@
 				13813EFE21B792B900FB496D /* BMCustomPlayer.swift in Sources */,
 				134FF1B72159EF9B00551771 /* Configurable.swift in Sources */,
 				13919553219C8A220068F362 /* SKPaginationView.swift in Sources */,
+				13ED3D6021E5A96700AB9245 /* UIImage+SwiftyGif.swift in Sources */,
 				1342A8FB21649FC500EFD1E6 /* Address.swift in Sources */,
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,

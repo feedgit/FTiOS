@@ -75,11 +75,11 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.39.0):
+  - FBSDKCoreKit (4.39.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.39.0):
+  - FBSDKLoginKit (4.39.1):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.39.0):
+  - FBSDKShareKit (4.39.1):
     - FBSDKCoreKit
   - FLAnimatedImage (1.0.12)
   - JSQMessagesViewController (7.3.5):
@@ -197,9 +197,9 @@ SPEC CHECKSUMS:
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
-  FBSDKLoginKit: 30ba5039a2c53d65a75103889bc2deebdacd5a1f
-  FBSDKShareKit: 5a0021c30abb64df9eeba87351dd8a627874543b
+  FBSDKCoreKit: f442aa96179cc9b382bb4abeb7e340a47cca8f91
+  FBSDKLoginKit: c3079d9a4db27c492287b1eed7a4272b28cf8a59
+  FBSDKShareKit: 27d7b982e7b1f4638da2f2b1ab6eba5afc6b5888
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
@@ -222,6 +222,6 @@ SPEC CHECKSUMS:
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
   YKPhotoCircleCrop: 490de96b999aef44cea6d6dca8e0bc199a430e63
 
-PODFILE CHECKSUM: 859f77a620c4ca18b355a12bd5bfe0b65b75295b
+PODFILE CHECKSUM: 8ca73b3088ac6de4a52246432c1dd56db2e50c63
 
 COCOAPODS: 1.6.0.beta.2
