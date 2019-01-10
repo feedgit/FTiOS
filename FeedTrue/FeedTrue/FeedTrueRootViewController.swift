@@ -10,6 +10,14 @@ import UIKit
 import ESTabBarController_swift
 import MBProgressHUD
 
+public enum TabType: Int {
+    case dashboard = 0
+    case explore = 1
+    case notification = 2
+    case chat = 3
+    case search = 4
+}
+
 class FeedTrueRootViewController: UIViewController {
     
     private var customNavigationController: UINavigationController?
@@ -71,6 +79,7 @@ class FeedTrueRootViewController: UIViewController {
         coreService.start()
         
         NotificationCenter.default.addObserver(self, selector: #selector(showLogin), name: .ShowLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(selectAtIndex(notification:)), name: .SelectTabBarAtIndex, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -209,6 +218,13 @@ class FeedTrueRootViewController: UIViewController {
         signInVC.coreService = coreService
         signInVC.delegate = self
         self.navigationController?.present(signInVC, animated: true, completion: nil)
+    }
+    
+    @objc func selectAtIndex(notification: NSNotification) {
+        NSLog(notification.name.rawValue)
+        if let type = notification.object as? TabType {
+            self.feedtrueTabBarController.selectedIndex = type.rawValue
+        }
     }
     
     func loadDefaultData() {

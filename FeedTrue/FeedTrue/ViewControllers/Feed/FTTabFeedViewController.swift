@@ -66,10 +66,15 @@ class FTTabFeedViewController: FTTabViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.parent?.navigationItem.leftBarButtonItem = nil
-        self.parent?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
+        //self.parent?.navigationItem.leftBarButtonItem = nil
+        //self.parent?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
         let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_add")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addAction))
         self.parent?.navigationItem.rightBarButtonItem = addBarBtn
+        
+        let leftTitle = UIBarButtonItem(title: NSLocalizedString("FeedTrue", comment: ""), style: .plain, target: self, action: nil)
+        self.parent?.navigationItem.leftBarButtonItem = leftTitle
+        
+        self.parent?.navigationItem.title = nil
     }
     
     @objc func addAction() {

@@ -44,6 +44,10 @@ extension UIColor {
     class func usernameBlueColor() -> UIColor {
         return UIColor.blue
     }
+    
+    class func mainColor() -> UIColor {
+        return UIColor(hex: 0x62e1fb)
+    }
 }
 
 extension UIColor {

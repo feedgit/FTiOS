@@ -34,4 +34,12 @@ extension UIFont {
     static func contentFont() -> UIFont {
         return customFont(name: "HelveticaNeue", size: 18)
     }
+    
+    static func countLabelFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Italic", size: 15)
+    }
+    
+    static func navFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 25)
+    }
 }
