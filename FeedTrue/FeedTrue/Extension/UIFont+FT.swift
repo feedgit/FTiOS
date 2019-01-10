@@ -22,4 +22,16 @@ extension UIFont {
     static func ArticleTitleFont() -> UIFont {
         return customFont(name: "HelveticaNeue-Bold", size: 22)
     }
+    
+    static func TimestampFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Thin", size: 13)
+    }
+    
+    static func UserNameBlueFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 16)
+    }
+    
+    static func contentFont() -> UIFont {
+        return customFont(name: "HelveticaNeue", size: 18)
+    }
 }

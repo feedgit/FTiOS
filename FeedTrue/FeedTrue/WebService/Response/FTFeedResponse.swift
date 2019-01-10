@@ -220,7 +220,7 @@ class FTReactions: Mappable {
     
     func mapping(map: Map) {
         count <- map["count"]
-        data <- map["data"]
+        data <- map["results"]
     }
 }
 
@@ -234,7 +234,8 @@ class FTReactions: Mappable {
  */
 class FTReactData: Mappable {
     var user: FTReactUser?
-    var react_type = ""
+    var react_type: String?
+    var timestamp: String?
     
     required init?(map: Map) {
         
@@ -243,6 +244,7 @@ class FTReactData: Mappable {
     func mapping(map: Map) {
         user <- map["user"]
         react_type <- map["react_type"]
+        timestamp <- map["timestamp"]
     }
 }
 

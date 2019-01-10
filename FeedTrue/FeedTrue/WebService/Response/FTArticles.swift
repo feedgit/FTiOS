@@ -30,7 +30,7 @@ class FTArticles: Mappable {
 class FTArticleContent: Mappable {
     var id = -1
     var ct_name = ""
-    var uid = ""
+    var uid: String?
     var title = ""
     var description = ""
     var thumbnail = ""
@@ -42,6 +42,9 @@ class FTArticleContent: Mappable {
     var reactions: FTReactions?
     var request_reacted = ""
     var saved = false
+    var created_at: String?
+    var updated_at: String?
+    var content: String?
     
     required init?(map: Map) {
         
@@ -62,5 +65,8 @@ class FTArticleContent: Mappable {
         reactions <- map["reactions"]
         request_reacted <- map["request_reacted"]
         saved <- map["saved"]
+        created_at <- map["created_at"]
+        updated_at <- map["updated_at"]
+        content <- map["content"]
     }
 }

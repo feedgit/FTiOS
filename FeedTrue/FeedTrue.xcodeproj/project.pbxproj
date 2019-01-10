@@ -327,6 +327,15 @@
 		13A2C4D32137B59300C377C0 /* FTCoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D22137B59300C377C0 /* FTCoreService.swift */; };
 		13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */; };
 		13A2C4D72137B8C900C377C0 /* FTRegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */; };
+		13A379AA21E70E570095D410 /* UsernameLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379A821E70E570095D410 /* UsernameLabelTableViewCell.swift */; };
+		13A379AB21E70E570095D410 /* UsernameLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A379A921E70E570095D410 /* UsernameLabelTableViewCell.xib */; };
+		13A379AD21E70F370095D410 /* UsernameLabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379AC21E70F370095D410 /* UsernameLabelViewModel.swift */; };
+		13A379B021E713160095D410 /* ArticleContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379AE21E713160095D410 /* ArticleContentTableViewCell.swift */; };
+		13A379B121E713160095D410 /* ArticleContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A379AF21E713160095D410 /* ArticleContentTableViewCell.xib */; };
+		13A379B321E714230095D410 /* ArticleContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379B221E714230095D410 /* ArticleContentViewModel.swift */; };
+		13A379B621E7167B0095D410 /* ReactionsBottomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379B421E7167B0095D410 /* ReactionsBottomTableViewCell.swift */; };
+		13A379B721E7167B0095D410 /* ReactionsBottomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A379B521E7167B0095D410 /* ReactionsBottomTableViewCell.xib */; };
+		13A379B921E71A3C0095D410 /* ArticleReactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A379B821E71A3C0095D410 /* ArticleReactionViewModel.swift */; };
 		13B009002181B0C6000E7FA5 /* FTPhotoComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */; };
 		13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */; };
 		13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */; };
@@ -385,6 +394,9 @@
 		13ED3D7121E5FEE100AB9245 /* ArticleThumbnailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13ED3D6F21E5FEE000AB9245 /* ArticleThumbnailTableViewCell.xib */; };
 		13ED3D7321E5FFBA00AB9245 /* ArticelThumbnailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7221E5FFBA00AB9245 /* ArticelThumbnailViewModel.swift */; };
 		13ED3D7521E608EF00AB9245 /* ArticleTitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7421E608EF00AB9245 /* ArticleTitleViewModel.swift */; };
+		13ED3D7821E705A800AB9245 /* ArticleTimestampTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7621E705A800AB9245 /* ArticleTimestampTableViewCell.swift */; };
+		13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */; };
+		13ED3D7B21E7099000AB9245 /* TimestampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */; };
 		13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */; };
 		13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
@@ -718,6 +730,15 @@
 		13A2C4D22137B59300C377C0 /* FTCoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCoreService.swift; sourceTree = "<group>"; };
 		13A2C4D42137B76000C377C0 /* FTUserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDefaultService.swift; sourceTree = "<group>"; };
 		13A2C4D62137B8C900C377C0 /* FTRegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRegistrationService.swift; sourceTree = "<group>"; };
+		13A379A821E70E570095D410 /* UsernameLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabelTableViewCell.swift; sourceTree = "<group>"; };
+		13A379A921E70E570095D410 /* UsernameLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsernameLabelTableViewCell.xib; sourceTree = "<group>"; };
+		13A379AC21E70F370095D410 /* UsernameLabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameLabelViewModel.swift; sourceTree = "<group>"; };
+		13A379AE21E713160095D410 /* ArticleContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentTableViewCell.swift; sourceTree = "<group>"; };
+		13A379AF21E713160095D410 /* ArticleContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleContentTableViewCell.xib; sourceTree = "<group>"; };
+		13A379B221E714230095D410 /* ArticleContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleContentViewModel.swift; sourceTree = "<group>"; };
+		13A379B421E7167B0095D410 /* ReactionsBottomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionsBottomTableViewCell.swift; sourceTree = "<group>"; };
+		13A379B521E7167B0095D410 /* ReactionsBottomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReactionsBottomTableViewCell.xib; sourceTree = "<group>"; };
+		13A379B821E71A3C0095D410 /* ArticleReactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleReactionViewModel.swift; sourceTree = "<group>"; };
 		13B008FE2181B0C6000E7FA5 /* FTPhotoComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoComposerViewController.swift; sourceTree = "<group>"; };
 		13B008FF2181B0C6000E7FA5 /* FTPhotoComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoComposerViewController.xib; sourceTree = "<group>"; };
 		13B009032181C264000E7FA5 /* FTPhotoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoPickerViewController.swift; sourceTree = "<group>"; };
@@ -776,6 +797,9 @@
 		13ED3D6F21E5FEE000AB9245 /* ArticleThumbnailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleThumbnailTableViewCell.xib; sourceTree = "<group>"; };
 		13ED3D7221E5FFBA00AB9245 /* ArticelThumbnailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticelThumbnailViewModel.swift; sourceTree = "<group>"; };
 		13ED3D7421E608EF00AB9245 /* ArticleTitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTitleViewModel.swift; sourceTree = "<group>"; };
+		13ED3D7621E705A800AB9245 /* ArticleTimestampTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTimestampTableViewCell.swift; sourceTree = "<group>"; };
+		13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTimestampTableViewCell.xib; sourceTree = "<group>"; };
+		13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampViewModel.swift; sourceTree = "<group>"; };
 		13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPostInFeedViewController.swift; sourceTree = "<group>"; };
 		13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPostInFeedViewController.xib; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
@@ -2097,6 +2121,14 @@
 				13ED3D6B21E5FE6900AB9245 /* ArticleTitleTableViewCell.xib */,
 				13ED3D6E21E5FEE000AB9245 /* ArticleThumbnailTableViewCell.swift */,
 				13ED3D6F21E5FEE000AB9245 /* ArticleThumbnailTableViewCell.xib */,
+				13ED3D7621E705A800AB9245 /* ArticleTimestampTableViewCell.swift */,
+				13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */,
+				13A379A821E70E570095D410 /* UsernameLabelTableViewCell.swift */,
+				13A379A921E70E570095D410 /* UsernameLabelTableViewCell.xib */,
+				13A379AE21E713160095D410 /* ArticleContentTableViewCell.swift */,
+				13A379AF21E713160095D410 /* ArticleContentTableViewCell.xib */,
+				13A379B421E7167B0095D410 /* ReactionsBottomTableViewCell.swift */,
+				13A379B521E7167B0095D410 /* ReactionsBottomTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2106,6 +2138,10 @@
 			children = (
 				13ED3D7221E5FFBA00AB9245 /* ArticelThumbnailViewModel.swift */,
 				13ED3D7421E608EF00AB9245 /* ArticleTitleViewModel.swift */,
+				13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */,
+				13A379AC21E70F370095D410 /* UsernameLabelViewModel.swift */,
+				13A379B221E714230095D410 /* ArticleContentViewModel.swift */,
+				13A379B821E71A3C0095D410 /* ArticleReactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2206,6 +2242,7 @@
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
+				13A379AB21E70E570095D410 /* UsernameLabelTableViewCell.xib in Resources */,
 				1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
@@ -2214,6 +2251,8 @@
 				139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */,
 				13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
+				13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */,
+				13A379B721E7167B0095D410 /* ReactionsBottomTableViewCell.xib in Resources */,
 				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
@@ -2266,6 +2305,7 @@
 				1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */,
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
+				13A379B121E713160095D410 /* ArticleContentTableViewCell.xib in Resources */,
 				13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */,
 				132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
@@ -2404,6 +2444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1342A8E221649FC500EFD1E6 /* UIImage+Extensions.swift in Sources */,
+				13A379AD21E70F370095D410 /* UsernameLabelViewModel.swift in Sources */,
 				13066C2321C3AB1C003FB0C6 /* TimeSeparatorCollectionViewCell.swift in Sources */,
 				13066C1C21C3AB1C003FB0C6 /* DemoChatViewController.swift in Sources */,
 				13BA9B29214BC96900AD06D7 /* String+FeedTrue.swift in Sources */,
@@ -2427,11 +2468,13 @@
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
 				134FF11D215335D600551771 /* FTFeedViewModel.swift in Sources */,
+				13A379B321E714230095D410 /* ArticleContentViewModel.swift in Sources */,
 				1391954D219C8A220068F362 /* SKPhoto.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
 				13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */,
 				13066C1721C3AB1C003FB0C6 /* BaseMessagesSelector.swift in Sources */,
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
+				13A379B621E7167B0095D410 /* ReactionsBottomTableViewCell.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				13813F0F21B7C35800FB496D /* BMPlayerManager.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
@@ -2445,6 +2488,7 @@
 				13922CB921AFF61B003161D2 /* UIColorExtension.swift in Sources */,
 				1342A8FA21649FC500EFD1E6 /* Location.swift in Sources */,
 				13D25813214299B300E84002 /* FTLoadingViewController.swift in Sources */,
+				13A379AA21E70E570095D410 /* UsernameLabelTableViewCell.swift in Sources */,
 				134FF0FD2152B37300551771 /* Photo.swift in Sources */,
 				134FF1BB2159EF9B00551771 /* FacebookReactions.swift in Sources */,
 				1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */,
@@ -2508,6 +2552,7 @@
 				13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */,
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
+				13ED3D7821E705A800AB9245 /* ArticleTimestampTableViewCell.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */,
 				13919550219C8A220068F362 /* SKCacheable.swift in Sources */,
@@ -2532,12 +2577,14 @@
 				1342A8ED21649FC500EFD1E6 /* LocaleStore.swift in Sources */,
 				13919552219C8A220068F362 /* UIView+Radius.swift in Sources */,
 				13066C2721C3AB1C003FB0C6 /* DemoPhotoMessageHandler.swift in Sources */,
+				13A379B921E71A3C0095D410 /* ArticleReactionViewModel.swift in Sources */,
 				13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */,
 				13922CBE21AFF61B003161D2 /* UIViewExtension.swift in Sources */,
 				1342A90521649FC500EFD1E6 /* PhotoLayout.swift in Sources */,
 				13489DEB212ED7BA00C72BD3 /* SignUpInfo.swift in Sources */,
 				134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */,
 				13A2C4BC2135509D00C377C0 /* HomeViewController.swift in Sources */,
+				13ED3D7B21E7099000AB9245 /* TimestampViewModel.swift in Sources */,
 				133011C32190B67E00AB5FAB /* FTPhotosViewModel.swift in Sources */,
 				13030AB021C803CE00905211 /* FTWebSocketService.swift in Sources */,
 				1342A92B2165EA3600EFD1E6 /* FTProfileEditGenderCell.swift in Sources */,
@@ -2649,6 +2696,7 @@
 				13353AFC213A959500D74C47 /* FTEditProfileViewController.swift in Sources */,
 				1342A8F121649FC500EFD1E6 /* CurrencyCell.swift in Sources */,
 				134FF1C02159EF9B00551771 /* CAReactionSummaryLayer.swift in Sources */,
+				13A379B021E713160095D410 /* ArticleContentTableViewCell.swift in Sources */,
 				13489DE8212EC65100C72BD3 /* SignInResponse.swift in Sources */,
 				132C7B27217993BF00EE11AD /* FTAriticleViewModel.swift in Sources */,
 				1391954C219C8A220068F362 /* SKPhotoBrowser.swift in Sources */,
