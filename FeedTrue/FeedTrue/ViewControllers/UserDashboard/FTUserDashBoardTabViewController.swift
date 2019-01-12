@@ -221,6 +221,10 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
             if indexPath.row == 0 {
                 // explorer
                 NotificationCenter.default.post(name: .SelectTabBarAtIndex, object: TabType.explore)
+            } else if indexPath.row == 5 {
+                // show blog
+                let articleVC = FTArticlesViewController(coreService: rootViewController.coreService)
+                self.navigationController?.pushViewController(articleVC, animated: true)
             }
         }
     }
