@@ -151,21 +151,18 @@ class FTTabFeedViewController: FTTabViewController {
     
     // MARK: - Helpers
     private func setUpSegmentControl() {
-        segmentedControl.segmentStyle = .imageOnly
-        segmentedControl.insertSegment(withTitle: "Feed", image: UIImage(named: "feed_unselected"), at: 0)
-        segmentedControl.insertSegment(withTitle: "Photos", image: UIImage(named: "photos_unselected"), at: 1)
-        segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 2)
-        segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 3)
-        segmentedControl.insertSegment(withTitle: "Music", image: #imageLiteral(resourceName: "music"), at: 4)
-        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
+        segmentedControl.segmentStyle = .textOnly
+        segmentedControl.insertSegment(withTitle: "Following", image: nil, at: 0)
+        segmentedControl.insertSegment(withTitle: "Hot", image: nil, at: 1)
+        segmentedControl.insertSegment(withTitle: "Explore", image: nil, at: 2)
         segmentedControl.selectedSegmentIndex = 0
         
         //fixedWidthSwitch.isOn = false
         //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
         
-        let largerRedTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black]
-        let largerRedTextHighlightAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
-        let largerRedTextSelectAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
+        let largerRedTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.gray]
+        let largerRedTextHighlightAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.black]
+        let largerRedTextSelectAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.black]
         
         segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
         segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
@@ -188,14 +185,6 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
         print("Segment at index \(sender.selectedSegmentIndex)  selected")
-        switch sender.selectedSegmentIndex {
-        case 2: // video
-            let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
-            videoVC.delegate = self
-            self.navigationController?.pushViewController(videoVC, animated: true)
-        default:
-            break
-        }
     }
     
     @objc func feedTabTouchAction() {
@@ -212,11 +201,17 @@ class FTTabFeedViewController: FTTabViewController {
     
     // MARK: - Menu
     func setData() {
-        let plistPath = Bundle.main.path(forResource: "menuData", ofType: "plist")
-        let arrayAllMenu: Array<Any> = NSArray(contentsOfFile: plistPath!) as!  Array<Any>
-        for index in (0..<countItem) {
-            arrMenu.append(arrayAllMenu[index])
-        }
+            // section 2: menu
+//        let photo = ["title": "Photos", "image": "ic_photo"]
+//        let video = ["title": "Videos", "image": "ic_video"]
+//        let blog = ["title": "Blogs", "image": "ic_blog"]
+        arrMenu = []
+        
+//        let plistPath = Bundle.main.path(forResource: "menuData", ofType: "plist")
+//        let arrayAllMenu: Array<Any> = NSArray(contentsOfFile: plistPath!) as!  Array<Any>
+//        for index in (0..<countItem) {
+//            arrMenu.append(arrayAllMenu[index])
+//        }
         tableView.reloadData()
     }
 
@@ -224,29 +219,29 @@ class FTTabFeedViewController: FTTabViewController {
 
 extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        }
+//        if section == 0 {
+//            return 1
+//        }
         
         return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FTMenuTableViewCell
-            cell.pgCtrlShouldHidden = pgCtrlShouldHidden
-            cell.pgCtrlNormalColor = pgCtrlNormalColor
-            cell.pgCtrlSelectedColor = pgCtrlSelectedColor
-            cell.countRow = countRow
-            cell.countCol = countCol
-            cell.arrMenu = arrMenu
-            cell.delegate = self
-            return cell
-        }
+//        if indexPath.section == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! FTMenuTableViewCell
+//            cell.pgCtrlShouldHidden = pgCtrlShouldHidden
+//            cell.pgCtrlNormalColor = pgCtrlNormalColor
+//            cell.pgCtrlSelectedColor = pgCtrlSelectedColor
+//            cell.countRow = countRow
+//            cell.countCol = countCol
+//            cell.arrMenu = arrMenu
+//            cell.delegate = self
+//            return cell
+//        }
         
         let content = dataSource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTFeedTableViewCell
@@ -256,14 +251,15 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 4
-            }
-            else {
-                return 50.0
-            }
-        }
+//        if indexPath.section == 0 {
+////            if indexPath.row == 0 {
+////                return (UIScreen.main.bounds.size.width / CGFloat(countCol)) * CGFloat(countRow) + 4
+////            }
+////            else {
+////                return 50.0
+////            }
+//            return 24
+//        }
         if indexPath.row > dataSource.count - 1 { return 0 }
         let content = dataSource[indexPath.row]
         return content.cellHeight()

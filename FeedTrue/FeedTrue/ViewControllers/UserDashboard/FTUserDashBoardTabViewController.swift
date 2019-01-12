@@ -225,6 +225,10 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
                 // show blog
                 let articleVC = FTArticlesViewController(coreService: rootViewController.coreService)
                 self.navigationController?.pushViewController(articleVC, animated: true)
+            } else if indexPath.row == 4 {
+                let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
+                //videoVC.delegate = self
+                self.navigationController?.pushViewController(videoVC, animated: true)
             }
         }
     }

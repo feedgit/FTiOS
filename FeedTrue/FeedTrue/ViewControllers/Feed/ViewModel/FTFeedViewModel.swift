@@ -22,7 +22,7 @@ class FTFeedViewModel: BECellDataSource {
     }
     
     func cellHeight() -> CGFloat {
-        return 180.0 + imageHeight + commentHeight
+        return 240.0 + imageHeight + commentHeight
         
     }
     
