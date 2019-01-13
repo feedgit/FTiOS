@@ -81,7 +81,7 @@
                         </constraints>
                     </view>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a comment ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="45o-42-AgG">
-                        <rect key="frame" x="32" y="524" width="725" height="0.0"/>
+                        <rect key="frame" x="32" y="505" width="725" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="height" id="Tou-q9-ww6"/>
                         </constraints>
@@ -90,7 +90,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wk-Tq-YYL">
-                        <rect key="frame" x="8" y="532" width="773" height="0.0"/>
+                        <rect key="frame" x="8" y="513" width="773" height="0.0"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MaR-WX-0Ma">
                                 <rect key="frame" x="0.0" y="0.0" width="773" height="0.0"/>
@@ -131,43 +131,29 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUU-IR-5R9">
-                        <rect key="frame" x="8" y="480" width="773" height="44"/>
+                        <rect key="frame" x="8" y="480" width="773" height="25"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6W-dH-OYj">
-                                <rect key="frame" x="696" y="0.0" width="44" height="44"/>
-                                <state key="normal" image="comment"/>
-                                <connections>
-                                    <action selector="commentTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ci3-mY-cqh"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32G-Ax-Mom">
-                                <rect key="frame" x="8" y="0.0" width="32" height="44"/>
+                                <rect key="frame" x="8" y="0.0" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="aqo-1s-ZMG"/>
+                                    <constraint firstAttribute="width" constant="25" id="aqo-1s-ZMG"/>
                                 </constraints>
                                 <state key="normal" image="share"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-an-6Dv">
-                                <rect key="frame" x="48" y="0.0" width="32" height="44"/>
-                                <state key="normal" image="save"/>
-                                <connections>
-                                    <action selector="savedTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Be-ZN-aqw"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzf-7G-Yi5">
-                                <rect key="frame" x="740" y="13" width="25" height="18"/>
+                                <rect key="frame" x="740" y="3.5" width="25" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkJ-zb-W0j">
-                                <rect key="frame" x="678" y="13" width="10" height="18"/>
+                                <rect key="frame" x="697" y="3.5" width="10" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYi-Cj-sHG" customClass="ReactionButton" customModule="FeedTrue" customModuleProvider="target">
-                                <rect key="frame" x="634" y="0.0" width="44" height="44"/>
+                                <rect key="frame" x="672" y="0.0" width="25" height="25"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="AYi-Cj-sHG" secondAttribute="height" id="p8y-Ki-q7P"/>
@@ -176,6 +162,20 @@
                                     <action selector="reactionButtonTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dWl-rj-CoV"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6W-dH-OYj">
+                                <rect key="frame" x="696" y="6" width="25" height="25"/>
+                                <state key="normal" image="comment"/>
+                                <connections>
+                                    <action selector="commentTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ci3-mY-cqh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PeB-an-6Dv">
+                                <rect key="frame" x="41" y="0.0" width="25" height="25"/>
+                                <state key="normal" image="save"/>
+                                <connections>
+                                    <action selector="savedTouchUpAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Be-ZN-aqw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="32G-Ax-Mom" firstAttribute="leading" secondItem="UUU-IR-5R9" secondAttribute="leading" constant="8" id="5Bg-H9-gyw"/>
@@ -184,7 +184,7 @@
                             <constraint firstAttribute="trailing" secondItem="Mzf-7G-Yi5" secondAttribute="trailing" constant="8" id="CWt-wI-Xbo"/>
                             <constraint firstItem="Mzf-7G-Yi5" firstAttribute="centerY" secondItem="UUU-IR-5R9" secondAttribute="centerY" id="Oz0-vg-App"/>
                             <constraint firstItem="PeB-an-6Dv" firstAttribute="centerY" secondItem="32G-Ax-Mom" secondAttribute="centerY" id="PLb-wa-62c"/>
-                            <constraint firstAttribute="height" constant="44" id="QvY-Hr-C6c"/>
+                            <constraint firstAttribute="height" constant="25" id="QvY-Hr-C6c"/>
                             <constraint firstItem="v6W-dH-OYj" firstAttribute="height" secondItem="AYi-Cj-sHG" secondAttribute="height" id="SLz-Go-pOM"/>
                             <constraint firstItem="AYi-Cj-sHG" firstAttribute="height" secondItem="UUU-IR-5R9" secondAttribute="height" id="SkY-Ga-J4l"/>
                             <constraint firstItem="v6W-dH-OYj" firstAttribute="leading" secondItem="UkJ-zb-W0j" secondAttribute="trailing" constant="8" id="UM1-VY-tpI"/>

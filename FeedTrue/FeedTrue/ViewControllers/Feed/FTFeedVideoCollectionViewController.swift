@@ -169,7 +169,8 @@ extension FTFeedVideoCollectionViewController: UICollectionViewDelegateFlowLayou
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
         
-        return CGSize(width: widthPerItem, height: widthPerItem + 64)
+        // Size of Video Cell (W, H: Width, Width * Golden Ratio 1.61803398875)
+        return CGSize(width: widthPerItem, height: widthPerItem*1.61803398875)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -216,36 +217,36 @@ extension FTFeedVideoCollectionViewController: VideoCellDelegate {
         })
     }
     
-    func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell) {
-        guard let ct_id = cell.contetnData?.id else { return }
-        guard let ct_name = cell.contetnData?.ct_name else { return }
-        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
-            if success {
-                NSLog("Remove react successful")
-            } else {
-                NSLog("Remove react failed")
-                DispatchQueue.main.async {
-                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
-                    self.collectionView?.reloadItems(at: [indexPath])
-                }
-            }
-        })
-    }
+//    func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell) {
+//        guard let ct_id = cell.contetnData?.id else { return }
+//        guard let ct_name = cell.contetnData?.ct_name else { return }
+//        coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+//            if success {
+//                NSLog("Remove react successful")
+//            } else {
+//                NSLog("Remove react failed")
+//                DispatchQueue.main.async {
+//                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+//                    self.collectionView?.reloadItems(at: [indexPath])
+//                }
+//            }
+//        })
+//    }
     
-    func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell) {
-        guard let ct_id = cell.contetnData?.id else { return }
-        guard let ct_name = cell.contetnData?.ct_name else { return }
-        let react_type = cell.ftReactionType.rawValue
-        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
-            if success {
-                NSLog("did react successful \(type ?? "")")
-            } else {
-                NSLog("did react failed \(react_type)")
-                DispatchQueue.main.async {
-                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
-                    self.collectionView?.reloadItems(at: [indexPath])
-                }
-            }
-        })
-    }
+//    func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell) {
+//        guard let ct_id = cell.contetnData?.id else { return }
+//        guard let ct_name = cell.contetnData?.ct_name else { return }
+//        let react_type = cell.ftReactionType.rawValue
+//        coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+//            if success {
+//                NSLog("did react successful \(type ?? "")")
+//            } else {
+//                NSLog("did react failed \(react_type)")
+//                DispatchQueue.main.async {
+//                    guard let indexPath = self.collectionView?.indexPath(for: cell) else { return }
+//                    self.collectionView?.reloadItems(at: [indexPath])
+//                }
+//            }
+//        })
+//    }
 }

@@ -28,11 +28,11 @@ extension UIImage {
     }
     
     class func userImage() -> UIImage? {
-        return UIImage(named: "ic_user")
+        return UIImage(named: "anonymous_avatar")
     }
     
     class func noImage() -> UIImage {
-        return UIImage(color: UIColor.videoVCBackGroundCollor())!//UIImage(named: "ic_noimage")!
+        return UIImage(color: UIColor.videoVCBackGroundCollor())!//UIImage(named: "anonymous_avatar")!
     }
     
     class func getThumbnailFrom(path: URL) -> UIImage? {
