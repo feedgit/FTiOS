@@ -17,7 +17,12 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTUserDashBoardViewModel
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var notificationBtn: UIButton!
+    
+    @IBAction func GoToNotification(_ sender: Any) {
+        // Go to notification View
+    }
     var contentData: FTUserProfileResponse?
     
     override func awakeFromNib() {
@@ -35,8 +40,7 @@ class FTUserDashBoardProfileCell: UITableViewCell, BECellRenderImpl {
             avatarImageView.image = UIImage.userImage()
         }
         
-        usernameLabel.text = contentData?.last_name ?? "Le Cong Toan"
-        statusLabel.text = NSLocalizedString("Status now", comment: "")
+        usernameLabel.text = contentData?.username ?? "feedtrue"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

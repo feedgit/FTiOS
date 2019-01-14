@@ -68,3 +68,4 @@ class FTFeedVideoContent: Mappable {
         saved <- map["saved"]
     }
 }
+

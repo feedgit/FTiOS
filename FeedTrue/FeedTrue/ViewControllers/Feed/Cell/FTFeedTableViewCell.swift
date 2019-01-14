@@ -99,7 +99,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         
         reactionButton.reactionSelector = ReactionSelector()
         reactionButton.config           = ReactionButtonConfig() {
-            $0.iconMarging      = 10
+            $0.iconMarging      = 0
             $0.spacing          = 0
             $0.font             = UIFont(name: "HelveticaNeue", size: 0)
             $0.neutralTintColor = UIColor(red: 0.47, green: 0.47, blue: 0.47, alpha: 1)

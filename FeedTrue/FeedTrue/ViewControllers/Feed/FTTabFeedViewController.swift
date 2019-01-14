@@ -71,7 +71,7 @@ class FTTabFeedViewController: FTTabViewController {
         let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_add")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addAction))
         self.parent?.navigationItem.rightBarButtonItem = addBarBtn
         
-        let leftTitle = UIBarButtonItem(title: NSLocalizedString("FeedTrue", comment: ""), style: .plain, target: self, action: nil)
+        let leftTitle = UIBarButtonItem(title: NSLocalizedString("Explore", comment: ""), style: .plain, target: self, action: nil)
         self.parent?.navigationItem.leftBarButtonItem = leftTitle
         
         self.parent?.navigationItem.title = nil
