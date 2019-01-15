@@ -49,7 +49,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     var skPhotos = [SKPhoto]()
     var viewerController: ViewerController?
     var optionsController: OptionsController?
-    let collectionViewWidth = UIScreen.main.bounds.width - 16 - 16
+    let collectionViewWidth = UIScreen.main.bounds.width
     var ftReactionType: FTReactionTypes = .love
     
     @IBOutlet weak var userAvatarImageview: UIImageView!
@@ -59,9 +59,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var moreBtn: UIButton!
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
+    //@IBOutlet weak var collectionView: UICollectionView!
+    //@IBOutlet weak var collectionLayoutConstraintHieght: NSLayoutConstraint!
     @IBOutlet weak var commentConstraintHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var photoSetView: UIView!
+    @IBOutlet weak var photoSetConstraint: NSLayoutConstraint!
     @IBOutlet weak var savedBtn: UIButton!
     
     @IBOutlet weak var commentTableConstraintHeight: NSLayoutConstraint!
@@ -83,12 +86,13 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         userAvatarImageview.round()
         
         // collection view to display photos/video
-        collectionView.showsHorizontalScrollIndicator = false
+        //collectionView.showsHorizontalScrollIndicator = false
         //collectionView.isScrollEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        //collectionView.dataSource = self
+        //collectionView.delegate = self
         
-        self.collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.Identifier)
+        
+        //iself.collectionView?.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.Identifier)
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(showUserProfile))
         userAvatarImageview.addGestureRecognizer(singleTap)
         userAvatarImageview.isUserInteractionEnabled = true
@@ -314,11 +318,12 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             }
         }
         
-        _ = collectionView
+        //_ = collectionView
         if photos.count == 0 {
-            collectionLayoutConstraintHieght.constant = 0
+            //collectionLayoutConstraintHieght.constant = 0
             data.imageHeight = 0
-        } else if photos.count == 1 {
+            photoSetConstraint.constant = 0
+        } /*else if photos.count == 1 {
             guard let photo = photos.first else { return }
             var h: CGFloat = collectionViewWidth * (2.0/3.0)
             if let width = photo.width, let height = photo.height {
@@ -339,9 +344,15 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else if photos.count > 1 {
             collectionLayoutConstraintHieght.constant = (collectionViewWidth / 3) * CGFloat(ceilf(Float(photos.count) / 3.0))
             data.imageHeight = collectionLayoutConstraintHieght.constant
-        }
+        }*/
+        //collectionLayoutConstraintHieght.constant = UIScreen.main.bounds.width
+        //self.setNeedsLayout()
+        //collectionView.reloadData()
+        
+        updatePhotoSetView()
+        data.imageHeight = photoSetView.frame.height
+        photoSetConstraint.constant = data.imageHeight
         self.setNeedsLayout()
-        collectionView.reloadData()
         
         // config react icon
         if let reactCount = feed.reactions?.count {
@@ -509,6 +520,144 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         //self.delegate?.feedCellDidTouchUpComment(cell: self)
         showDetail()
     }
+    
+    private func updatePhotoSetView() {
+        for v in photoSetView.subviews {
+            if v.isKind(of: UIImageView.self) {
+                v.removeFromSuperview()
+            }
+        }
+        
+        guard let photo = photos.first else {
+            photoSetView.frame = .zero
+            return
+        }
+//        var h: CGFloat = collectionViewWidth * (2.0/3.0)
+//        if let width = photo.width, let height = photo.height {
+//            NSLog("width: \(width), height: \(height)")
+//            if width > height {
+//                // limit width = screen width / 2
+//                h = CGFloat(height) * (2.0 * collectionViewWidth / 3.0) / CGFloat(width)
+//            } else if width < height {
+//                // limit height = 2/3 screen width
+//                h = collectionViewWidth
+//            } else {
+//                // width = height
+//                h = 2 * collectionViewWidth / 3.0
+//            }
+//        }
+//        collectionLayoutConstraintHieght.constant = h
+//        data.imageHeight = h
+        
+        let padding: CGFloat = 1
+        
+        if photos.count == 1 {
+            // Stretch full width screen, height auto
+            if let width = photo.width, let height = photo.height {
+                NSLog("width: \(width), height: \(height)")
+                let h = collectionViewWidth * CGFloat(height) / CGFloat(width)
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth - padding, height: h))
+                imageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
+                photoSetView.frame = imageView.frame
+                photoSetView.addSubview(imageView)
+            }
+        } else if photos.count == 2 {
+            if let width = photo.width, let height = photo.height {
+                NSLog("width: \(width), height: \(height)")
+                if height > width {
+                    // Each Photo have Width = 50% screen Width and Height = 100% screen Width
+                    let firstImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth/2 - padding, height: collectionViewWidth))
+                    firstImageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
+                    photoSetView.addSubview(firstImageView)
+                    
+                    let secondImageView = UIImageView(frame: CGRect(x: collectionViewWidth/2, y: 0, width: collectionViewWidth/2 - padding, height: collectionViewWidth))
+                    secondImageView.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+                    photoSetView.addSubview(secondImageView)
+                    photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+                } else {
+                    // Each Photo have Width = 100% screen and Height = 50% screen Width
+                    let firstImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth - padding, height: collectionViewWidth/2))
+                    firstImageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
+                    photoSetView.addSubview(firstImageView)
+                    
+                    let secondImageView = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth/2, width: collectionViewWidth, height: collectionViewWidth/2 - padding))
+                    secondImageView.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+                    photoSetView.addSubview(secondImageView)
+                    photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+                }
+            }
+        } else if photos.count == 3 {
+            if let width = photo.width, let height = photo.height {
+                NSLog("width: \(width), height: \(height)")
+                let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth*0.65 - padding, height: collectionViewWidth*0.5))
+                photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
+                photoSetView.addSubview(photo1)
+                
+                let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth*0.65, y: 0, width: collectionViewWidth*0.35, height: collectionViewWidth/4 - padding))
+                photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+                photoSetView.addSubview(photo2)
+                
+                let photo3 = UIImageView(frame: CGRect(x: collectionViewWidth*0.65, y: collectionViewWidth/4, width: collectionViewWidth*0.35, height: collectionViewWidth/4))
+                photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
+                photoSetView.addSubview(photo3)
+                
+                photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth/2)
+                
+            }
+        } else if photos.count == 4 {
+            //{ width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: 0, left: 0 }
+            let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
+            photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo1)
+            
+            //width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: 0, left: (0.5*W) + 1 + 'px'  }
+            let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth/2 + 1, y: 0, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
+            photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo2)
+            //{ width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: (0.5*W) + 1 + 'px', left: 0  }
+            
+            let photo3 = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth/2 + 1, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
+            photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo3)
+            //{ width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: (0.5*W) + 1 + 'px', left: (0.5*W) + 1 + 'px'  }
+            
+            let photo4 = UIImageView(frame: CGRect(x: collectionViewWidth/2 + 1, y: collectionViewWidth/2 + 1, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
+            photo4.loadImage(fromURL: URL(string: photos[3].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo4)
+            
+            photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+        } else if photos.count >= 5 {
+            
+            //return { width: 0.7*W - 1 + 'px', height: '60%', top: 0, left: 0 }
+            let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth*0.7 - 1, height: collectionViewWidth*0.6))
+            photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo1)
+            
+            //return { width: 0.3*W + 'px', height: '60%', top: 0, left: '70%'  }
+            let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth*0.7, y: 0, width: collectionViewWidth*0.3, height: collectionViewWidth*0.6))
+            photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo2)
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0  }
+            
+            let photo3 = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo3)
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.33*W + 1.5 +'px'  }
+            
+            let photo4 = UIImageView(frame: CGRect(x: collectionViewWidth*0.33 + 1.5, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo4.loadImage(fromURL: URL(string: photos[3].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo4)
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.66*W + 2.5 +'px'  }
+            
+            let photo5 = UIImageView(frame: CGRect(x: collectionViewWidth*0.66 + 2.5, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo5.loadImage(fromURL: URL(string: photos[4].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo5)
+            photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+        }
+    }
 }
 
 extension FTFeedTableViewCell: UITextFieldDelegate {
@@ -526,6 +675,9 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     
     
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if photos.count > 6 {
+            return 6
+        }
         return photos.count
     }
     
@@ -553,7 +705,7 @@ extension FTFeedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let collectionView = self.collectionView else { return }
+        //guard let collectionView = self.collectionView else { return }
         
 //        self.viewerController = ViewerController(initialIndexPath: indexPath, collectionView: collectionView)
 //        self.viewerController!.dataSource = self
@@ -608,9 +760,9 @@ extension FTFeedTableViewCell: ViewerControllerDataSource {
     
     func viewerController(_: ViewerController, viewableAt indexPath: IndexPath) -> Viewable {
         let viewable = self.photos[indexPath.row]
-        if let cell = self.collectionView?.cellForItem(at: indexPath) as? PhotoCell, let placeholder = cell.imageView.image {
-            viewable.placeholder = placeholder
-        }
+//        if let cell = self.collectionView?.cellForItem(at: indexPath) as? PhotoCell, let placeholder = cell.imageView.image {
+//            viewable.placeholder = placeholder
+//        }
         
         return viewable
     }
@@ -665,46 +817,6 @@ extension FTFeedTableViewCell: FooterViewDelegate {
     func footerView(_: FooterView, didPressDeleteButton _: UIButton) {
         FTAlertViewManager.defaultManager.showOkAlert(nil, message: NSLocalizedString("Delete pressed", comment: ""), handler: nil)
     }
-}
-
-extension FTFeedTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if photos.count == 0 {
-            return CGSize(width: 0, height: 0)
-        }
-        if photos.count == 1 {
-            let photo = photos[indexPath.row]
-            if let width = photo.width, let height = photo.height, photo.type == .image {
-                NSLog("\(#function) width: \(width), height: \(height)")
-                var h: CGFloat = collectionViewWidth / 2.0
-                var w: CGFloat = 2 * collectionViewWidth / 3.0
-                    NSLog("width: \(width), height: \(height)")
-                    if width > height {
-                        // limit width = screen width / 2
-                        h = CGFloat(height) * (2.0 * collectionViewWidth / 3.0) / CGFloat(width)
-                    } else if width < height {
-                        // limit height = 2/3 screen width
-                        h = collectionViewWidth
-                        w = CGFloat(width) * h / CGFloat(height)
-                    } else {
-                        // width = height
-                        h = 2 * collectionViewWidth / 3.0
-                        w = h
-                    }
-                NSLog("\(#function) size_w: \(w), size_h: \(h)")
-                return CGSize(width: w, height: h)
-            } else {
-                // video
-                let h = collectionViewWidth * 2.0 / 3.0
-                return CGSize(width: collectionViewWidth, height: h)
-            }
-            //return CGSize(width: collectionViewWidth / 2, height: collectionViewWidth / 2)
-        }
-        // 2+ photos
-        let h = collectionViewWidth / 3.0
-        return CGSize(width: h - 1, height: h - 1)
-    }
-    
 }
 
 extension FTFeedTableViewCell: ReactionFeedbackDelegate {
