@@ -550,7 +550,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
 //        data.imageHeight = h
         
         let padding: CGFloat = 1
-        
+        let contentMode: ContentMode = .scaleToFill
         if photos.count == 1 {
             // Stretch full width screen, height auto
             if let width = photo.width, let height = photo.height {
@@ -560,6 +560,11 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 imageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
                 photoSetView.frame = imageView.frame
                 photoSetView.addSubview(imageView)
+                imageView.tag = 0
+                imageView.contentMode = contentMode
+                imageView.isUserInteractionEnabled = true
+                imageView.clipsToBounds = true
+                imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             }
         } else if photos.count == 2 {
             if let width = photo.width, let height = photo.height {
@@ -569,21 +574,40 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                     let firstImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth/2 - padding, height: collectionViewWidth))
                     firstImageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
                     photoSetView.addSubview(firstImageView)
+                    firstImageView.tag = 0
+                    firstImageView.contentMode = contentMode
+                    firstImageView.isUserInteractionEnabled = true
+                    firstImageView.clipsToBounds = true
+                    firstImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                     
                     let secondImageView = UIImageView(frame: CGRect(x: collectionViewWidth/2, y: 0, width: collectionViewWidth/2 - padding, height: collectionViewWidth))
                     secondImageView.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
                     photoSetView.addSubview(secondImageView)
                     photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+                    secondImageView.tag = 1
+                    secondImageView.contentMode = contentMode
+                    secondImageView.isUserInteractionEnabled = true
+                    secondImageView.clipsToBounds = true
+                    secondImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                 } else {
                     // Each Photo have Width = 100% screen and Height = 50% screen Width
                     let firstImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth - padding, height: collectionViewWidth/2))
                     firstImageView.loadImage(fromURL: URL(string: photo.url ?? ""), defaultImage: UIImage.noImage())
                     photoSetView.addSubview(firstImageView)
+                    firstImageView.tag = 0
+                    firstImageView.contentMode = contentMode
+                    firstImageView.isUserInteractionEnabled = true
+                    firstImageView.clipsToBounds = true
+                    firstImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                     
                     let secondImageView = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth/2, width: collectionViewWidth, height: collectionViewWidth/2 - padding))
                     secondImageView.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
                     photoSetView.addSubview(secondImageView)
                     photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+                    secondImageView.tag = 1
+                    secondImageView.contentMode = contentMode
+                    secondImageView.clipsToBounds = true
+                    secondImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                 }
             }
         } else if photos.count == 3 {
@@ -592,16 +616,31 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth*0.65 - padding, height: collectionViewWidth*0.5))
                 photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
                 photoSetView.addSubview(photo1)
+                photo1.tag = 0
+                photo1.contentMode = contentMode
+                photo1.isUserInteractionEnabled = true
+                photo1.clipsToBounds = true
+                photo1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                 
                 let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth*0.65, y: 0, width: collectionViewWidth*0.35, height: collectionViewWidth/4 - padding))
                 photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
                 photoSetView.addSubview(photo2)
+                photo2.tag = 1
+                photo2.contentMode = contentMode
+                photo2.isUserInteractionEnabled = true
+                photo2.clipsToBounds = true
+                photo2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                 
                 let photo3 = UIImageView(frame: CGRect(x: collectionViewWidth*0.65, y: collectionViewWidth/4, width: collectionViewWidth*0.35, height: collectionViewWidth/4))
                 photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
                 photoSetView.addSubview(photo3)
                 
                 photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth/2)
+                photo3.tag = 2
+                photo3.contentMode = contentMode
+                photo3.isUserInteractionEnabled = true
+                photo3.clipsToBounds = true
+                photo3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
                 
             }
         } else if photos.count == 4 {
@@ -609,46 +648,86 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
             photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo1)
+            photo1.tag = 0
+            photo1.contentMode = contentMode
+            photo1.isUserInteractionEnabled = true
+            photo1.clipsToBounds = true
+            photo1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             //width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: 0, left: (0.5*W) + 1 + 'px'  }
             let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth/2 + 1, y: 0, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
             photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo2)
+            photo2.tag = 1
+            photo2.contentMode = contentMode
+            photo2.isUserInteractionEnabled = true
+            photo2.clipsToBounds = true
+            photo2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             //{ width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: (0.5*W) + 1 + 'px', left: 0  }
             
             let photo3 = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth/2 + 1, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
             photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo3)
+            photo3.tag = 2
+            photo3.contentMode = contentMode
+            photo3.isUserInteractionEnabled = true
+            photo3.clipsToBounds = true
+            photo3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             //{ width: (0.5*W) - 1 + 'px', height: (0.5*W) - 1 + 'px', top: (0.5*W) + 1 + 'px', left: (0.5*W) + 1 + 'px'  }
             
             let photo4 = UIImageView(frame: CGRect(x: collectionViewWidth/2 + 1, y: collectionViewWidth/2 + 1, width: collectionViewWidth/2 - 1, height: collectionViewWidth/2 - 1))
             photo4.loadImage(fromURL: URL(string: photos[3].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo4)
+            photo4.tag = 3
+            photo4.contentMode = contentMode
+            photo4.isUserInteractionEnabled = true
+            photo4.clipsToBounds = true
+            photo4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
-        } else if photos.count >= 5 {
+        } else if photos.count == 5 {
             
             //return { width: 0.7*W - 1 + 'px', height: '60%', top: 0, left: 0 }
             let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth*0.7 - 1, height: collectionViewWidth*0.6))
             photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo1)
+            photo1.tag = 0
+            photo1.contentMode = contentMode
+            photo1.isUserInteractionEnabled = true
+            photo1.clipsToBounds = true
+            photo1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             //return { width: 0.3*W + 'px', height: '60%', top: 0, left: '70%'  }
             let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth*0.7, y: 0, width: collectionViewWidth*0.3, height: collectionViewWidth*0.6))
             photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo2)
+            photo2.tag = 1
+            photo2.contentMode = contentMode
+            photo2.isUserInteractionEnabled = true
+            photo2.clipsToBounds = true
+            photo2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0  }
             
             let photo3 = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
             photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo3)
+            photo3.tag = 2
+            photo3.contentMode = contentMode
+            photo3.isUserInteractionEnabled = true
+            photo3.clipsToBounds = true
+            photo3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.33*W + 1.5 +'px'  }
             
             let photo4 = UIImageView(frame: CGRect(x: collectionViewWidth*0.33 + 1.5, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
             photo4.loadImage(fromURL: URL(string: photos[3].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo4)
+            photo4.tag = 3
+            photo4.contentMode = contentMode
+            photo4.isUserInteractionEnabled = true
+            photo4.clipsToBounds = true
+            photo4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
             
             //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.66*W + 2.5 +'px'  }
             
@@ -656,6 +735,90 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             photo5.loadImage(fromURL: URL(string: photos[4].url ?? ""), defaultImage: UIImage.noImage())
             photoSetView.addSubview(photo5)
             photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+            photo5.tag = 4
+            photo5.contentMode = contentMode
+            photo5.isUserInteractionEnabled = true
+            photo5.clipsToBounds = true
+            photo5.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+        } else if photos.count >= 6 {
+            
+            //return { width: 0.7*W - 1 + 'px', height: '60%', top: 0, left: 0 }
+            let photo1 = UIImageView(frame: CGRect(x: 0, y: 0, width: collectionViewWidth*0.7 - 1, height: collectionViewWidth*0.6))
+            photo1.loadImage(fromURL: URL(string: photos[0].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo1)
+            photo1.tag = 0
+            photo1.contentMode = contentMode
+            photo1.isUserInteractionEnabled = true
+            photo1.clipsToBounds = true
+            photo1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+            
+            //return { width: 0.3*W + 'px', height: '60%', top: 0, left: '70%'  }
+            let photo2 = UIImageView(frame: CGRect(x: collectionViewWidth*0.7, y: 0, width: collectionViewWidth*0.3, height: collectionViewWidth*0.3 - 1))
+            photo2.loadImage(fromURL: URL(string: photos[1].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo2)
+            photo2.tag = 1
+            photo2.contentMode = contentMode
+            photo2.isUserInteractionEnabled = true
+            photo2.clipsToBounds = true
+            photo2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+            
+            let photo3 = UIImageView(frame: CGRect(x: collectionViewWidth*0.7, y: collectionViewWidth*0.3, width: collectionViewWidth*0.3, height: collectionViewWidth*0.3 - 1))
+            photo3.loadImage(fromURL: URL(string: photos[2].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo3)
+            photo3.tag = 2
+            photo3.contentMode = contentMode
+            photo3.isUserInteractionEnabled = true
+            photo3.clipsToBounds = true
+            photo3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0  }
+            
+            let photo4 = UIImageView(frame: CGRect(x: 0, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo4.loadImage(fromURL: URL(string: photos[3].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo4)
+            photo4.tag = 3
+            photo4.contentMode = contentMode
+            photo4.isUserInteractionEnabled = true
+            photo4.clipsToBounds = true
+            photo4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.33*W + 1.5 +'px'  }
+            
+            let photo5 = UIImageView(frame: CGRect(x: collectionViewWidth*0.33 + 1.5, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo5.loadImage(fromURL: URL(string: photos[4].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo5)
+            photo5.tag = 4
+            photo5.contentMode = contentMode
+            photo5.isUserInteractionEnabled = true
+            photo5.clipsToBounds = true
+            photo5.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+            
+            //return { width: 0.33*W + 'px', height: 0.4*W - 1 +'px', top: 0.6*W + 1 +'px', left: 0.66*W + 2.5 +'px'  }
+            
+            let photo6 = UIImageView(frame: CGRect(x: collectionViewWidth*0.66 + 2.5, y: collectionViewWidth*0.6 + 1, width: collectionViewWidth*0.33, height: collectionViewWidth*0.4 - 1))
+            photo6.loadImage(fromURL: URL(string: photos[5].url ?? ""), defaultImage: UIImage.noImage())
+            photoSetView.addSubview(photo6)
+            photoSetView.frame = CGRect(x: 0, y: 0, width: collectionViewWidth, height: collectionViewWidth)
+            photo6.tag = 5
+            photo6.contentMode = contentMode
+            photo6.isUserInteractionEnabled = true
+            photo6.clipsToBounds = true
+            photo6.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didSelectPhoto(sender:))))
+        }
+    }
+    
+    @objc func didSelectPhoto(sender gesture: UITapGestureRecognizer) {
+        NSLog("\(#function) at index")
+        if let imageView = gesture.view as? UIImageView {
+            let originImage = imageView.image // some image for baseImage
+            
+            let browser = SKPhotoBrowser(originImage: originImage ?? UIImage(), photos: skPhotos, animatedFromView: self)
+            browser.feedInfo = feed
+            browser.initializePageIndex(imageView.tag)
+            browser.delegate = self
+            if let topVC = UIApplication.topViewController() {
+                topVC.present(browser, animated: false, completion: nil)
+            }
         }
     }
 }
