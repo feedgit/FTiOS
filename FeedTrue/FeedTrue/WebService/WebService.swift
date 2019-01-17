@@ -402,12 +402,14 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getFeed(page: Int?, per_page: Int?, username: String?, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
+    func getFeed(limit: Int?, offset: Int?, username: String?, ordering: String? = nil, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
         // https://api.feedtrue.com/api/v1/f/?page=1&per_page=1
         let params:[String: Any] = [
-            "page": page ?? 1,
-            "per_page" : per_page ?? 5
+            "limit": limit ?? 5,
+            "offset" : offset ?? 0,
+            "ordering" : ordering ?? HotFeedType.following.rawValue
         ]
+        
         var headers: HTTPHeaders?
         if let token = getToken() {
             headers = [
@@ -415,7 +417,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/f/"
+        let urlString = "\(host)/api/v1/feed/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)

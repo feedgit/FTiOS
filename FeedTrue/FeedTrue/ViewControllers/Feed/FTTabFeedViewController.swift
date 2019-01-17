@@ -13,6 +13,12 @@ import SwiftMoment
 import STPopup
 import MobileCoreServices
 
+public enum HotFeedType: String {
+    case following = "following"
+    case hottest = "hottest"
+    case explore = "explore"
+}
+
 class FTTabFeedViewController: FTTabViewController {
     
     @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
@@ -32,6 +38,7 @@ class FTTabFeedViewController: FTTabViewController {
     public var countRow:Int!
     public var countCol:Int!
     public var countItem:Int!
+    private var hotFeedType: HotFeedType = .following
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +102,7 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func loadFeed() {
         _ = self.view
-        self.rootViewController.coreService.webService?.getFeed(page: 1, per_page: 5, username: nil, completion: { [weak self] (success, response) in
+        WebService.share.getFeed(limit: 5, offset: 0, username: nil, ordering: hotFeedType.rawValue, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
@@ -185,6 +192,19 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
         print("Segment at index \(sender.selectedSegmentIndex)  selected")
+        switch sender.selectedSegmentIndex {
+        case 0:
+            hotFeedType = .following
+        case 1:
+            hotFeedType = .hottest
+        case 2:
+            hotFeedType = .explore
+        default:
+            break
+        }
+        dataSource.removeAll()
+        tableView.reloadData()
+        loadFeed()
     }
     
     @objc func feedTabTouchAction() {
@@ -196,6 +216,12 @@ class FTTabFeedViewController: FTTabViewController {
             let hub = MBProgressHUD.showAdded(to: self.view, animated: true)
             hub.hide(animated: true, afterDelay: 1)
             self.loadFeed()
+        }
+    }
+    
+    private func scrollToTop() {
+        if tableView.contentOffset.y > 0 {
+            tableView.setContentOffset(.zero, animated: false)
         }
     }
     
