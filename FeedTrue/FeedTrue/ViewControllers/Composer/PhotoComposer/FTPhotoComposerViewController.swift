@@ -58,6 +58,7 @@ class FTPhotoComposerViewController: UIViewController {
         tableView.delegate = self
         FTPhotoSettingViewModel.register(tableView: tableView)
         FTPhotosViewModel.register(tableView: tableView)
+        tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "FTMenuTableViewCell")
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
         tableView.layer.cornerRadius = 8
@@ -88,8 +89,7 @@ class FTPhotoComposerViewController: UIViewController {
                     self.datasource.append(vm)
                     let photos = FTPhotosViewModel()
                     photos.datasource = self.datasource
-                    self.settings[0] = photos
-                    
+                    self.settings[self.settings.count - 1 >= 0 ? self.settings.count - 1 : 0] = photos
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -106,7 +106,7 @@ class FTPhotoComposerViewController: UIViewController {
         self.datasource.append(vm)
         let photos = FTPhotosViewModel()
         photos.datasource = self.datasource
-        self.settings[0] = photos
+        self.settings[self.settings.count - 1 >= 0 ? self.settings.count - 1 : 0] = photos
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -162,7 +162,14 @@ class FTPhotoComposerViewController: UIViewController {
         
         let checkin = FTPhotoSettingViewModel(icon: "ic_checkin", title: NSLocalizedString("Check-In", comment: ""), markIcon: "")
         
-        settings = [photos, postFeed, privacy, checkin]
+        let photo = ["title": "Photos", "image": "ic_photo"]
+        let video = ["title": "Videos", "image": "ic_video"]
+        let blog = ["title": "Blogs", "image": "ic_blog"]
+        let travel = ["title": "Travel", "image": "ic_travel"]
+        let menu = FTMenuViewModel(arrMenu: [photo, video, blog, travel])
+        menu.countRow = 2
+        menu.countCol = 3
+        settings = [postFeed, privacy, checkin, menu, photos]
     }
 }
 
@@ -261,12 +268,12 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
+        if indexPath.row == 0 {
             // post in feed
             let postVC = FTPostInFeedViewController(postText: postText)
             postVC.delegate = self
             self.navigationController?.pushViewController(postVC, animated: true)
-        } else if indexPath.row == 2 {
+        } else if indexPath.row == 1 {
             // privacy
             let privacyVC = FTPrivacyPickerViewController()
             privacyVC.delegate = self

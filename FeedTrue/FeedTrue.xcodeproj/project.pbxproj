@@ -343,6 +343,7 @@
 		13B0090A2182191D000E7FA5 /* FTPhotoComposerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */; };
 		13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */; };
 		13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */; };
+		13B7D13E21F1F3B10001C542 /* FTMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B7D13D21F1F3B10001C542 /* FTMenuViewModel.swift */; };
 		13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */; };
 		13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */; };
 		13BA9A872147C35C00AD06D7 /* FTTabFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */; };
@@ -746,6 +747,7 @@
 		13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoComposerViewModel.swift; sourceTree = "<group>"; };
 		13B0090B21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		13B0090C21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPhotoCollectionViewCell.xib; sourceTree = "<group>"; };
+		13B7D13D21F1F3B10001C542 /* FTMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTMenuViewModel.swift; sourceTree = "<group>"; };
 		13BA9A7F2146793400AD06D7 /* FTFileProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFileProviderService.swift; sourceTree = "<group>"; };
 		13BA9A822147B37900AD06D7 /* FTFeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedResponse.swift; sourceTree = "<group>"; };
 		13BA9A852147C35C00AD06D7 /* FTTabFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabFeedViewController.swift; sourceTree = "<group>"; };
@@ -1036,6 +1038,7 @@
 			isa = PBXGroup;
 			children = (
 				132C7B022176632300EE11AD /* FTMenuTableViewCell.swift */,
+				13B7D13D21F1F3B10001C542 /* FTMenuViewModel.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2494,6 +2497,7 @@
 				1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */,
 				13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
+				13B7D13E21F1F3B10001C542 /* FTMenuViewModel.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				13066C2521C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift in Sources */,

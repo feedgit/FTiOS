@@ -13,7 +13,8 @@ import UIKit
     
 }
 
-class FTMenuTableViewCell: UITableViewCell,CoolSlidingMenuViewDelegate {
+class FTMenuTableViewCell: UITableViewCell,CoolSlidingMenuViewDelegate, BECellRenderImpl {
+    typealias CellData = FTMenuViewModel
     weak var delegate: FTMenuTableViewCellDelegate?
     public var countRow:Int! 
     public var countCol:Int!
@@ -34,6 +35,16 @@ class FTMenuTableViewCell: UITableViewCell,CoolSlidingMenuViewDelegate {
             
             slidingMenuView.arrMenu = arrMenu
         }
+    }
+    
+    func renderCell(data: FTMenuViewModel) {
+        pgCtrlShouldHidden = data.pgCtrlShouldHidden
+        pgCtrlNormalColor = data.pgCtrlNormalColor
+        pgCtrlSelectedColor = data.pgCtrlSelectedColor
+        countRow = data.countRow
+        countCol = data.countCol
+        
+        arrMenu = data.arrMenu
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
