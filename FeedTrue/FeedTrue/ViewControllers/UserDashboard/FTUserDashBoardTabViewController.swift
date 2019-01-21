@@ -84,11 +84,13 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         let chat = ["title": "Chats", "image": "ic_message_selected"]
         let photo = ["title": "Photos", "image": "ic_photo"]
         let video = ["title": "Videos", "image": "ic_video"]
+        
         let blog = ["title": "Blogs", "image": "ic_blog"]
         let miab = ["title": "MIAB", "image": "ic_miab"]
         let store = ["title": "My Store", "image": "ic_my_store"]
         let saved = ["title": "Saved", "image": "saved"]
         let statistic = ["title": "Statistics", "image": "ic_statistic"]
+        
         let setting = ["title": "Settings", "image": "ic_setting"]
         let logout = ["title": "Log out", "image": "ic_logout"]
         arrMenu = [explore, travel, chat, photo, video, blog, miab, store, saved, statistic, setting, logout]
@@ -358,6 +360,10 @@ extension FTUserDashBoardTabViewController: FTMenuTableViewCellDelegate {
             self.navigationController?.pushViewController(videoVC, animated: true)
         } else if index == 11 {
             logout()
+        } else if index == 10 {
+            // open setting
+            let settingVC = FTSettingsViewController()
+            self.navigationController?.pushViewController(settingVC, animated: true)
         }
 
     }

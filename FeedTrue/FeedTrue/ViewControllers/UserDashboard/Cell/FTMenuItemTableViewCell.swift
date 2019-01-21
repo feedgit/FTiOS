@@ -10,7 +10,7 @@ import UIKit
 
 class FTMenuItemTableViewCell: UITableViewCell, BECellRenderImpl {
 
-    typealias CellData = FTUserDashBoardMenuViewModel
+    typealias CellData = FTSettingViewModel
     @IBOutlet weak var imageViewIcon: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -26,8 +26,8 @@ class FTMenuItemTableViewCell: UITableViewCell, BECellRenderImpl {
         // Configure the view for the selected state
     }
     
-    func renderCell(data: FTUserDashBoardMenuViewModel) {
-        imageViewIcon.image = data.icon
+    func renderCell(data: FTSettingViewModel) {
+        imageViewIcon.image = UIImage(named: data.imageName)
         titleLabel.text = data.title
     }
     

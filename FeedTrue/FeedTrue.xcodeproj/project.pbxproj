@@ -401,6 +401,9 @@
 		13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */; };
 		13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
+		4D56C1F621F5F214002D528E /* FTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */; };
+		4D56C1F721F5F214002D528E /* FTSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */; };
+		4D56C1F921F5F51E002D528E /* FTSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D56C1F821F5F51E002D528E /* FTSettingViewModel.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -805,6 +808,9 @@
 		13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPostInFeedViewController.swift; sourceTree = "<group>"; };
 		13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPostInFeedViewController.xib; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
+		4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsViewController.swift; sourceTree = "<group>"; };
+		4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSettingsViewController.xib; sourceTree = "<group>"; };
+		4D56C1F821F5F51E002D528E /* FTSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingViewModel.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2042,6 +2048,7 @@
 		13D0C01A217DD3C200F745B9 /* UserDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				4D56C1F321F5F156002D528E /* Settings */,
 				13D0C022217DD68700F745B9 /* Cell */,
 				13D0C01F217DD42D00F745B9 /* ViewModel */,
 				13D0C01B217DD3ED00F745B9 /* FTUserDashBoardTabViewController.swift */,
@@ -2158,6 +2165,16 @@
 			path = PostInFeed;
 			sourceTree = "<group>";
 		};
+		4D56C1F321F5F156002D528E /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */,
+				4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */,
+				4D56C1F821F5F51E002D528E /* FTSettingViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		5B3456877620078CB0C3AD68 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2256,6 +2273,7 @@
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
 				13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */,
 				13A379B721E7167B0095D410 /* ReactionsBottomTableViewCell.xib in Resources */,
+				4D56C1F721F5F214002D528E /* FTSettingsViewController.xib in Resources */,
 				132C7B322179D95E00EE11AD /* FTArticlesViewController.xib in Resources */,
 				134FF1032152B37300551771 /* 3.jpg in Resources */,
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
@@ -2333,7 +2351,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -2418,7 +2436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B61CB97070C21E542134104E /* [CP] Check Pods Manifest.lock */ = {
@@ -2501,6 +2519,7 @@
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				13066C2521C3AB1C003FB0C6 /* DemoPhotoMessageViewModel.swift in Sources */,
+				4D56C1F921F5F51E002D528E /* FTSettingViewModel.swift in Sources */,
 				132C7AAF21706EC300EE11AD /* FTFeedVideo.swift in Sources */,
 				1342A93721661C0B00EFD1E6 /* DropdownMenu.swift in Sources */,
 				13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */,
@@ -2556,6 +2575,7 @@
 				13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */,
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,
 				130E05E4212D7D4900C3E21A /* ForgotPasswordViewController.swift in Sources */,
+				4D56C1F621F5F214002D528E /* FTSettingsViewController.swift in Sources */,
 				13ED3D7821E705A800AB9245 /* ArticleTimestampTableViewCell.swift in Sources */,
 				13BA9A802146793400AD06D7 /* FTFileProviderService.swift in Sources */,
 				132C7AAC216FA67E00EE11AD /* FTFeedVideoCollectionViewController.swift in Sources */,

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - Alamofire-SwiftyJSON (3.0.0):
     - Alamofire (~> 4.5)
     - SwiftyJSON (~> 4.0.0)
@@ -98,8 +98,8 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SnapKit (4.2.0)
-  - Socket.IO-Client-Swift (13.4.0):
-    - Starscream (~> 3.0.2)
+  - Socket.IO-Client-Swift (14.0.0):
+    - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
   - STPopup (1.8.3)
   - SVPullToRefresh (0.4.1)
@@ -182,7 +182,7 @@ SPEC REPOS:
     - YKPhotoCircleCrop
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -211,7 +211,7 @@ SPEC CHECKSUMS:
   ScrollableSegmentedControl: a90ae91537fd670a46b177301d035223e3bd149e
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  Socket.IO-Client-Swift: 2b2720f14c92ff1237ced09bc2f2da2022624fee
+  Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   STPopup: da1167250a01584af7bcccb898653185f223ec46
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
@@ -224,4 +224,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 859f77a620c4ca18b355a12bd5bfe0b65b75295b
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3
