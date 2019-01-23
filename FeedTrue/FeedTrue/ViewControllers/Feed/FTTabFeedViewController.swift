@@ -290,6 +290,15 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let content = dataSource[indexPath.row]
         return content.cellHeight()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let content = dataSource[indexPath.row]
+        let detailVC = FTFeedDetailViewController(feedInfo: content.feed, coreService: rootViewController.coreService)
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTFeedTableViewCell
+        detailVC.photos = cell.photos
+        detailVC.skPhotos = cell.skPhotos
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension FTTabFeedViewController: FTFeedCellDelegate {
