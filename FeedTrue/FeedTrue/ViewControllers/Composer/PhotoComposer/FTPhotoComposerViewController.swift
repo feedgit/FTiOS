@@ -268,16 +268,23 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             // post in feed
             let postVC = FTPostInFeedViewController(postText: postText)
             postVC.delegate = self
             self.navigationController?.pushViewController(postVC, animated: true)
-        } else if indexPath.row == 1 {
+        case 1:
             // privacy
             let privacyVC = FTPrivacyPickerViewController()
             privacyVC.delegate = self
             self.navigationController?.pushViewController(privacyVC, animated: true)
+        case 2:
+            // check'in
+            let checkinVC = FTCheckInViewController()
+            self.navigationController?.pushViewController(checkinVC, animated: true)
+        default:
+            break
         }
     }
     
@@ -313,8 +320,8 @@ extension FTPhotoComposerViewController: PrivacyPickerDelegate {
         }
         
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
-        settings[2] = privacyItem
-        let indexPath = IndexPath(row: 2, section: 0)
+        settings[1] = privacyItem
+        let indexPath = IndexPath(row: 1, section: 0)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
@@ -328,8 +335,8 @@ extension FTPhotoComposerViewController: PostInFeedDelegate {
         }
         
         let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
-        settings[1] = postFeed
-        let indexPath = IndexPath(row: 1, section: 0)
+        settings[0] = postFeed
+        let indexPath = IndexPath(row: 0, section: 0)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
