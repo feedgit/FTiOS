@@ -31,6 +31,9 @@ class FeedTrueRootViewController: UIViewController {
     var notificationVC: FTNotificationTabViewController!
     var feedVC: FTTabFeedViewController!
     
+    var messageItem: ESTabBarItem!
+    var notificationItem: ESTabBarItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -174,13 +177,13 @@ class FeedTrueRootViewController: UIViewController {
         feedItem.contentView?.highlightBackdropColor = UIColor.clear
         feedVC.tabBarItem = feedItem
 
-        let notificationItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "notification_unselected"), selectedImage: UIImage(named: "notification_selected"))
+        notificationItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "notification_unselected"), selectedImage: UIImage(named: "notification_selected"))
         notificationItem.contentView?.renderingMode = .alwaysOriginal
         notificationItem.contentView?.backdropColor = UIColor.clear
         notificationItem.contentView?.highlightBackdropColor = UIColor.clear
         notificationVC.tabBarItem = notificationItem
         
-        let messageItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_message"), selectedImage: UIImage(named: "ic_message_selected"))
+        messageItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_message"), selectedImage: UIImage(named: "ic_message_selected"))
         messageItem.contentView?.renderingMode = .alwaysOriginal
         messageItem.contentView?.backdropColor = .clear
         messageItem.contentView?.highlightBackdropColor = .clear
@@ -231,6 +234,8 @@ class FeedTrueRootViewController: UIViewController {
         self.feedtrueTabBarController?.selectedIndex = 0
         self.feedVC.loadFeed()
         self.profileVC.loadUserInfo()
+        self.userDashBoardVC.loadUserInfo()
+        self.getActivities()
     }
     
     func silentlyLogin() {
@@ -250,17 +255,10 @@ class FeedTrueRootViewController: UIViewController {
                     //                        self?.showLogin()
                     //                    }
                 }
-                self?.feedtrueTabBarController?.selectedIndex = 0
-                self?.feedVC.loadFeed()
-                self?.profileVC.loadUserInfo()
-                self?.userDashBoardVC.loadUserInfo()
+                self?.loadDefaultData()
             })
         } else {
-            //self.showLogin()
-            self.feedtrueTabBarController?.selectedIndex = 0
-            self.feedVC.loadFeed()
-            self.profileVC.loadUserInfo()
-            self.userDashBoardVC.loadUserInfo()
+            loadDefaultData()
         }
     }
     
@@ -276,6 +274,25 @@ class FeedTrueRootViewController: UIViewController {
     // MARK: - Helpers
     @objc func singleTapHandler(_ sender: Any?) {
         self.view.endEditing(true)
+    }
+    
+    fileprivate func getActivities() {
+        WebService.share.getActivities { (success, activitiesResponse) in
+            if success {
+                NSLog(activitiesResponse.debugDescription)
+                if let messageCount = activitiesResponse?.message_room_count, messageCount > 0 {
+                    self.messageItem.badgeValue = "\(messageCount)"
+                } else {
+                    self.messageItem.badgeValue = nil
+                }
+                
+                if let notificationCount = activitiesResponse?.notification_count, notificationCount > 0 {
+                    self.notificationItem.badgeValue = "\(notificationCount)"
+                } else {
+                    self.notificationItem.badgeValue = nil
+                }
+            }
+        }
     }
 
 }

@@ -253,6 +253,7 @@
 		1386394E21FADFA700E6B3EA /* LUT_M05.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394421FADFA700E6B3EA /* LUT_M05.png */; };
 		1386394F21FADFA700E6B3EA /* LUT_M08.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394521FADFA700E6B3EA /* LUT_M08.png */; };
 		1386395021FADFA700E6B3EA /* LUT_M09.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394621FADFA700E6B3EA /* LUT_M09.png */; };
+		1386395221FAFB2B00E6B3EA /* FTActivitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386395121FAFB2B00E6B3EA /* FTActivitiesResponse.swift */; };
 		13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */; };
 		13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */; };
 		13919547219C8A220068F362 /* SKActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952D219C8A1F0068F362 /* SKActionView.swift */; };
@@ -656,6 +657,7 @@
 		1386394421FADFA700E6B3EA /* LUT_M05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M05.png; sourceTree = "<group>"; };
 		1386394521FADFA700E6B3EA /* LUT_M08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M08.png; sourceTree = "<group>"; };
 		1386394621FADFA700E6B3EA /* LUT_M09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M09.png; sourceTree = "<group>"; };
+		1386395121FAFB2B00E6B3EA /* FTActivitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTActivitiesResponse.swift; sourceTree = "<group>"; };
 		1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPagingScrollView.swift; sourceTree = "<group>"; };
 		1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserDelegate.swift; sourceTree = "<group>"; };
 		1391952D219C8A1F0068F362 /* SKActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKActionView.swift; sourceTree = "<group>"; };
@@ -1396,6 +1398,7 @@
 				13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */,
 				1321982C21C1095A00C45273 /* FTContactResponse.swift */,
 				13030AB121CA40FD00905211 /* FTMessageResponse.swift */,
+				1386395121FAFB2B00E6B3EA /* FTActivitiesResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2644,6 +2647,7 @@
 				132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
+				1386395221FAFB2B00E6B3EA /* FTActivitiesResponse.swift in Sources */,
 				1391954B219C8A220068F362 /* UIApplication+UIWindow.swift in Sources */,
 				1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */,
 				13D0C029217DD9B700F745B9 /* FTUserDashBoardFollowCell.swift in Sources */,

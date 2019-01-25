@@ -1656,4 +1656,37 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    
+    func getActivities(completion: @escaping (Bool, FTActivitiesResponse?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "\(host)/api/v1/activities/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTActivitiesResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
 }
