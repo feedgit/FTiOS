@@ -86,6 +86,9 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.6.1)
   - NVActivityIndicatorView/Presenter (4.6.1)
   - ObjectMapper (3.4.2)
+  - PixelEditor (0.0.7):
+    - PixelEngine
+  - PixelEngine (0.0.7)
   - Reveal-SDK (20)
   - RichEditorView (5.0.0)
   - ScrollableSegmentedControl (1.4.0)
@@ -118,6 +121,8 @@ DEPENDENCIES:
   - JSQMessagesViewController
   - MBProgressHUD (~> 1.1.0)
   - NVActivityIndicatorView
+  - PixelEditor
+  - PixelEngine
   - Reveal-SDK
   - RichEditorView
   - ScrollableSegmentedControl
@@ -153,6 +158,8 @@ SPEC REPOS:
     - MBProgressHUD
     - NVActivityIndicatorView
     - ObjectMapper
+    - PixelEditor
+    - PixelEngine
     - Reveal-SDK
     - RichEditorView
     - ScrollableSegmentedControl
@@ -190,6 +197,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  PixelEditor: 57d3304f2e56e4e4bb125d8aa23ed3a51f7f290e
+  PixelEngine: 978643389e825652ba3f0dffc409889a0f5b33f3
   Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
   RichEditorView: 1bbb07b87ca2d479ac29a6877014b38b8df233ef
   ScrollableSegmentedControl: 56f7baa7f1d7e622e00abb9d6658856c2d52dd4b
@@ -205,6 +214,6 @@ SPEC CHECKSUMS:
   TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
 
-PODFILE CHECKSUM: 5d149ea7455d6af09bf683ba50a97215d715d94d
+PODFILE CHECKSUM: b2f3b8696cea0c27e26ab96abf9c12512e1eb198
 
 COCOAPODS: 1.6.0.beta.2

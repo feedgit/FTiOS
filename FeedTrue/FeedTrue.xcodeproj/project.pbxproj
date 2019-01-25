@@ -243,6 +243,16 @@
 		13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */; };
 		13813F2221B7D72800FB496D /* FTNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13813F2021B7D72800FB496D /* FTNotificationTableViewCell.swift */; };
 		13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13813F2121B7D72800FB496D /* FTNotificationTableViewCell.xib */; };
+		1386394721FADFA700E6B3EA /* LUT_M01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386393D21FADFA700E6B3EA /* LUT_M01.png */; };
+		1386394821FADFA700E6B3EA /* LUT_M02.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386393E21FADFA700E6B3EA /* LUT_M02.png */; };
+		1386394921FADFA700E6B3EA /* LUT_M03.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386393F21FADFA700E6B3EA /* LUT_M03.png */; };
+		1386394A21FADFA700E6B3EA /* LUT_M07.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394021FADFA700E6B3EA /* LUT_M07.png */; };
+		1386394B21FADFA700E6B3EA /* LUT_M06.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394121FADFA700E6B3EA /* LUT_M06.png */; };
+		1386394C21FADFA700E6B3EA /* LUT_M12.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394221FADFA700E6B3EA /* LUT_M12.png */; };
+		1386394D21FADFA700E6B3EA /* LUT_M11.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394321FADFA700E6B3EA /* LUT_M11.png */; };
+		1386394E21FADFA700E6B3EA /* LUT_M05.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394421FADFA700E6B3EA /* LUT_M05.png */; };
+		1386394F21FADFA700E6B3EA /* LUT_M08.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394521FADFA700E6B3EA /* LUT_M08.png */; };
+		1386395021FADFA700E6B3EA /* LUT_M09.png in Resources */ = {isa = PBXBuildFile; fileRef = 1386394621FADFA700E6B3EA /* LUT_M09.png */; };
 		13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */; };
 		13919546219C8A220068F362 /* SKPhotoBrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */; };
 		13919547219C8A220068F362 /* SKActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391952D219C8A1F0068F362 /* SKActionView.swift */; };
@@ -636,6 +646,16 @@
 		13813F1B21B7D33A00FB496D /* FTNotificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationResponse.swift; sourceTree = "<group>"; };
 		13813F2021B7D72800FB496D /* FTNotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNotificationTableViewCell.swift; sourceTree = "<group>"; };
 		13813F2121B7D72800FB496D /* FTNotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTNotificationTableViewCell.xib; sourceTree = "<group>"; };
+		1386393D21FADFA700E6B3EA /* LUT_M01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M01.png; sourceTree = "<group>"; };
+		1386393E21FADFA700E6B3EA /* LUT_M02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M02.png; sourceTree = "<group>"; };
+		1386393F21FADFA700E6B3EA /* LUT_M03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M03.png; sourceTree = "<group>"; };
+		1386394021FADFA700E6B3EA /* LUT_M07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M07.png; sourceTree = "<group>"; };
+		1386394121FADFA700E6B3EA /* LUT_M06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M06.png; sourceTree = "<group>"; };
+		1386394221FADFA700E6B3EA /* LUT_M12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M12.png; sourceTree = "<group>"; };
+		1386394321FADFA700E6B3EA /* LUT_M11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M11.png; sourceTree = "<group>"; };
+		1386394421FADFA700E6B3EA /* LUT_M05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M05.png; sourceTree = "<group>"; };
+		1386394521FADFA700E6B3EA /* LUT_M08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M08.png; sourceTree = "<group>"; };
+		1386394621FADFA700E6B3EA /* LUT_M09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LUT_M09.png; sourceTree = "<group>"; };
 		1391952B219C8A1E0068F362 /* SKPagingScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPagingScrollView.swift; sourceTree = "<group>"; };
 		1391952C219C8A1E0068F362 /* SKPhotoBrowserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhotoBrowserDelegate.swift; sourceTree = "<group>"; };
 		1391952D219C8A1F0068F362 /* SKActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKActionView.swift; sourceTree = "<group>"; };
@@ -825,6 +845,7 @@
 		130E05CD212D6A3200C3E21A /* FeedTrue */ = {
 			isa = PBXGroup;
 			children = (
+				1386393C21FADFA700E6B3EA /* Filters */,
 				132C7AD4217662DC00EE11AD /* Menu */,
 				13BA9AE22149646400AD06D7 /* vendor */,
 				13A2C4D12137B56200C377C0 /* Services */,
@@ -1625,6 +1646,23 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		1386393C21FADFA700E6B3EA /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				1386393D21FADFA700E6B3EA /* LUT_M01.png */,
+				1386393E21FADFA700E6B3EA /* LUT_M02.png */,
+				1386393F21FADFA700E6B3EA /* LUT_M03.png */,
+				1386394021FADFA700E6B3EA /* LUT_M07.png */,
+				1386394121FADFA700E6B3EA /* LUT_M06.png */,
+				1386394221FADFA700E6B3EA /* LUT_M12.png */,
+				1386394321FADFA700E6B3EA /* LUT_M11.png */,
+				1386394421FADFA700E6B3EA /* LUT_M05.png */,
+				1386394521FADFA700E6B3EA /* LUT_M08.png */,
+				1386394621FADFA700E6B3EA /* LUT_M09.png */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 		1391952A219C89FD0068F362 /* SKPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -2187,6 +2225,7 @@
 			files = (
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */,
+				1386394A21FADFA700E6B3EA /* LUT_M07.png in Resources */,
 				13B7D14321F844F30001C542 /* FTCheckInViewController.xib in Resources */,
 				13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */,
 				134FF1122152B37300551771 /* repeat@3x.png in Resources */,
@@ -2195,16 +2234,19 @@
 				13922CCE21B52986003161D2 /* FTDetailFileTableViewCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
+				1386394921FADFA700E6B3EA /* LUT_M03.png in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				13A379AB21E70E570095D410 /* UsernameLabelTableViewCell.xib in Resources */,
 				1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
+				1386394721FADFA700E6B3EA /* LUT_M01.png in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTFeedVideoCollectionViewController.xib in Resources */,
 				13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */,
 				13813F1521B7C35800FB496D /* Pod_Asset_BMPlayer.xcassets in Resources */,
 				139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */,
 				13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
+				1386394F21FADFA700E6B3EA /* LUT_M08.png in Resources */,
 				13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */,
 				13A379B721E7167B0095D410 /* ReactionsBottomTableViewCell.xib in Resources */,
 				4D56C1F721F5F214002D528E /* FTSettingsViewController.xib in Resources */,
@@ -2213,6 +2255,7 @@
 				1347746B2167946D0026B048 /* CommentController.xib in Resources */,
 				13D0C01E217DD3ED00F745B9 /* FTUserDashBoardTabViewController.xib in Resources */,
 				134FF1002152B37300551771 /* 4.jpg in Resources */,
+				1386394C21FADFA700E6B3EA /* LUT_M12.png in Resources */,
 				134FF10F2152B37300551771 /* seek.png in Resources */,
 				134FF1132152B37300551771 /* seek@2x.png in Resources */,
 				139DD5D821AC27BD00C5405B /* FTDetailContentTableViewCell.xib in Resources */,
@@ -2241,10 +2284,12 @@
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
 				1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */,
 				136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */,
+				1386394B21FADFA700E6B3EA /* LUT_M06.png in Resources */,
 				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
 				130E05D6212D6A3700C3E21A /* Assets.xcassets in Resources */,
 				132C7B2C2179948800EE11AD /* FTAriticleTableViewCell.xib in Resources */,
 				1342A88721649CBE00EFD1E6 /* FTProfileEditDOBCell.xib in Resources */,
+				1386394D21FADFA700E6B3EA /* LUT_M11.png in Resources */,
 				133011C12190B3A300AB5FAB /* FTPhotosTableViewCell.xib in Resources */,
 				134FF1142152B37300551771 /* play.png in Resources */,
 				13ED3D6921E5F47200AB9245 /* FTArticleDetailViewController.xib in Resources */,
@@ -2254,11 +2299,13 @@
 				13477467216793DE0026B048 /* ChatAccessoryView.xib in Resources */,
 				13BA9B23214A614600AD06D7 /* FTFeedTableViewCell.xib in Resources */,
 				1321983321C1165400C45273 /* FTMessageTabViewController.xib in Resources */,
+				1386394E21FADFA700E6B3EA /* LUT_M05.png in Resources */,
 				1321982421B7DD4B00C45273 /* FTNotificationTabViewController.xib in Resources */,
 				13D25814214299B300E84002 /* FTLoadingViewController.xib in Resources */,
 				130E05D4212D6A3200C3E21A /* Main.storyboard in Resources */,
 				13BA9A882147C35C00AD06D7 /* FTTabFeedViewController.xib in Resources */,
 				1342A883216491B000EFD1E6 /* FTProfileEditSingleLineCell.xib in Resources */,
+				1386394821FADFA700E6B3EA /* LUT_M02.png in Resources */,
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
 				13A379B121E713160095D410 /* ArticleContentTableViewCell.xib in Resources */,
@@ -2274,6 +2321,7 @@
 				13813EFA21B78B9C00FB496D /* FTPlayerViewController.xib in Resources */,
 				134FF0FB2152B37300551771 /* clear.png in Resources */,
 				13922CD221B52F08003161D2 /* FTDetailFileViewController.xib in Resources */,
+				1386395021FADFA700E6B3EA /* LUT_M09.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2308,6 +2356,8 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PixelEditor/PixelEditor.framework",
+				"${BUILT_PRODUCTS_DIR}/PixelEngine/PixelEngine.framework",
 				"${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework",
 				"${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -2346,6 +2396,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PixelEditor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PixelEngine.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RichEditorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",

@@ -8,6 +8,8 @@
 
 import UIKit
 import DKImagePickerController
+import PixelEditor
+import PixelEngine
 
 class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTPhotosViewModel
@@ -17,6 +19,7 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     fileprivate let sectionInsets = UIEdgeInsets.zero
     fileprivate let itemsPerRow: CGFloat = 3
     var contentData: FTPhotosViewModel?
+    fileprivate var editIndex: IndexPath = IndexPath(row: 0, section: 0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -75,7 +78,16 @@ extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print(#function)
+        let content = datasource[indexPath.row]
+        if let image = content.image {
+            let controller = PixelEditViewController(image: image, doneButtonTitle: "Done", colorCubeStorage: .default, options: .current)
+            controller.delegate = self
+            if let topVC = UIApplication.topViewController() {
+                topVC.navigationController?.pushViewController(controller, animated: true)
+                editIndex = indexPath
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -127,4 +139,25 @@ extension FTPhotosTableViewCell: PhotoCellDelegate {
             }
         }
     }
+}
+
+extension FTPhotosTableViewCell: PixelEditViewControllerDelegate {
+    func pixelEditViewController(_ controller: PixelEditViewController, didEndEditing editingStack: SquareEditingStack) {
+        if let topVC = UIApplication.topViewController() {
+            topVC.navigationController?.popViewController(animated: true)
+        }
+        let image = editingStack.makeRenderer().render(resolution: .full)
+        let vm = datasource[editIndex.row]
+        vm.image = image
+        datasource[editIndex.row] = vm
+        collectionView.reloadItems(at: [editIndex])
+    }
+    
+    func pixelEditViewControllerDidCancelEditing(in controller: PixelEditViewController) {
+        if let topVC = UIApplication.topViewController() {
+            topVC.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+
 }

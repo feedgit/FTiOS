@@ -35,4 +35,7 @@ pod 'Socket.IO-Client-Swift'
 pod 'JSQMessagesViewController'
 pod 'SVPullToRefresh'
 
+pod 'PixelEngine'
+pod 'PixelEditor'
+
 end
