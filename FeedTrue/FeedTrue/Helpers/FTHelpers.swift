@@ -10,15 +10,15 @@ import UIKit
 
 struct FTHelpers {
     
-    static func attributeString (imageNamed: String, str: String, attrs: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
+    static func attributeString (imageNamed: String, str: String, attrs: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString {
         return attributeString(image: UIImage(named: imageNamed)!, str: str, attrs: attrs)
     }
     
-    static func attributeString (imageNamed: String, str: String, attrs: [NSAttributedStringKey: Any]? = nil, offset: Float = 2) -> NSAttributedString {
+    static func attributeString (imageNamed: String, str: String, attrs: [NSAttributedString.Key: Any]? = nil, offset: Float = 2) -> NSAttributedString {
         return attributeString(image: UIImage(named: imageNamed)!, str: str, attrs: attrs, offset: offset)
     }
     
-    static func attributeString (image: UIImage, str: String, attrs:[NSAttributedStringKey: Any]?, offset: Float = 2, fontDescender: CGFloat = 0) -> NSAttributedString {
+    static func attributeString (image: UIImage, str: String, attrs:[NSAttributedString.Key: Any]?, offset: Float = 2, fontDescender: CGFloat = 0) -> NSAttributedString {
         let attachment = NSTextAttachment()
         attachment.image = image
         let attString = NSMutableAttributedString(string: "")
@@ -28,7 +28,7 @@ struct FTHelpers {
         attString.append(attachmentString)
         
         var textAttrs = attrs ?? [:]
-        textAttrs[NSAttributedStringKey.baselineOffset] = NSNumber(value: offset)
+        textAttrs[NSAttributedString.Key.baselineOffset] = NSNumber(value: offset)
         let rightText = NSAttributedString(string: "  \(str)", attributes: textAttrs)
         attString.append(rightText)
         return attString
@@ -56,7 +56,7 @@ struct FTHelpers {
         }
         
         let nstest = text as NSString
-        let textsize = nstest.boundingRect(with: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin) , attributes:[NSAttributedStringKey.font: font], context: nil)
+        let textsize = nstest.boundingRect(with: CGSize(width: maxWidth, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesFontLeading.union(NSStringDrawingOptions.usesLineFragmentOrigin) , attributes:[NSAttributedString.Key.font: font], context: nil)
         
         //round up
         let doubleWdith = ceil(textsize.size.width * 2)

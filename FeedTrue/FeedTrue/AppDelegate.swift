@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().setBackgroundImage(UIImage(color: UIColor.navigationBarColor()), for: UIBarMetrics.default)
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.navigationTitleTextColor(), NSAttributedStringKey.font: UIFont.navFont()]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationTitleTextColor(), NSAttributedString.Key.font: UIFont.navFont()]
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.navigationTitleTextColor(), NSAttributedStringKey.font: UIFont.navFont()], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.navigationTitleTextColor(), NSAttributedString.Key.font: UIFont.navFont()], for: .normal)
 
         // Facebook configure
         //[[FBSDKApplicationDelegate sharedInstance] application:application
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         STPopupNavigationBar.appearance().barTintColor = .white
         STPopupNavigationBar.appearance().tintColor = .black
         STPopupNavigationBar.appearance().barStyle = .default
-        STPopupNavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        STPopupNavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         STPopupNavigationBar.appearance().shadowImage = UIImage(color: .clear)
     
         return true
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         /*
          BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
          openURL:url

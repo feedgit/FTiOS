@@ -100,7 +100,7 @@ extension SKActionView {
         closeButton.setFrameSize(skSize)
         
         guard let image = image else { return }
-        closeButton.setImage(image, for: UIControlState())
+        closeButton.setImage(image, for: UIControl.State())
     }
     
     func configureDeleteButton(image: UIImage? = nil, size: CGSize? = nil) {
@@ -115,6 +115,6 @@ extension SKActionView {
         deleteButton.setFrameSize(size)
         
         guard let image = image else { return }
-        deleteButton.setImage(image, for: UIControlState())
+        deleteButton.setImage(image, for: UIControl.State())
     }
 }

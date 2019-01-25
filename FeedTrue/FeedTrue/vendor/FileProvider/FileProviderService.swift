@@ -87,7 +87,7 @@ public class FileProviderService {
     }
     
     public func upload(image: UIImage, destination: (url:String, name: String), completion:@escaping (Bool) ->()) {
-        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             completion(false)
             return
         }
@@ -222,7 +222,7 @@ public class FileProviderService {
     }
     
     func cacheImage(image: UIImage, for key: String) throws {
-        if let imgData = UIImagePNGRepresentation(image) {
+        if let imgData = image.pngData() {
             try cacheFile(data: imgData, for: key, with: .image)
         }
     }

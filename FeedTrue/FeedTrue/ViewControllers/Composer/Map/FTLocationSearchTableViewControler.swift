@@ -62,7 +62,7 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
         guard let mapView = mapView,
             let searchBarText = searchController.searchBar.text else { return }
         
-        let request = MKLocalSearchRequest()
+        let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
         let search = MKLocalSearch(request: request)

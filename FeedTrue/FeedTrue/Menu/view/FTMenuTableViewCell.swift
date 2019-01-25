@@ -47,7 +47,7 @@ class FTMenuTableViewCell: UITableViewCell,CoolSlidingMenuViewDelegate, BECellRe
         arrMenu = data.arrMenu
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         slidingMenuView = CoolSlidingMenuView()
         slidingMenuView.delegate = self

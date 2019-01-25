@@ -40,7 +40,7 @@ class FTViewControllerWithCustomNavibar: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if isBeingDismissed || isMovingFromParentViewController {
+        if isBeingDismissed || isMovingFromParent {
             navigationController?.setNavigationBarHidden(mainBarHiddenStatus, animated: true)
         }
     }

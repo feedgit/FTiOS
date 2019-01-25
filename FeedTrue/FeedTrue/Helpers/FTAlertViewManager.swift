@@ -25,9 +25,9 @@ public class FTAlertViewManager: NSObject {
     
     //Displays Alert Message with the OK button
     public func showOkAlert(_ title: String?, message: String?, handler: ((UIAlertAction) -> Void)?) {
-        let okAction = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: handler)
+        let okAction = UIAlertAction.init(title: "OK", style: UIAlertAction.Style.cancel, handler: handler)
         
-        self.showAlert(title, message: message, actions: [okAction], style: UIAlertControllerStyle.alert, view: nil)
+        self.showAlert(title, message: message, actions: [okAction], style: UIAlertController.Style.alert, view: nil)
     }
     
     //Displays Alert Message from the ERROR object
@@ -48,7 +48,7 @@ public class FTAlertViewManager: NSObject {
     
     //Displays OFFLINE Alert Message
     public func showOfflineAlert() {
-        let dismissAction = UIAlertAction.init(title: "Dismiss", style: UIAlertActionStyle.cancel, handler: nil)
+        let dismissAction = UIAlertAction.init(title: "Dismiss", style: UIAlertAction.Style.cancel, handler: nil)
         let alertController = UIAlertController(title: "Error!", message: "Device is offline. Please check the network connection and try again.", preferredStyle: .alert)
         alertController.addAction(dismissAction)
         
@@ -85,14 +85,14 @@ public class FTAlertViewManager: NSObject {
     }
     
     public func showActions(_ title: String?, message: String?, actions: [UIAlertAction], view: AnyObject) {
-        self.showAlert(title, message: message, actions: actions, style: UIAlertControllerStyle.actionSheet, view: view)
+        self.showAlert(title, message: message, actions: actions, style: UIAlertController.Style.actionSheet, view: view)
     }
     
     fileprivate func showAlert(_ title: String?, message: String?, actions: [UIAlertAction]) {
-        self.showAlert(title, message: message, actions: actions, style: UIAlertControllerStyle.alert, view: nil)
+        self.showAlert(title, message: message, actions: actions, style: UIAlertController.Style.alert, view: nil)
     }
     
-    fileprivate func showAlert(_ title: String?, message: String?, actions: [UIAlertAction], style: UIAlertControllerStyle, view: AnyObject?) {
+    fileprivate func showAlert(_ title: String?, message: String?, actions: [UIAlertAction], style: UIAlertController.Style, view: AnyObject?) {
         
         let alertController = UIAlertController.init(title: title, message: message == "" ? nil : message, preferredStyle: style) as UIAlertController
         

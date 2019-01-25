@@ -106,7 +106,7 @@ open class DropdownMenu: UIView {
         setupGestureView()
         initTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateForOrientationChange(_:)), name: NSNotification.Name.UIApplicationWillChangeStatusBarOrientation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateForOrientationChange(_:)), name: UIApplication.willChangeStatusBarOrientationNotification, object: nil)
     }
     
     public init(navigationController: UINavigationController, sections: [DropdownSection], selectedIndexPath: IndexPath = IndexPath(row: 0, section: 0), dispalySectionHeader: Bool = true, sectionHeaderStyle: SectionHeaderStyle = SectionHeaderStyle()) {
@@ -121,7 +121,7 @@ open class DropdownMenu: UIView {
         setupGestureView()
         initTableView()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateForOrientationChange(_:)), name: NSNotification.Name.UIApplicationWillChangeStatusBarOrientation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateForOrientationChange(_:)), name: UIApplication.willChangeStatusBarOrientationNotification, object: nil)
     }
     
     deinit {
@@ -130,7 +130,7 @@ open class DropdownMenu: UIView {
     
     @objc func updateForOrientationChange(_ nofication: Notification) {
         print("UIApplicationWillChangeStatusBarOrientation")
-        if let oriention = (nofication as NSNotification).userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as? Int {
+        if let oriention = (nofication as NSNotification).userInfo?[UIApplication.statusBarOrientationUserInfoKey] as? Int {
             var topOffset: CGFloat
             switch oriention {
             case UIInterfaceOrientation.landscapeLeft.rawValue, UIInterfaceOrientation.landscapeRight.rawValue:

@@ -1053,7 +1053,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             return
         }
         
-        guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             completion(false, nil)
             return
         }
@@ -1236,7 +1236,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         
         var image_files: [Data] = []
         for i in 0..<imageFiles.count {
-            if let imageData = UIImageJPEGRepresentation(imageFiles[i], 0.8) {
+            if let imageData = imageFiles[i].jpegData(compressionQuality: 0.8) {
                 image_files.append(imageData)
             }
         }
@@ -1324,7 +1324,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             multipartFormData.append(videoFile, withName: "file", fileName: fileName, mimeType: "video/mp4")
             
-            if let thumb = thumbnail, let thumbnailData = UIImageJPEGRepresentation(thumb, 1) {
+            if let thumb = thumbnail, let thumbnailData = thumb.jpegData(compressionQuality: 1) {
                 let thumbName = Date().dateTimeString().appending(".png")
                 multipartFormData.append(thumbnailData, withName: "thumbnail", fileName: thumbName, mimeType: "image/png")
             }

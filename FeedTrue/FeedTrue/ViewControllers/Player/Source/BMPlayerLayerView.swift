@@ -218,7 +218,7 @@ open class BMPlayerLayerView: UIView {
         }
         setupTimer()
         if self.player?.currentItem?.status == AVPlayerItem.Status.readyToPlay {
-            let draggedTime = CMTimeMake(Int64(secounds), 1)
+            let draggedTime = CMTimeMake(value: Int64(secounds), timescale: 1)
             self.player!.seek(to: draggedTime, toleranceBefore: CMTime.init(), toleranceAfter: CMTime.init(), completionHandler: { (finished) in
                 completion?()
             })

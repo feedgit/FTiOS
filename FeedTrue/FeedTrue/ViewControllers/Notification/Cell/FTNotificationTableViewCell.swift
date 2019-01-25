@@ -39,11 +39,11 @@ class FTNotificationTableViewCell: UITableViewCell, BECellRenderImpl {
         
         // create attributed string
         let username = contentData?.from_user?.username ?? ""
-        let usernameAttribute = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 18) ]
+        let usernameAttribute = [ NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 18) ]
         var myAttrString = NSMutableAttributedString(string: username, attributes: usernameAttribute)
         
         let contentText = " \(contentData?.type ?? "") your feed"
-        let contentAttribute = [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 18) ]
+        let contentAttribute = [ NSAttributedString.Key.font: UIFont(name: "HelveticaNeue", size: 18) ]
         let contentAtributeString = NSAttributedString(string: contentText, attributes: contentAttribute)
         
         myAttrString.append(contentAtributeString)

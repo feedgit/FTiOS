@@ -550,7 +550,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
 //        data.imageHeight = h
         
         let padding: CGFloat = 1
-        let contentMode: ContentMode = .scaleAspectFill
+        let contentMode: UIView.ContentMode = .scaleAspectFill
         if photos.count == 1 {
             // Stretch full width screen, height auto
             if let width = photo.width, let height = photo.height {

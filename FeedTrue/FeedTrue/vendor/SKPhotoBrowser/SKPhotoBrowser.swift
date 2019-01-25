@@ -466,7 +466,7 @@ internal extension SKPhotoBrowser {
                 
                 UIView.beginAnimations(nil, context: nil)
                 UIView.setAnimationDuration(animationDuration)
-                UIView.setAnimationCurve(UIViewAnimationCurve.easeIn)
+                UIView.setAnimationCurve(UIView.AnimationCurve.easeIn)
                 zoomingScrollView.center = CGPoint(x: finalX, y: finalY)
                 UIView.commitAnimations()
             }
@@ -630,7 +630,7 @@ private extension SKPhotoBrowser {
         avatarImageView.isUserInteractionEnabled = true
         avatarImageView.addGestureRecognizer(avatarTap)
         
-        view.bringSubview(toFront: avatarImageView)
+        view.bringSubviewToFront(avatarImageView)
     }
     
     @objc func savePressed(_ sender: Any) {

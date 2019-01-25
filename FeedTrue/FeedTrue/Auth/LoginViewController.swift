@@ -8,7 +8,6 @@
 
 import UIKit
 import MBProgressHUD
-import DTTextField
 import FacebookCore
 import FacebookLogin
 

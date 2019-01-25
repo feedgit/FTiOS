@@ -167,9 +167,9 @@ class FTTabFeedViewController: FTTabViewController {
         //fixedWidthSwitch.isOn = false
         //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
         
-        let largerRedTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.gray]
-        let largerRedTextHighlightAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.black]
-        let largerRedTextSelectAttributes = [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.black]
+        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.gray]
+        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
+        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
         
         segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
         segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
@@ -500,13 +500,16 @@ extension FTTabFeedViewController: ComposerDelegate {
 }
 
 extension FTTabFeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         dismiss(animated: true, completion: nil)
         NSLog(info.debugDescription)
-        let mediaType = info[UIImagePickerControllerMediaType] as AnyObject
+        let mediaType = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaType)] as AnyObject
         
         if mediaType as! String == kUTTypeMovie as String || mediaType as! String == kUTTypeVideo as String {
-            if let videoURL = info[UIImagePickerControllerMediaURL] as? URL {
+            if let videoURL = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaURL)] as? URL {
                 print("VIDEO URL: \(videoURL)")
                 let videoVC = FTVideoComposerViewController(videoURL: videoURL, coreService: rootViewController.coreService)
                 self.navigationController?.pushViewController(videoVC, animated: true)
@@ -518,4 +521,14 @@ extension FTTabFeedViewController: UIImagePickerControllerDelegate, UINavigation
         dismiss(animated: true, completion: nil)
         NSLog(#function)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

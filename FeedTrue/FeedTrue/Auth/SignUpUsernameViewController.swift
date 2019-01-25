@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DTTextField
 import MBProgressHUD
 
 class SignUpUsernameViewController: UIViewController {

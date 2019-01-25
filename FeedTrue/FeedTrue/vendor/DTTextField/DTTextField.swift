@@ -52,11 +52,11 @@ public class DTTextField: UITextField {
             case .rounded:
                 dtLayer.cornerRadius        = 4.5
                 dtLayer.borderWidth         = 0.5
-                dtLayer.borderColor         = borderColor.cgColor
+                dtLayer.borderColor         = dtBorderColor.cgColor
             case .sqare:
                 dtLayer.cornerRadius        = 0.0
                 dtLayer.borderWidth         = 0.5
-                dtLayer.borderColor         = borderColor.cgColor
+                dtLayer.borderColor         = dtBorderColor.cgColor
             }
         }
     }
@@ -84,8 +84,8 @@ public class DTTextField: UITextField {
         didSet{ invalidateIntrinsicContentSize() }
     }
     
-    public var borderColor:UIColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0){
-        didSet{ dtLayer.borderColor = borderColor.cgColor }
+    public var dtBorderColor:UIColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0){
+        didSet{ dtLayer.borderColor = dtBorderColor.cgColor }
     }
     
     public var canShowBorder:Bool = true{
@@ -96,7 +96,7 @@ public class DTTextField: UITextField {
         didSet{
             guard let color = placeholderColor else { return }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
-                                                       attributes: [NSAttributedStringKey.foregroundColor:color])
+                                                       attributes: [NSAttributedString.Key.foregroundColor:color])
         }
     }
     
@@ -154,7 +154,7 @@ public class DTTextField: UITextField {
         }
     }
     
-    override public var borderStyle: UITextBorderStyle{
+    override public var borderStyle: UITextField.BorderStyle{
         didSet{
             guard borderStyle != oldValue else { return }
             borderStyle = .none
@@ -177,7 +177,7 @@ public class DTTextField: UITextField {
                 return
             }
             attributedPlaceholder = NSAttributedString(string: placeholderFinal,
-                                                       attributes: [NSAttributedStringKey.foregroundColor:color])
+                                                       attributes: [NSAttributedString.Key.foregroundColor:color])
         }
     }
     
@@ -204,7 +204,7 @@ public class DTTextField: UITextField {
         showErrorLabel = false
     }
     
-    
+
     fileprivate func commonInit() {
         
         dtborderStyle               = .rounded
@@ -276,7 +276,7 @@ public class DTTextField: UITextField {
             if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft{
                 newFrame.origin.x = bounds.width - paddingX - newFrame.size.width
             }
-            
+        
         }
         
         lblFloatPlaceholder.frame = newFrame
@@ -465,6 +465,5 @@ public class DTTextField: UITextField {
             }
         }
     }
-    
-}
 
+}

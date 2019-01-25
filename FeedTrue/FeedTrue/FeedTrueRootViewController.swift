@@ -42,7 +42,7 @@ class FeedTrueRootViewController: UIViewController {
         let appearance = UIBarButtonItem.appearance()
         appearance.setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: 0.0, vertical: -60), for: .default)
         nav.navigationBar.isTranslucent = true
-        addChildViewController(nav)
+        addChild(nav)
         
         nav.beginAppearanceTransition(true, animated: false)
         view.addSubview(nav.view)

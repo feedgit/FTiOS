@@ -9,7 +9,6 @@
 import UIKit
 import MBProgressHUD
 import ScrollableSegmentedControl
-import YKPhotoCircleCrop
 
 enum ProfileDisplayType {
     case owner
@@ -338,9 +337,9 @@ class FTTabProfileViewController: FTTabViewController {
         //fixedWidthSwitch.isOn = false
         //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
         
-        let largerRedTextAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black]
-        let largerRedTextHighlightAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
-        let largerRedTextSelectAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.navigationBarColor()]
+        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]
+        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
+        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
         
         segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
         segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
@@ -366,11 +365,14 @@ extension FTTabProfileViewController: FTEditProfileDelegate {
 
 extension FTTabProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         // dismiss picker view controller
         self.dismiss(animated: true, completion: nil)
         
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         let circleCropController = YKCircleCropViewController()
         circleCropController.image = image
         circleCropController.delegate = self
@@ -409,4 +411,14 @@ extension FTTabProfileViewController: YKCircleCropViewControllerDelegate {
         avatarImageView.image = image
         uploadAvatar(image: image)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }
