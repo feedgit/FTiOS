@@ -12,6 +12,7 @@ import MapKit
 class FTLocationSearchTableViewControler: UITableViewController {
     
     fileprivate var cellID = "FTLocationTableViewCell"
+    fileprivate var nextURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,11 +72,32 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
             guard let response = response else {
                 return
             }
-            self.matchingItems = response.mapItems
+            self.matchingItems.append(response.mapItems)
             self.tableView.reloadData()
+        }
+        
+        // load from server
+        guard searchBarText.count >= 2 else { return }
+        WebService.share.searchLocation(searchTerm: searchBarText) { (success, locationResponse) in
+            if success {
+                self.nextURL = locationResponse?.next
+                print(locationResponse.debugDescription)
+                // load next
+                self.loadNextLocation()
+            }
         }
     }
     
+    fileprivate func loadNextLocation() {
+        guard let urlString = nextURL else { return }
+        WebService.share.getNextLocation(next: urlString) { (success, locationResponse) in
+            if success {
+                self.nextURL = locationResponse?.next
+                print(locationResponse.debugDescription)
+                // TODO: hanlder load next
+            }
+        }
+    }
     
 }
 

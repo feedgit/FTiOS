@@ -1689,4 +1689,69 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    // https://api.feedtrue.com/api/v1/location/?q=<Search_Term>
+    func searchLocation(searchTerm: String, completion: @escaping (Bool, FTLocationResponse?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = "\(host)/api/v1/location/?q=\(searchTerm)/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTLocationResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
+    func getNextLocation(next: String, completion: @escaping (Bool, FTLocationResponse?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let urlString = next
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTLocationResponse>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
 }
