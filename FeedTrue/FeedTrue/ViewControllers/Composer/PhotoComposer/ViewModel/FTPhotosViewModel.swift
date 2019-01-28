@@ -17,9 +17,9 @@ class FTPhotosViewModel: BECellDataSource {
     
     func cellHeight() -> CGFloat {
         if datasource.count > 0 && datasource.count < 3 {
-            return UIScreen.main.bounds.width / 3
+            return UIScreen.main.bounds.width / 3 + 64
         } else {
-            return (UIScreen.main.bounds.width / 3 ) * CGFloat((self.datasource.count / 3 + (self.datasource.count % 3 != 0 ? 1 : 0)))
+            return (UIScreen.main.bounds.width / 3 + 64) * CGFloat((self.datasource.count / 3 + (self.datasource.count % 3 != 0 ? 1 : 0)))
         }
     }
     

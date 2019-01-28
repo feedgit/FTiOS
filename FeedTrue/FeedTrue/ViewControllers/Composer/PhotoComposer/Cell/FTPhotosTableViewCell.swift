@@ -73,21 +73,22 @@ extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDel
         cell.delegate = self
         
         // Configure the cell
+        cell.tag = indexPath.row
         cell.renderCell(data: content)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(#function)
-        let content = datasource[indexPath.row]
-        if let image = content.image {
-            let controller = PixelEditViewController(image: image, doneButtonTitle: "Done", colorCubeStorage: .default, options: .current)
-            controller.delegate = self
-            if let topVC = UIApplication.topViewController() {
-                topVC.navigationController?.pushViewController(controller, animated: true)
-                editIndex = indexPath
-            }
-        }
+//        let content = datasource[indexPath.row]
+//        if let image = content.image {
+//            let controller = PixelEditViewController(image: image, doneButtonTitle: "Done", colorCubeStorage: .default, options: .current)
+//            controller.delegate = self
+//            if let topVC = UIApplication.topViewController() {
+//                topVC.navigationController?.pushViewController(controller, animated: true)
+//                editIndex = indexPath
+//            }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -112,7 +113,7 @@ extension FTPhotosTableViewCell: UICollectionViewDelegateFlowLayout {
         let availableWidth = frame.width
         let widthPerItem = availableWidth / itemsPerRow - 8
         
-        return CGSize(width: widthPerItem, height: widthPerItem)
+        return CGSize(width: widthPerItem, height: widthPerItem + 32)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -136,6 +137,21 @@ extension FTPhotosTableViewCell: PhotoCellDelegate {
                     self.collectionView.reloadData()
                 }
                 return
+            }
+        }
+    }
+    
+    func photoCellDidTapEdit(_ cell: FTPhotoCollectionViewCell) {
+        if let image = cell.imageViewIcon.image {
+            let controller = PixelEditViewController(image: image, doneButtonTitle: "Done", colorCubeStorage: .default, options: .current)
+            controller.delegate = self
+            if let topVC = UIApplication.topViewController() {
+                topVC.navigationController?.pushViewController(controller, animated: true)
+                //editIndex = indexPath
+                if cell.tag < datasource.count {
+                    let indexPath = IndexPath(row: cell.tag, section: 0)
+                    editIndex = indexPath
+                }
             }
         }
     }

@@ -304,6 +304,10 @@ extension FTPhotoComposerViewController: PhotoCellDelegate {
             }
         }
     }
+    
+    func photoCellDidTapEdit(_ cell: FTPhotoCollectionViewCell) {
+        
+    }
 }
 
 extension FTPhotoComposerViewController: PrivacyPickerDelegate {
