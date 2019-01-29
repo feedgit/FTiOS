@@ -128,6 +128,7 @@ class FTFeedDetailViewController: UIViewController {
         reactTableView.clipsToBounds = true
         reactTableView.separatorStyle = .none
         generateReactionDatasource()
+        loadMoreComments()
     }
     
     fileprivate func generateDataSource() {
@@ -219,6 +220,20 @@ class FTFeedDetailViewController: UIViewController {
         FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: actions, view: self)
     }
 
+    
+    private func loadMoreComments() {
+        //guard let contentType = feedInfo.feedcontent?.display_type else { return }
+        //guard let objectID = feedInfo.id else { return }
+        WebService.share.getMoreComments(limit: 10, offset: 0, contentType: 23, objectID: 174) { (success, response) in
+            if success {
+                print(response.debugDescription)
+            }
+        }
+    }
+    
+    private func loadMoreReactions() {
+        
+    }
 }
 
 extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate {

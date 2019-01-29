@@ -1754,4 +1754,34 @@ class WebService: NSObject, FTCoreServiceComponent {
                 completion(true, value)
         }
     }
+    
+    //GET /api/v1/comments/ with Params { "limit": "10", "offset": "10", "content_type": 23, "object_id": 174 }
+    
+    func getMoreComments(limit: Int, offset: Int, contentType: Int, objectID: Int, completion: @escaping (Bool, Any?) -> ()) {
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
+        
+        let params: [String: Any] = [
+            "limit": limit,
+            "offset": offset,
+            "content_type": contentType,
+            "object_id": objectID
+        ]
+        
+        let urlString = "\(host)/api/v1/comments/"
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
+            .response { (response) in
+                print(response.response.debugDescription)
+        }
+    }
 }

@@ -55,6 +55,7 @@ class FTFeedResponse: Mappable {
 
 class FTFeedInfo: Mappable {
     var id: Int?
+    var uid: String?
     var ct_name: String?
     var editable: Bool?
     var write_to: String?
@@ -80,6 +81,7 @@ class FTFeedInfo: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
+        uid <- map["uid"]
         ct_name <- map["ct_name"]
         editable <- map["editable"]
         write_to <- map["write_to"]
@@ -214,14 +216,18 @@ class FTFeedContent: Mappable {
  ]
  */
 class FTReactions: Mappable {
+    var next: String?
     var count: Int?
+    var pageInfo: PageInfo?
     var data: [FTReactData]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
+        next <- map["next"]
         count <- map["count"]
+        pageInfo <- map["page_info"]
         data <- map["results"]
     }
 }
@@ -276,15 +282,18 @@ class FTReactUser: Mappable {
 }
 
 class FTComment: Mappable {
-    
+    var next: String?
     var count: Int?
+    var pageInfo: PageInfo?
     var comments: [FTCommentMappable]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
+        next <- map["next"]
         count <- map["count"]
+        pageInfo <- map["page_info"]
         comments <- map["results"]
     }
 }

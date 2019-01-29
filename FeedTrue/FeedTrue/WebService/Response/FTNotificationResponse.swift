@@ -59,7 +59,7 @@ class FTNotificationItem: Mappable {
 
 class PageInfo: Mappable {
     var has_next_page: Bool = false
-    var next_cursor: String?
+    var next_params: NextParams?
     
     required init?(map: Map) {
         
@@ -67,7 +67,25 @@ class PageInfo: Mappable {
     
     func mapping(map: Map) {
         has_next_page <- map["has_next_page"]
-        next_cursor <- map["next_cursor"]
+        next_params <- map["next_params"]
+    }
+}
+
+class NextParams: Mappable {
+    var type: Int?
+    var limit: String?
+    var object_id: Int?
+    var offset: String?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        type <- map["type"]
+        limit <- map["limit"]
+        object_id <- map["object_id"]
+        offset <- map["offset"]
     }
 }
 
