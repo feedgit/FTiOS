@@ -72,7 +72,7 @@ class PageInfo: Mappable {
 }
 
 class NextParams: Mappable {
-    var type: Int?
+    var content_type: Int?
     var limit: String?
     var object_id: Int?
     var offset: String?
@@ -82,7 +82,7 @@ class NextParams: Mappable {
     }
     
     func mapping(map: Map) {
-        type <- map["type"]
+        content_type <- map["content_type"]
         limit <- map["limit"]
         object_id <- map["object_id"]
         offset <- map["offset"]

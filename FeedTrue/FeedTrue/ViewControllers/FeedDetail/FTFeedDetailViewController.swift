@@ -16,7 +16,7 @@ enum DetailMenuDisplayType {
 
 class FTFeedDetailViewController: UIViewController {
 
-    private var datas: [String] = ["Reacted (2)", "Comments (2)"]
+    private var datas: [String] = ["Reacted (0)", "Comments (0)"]
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,13 +24,18 @@ class FTFeedDetailViewController: UIViewController {
     var feedInfo: FTFeedInfo!
     var coreService: FTCoreService!
     var dataSource = [[BECellDataSource]]()
-    var selectedDataSource = [BECellDataSource]()
     var commentDataSource = [BECellDataSource]()
     var reactedDataSource = [BECellDataSource]()
-    var selectedMenuType: DetailMenuDisplayType = .comment
+    var selectedMenuType: DetailMenuDisplayType = .reacted
     var photos: [Photo]?
     var skPhotos: [SKPhoto]?
-    var reactionDataSource = [FTBottomReactionViewModel]()
+    var bottomReactionDataSource = [FTBottomReactionViewModel]()
+    var nextCommentURL: String?
+    var nextReactedURL: String?
+    var segmentSelectedIndex = 0
+    
+    var commentPageInfo: PageInfo?
+    var reactionsPageInfo: PageInfo?
     
     lazy var navTitleView: UIView = {
         let navView = UIView()
@@ -80,6 +85,41 @@ class FTFeedDetailViewController: UIViewController {
         return swipeMenuView
     }()
     
+    lazy var segmentControl: SegmentedControl = {
+       let segment = SegmentedControl(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)], for: .normal)
+        segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)], for: .selected)
+        segment.tintColor = .clear
+        segment.insertSegment(withTitle: "Reacted (\(feedInfo.reactions?.count ?? 0))", at: 0, animated: false)
+        segment.insertSegment(withTitle: "Comments (\(feedInfo.comment?.count ?? 0))", at: 1, animated: false)
+        segment.selectedSegmentIndex = segmentSelectedIndex
+        segment.addTarget(self, action: #selector(didChange(segmentControl:)), for: .valueChanged)
+        return segment
+    }()
+    
+    @IBAction func didChange(segmentControl: SegmentedControl) {
+        if segmentControl.selectedSegmentIndex == 0 {
+            selectedMenuType = .reacted
+        } else if segmentControl.selectedSegmentIndex == 1 {
+            selectedMenuType = .comment
+        }
+        
+        if self.dataSource.count > 1 {
+            self.dataSource[1] = selectedDataSource()
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func selectedDataSource() -> [BECellDataSource] {
+        switch selectedMenuType {
+        case .comment:
+            return commentDataSource
+        case .reacted:
+            return reactedDataSource
+        }
+    }
+    
     init(feedInfo info: FTFeedInfo, coreService service: FTCoreService) {
         self.feedInfo = info
         self.coreService = service
@@ -118,7 +158,7 @@ class FTFeedDetailViewController: UIViewController {
         tableView.separatorStyle = .none
         generateDataSource()
         
-        reactionDataSource = []
+        bottomReactionDataSource = []
         FTBottomReactionViewModel.register(tableView: reactTableView)
         reactTableView.delegate = self
         reactTableView.dataSource = self
@@ -128,6 +168,7 @@ class FTFeedDetailViewController: UIViewController {
         reactTableView.clipsToBounds = true
         reactTableView.separatorStyle = .none
         generateReactionDatasource()
+        loadFeedDetail()
         loadMoreComments()
     }
     
@@ -139,26 +180,93 @@ class FTFeedDetailViewController: UIViewController {
         // reactions | comments
         generateCommentDataSource()
         generateReactionDataSource()
-        dataSource.append(selectedDataSource)
+        
+        dataSource.append(selectedDataSource())
+    }
+    
+    fileprivate func loadFeedDetail() {
+        guard let uid = feedInfo.uid else { return }
+        WebService.share.getFeedDetail(uid: uid) { (success, feedInfoResponse) in
+            if success {
+                self.feedInfo = feedInfoResponse
+                self.nextCommentURL = feedInfoResponse?.comment?.next
+                self.nextReactedURL = feedInfoResponse?.reactions?.next
+                // update comments/reactions
+                self.generateCommentDataSource()
+                self.generateReactionDataSource()
+                
+                if self.dataSource.count > 1 {
+                    self.dataSource[1] = self.selectedDataSource()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                        self.tableView.addBotomActivityView {
+                            self.loadMore()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func loadMore() {
+        switch selectedMenuType {
+        case .comment:
+            // load more comment
+            guard let url = nextCommentURL else {
+                self.tableView.endBottomActivity()
+                return
+            }
+            WebService.share.getMoreCommentsByNextURL(next: url) { (success, commentResponse) in
+                
+                DispatchQueue.main.async {
+                    self.tableView.endBottomActivity()
+                }
+                
+                if success {
+                    self.nextCommentURL = commentResponse?.next
+                    guard let comments = commentResponse?.comments else { return }
+                    for comment in comments {
+                        let commentVM = FTCommentViewModel(comment: comment, type: .text)
+                        self.commentDataSource.append(commentVM)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if self.dataSource.count > 1 {
+                            self.dataSource[1] = self.commentDataSource
+                        }
+                        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                    }
+                } else {
+                    print("\(#function) load more comment failure")
+                }
+            }
+        case .reacted:
+            // load more reacted
+            self.tableView.endBottomActivity()
+        }
     }
     
     fileprivate func generateCommentDataSource() {
         guard let comments = feedInfo.comment?.comments else { return }
+        var commentDS: [BECellDataSource] = []
         for comment in comments {
             let commentVM = FTCommentViewModel(comment: comment, type: .text)
-            commentDataSource.append(commentVM)
+            commentDS.append(commentVM)
         }
-        selectedDataSource = commentDataSource
+        datas[1] = "Comments (\(comments.count))"
+        commentDataSource = commentDS
     }
     
     fileprivate func generateReactionDataSource() {
         //guard let reaction = feedInfo.reactions else { return }
+        datas[0] = "Reacted (\(feedInfo.reactions?.count ?? 0))"
+        reactedDataSource = []
     }
     
     fileprivate func generateReactionDatasource() {
         let reactionVM = FTBottomReactionViewModel(reactionType: .love)
         reactionVM.feedInfo = feedInfo
-        reactionDataSource.append(reactionVM)
+        bottomReactionDataSource.append(reactionVM)
     }
     
     @objc func back(_ sender: Any) {
@@ -245,14 +353,14 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == reactTableView {
-            return reactionDataSource.count
+            return bottomReactionDataSource.count
         }
         return dataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == reactTableView {
-            let content = reactionDataSource[indexPath.row]
+            let content = bottomReactionDataSource[indexPath.row]
             let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier())!
             
             if let renderCell = cell as? BECellRender {
@@ -277,7 +385,7 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == reactTableView {
-            let content = reactionDataSource[indexPath.row]
+            let content = bottomReactionDataSource[indexPath.row]
             return content.cellHeight()
         }
         let content = dataSource[indexPath.section][indexPath.row]
@@ -289,7 +397,7 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
             return nil
         }
         if section == 0 { return nil }
-        return swipeMenuView
+        return segmentControl
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -297,7 +405,7 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
             return 0
         }
         if section == 0 { return 0 }
-        return swipeMenuView.bounds.height
+        return segmentControl.bounds.height
     }
     
 }
@@ -318,11 +426,15 @@ extension FTFeedDetailViewController: SwipeMenuViewDelegate, SwipeMenuViewDataSo
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
         if toIndex == 0 {
             selectedMenuType = .reacted
-            selectedDataSource = reactedDataSource
         } else if toIndex == 1 {
             selectedMenuType = .comment
-            selectedDataSource = commentDataSource
         }
+        
+        if self.dataSource.count > 1 {
+            self.dataSource[1] = selectedDataSource()
+        }
+        
+        self.tableView.reloadData()
     }
     
 }
