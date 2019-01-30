@@ -241,7 +241,7 @@ class FTReactions: Mappable {
  "react_type": "LOVE"
  */
 class FTReactData: Mappable {
-    var user: FTReactUser?
+    var user: UserProfile?
     var react_type: String?
     var timestamp: String?
     

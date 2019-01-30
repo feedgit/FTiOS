@@ -42,4 +42,8 @@ extension UIFont {
     static func navFont() -> UIFont {
         return customFont(name: "HelveticaNeue-Bold", size: 25)
     }
+    
+    static func UserNameFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 16)
+    }
 }

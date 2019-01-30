@@ -72,6 +72,9 @@
 		133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */; };
 		133D028E21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */; };
 		133D029021AE10B400511D2C /* FTDetailPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */; };
+		1340A7AA22018E6100493693 /* FTReactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1340A7A822018E6100493693 /* FTReactionTableViewCell.swift */; };
+		1340A7AB22018E6100493693 /* FTReactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1340A7A922018E6100493693 /* FTReactionTableViewCell.xib */; };
+		1340A7AD22018E7A00493693 /* FTReactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1340A7AC22018E7A00493693 /* FTReactionViewModel.swift */; };
 		1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E5215D443400EFD1E6 /* Notification+FT.swift */; };
 		1342A7E8215E405D00EFD1E6 /* Moment+FT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */; };
 		1342A8772163835500EFD1E6 /* FTEditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */; };
@@ -475,6 +478,9 @@
 		133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailPhotosTableViewCell.xib; sourceTree = "<group>"; };
 		133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosViewModel.swift; sourceTree = "<group>"; };
+		1340A7A822018E6100493693 /* FTReactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTReactionTableViewCell.swift; sourceTree = "<group>"; };
+		1340A7A922018E6100493693 /* FTReactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTReactionTableViewCell.xib; sourceTree = "<group>"; };
+		1340A7AC22018E7A00493693 /* FTReactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTReactionViewModel.swift; sourceTree = "<group>"; };
 		1342A7E5215D443400EFD1E6 /* Notification+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+FT.swift"; sourceTree = "<group>"; };
 		1342A7E7215E405D00EFD1E6 /* Moment+FT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Moment+FT.swift"; sourceTree = "<group>"; };
 		1342A8762163835500EFD1E6 /* FTEditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditProfileViewModel.swift; sourceTree = "<group>"; };
@@ -1752,6 +1758,7 @@
 				133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */,
 				13922CC921B23B30003161D2 /* FTBottomReactionViewModel.swift */,
 				13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */,
+				1340A7AC22018E7A00493693 /* FTReactionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1767,6 +1774,8 @@
 				13922CC621B2372F003161D2 /* FTBottomReactionTableViewCell.xib */,
 				13922CCB21B52985003161D2 /* FTDetailFileTableViewCell.swift */,
 				13922CCC21B52985003161D2 /* FTDetailFileTableViewCell.xib */,
+				1340A7A822018E6100493693 /* FTReactionTableViewCell.swift */,
+				1340A7A922018E6100493693 /* FTReactionTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2275,6 +2284,7 @@
 				134FF10B2152B37300551771 /* DINNextLTPro-Regular.otf in Resources */,
 				134FF10D2152B37300551771 /* dark-circle.png in Resources */,
 				134FF1082152B37300551771 /* dark-circle@2x.png in Resources */,
+				1340A7AB22018E6100493693 /* FTReactionTableViewCell.xib in Resources */,
 				134FF1022152B37300551771 /* 2.jpg in Resources */,
 				13D0C026217DD6AB00F745B9 /* FTUserDashBoardProfileCell.xib in Resources */,
 				130E05D9212D6A3700C3E21A /* LaunchScreen.storyboard in Resources */,
@@ -2497,6 +2507,7 @@
 				13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13B7D13E21F1F3B10001C542 /* FTMenuViewModel.swift in Sources */,
+				1340A7AA22018E6100493693 /* FTReactionTableViewCell.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
 				4D56C1F921F5F51E002D528E /* FTSettingViewModel.swift in Sources */,
@@ -2551,6 +2562,7 @@
 				139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */,
 				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
 				13BA9B1E2149794000AD06D7 /* UIImageView+Url.swift in Sources */,
+				1340A7AD22018E7A00493693 /* FTReactionViewModel.swift in Sources */,
 				13B0090A2182191D000E7FA5 /* FTPhotoComposerViewModel.swift in Sources */,
 				13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */,
 				1347746A2167946D0026B048 /* CommentController.swift in Sources */,

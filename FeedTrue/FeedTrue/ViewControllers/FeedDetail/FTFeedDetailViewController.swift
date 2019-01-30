@@ -149,6 +149,7 @@ class FTFeedDetailViewController: UIViewController {
         FTDetailFeedContentViewModel.register(tableView: tableView)
         FTDetailPhotosViewModel.register(tableView: tableView)
         FTCommentViewModel.register(tableView: tableView)
+        FTReactionViewModel.register(tableView: tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -232,7 +233,7 @@ class FTFeedDetailViewController: UIViewController {
                     
                     DispatchQueue.main.async {
                         if self.dataSource.count > 1 {
-                            self.dataSource[1] = self.commentDataSource
+                            self.dataSource[1] = self.selectedDataSource()
                         }
                         self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
                     }
@@ -242,7 +243,36 @@ class FTFeedDetailViewController: UIViewController {
             }
         case .reacted:
             // load more reacted
-            self.tableView.endBottomActivity()
+            guard let reactionsURL = self.nextReactedURL else {
+                self.tableView.endBottomActivity()
+                return
+            }
+            
+            WebService.share.getMoreReactionsByNextURL(next: reactionsURL) { (success, reactionResponse) in
+                DispatchQueue.main.async {
+                    self.tableView.endBottomActivity()
+                }
+                
+                if success {
+                    print(reactionResponse.debugDescription)
+                    self.nextReactedURL = reactionResponse?.next
+                    guard let reactions = reactionResponse?.data else { return }
+                    for reaction in reactions {
+                        let reactionVM = FTReactionViewModel(reaction: reaction)
+                        self.reactedDataSource.append(reactionVM)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if self.dataSource.count > 1 {
+                            self.dataSource[1] = self.selectedDataSource()
+                        }
+                        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+                    }
+                    
+                } else {
+                    print("\(#function) load more reactions failure")
+                }
+            }
         }
     }
     
@@ -258,9 +288,15 @@ class FTFeedDetailViewController: UIViewController {
     }
     
     fileprivate func generateReactionDataSource() {
-        //guard let reaction = feedInfo.reactions else { return }
+        guard let reactions = feedInfo.reactions?.data else { return }
+        var reactionDS: [BECellDataSource] = []
+        for reaction in reactions {
+            let reactionVM = FTReactionViewModel(reaction: reaction)
+            reactionDS.append(reactionVM)
+        }
+        
         datas[0] = "Reacted (\(feedInfo.reactions?.count ?? 0))"
-        reactedDataSource = []
+        reactedDataSource = reactionDS
     }
     
     fileprivate func generateReactionDatasource() {
@@ -382,6 +418,7 @@ extension FTFeedDetailViewController: UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == reactTableView {

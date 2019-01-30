@@ -75,4 +75,20 @@ extension UIImage {
     class func lovedImage() -> UIImage? {
         return UIImage(named: "like")
     }
+    
+    class func angryImage() -> UIImage? {
+        return UIImage(named: "angry")
+    }
+    
+    class func laughImage() -> UIImage? {
+        return UIImage(named: "laugh")
+    }
+    
+    class func sadImage() -> UIImage? {
+        return UIImage(named: "sad")
+    }
+    
+    class func wowImage() -> UIImage? {
+        return UIImage(named: "wow")
+    }
 }
