@@ -83,8 +83,10 @@ class FTPhotoPickerViewController: UIViewController {
         switch type {
         case .composer:
             if assetType == .allPhotos {
-                let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
-                self.navigationController?.pushViewController(photoVC, animated: true)
+//                let photoVC = FTPhotoComposerViewController(coreService: coreService, assets: pickerController.selectedAssets)
+//                self.navigationController?.pushViewController(photoVC, animated: true)
+                self.navigationController?.popViewController(animated: false)
+                self.delegate?.photoPickerDidSelectedAssets(assets: pickerController.selectedAssets)
             } else if assetType == .allVideos {
                 if let asset = pickerController.selectedAssets.first {
                     //let videoVC = FTVideoComposerViewController(asset: asset)

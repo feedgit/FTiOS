@@ -1226,7 +1226,13 @@ class WebService: NSObject, FTCoreServiceComponent {
          If have PostInFeed, response is Feed, else response is success or error
      */
     
-    func composerPhoto(imageFiles: [UIImage], imageDatas: [[String: String]], privacy: Int, feedText: String?, completion: @escaping (Bool,Any?) -> ()) {
+    func composerPhoto(imageFiles: [UIImage],
+                       imageDatas: [[String: String]],
+                       privacy: Int,
+                       feedText: String?,
+                       category: Int,
+                       locationProperties: FTLocationProperties?,
+                       completion: @escaping (Bool,Any?) -> ()) {
         
         guard let token = getToken() else {
             completion(false, nil)
@@ -1246,7 +1252,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             "content-type": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
         ]
         
-        let urlString = "\(host)/api/v1/composer/photo/"
+        let urlString = "\(host)/api/v1/composer/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -1256,12 +1262,32 @@ class WebService: NSObject, FTCoreServiceComponent {
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for i in 0..<imageFiles.count {
                 let fileName = imageDatas[i]["id"]!
-                multipartFormData.append(image_files[i], withName: "image_file", fileName: fileName, mimeType: "image/png")
+                multipartFormData.append(image_files[i], withName: "photo.image_file", fileName: fileName, mimeType: "image/png")
             }
             
             multipartFormData.append("\(privacy)".data(using: String.Encoding.utf8)!, withName: "privacy")
+            multipartFormData.append("\(category)".data(using: String.Encoding.utf8)!, withName: "category")
             if let ft = feedText, !ft.isEmpty {
-                multipartFormData.append(ft.data(using: String.Encoding.utf8)!, withName: "feed.text")
+                multipartFormData.append(ft.data(using: String.Encoding.utf8)!, withName: "* feed_text")
+            }
+            
+            /*
+             * `location.long`
+             * `location.lat`
+             * `location.name`
+             * `location.thumbnail`: ONE file
+             * `location.type`: Multi allowed
+             * `location.address`
+             * `location.description`
+             */
+            if let p = locationProperties {
+                multipartFormData.append("\(p.locationLong)".data(using: String.Encoding.utf8)!, withName: "location.long")
+                multipartFormData.append("\(p.locationLat)".data(using: String.Encoding.utf8)!, withName: "location.lat")
+                multipartFormData.append("\(p.locationName)".data(using: String.Encoding.utf8)!, withName: "location.name")
+                //multipartFormData.append("\(p.locationThumbnail)".data(using: String.Encoding.utf8)!, withName: "location.thumbnail")
+                multipartFormData.append("\(p.locationType)".data(using: String.Encoding.utf8)!, withName: "location.type")
+                multipartFormData.append("\(p.locationAddress)".data(using: String.Encoding.utf8)!, withName: "location.address")
+                multipartFormData.append("\(p.locationDescription)".data(using: String.Encoding.utf8)!, withName: "location.description")
             }
         }, to: url, headers: headers)
         { (result) in

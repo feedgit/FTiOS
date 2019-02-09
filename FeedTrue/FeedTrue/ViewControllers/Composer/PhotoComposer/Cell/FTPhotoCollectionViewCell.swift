@@ -38,6 +38,8 @@ class FTPhotoCollectionViewCell: UICollectionViewCell, BECellRenderImpl {
     func renderCell(data: FTPhotoComposerViewModel) {
         image = data.image
         imageViewIcon.image = data.image
+        self.deleteImageView.isHidden = !data.canDelete
+        self.editButton.isHidden = !data.canEdit
     }
     
     @objc func deleteCell() {

@@ -69,6 +69,12 @@
 		1338D8282186F38B0065B552 /* FTPrivacyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D8272186F38B0065B552 /* FTPrivacyViewModel.swift */; };
 		1338D82B2186F4CC0065B552 /* FTPrivacyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1338D8292186F4CC0065B552 /* FTPrivacyPickerViewController.swift */; };
 		1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1338D82A2186F4CC0065B552 /* FTPrivacyPickerViewController.xib */; };
+		133CDEBB2202735800F32AC9 /* FTRichTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */; };
+		133CDEBC2202735800F32AC9 /* FTRichTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */; };
+		133CDEBE2202737400F32AC9 /* FTRichTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */; };
+		133CDEC122027E5900F32AC9 /* FTSwitchControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */; };
+		133CDEC222027E5900F32AC9 /* FTSwitchControlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */; };
+		133CDEC422027FFF00F32AC9 /* FTSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */; };
 		133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */; };
 		133D028E21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */; };
 		133D029021AE10B400511D2C /* FTDetailPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */; };
@@ -475,6 +481,12 @@
 		1338D8272186F38B0065B552 /* FTPrivacyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrivacyViewModel.swift; sourceTree = "<group>"; };
 		1338D8292186F4CC0065B552 /* FTPrivacyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPrivacyPickerViewController.swift; sourceTree = "<group>"; };
 		1338D82A2186F4CC0065B552 /* FTPrivacyPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPrivacyPickerViewController.xib; sourceTree = "<group>"; };
+		133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRichTextTableViewCell.swift; sourceTree = "<group>"; };
+		133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTRichTextTableViewCell.xib; sourceTree = "<group>"; };
+		133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRichTextViewModel.swift; sourceTree = "<group>"; };
+		133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSwitchControlTableViewCell.swift; sourceTree = "<group>"; };
+		133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSwitchControlTableViewCell.xib; sourceTree = "<group>"; };
+		133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSwitchViewModel.swift; sourceTree = "<group>"; };
 		133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailPhotosTableViewCell.xib; sourceTree = "<group>"; };
 		133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosViewModel.swift; sourceTree = "<group>"; };
@@ -1875,6 +1887,10 @@
 				1338D81D21828E290065B552 /* FTPhotoSettingTableViewCell.xib */,
 				133011BE2190B3A300AB5FAB /* FTPhotosTableViewCell.swift */,
 				133011BF2190B3A300AB5FAB /* FTPhotosTableViewCell.xib */,
+				133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */,
+				133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */,
+				133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */,
+				133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1885,6 +1901,8 @@
 				13B009092182191D000E7FA5 /* FTPhotoComposerViewModel.swift */,
 				1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */,
 				133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */,
+				133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */,
+				133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2293,12 +2311,14 @@
 				134FF10A2152B37300551771 /* play@2x.png in Resources */,
 				13B009062181C264000E7FA5 /* FTPhotoPickerViewController.xib in Resources */,
 				13ED3D6D21E5FE6900AB9245 /* ArticleTitleTableViewCell.xib in Resources */,
+				133CDEBC2202735800F32AC9 /* FTRichTextTableViewCell.xib in Resources */,
 				1342A9132164AB0F00EFD1E6 /* FTProfileEditMultipleLineCellTableViewCell.xib in Resources */,
 				1321982B21C1076400C45273 /* FTContactTableViewCell.xib in Resources */,
 				134FF1042152B37300551771 /* 1.jpg in Resources */,
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
 				1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */,
+				133CDEC222027E5900F32AC9 /* FTSwitchControlTableViewCell.xib in Resources */,
 				136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */,
 				1386394B21FADFA700E6B3EA /* LUT_M06.png in Resources */,
 				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
@@ -2522,6 +2542,7 @@
 				13BA9B0F2149792200AD06D7 /* DownloadTask.swift in Sources */,
 				13BA9B192149793500AD06D7 /* BECellDataSource.swift in Sources */,
 				13E94AA2216D1A1C00D2AF29 /* FTCommentReplies.swift in Sources */,
+				133CDEBE2202737400F32AC9 /* FTRichTextViewModel.swift in Sources */,
 				1342A8FE21649FC500EFD1E6 /* Contacts.swift in Sources */,
 				13919545219C8A220068F362 /* SKPagingScrollView.swift in Sources */,
 				1342A8F321649FC500EFD1E6 /* TwoTextFieldsViewController.swift in Sources */,
@@ -2580,6 +2601,7 @@
 				1342A8DF21649FC500EFD1E6 /* String+Extensions.swift in Sources */,
 				1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */,
 				134FF0EE2152B37300551771 /* ViewerController.swift in Sources */,
+				133CDEC422027FFF00F32AC9 /* FTSwitchViewModel.swift in Sources */,
 				13813F1121B7C35800FB496D /* BMPlayerProtocols.swift in Sources */,
 				1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */,
 				13919557219C8A220068F362 /* SKZoomingScrollView.swift in Sources */,
@@ -2629,6 +2651,7 @@
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
 				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
+				133CDEC122027E5900F32AC9 /* FTSwitchControlTableViewCell.swift in Sources */,
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
 				13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */,
 				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
@@ -2683,6 +2706,7 @@
 				134FF0F22152B37300551771 /* UIImage+CenteredFrame.swift in Sources */,
 				1342A8DB21649FC500EFD1E6 /* UIImageView+Extensions.swift in Sources */,
 				139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */,
+				133CDEBB2202735800F32AC9 /* FTRichTextTableViewCell.swift in Sources */,
 				1375A9D021CEFCC000092C75 /* DemoConversation.swift in Sources */,
 				1342A90821649FC500EFD1E6 /* LikeButtonCell.swift in Sources */,
 				136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */,

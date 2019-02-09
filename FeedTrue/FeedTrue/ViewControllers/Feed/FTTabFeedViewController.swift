@@ -90,9 +90,12 @@ class FTTabFeedViewController: FTTabViewController {
             return
         }
         
-        let composerVC = FTComposerPopupViewController()
-        composerVC.delegate = self
-        self.navigationController?.pushViewController(composerVC, animated: true)
+//        let composerVC = FTComposerPopupViewController()
+//        composerVC.delegate = self
+//        self.navigationController?.pushViewController(composerVC, animated: true)
+        
+        let photoComposerVC = FTPhotoComposerViewController(coreService: rootViewController.coreService, assets: [])
+        self.navigationController?.pushViewController(photoComposerVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

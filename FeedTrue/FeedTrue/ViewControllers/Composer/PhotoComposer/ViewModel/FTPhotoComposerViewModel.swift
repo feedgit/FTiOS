@@ -19,4 +19,6 @@ class FTPhotoComposerViewModel: BECollectionCellDataSource {
     }
     
     var image: UIImage?
+    var canDelete = true
+    var canEdit = true
 }

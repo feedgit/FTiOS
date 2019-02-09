@@ -92,8 +92,8 @@ PODS:
   - Reveal-SDK (20)
   - RichEditorView (5.0.0)
   - ScrollableSegmentedControl (1.4.0)
-  - SDWebImage/Core (4.4.4)
-  - SDWebImage/GIF (4.4.4):
+  - SDWebImage/Core (4.4.5)
+  - SDWebImage/GIF (4.4.5):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SnapKit (4.2.0)
@@ -202,7 +202,7 @@ SPEC CHECKSUMS:
   Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
   RichEditorView: 1bbb07b87ca2d479ac29a6877014b38b8df233ef
   ScrollableSegmentedControl: 56f7baa7f1d7e622e00abb9d6658856c2d52dd4b
-  SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5

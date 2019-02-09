@@ -15,10 +15,10 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTPhotosViewModel
     @IBOutlet weak var collectionView: UICollectionView!
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
-    var datasource: [FTPhotoComposerViewModel] = []
+    //var datasource: [FTPhotoComposerViewModel] = []
     fileprivate let sectionInsets = UIEdgeInsets.zero
     fileprivate let itemsPerRow: CGFloat = 3
-    var contentData: FTPhotosViewModel?
+    var contentData: FTPhotosViewModel!
     fileprivate var editIndex: IndexPath = IndexPath(row: 0, section: 0)
     
     override func awakeFromNib() {
@@ -34,7 +34,7 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     
     func renderCell(data: FTPhotosViewModel) {
         contentData = data
-        datasource = data.datasource
+        //datasource = data.datasource
         self.collectionView.reloadData()
     }
 
@@ -64,17 +64,18 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
 
 extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return datasource.count
+        return contentData.datasource.count > 1 ? contentData.datasource.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let content = datasource[indexPath.row]
+        let content = contentData.datasource[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
         cell.delegate = self
         
         // Configure the cell
         cell.tag = indexPath.row
         cell.renderCell(data: content)
+        cell.deleteImageView.isHidden = !content.canDelete
         return cell
     }
     
@@ -89,13 +90,23 @@ extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDel
 //                editIndex = indexPath
 //            }
 //        }
+        if indexPath.row == contentData.datasource.count - 1 {
+            let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
+            photoPicker.delegate = self
+            if let topVC = UIApplication.topViewController() {
+                 topVC.navigationController?.pushViewController(photoPicker, animated: true)
+            }
+           
+        }
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let moveItem = datasource[sourceIndexPath.row]
-        let destinationItem = datasource[destinationIndexPath.row]
-        datasource[sourceIndexPath.row] = destinationItem
-        datasource[destinationIndexPath.row] = moveItem
+        let moveItem = contentData.datasource[sourceIndexPath.row]
+        let destinationItem = contentData.datasource[destinationIndexPath.row]
+        contentData.datasource[sourceIndexPath.row] = destinationItem
+        contentData.datasource[destinationIndexPath.row] = moveItem
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -103,7 +114,7 @@ extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        if indexPath.row == datasource.count { return false }
+        if indexPath.row == contentData.datasource.count { return false }
         return true
     }
 }
@@ -129,10 +140,10 @@ extension FTPhotosTableViewCell: UICollectionViewDelegateFlowLayout {
 extension FTPhotosTableViewCell: PhotoCellDelegate {
     func photoCellDidDelete(_ cell: FTPhotoCollectionViewCell) {
         guard let image = cell.image else { return }
-        for vm in datasource {
+        for vm in contentData.datasource {
             guard let icon = vm.image else { continue }
             if icon.isEqual(image) {
-                datasource.remove(vm)
+                contentData.datasource.remove(vm)
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -148,7 +159,7 @@ extension FTPhotosTableViewCell: PhotoCellDelegate {
             if let topVC = UIApplication.topViewController() {
                 topVC.navigationController?.pushViewController(controller, animated: true)
                 //editIndex = indexPath
-                if cell.tag < datasource.count {
+                if cell.tag < contentData.datasource.count {
                     let indexPath = IndexPath(row: cell.tag, section: 0)
                     editIndex = indexPath
                 }
@@ -163,9 +174,9 @@ extension FTPhotosTableViewCell: PixelEditViewControllerDelegate {
             topVC.navigationController?.popViewController(animated: true)
         }
         let image = editingStack.makeRenderer().render(resolution: .full)
-        let vm = datasource[editIndex.row]
+        let vm = contentData.datasource[editIndex.row]
         vm.image = image
-        datasource[editIndex.row] = vm
+        contentData.datasource[editIndex.row] = vm
         collectionView.reloadItems(at: [editIndex])
     }
     
@@ -176,4 +187,29 @@ extension FTPhotosTableViewCell: PixelEditViewControllerDelegate {
     }
     
 
+}
+
+extension FTPhotosTableViewCell: PhotoPickerDelegate {
+    func photoPickerDidSelectedAssets(assets: [DKAsset]) {
+        for asset in assets {
+            asset.fetchOriginalImage { (image, info) in
+                print(info?.debugDescription ?? "")
+                if let im = image {
+                    let vm = FTPhotoComposerViewModel()
+                    vm.image = im
+                    // insert in front of add button
+                    self.contentData.datasource.insert(vm, at: self.contentData.datasource.count > 1 ? self.contentData.datasource.count - 1 : 0)
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func photoPickerChangeThumbnail(asset: DKAsset?) {
+        
+    }
+    
 }
