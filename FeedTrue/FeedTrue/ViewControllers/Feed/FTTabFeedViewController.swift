@@ -12,6 +12,7 @@ import MBProgressHUD
 import SwiftMoment
 import STPopup
 import MobileCoreServices
+import YAScrollSegmentControl
 
 public enum HotFeedType: String {
     case following = "following"
@@ -21,7 +22,9 @@ public enum HotFeedType: String {
 
 class FTTabFeedViewController: FTTabViewController {
     
-    @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
+    //@IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
+    
+    @IBOutlet weak var segment: YAScrollSegmentControl!
     @IBOutlet weak var tableView: UITableView!
     var dataSource = [FTFeedViewModel]()
     var nextURLString: String?
@@ -161,24 +164,30 @@ class FTTabFeedViewController: FTTabViewController {
     
     // MARK: - Helpers
     private func setUpSegmentControl() {
-        segmentedControl.segmentStyle = .textOnly
-        segmentedControl.insertSegment(withTitle: "Following", image: nil, at: 0)
-        segmentedControl.insertSegment(withTitle: "Hot", image: nil, at: 1)
-        segmentedControl.insertSegment(withTitle: "Explore", image: nil, at: 2)
-        segmentedControl.selectedSegmentIndex = 0
-        
-        //fixedWidthSwitch.isOn = false
-        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
-        
-        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.gray]
-        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
-        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
-        
-        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
-        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
-        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
-        
-        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+//        segmentedControl.segmentStyle = .textOnly
+//        segmentedControl.insertSegment(withTitle: "Following", image: nil, at: 0)
+//        segmentedControl.insertSegment(withTitle: "Hot", image: nil, at: 1)
+//        segmentedControl.insertSegment(withTitle: "Explore", image: nil, at: 2)
+//        segmentedControl.selectedSegmentIndex = 0
+//        
+//        //fixedWidthSwitch.isOn = false
+//        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
+//
+//        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.gray]
+//        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
+//        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.black]
+//
+//        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
+//        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
+//        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
+//
+//        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+        segment.buttons = ["Following", "Hot", "Explore"]
+        segment.setBackgroundImage(UIImage(color: .white), for: .normal)
+        segment.setTitleColor(.gray, for: .normal)
+        segment.setTitleColor(.black, for: .selected)
+        segment.setFont(UIFont.boldSystemFont(ofSize: 20))
+        segment.delegate = self
     }
     
     private func setUpRefreshControl() {
@@ -461,7 +470,8 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
 
 extension FTTabFeedViewController: VideoControllerDelegate {
     func videoGoHome() {
-        self.segmentedControl.selectedSegmentIndex = 0
+        //self.segmentedControl.selectedSegmentIndex = 0
+        self.segment.selectedIndex = 0
     }
 }
 
@@ -534,4 +544,25 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
+}
+
+extension FTTabFeedViewController: YAScrollSegmentControlDelegate {
+    func didSelectItem(at index: Int) {
+        print("\(#function)  at index: \(index)")
+        switch index {
+        case 0:
+            hotFeedType = .following
+        case 1:
+            hotFeedType = .hottest
+        case 2:
+            hotFeedType = .explore
+        default:
+            break
+        }
+        dataSource.removeAll()
+        tableView.reloadData()
+        loadFeed()
+    }
+    
+    
 }

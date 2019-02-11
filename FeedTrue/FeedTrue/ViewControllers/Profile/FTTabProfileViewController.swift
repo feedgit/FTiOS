@@ -9,6 +9,7 @@
 import UIKit
 import MBProgressHUD
 import ScrollableSegmentedControl
+import YAScrollSegmentControl
 
 enum ProfileDisplayType {
     case owner
@@ -41,8 +42,9 @@ class FTTabProfileViewController: FTTabViewController {
     @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var followBtn: UIButton!
     
-    @IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
+    //@IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     
+    @IBOutlet weak var segment: YAScrollSegmentControl!
     var imagePicker: UIImagePickerController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -325,27 +327,33 @@ class FTTabProfileViewController: FTTabViewController {
     }
     
     private func setUpSegmentControl() {
-        segmentedControl.segmentStyle = .imageOnly
-        segmentedControl.insertSegment(withTitle: "Feed", image: #imageLiteral(resourceName: "feed_unselected"), at: 0)
-        segmentedControl.insertSegment(withTitle: "About", image: #imageLiteral(resourceName: "profile_selected"), at: 1)
-        segmentedControl.insertSegment(withTitle: "Photos", image: #imageLiteral(resourceName: "photos_unselected"), at: 2)
-        segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 3)
-        segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 4)
-        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
-        //segmentedControl.underlineSelected = true
-        segmentedControl.selectedSegmentIndex = 1
-        //fixedWidthSwitch.isOn = false
-        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
-        
-        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]
-        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
-        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
-        
-        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
-        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
-        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
-        
-        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+//        segmentedControl.segmentStyle = .imageOnly
+//        segmentedControl.insertSegment(withTitle: "Feed", image: #imageLiteral(resourceName: "feed_unselected"), at: 0)
+//        segmentedControl.insertSegment(withTitle: "About", image: #imageLiteral(resourceName: "profile_selected"), at: 1)
+//        segmentedControl.insertSegment(withTitle: "Photos", image: #imageLiteral(resourceName: "photos_unselected"), at: 2)
+//        segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 3)
+//        segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 4)
+//        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
+//        //segmentedControl.underlineSelected = true
+//        segmentedControl.selectedSegmentIndex = 1
+//        //fixedWidthSwitch.isOn = false
+//        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
+//
+//        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]
+//        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
+//        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
+//
+//        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
+//        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
+//        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
+//
+//        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
+        segment.buttons = ["Home", "Photos", "Videos", "About", "Blogs", "Checkin"]
+        segment.setBackgroundImage(UIImage(color: .white), for: .normal)
+        segment.setTitleColor(.gray, for: .normal)
+        segment.setTitleColor(.black, for: .selected)
+        segment.setFont(UIFont.boldSystemFont(ofSize: 20))
+        segment.delegate = self
     }
     
 }
@@ -421,4 +429,12 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
+}
+
+extension FTTabProfileViewController: YAScrollSegmentControlDelegate {
+    func didSelectItem(at index: Int) {
+        print("\(#function) index: \(index)")
+    }
+    
+    
 }

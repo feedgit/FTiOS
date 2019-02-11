@@ -107,6 +107,7 @@ PODS:
   - SwipeBack (1.1.1)
   - TOCropViewController (2.4.0)
   - VIMediaCache (0.4)
+  - YAScrollSegmentControl (0.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -134,6 +135,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 4.0)
   - SwipeBack
   - VIMediaCache
+  - YAScrollSegmentControl
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -174,6 +176,7 @@ SPEC REPOS:
     - SwipeBack
     - TOCropViewController
     - VIMediaCache
+    - YAScrollSegmentControl
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
@@ -213,7 +216,8 @@ SPEC CHECKSUMS:
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
   VIMediaCache: aa650f82cb114c68a343beb4e67416cf5eb2f3a2
+  YAScrollSegmentControl: c96512f76b231e3cd6ef02a9da073e807542ad09
 
-PODFILE CHECKSUM: b2f3b8696cea0c27e26ab96abf9c12512e1eb198
+PODFILE CHECKSUM: 2fe9fe2104732a77d8a7ee0ee02d3d11fd427eb6
 
 COCOAPODS: 1.6.0.beta.2
