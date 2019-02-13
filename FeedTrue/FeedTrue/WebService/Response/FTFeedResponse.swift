@@ -183,7 +183,7 @@ class FTFeedInfo: Mappable {
  
  
 class FTFeedContent: Mappable {
-    var display_type: Int?
+    var display_type: String?
     var data: [[String: Any]]?
     required init?(map: Map) {
         

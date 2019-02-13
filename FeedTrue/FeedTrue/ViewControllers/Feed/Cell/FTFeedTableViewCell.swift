@@ -171,7 +171,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         if let type = feed.feedcontent?.display_type {
             guard let imageDatas = feed.feedcontent?.data else { return }
             switch type {
-            case 1:
+            case "photoset":
                 /*
                  "display_type": 1,
                  "data": [
@@ -201,7 +201,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 photo.height = height
                 photos.append(photo)
                 }
-            case 2:
+            case "single-video":
                 /*
                  "display_type": 2,
                  "data": [
@@ -222,7 +222,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 photo.thumbnailURL = thumbnail
                 photos.append(photo)
                 }
-            case 3:
+            case "single-blog":
                 /*
                  "display_type": 3,
                  "data": [
@@ -238,18 +238,18 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                     guard let id = image["id"] else { continue }
                     let title = image["title"] as? String
                     let thumbnailURL = image["thumbnail"] as? String
-                    let slug = image["slug"] as? String
-                    guard let videoURL = image["file"] as? String else { continue }
+                    let slug = image["content"] as? String
+                    //guard let videoURL = image["file"] as? String else { continue }
                     let photo = Photo(id: "\(id)")
                     photo.thumbnailURL = thumbnailURL
-                    photo.url = videoURL
+                    //photo.url = videoURL
                     photo.title = title
                     photo.slug = slug
-                    photo.type = .video
+                    photo.type = .image
                     
                     photos.append(photo)
                 }
-            case 4:
+            case "share_feed": // TODO: @Toan: please check
                 /*
                  "display_type": 4,
                  "data": [
