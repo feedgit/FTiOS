@@ -40,6 +40,13 @@ public enum FTPrivacyType: String {
     case secret = "privacy_private"
 }
 
+public enum FeedDisplayType: String {
+    case photoset = "photoset"
+    case singleVideo = "single-video"
+    case singleBlog = "single-blog"
+    case sharedFeed = "shared-feed"
+}
+
 class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTFeedViewModel
     weak var delegate: FTFeedCellDelegate?
@@ -171,7 +178,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         if let type = feed.feedcontent?.display_type {
             guard let imageDatas = feed.feedcontent?.data else { return }
             switch type {
-            case "photoset":
+            case FeedDisplayType.photoset.rawValue:
                 /*
                  "display_type": 1,
                  "data": [
@@ -201,7 +208,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 photo.height = height
                 photos.append(photo)
                 }
-            case "single-video":
+            case FeedDisplayType.singleVideo.rawValue:
                 /*
                  "display_type": 2,
                  "data": [
@@ -222,7 +229,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 photo.thumbnailURL = thumbnail
                 photos.append(photo)
                 }
-            case "single-blog":
+            case FeedDisplayType.singleBlog.rawValue:
                 /*
                  "display_type": 3,
                  "data": [
@@ -249,7 +256,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                     
                     photos.append(photo)
                 }
-            case "share_feed": // TODO: @Toan: please check
+            case FeedDisplayType.sharedFeed.rawValue:
                 /*
                  "display_type": 4,
                  "data": [

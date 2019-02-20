@@ -21,6 +21,17 @@ enum PrivacyType: Int {
     case follow = 2
 }
 
+enum ComposerCellType: Int {
+    //[feedCategory, editorVM, switchVM, privacy, checkin, menu, photoVMs]
+    case category = 0
+    case editor = 1
+    case switchVM = 2
+    case privacy = 3
+    case checkin = 4
+    case menu = 5
+    case photos = 6
+}
+
 struct FTLocationProperties {
     var locationLong: Double = 0
     var locationLat: Double = 0
@@ -72,6 +83,7 @@ class FTPhotoComposerViewController: UIViewController {
     var locationProperties: FTLocationProperties?
     var photoVMs: FTPhotosViewModel!
     var selectedComposerType: FTComposerType = .photo
+    var feedCategory: FTFeedCategory!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +102,7 @@ class FTPhotoComposerViewController: UIViewController {
         generateSettings()
         tableView.dataSource = self
         tableView.delegate = self
+        FTFeedCategory.register(tableView: tableView)
         FTRichTextViewModel.register(tableView: tableView)
         FTPhotoSettingViewModel.register(tableView: tableView)
         FTPhotosViewModel.register(tableView: tableView)
@@ -180,7 +193,7 @@ class FTPhotoComposerViewController: UIViewController {
         
         switch selectedComposerType {
         case .photo:
-            WebService.share.composerPhoto(imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, category: 0, locationProperties: locationProperties) { (success, resposnse) in
+            WebService.share.composerPhoto(imageFiles: imageFiles, imageDatas: imageDatas, privacy: selectedPrivacy.rawValue, feedText: postText, category: feedCategory.key, locationProperties: locationProperties) { (success, resposnse) in
                 NSLog(success ? "SUCCESS" : "FAILED")
                 if !self.postText.isEmpty && success {
                     // get new feed, notify to feed screen
@@ -203,6 +216,7 @@ class FTPhotoComposerViewController: UIViewController {
     }
     
     func generateSettings() {
+        feedCategory = FTFeedCategory(key: 0, label: "Something", iconName: "explore-app", background: String.somethingBackground(), description: "Something about your life")
         editorVM = FTRichTextViewModel(content: "")
         photoVMs = FTPhotosViewModel()
         addButtonVM = FTPhotoComposerViewModel()
@@ -226,7 +240,13 @@ class FTPhotoComposerViewController: UIViewController {
         menu.countCol = 3
         
         switchVM = FTSwitchViewModel(imageName: "feed_selected", title: NSLocalizedString("Feed", comment: ""), isOn: true)
-        settings = [editorVM, switchVM, privacy, checkin, menu, photoVMs]
+        settings = [feedCategory, editorVM, switchVM, privacy, checkin, menu, photoVMs]
+    }
+    
+    fileprivate func reloadCell(type: ComposerCellType) {
+        let row = type.rawValue
+        let indexPath = IndexPath(row: row, section: 0)
+        self.tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
@@ -346,24 +366,34 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 1:
+        let cellType = ComposerCellType(rawValue: indexPath.row)!
+        switch cellType {
+        case .category:
+            // category
+            let categoryVC = FTCategoryPickerViewController()
+            categoryVC.delegate = self
+            self.navigationController?.pushViewController(categoryVC, animated: true)
+        case .editor:
             // post in feed
 //            let postVC = FTPostInFeedViewController(postText: postText)
 //            postVC.delegate = self
 //            self.navigationController?.pushViewController(postVC, animated: true)
             break
-        case 2:
+        case .switchVM:
+            break
+        case .privacy:
             // privacy
             let privacyVC = FTPrivacyPickerViewController()
             privacyVC.delegate = self
             self.navigationController?.pushViewController(privacyVC, animated: true)
-        case 3:
+        case .checkin:
             // check'in
             let checkinVC = FTCheckInViewController()
             checkinVC.delegate = self
             self.navigationController?.pushViewController(checkinVC, animated: true)
-        default:
+        case .menu:
+            break
+        case .photos:
             break
         }
     }
@@ -404,9 +434,8 @@ extension FTPhotoComposerViewController: PrivacyPickerDelegate {
         }
         
         let privacyItem = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: privacy.imageName)
-        settings[2] = privacyItem
-        let indexPath = IndexPath(row: 2, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        settings[ComposerCellType.privacy.rawValue] = privacyItem
+        reloadCell(type: .privacy)
     }
 }
 
@@ -429,8 +458,7 @@ extension FTPhotoComposerViewController: PostInFeedDelegate {
 extension FTPhotoComposerViewController: SwitchControlCellDelegate {
     func switchStateDidChange(isOn: Bool) {
         self.editorVM.enable = isOn
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.reloadRows(at: [indexPath], with: .none)
+        reloadCell(type: .editor)
     }
 }
 
@@ -462,5 +490,15 @@ extension FTPhotoComposerViewController: RichTextCellDelegate {
     func richTextCell(_ editor: RichEditorView, contentDidChange content: String) {
         postText = content
         editorVM.content = content
+        settings[ComposerCellType.editor.rawValue] = editorVM
+        reloadCell(type: .editor)
+    }
+}
+
+extension FTPhotoComposerViewController: CategoryPickerDelegate {
+    func didSelectCategory(vc: FTCategoryPickerViewController) {
+        feedCategory = vc.selectedCategory
+        settings[ComposerCellType.category.rawValue] = feedCategory
+        reloadCell(type: .category)
     }
 }

@@ -27,4 +27,16 @@ extension String {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.date(from: self)
     }
+    
+    static func somethingBackground() -> String {
+        return "#05c8f3"
+    }
+    
+    static func  travelCheckinBackground() -> String {
+        return "#ffc65c"
+    }
+    
+    static func foodReviewBackground() -> String {
+        return "#ea7878"
+    }
 }

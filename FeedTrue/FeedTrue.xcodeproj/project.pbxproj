@@ -306,6 +306,11 @@
 		13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CCF21B52F08003161D2 /* FTDetailFileViewController.swift */; };
 		13922CD221B52F08003161D2 /* FTDetailFileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13922CD021B52F08003161D2 /* FTDetailFileViewController.xib */; };
 		13922CD421B536FF003161D2 /* FTDetailFileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */; };
+		139BF090221DA3660069B783 /* FTCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF08E221DA3660069B783 /* FTCategoryTableViewCell.swift */; };
+		139BF091221DA3660069B783 /* FTCategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139BF08F221DA3660069B783 /* FTCategoryTableViewCell.xib */; };
+		139BF093221DA3A80069B783 /* FTFeedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF092221DA3A80069B783 /* FTFeedCategory.swift */; };
+		139BF099221DA7F80069B783 /* FTCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF097221DA7F80069B783 /* FTCategoryPickerViewController.swift */; };
+		139BF09A221DA7F80069B783 /* FTCategoryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139BF098221DA7F80069B783 /* FTCategoryPickerViewController.xib */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -721,6 +726,11 @@
 		13922CCF21B52F08003161D2 /* FTDetailFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailFileViewController.swift; sourceTree = "<group>"; };
 		13922CD021B52F08003161D2 /* FTDetailFileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailFileViewController.xib; sourceTree = "<group>"; };
 		13922CD321B536FF003161D2 /* FTDetailFileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailFileViewModel.swift; sourceTree = "<group>"; };
+		139BF08E221DA3660069B783 /* FTCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		139BF08F221DA3660069B783 /* FTCategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTCategoryTableViewCell.xib; sourceTree = "<group>"; };
+		139BF092221DA3A80069B783 /* FTFeedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedCategory.swift; sourceTree = "<group>"; };
+		139BF097221DA7F80069B783 /* FTCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCategoryPickerViewController.swift; sourceTree = "<group>"; };
+		139BF098221DA7F80069B783 /* FTCategoryPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTCategoryPickerViewController.xib; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -1750,6 +1760,34 @@
 			path = SwipeMenu;
 			sourceTree = "<group>";
 		};
+		139BF094221DA7A70069B783 /* CategoryPicker */ = {
+			isa = PBXGroup;
+			children = (
+				139BF095221DA7B30069B783 /* ViewModel */,
+				139BF096221DA7C20069B783 /* Cell */,
+				139BF097221DA7F80069B783 /* FTCategoryPickerViewController.swift */,
+				139BF098221DA7F80069B783 /* FTCategoryPickerViewController.xib */,
+			);
+			path = CategoryPicker;
+			sourceTree = "<group>";
+		};
+		139BF095221DA7B30069B783 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				139BF092221DA3A80069B783 /* FTFeedCategory.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		139BF096221DA7C20069B783 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				139BF08E221DA3660069B783 /* FTCategoryTableViewCell.swift */,
+				139BF08F221DA3660069B783 /* FTCategoryTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		139DD5CA21ABFBA800C5405B /* FeedDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2085,6 +2123,7 @@
 		13D0C032217F299C00F745B9 /* Composer */ = {
 			isa = PBXGroup;
 			children = (
+				139BF094221DA7A70069B783 /* CategoryPicker */,
 				13B7D13F21F844C60001C542 /* Map */,
 				1391955E21A6C2E70068F362 /* ArticleComposer */,
 				1314C24F2195939E00FBBE32 /* VideoPicker */,
@@ -2256,6 +2295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139BF09A221DA7F80069B783 /* FTCategoryPickerViewController.xib in Resources */,
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
 				1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */,
 				1386394A21FADFA700E6B3EA /* LUT_M07.png in Resources */,
@@ -2291,6 +2331,7 @@
 				1386394C21FADFA700E6B3EA /* LUT_M12.png in Resources */,
 				134FF10F2152B37300551771 /* seek.png in Resources */,
 				134FF1132152B37300551771 /* seek@2x.png in Resources */,
+				139BF091221DA3660069B783 /* FTCategoryTableViewCell.xib in Resources */,
 				139DD5D821AC27BD00C5405B /* FTDetailContentTableViewCell.xib in Resources */,
 				13B7D14C21F872B50001C542 /* FTLocationTableViewCell.xib in Resources */,
 				13ED3D7121E5FEE100AB9245 /* ArticleThumbnailTableViewCell.xib in Resources */,
@@ -2692,6 +2733,7 @@
 				1338D81E21828E290065B552 /* FTPhotoSettingTableViewCell.swift in Sources */,
 				13D0C029217DD9B700F745B9 /* FTUserDashBoardFollowCell.swift in Sources */,
 				1391955B219C8A220068F362 /* SKButtons.swift in Sources */,
+				139BF093221DA3A80069B783 /* FTFeedCategory.swift in Sources */,
 				13813F1021B7C35800FB496D /* BMPlayerItem.swift in Sources */,
 				13A2C4CC2137A47200C377C0 /* ExampleHighlightableContentView.swift in Sources */,
 				13A2C4D52137B76000C377C0 /* FTUserDefaultService.swift in Sources */,
@@ -2718,6 +2760,7 @@
 				13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */,
 				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
+				139BF090221DA3660069B783 /* FTCategoryTableViewCell.swift in Sources */,
 				13030AB221CA40FD00905211 /* FTMessageResponse.swift in Sources */,
 				13813F1621B7C35800FB496D /* BMSubtitles.swift in Sources */,
 				134FF1B52159EF9B00551771 /* ReactionSummary.swift in Sources */,
@@ -2745,6 +2788,7 @@
 				130E05E6212D7D5E00C3E21A /* SignUpViewController.swift in Sources */,
 				1342A8F821649FC500EFD1E6 /* LocationPickerViewController.swift in Sources */,
 				13922CBB21AFF61B003161D2 /* ContentScrollView.swift in Sources */,
+				139BF099221DA7F80069B783 /* FTCategoryPickerViewController.swift in Sources */,
 				134FF11F21574F1C00551771 /* UITextField+FeedTrue.swift in Sources */,
 				132C7AA8216FA30C00EE11AD /* FTFeedVideoCollectionViewCell.swift in Sources */,
 				134FF1BE2159EF9B00551771 /* ReactionSelector.swift in Sources */,
