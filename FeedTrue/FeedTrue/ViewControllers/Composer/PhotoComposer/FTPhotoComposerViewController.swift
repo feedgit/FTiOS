@@ -491,7 +491,6 @@ extension FTPhotoComposerViewController: RichTextCellDelegate {
         postText = content
         editorVM.content = content
         settings[ComposerCellType.editor.rawValue] = editorVM
-        reloadCell(type: .editor)
     }
 }
 
