@@ -12,7 +12,7 @@ import UIKit
     func selectedLocationRemoveAction()
 }
 
-class i: UITableViewCell, BECellRenderImpl {
+class FTSelectedLocationTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTSelectedLocationVM
     weak var delegate: SelectedLocationCellDelegate?
     
