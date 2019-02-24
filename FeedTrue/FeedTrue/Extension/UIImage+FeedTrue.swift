@@ -91,4 +91,8 @@ extension UIImage {
     class func wowImage() -> UIImage? {
         return UIImage(named: "wow")
     }
+    
+    class func deleteLocationImage() -> UIImage? {
+        return UIImage(named: "icons8-close-button-100")
+    }
 }

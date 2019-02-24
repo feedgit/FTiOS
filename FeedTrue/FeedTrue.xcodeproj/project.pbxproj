@@ -311,6 +311,9 @@
 		139BF093221DA3A80069B783 /* FTFeedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF092221DA3A80069B783 /* FTFeedCategory.swift */; };
 		139BF099221DA7F80069B783 /* FTCategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF097221DA7F80069B783 /* FTCategoryPickerViewController.swift */; };
 		139BF09A221DA7F80069B783 /* FTCategoryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139BF098221DA7F80069B783 /* FTCategoryPickerViewController.xib */; };
+		139BF09C2222EB690069B783 /* FTSelectedLocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */; };
+		139BF09F2222EB850069B783 /* FTSelectedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */; };
+		139BF0A02222EB850069B783 /* FTSelectedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -731,6 +734,9 @@
 		139BF092221DA3A80069B783 /* FTFeedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedCategory.swift; sourceTree = "<group>"; };
 		139BF097221DA7F80069B783 /* FTCategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTCategoryPickerViewController.swift; sourceTree = "<group>"; };
 		139BF098221DA7F80069B783 /* FTCategoryPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTCategoryPickerViewController.xib; sourceTree = "<group>"; };
+		139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSelectedLocationVM.swift; sourceTree = "<group>"; };
+		139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSelectedLocationTableViewCell.swift; sourceTree = "<group>"; };
+		139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSelectedLocationTableViewCell.xib; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -1929,6 +1935,8 @@
 				133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */,
 				133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */,
 				133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */,
+				139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */,
+				139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1941,6 +1949,7 @@
 				133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */,
 				133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */,
 				133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */,
+				139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2306,6 +2315,7 @@
 				1338D8252186F1B90065B552 /* FTPrivacyPickerTableViewCell.xib in Resources */,
 				13922CCE21B52986003161D2 /* FTDetailFileTableViewCell.xib in Resources */,
 				13B009012181B0C6000E7FA5 /* FTPhotoComposerViewController.xib in Resources */,
+				139BF0A02222EB850069B783 /* FTSelectedLocationTableViewCell.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				1386394921FADFA700E6B3EA /* LUT_M03.png in Resources */,
 				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
@@ -2618,6 +2628,7 @@
 				13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */,
 				1342A90021649FC500EFD1E6 /* ContactCell.swift in Sources */,
 				13477461216793C40026B048 /* CommonProtocols.swift in Sources */,
+				139BF09C2222EB690069B783 /* FTSelectedLocationVM.swift in Sources */,
 				134FF1B62159EF9B00551771 /* ReactionFeedback.swift in Sources */,
 				1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */,
 				1321982D21C1095A00C45273 /* FTContactResponse.swift in Sources */,
@@ -2767,6 +2778,7 @@
 				133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */,
 				1342A8EB21649FC500EFD1E6 /* TextViewController.swift in Sources */,
 				1342A8EE21649FC500EFD1E6 /* LocaleInfo.swift in Sources */,
+				139BF09F2222EB850069B783 /* FTSelectedLocationTableViewCell.swift in Sources */,
 				13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */,
 				1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */,
 				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
@@ -2974,13 +2986,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XD8YQZYAN5;
+				DEVELOPMENT_TEAM = 5FA8Y389K4;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.toanle.FeedTrue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cisbox.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2993,13 +3005,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XD8YQZYAN5;
+				DEVELOPMENT_TEAM = 5FA8Y389K4;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.toanle.FeedTrue;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cisbox.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -79,6 +79,8 @@ class FTPhotoComposerViewController: UIViewController {
     var editorVM: FTRichTextViewModel!
     var switchVM: FTSwitchViewModel!
     var addButtonVM: FTPhotoComposerViewModel!
+    var checkin: FTPhotoSettingViewModel!
+    var selectedCheckin: FTSelectedLocationVM!
     // location
     var locationProperties: FTLocationProperties?
     var photoVMs: FTPhotosViewModel!
@@ -107,6 +109,7 @@ class FTPhotoComposerViewController: UIViewController {
         FTPhotoSettingViewModel.register(tableView: tableView)
         FTPhotosViewModel.register(tableView: tableView)
         FTSwitchViewModel.register(tableView: tableView)
+        FTSelectedLocationVM.register(tableView: tableView)
         tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "FTMenuTableViewCell")
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
@@ -229,7 +232,7 @@ class FTPhotoComposerViewController: UIViewController {
         
         let privacy = FTPhotoSettingViewModel(icon: "privacy_private", title: NSLocalizedString("Privacy", comment: ""), markIcon: PrivacyIconName.public.rawValue)
         
-        let checkin = FTPhotoSettingViewModel(icon: "ic_checkin", title: NSLocalizedString("Check-In", comment: ""), markIcon: "")
+        checkin = FTPhotoSettingViewModel(icon: "ic_checkin", title: NSLocalizedString("Check-In", comment: ""), markIcon: "")
         
         let photo = ["title": "Photos", "image": "ic_photo"]
         let video = ["title": "Videos", "image": "ic_video"]
@@ -358,6 +361,10 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
             richTextCell.delegate = self
         }
         
+        if let selectedLocationCell = cell as? FTSelectedLocationTableViewCell {
+            selectedLocationCell.delegate = self
+        }
+        
         return cell
     }
     
@@ -462,9 +469,17 @@ extension FTPhotoComposerViewController: SwitchControlCellDelegate {
     }
 }
 
-extension FTPhotoComposerViewController: CheckInDelegate {
+extension FTPhotoComposerViewController: CheckInDelegate, SelectedLocationCellDelegate {
     func checkInDidSelectedLocation(locationProperties p: FTLocationProperties) {
         self.locationProperties = p
+        selectedCheckin = FTSelectedLocationVM(location: p)
+        settings[ComposerCellType.checkin.rawValue] = selectedCheckin
+        reloadCell(type: .checkin)
+    }
+    
+    func selectedLocationRemoveAction() {
+        settings[ComposerCellType.checkin.rawValue] = checkin
+        reloadCell(type: .checkin)
     }
 }
 
