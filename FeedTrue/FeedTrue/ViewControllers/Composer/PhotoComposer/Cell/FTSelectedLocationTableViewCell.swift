@@ -12,7 +12,7 @@ import UIKit
     func selectedLocationRemoveAction()
 }
 
-class FTSelectedLocationTableViewCell: UITableViewCell, BECellRenderImpl {
+class i: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTSelectedLocationVM
     weak var delegate: SelectedLocationCellDelegate?
     
@@ -32,6 +32,9 @@ class FTSelectedLocationTableViewCell: UITableViewCell, BECellRenderImpl {
         deleteImageView.isUserInteractionEnabled = true
         deleteImageView.addGestureRecognizer(singleTap)
         deleteImageView.image = UIImage.deleteLocationImage()
+        
+        locationNameLabel.font = UIFont.UserNameFont()
+        locationDescriptionLabel.font = UIFont.descriptionFont()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

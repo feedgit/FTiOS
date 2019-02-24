@@ -14,7 +14,7 @@ protocol CheckInDelegate {
 }
 
 protocol HandleMapSearch: class {
-    func dropPinZoomIn(placemark:MKPlacemark)
+    func dropPinZoomIn(p:FTLocationProperties)
 }
 
 class FTCheckInViewController: UIViewController {
@@ -86,6 +86,29 @@ extension FTCheckInViewController : CLLocationManagerDelegate {
 }
 
 extension FTCheckInViewController: HandleMapSearch {
+    func dropPinZoomIn(p: FTLocationProperties) {
+        let placemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: p.locationLat, longitude: p.locationLong))
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion.init(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        self.delegate?.checkInDidSelectedLocation(locationProperties: p)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     func dropPinZoomIn(placemark: MKPlacemark){
         // cache the pin

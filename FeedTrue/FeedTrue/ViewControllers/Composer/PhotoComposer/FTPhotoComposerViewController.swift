@@ -9,6 +9,7 @@
 import UIKit
 import DKImagePickerController
 import RichEditorView
+import MapKit
 
 enum ComposerType: String {
     case photos = "Add Photos"
@@ -40,6 +41,7 @@ struct FTLocationProperties {
     var locationType = ""
     var locationAddress = ""
     var locationDescription = ""
+    var mapItem: MKMapItem?
 }
 
 enum FTComposerType {

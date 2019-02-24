@@ -1794,6 +1794,13 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		139BF0A12222FA590069B783 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		139DD5CA21ABFBA800C5405B /* FeedDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1957,6 +1964,7 @@
 		13B7D13F21F844C60001C542 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				139BF0A12222FA590069B783 /* ViewModel */,
 				13B7D14821F872990001C542 /* Cell */,
 				13B7D14021F844F30001C542 /* FTCheckInViewController.swift */,
 				13B7D14121F844F30001C542 /* FTCheckInViewController.xib */,

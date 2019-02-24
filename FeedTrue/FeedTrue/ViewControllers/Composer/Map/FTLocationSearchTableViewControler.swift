@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Contacts
 
 class FTLocationSearchTableViewControler: UITableViewController {
     
@@ -20,7 +21,7 @@ class FTLocationSearchTableViewControler: UITableViewController {
     }
     
     weak var handleMapSearchDelegate: HandleMapSearch?
-    var matchingItems: [MKMapItem] = []
+    var matchingItems: [FTLocationProperties] = []
     var mapView: MKMapView?
     
     
@@ -72,8 +73,22 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
             guard let response = response else {
                 return
             }
-            self.matchingItems.append(response.mapItems)
-            self.tableView.reloadData()
+            for item in response.mapItems {
+                var p = FTLocationProperties()
+                p.mapItem = item
+                p.locationLat = item.placemark.coordinate.latitude
+                p.locationLong = item.placemark.coordinate.longitude
+                p.locationAddress = self.parseAddress(selectedItem: item.placemark)
+                p.locationDescription = ""
+                p.locationName = item.name ?? ""
+                p.locationThumbnail = ""
+                p.locationType = ""
+                self.matchingItems.append(p)
+            }
+            //self.matchingItems.append(response.mapItems)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         
         // load from server
@@ -82,6 +97,23 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
             if success {
                 self.nextURL = locationResponse?.next
                 print(locationResponse.debugDescription)
+                if let locations = locationResponse?.results {
+                    for item in locations {
+                        var p = FTLocationProperties()
+                        p.locationLat = item.lat
+                        p.locationLong = item.long
+                        p.locationAddress = item.address
+                        p.locationDescription = item.description
+                        p.locationName = item.name
+                        p.locationThumbnail = item.thumbnail
+                        p.locationType = ""
+                        self.matchingItems.append(p)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
                 // load next
                 self.loadNextLocation()
             }
@@ -95,6 +127,23 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
                 self.nextURL = locationResponse?.next
                 print(locationResponse.debugDescription)
                 // TODO: hanlder load next
+                if let locations = locationResponse?.results {
+                    for item in locations {
+                        var p = FTLocationProperties()
+                        p.locationLat = item.lat
+                        p.locationLong = item.long
+                        p.locationAddress = item.address
+                        p.locationDescription = item.description
+                        p.locationName = item.name
+                        p.locationThumbnail = item.thumbnail
+                        p.locationType = ""
+                        self.matchingItems.append(p)
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
     }
@@ -109,9 +158,18 @@ extension FTLocationSearchTableViewControler {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as! FTLocationTableViewCell
-        let selectedItem = matchingItems[indexPath.row].placemark
-        cell.titleLabel.text = selectedItem.name
-        cell.detailLabel.text = parseAddress(selectedItem: selectedItem)
+        let selectedItem = matchingItems[indexPath.row]
+        cell.titleLabel.text = selectedItem.locationName
+        if selectedItem.locationAddress.isEmpty == true {
+            if let mapItem = selectedItem.mapItem {
+                cell.detailLabel.text = parseAddress(selectedItem: mapItem.placemark)
+            } else {
+                cell.detailLabel.text = nil
+            }
+        } else {
+            cell.detailLabel.text = selectedItem.locationAddress
+        }
+        //cell.detailLabel.text = parseAddress(selectedItem: selectedItem)
         return cell
     }
     
@@ -124,8 +182,8 @@ extension FTLocationSearchTableViewControler {
 extension FTLocationSearchTableViewControler {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedItem = matchingItems[indexPath.row].placemark
-        handleMapSearchDelegate?.dropPinZoomIn(placemark: selectedItem)
+        let selectedItem = matchingItems[indexPath.row]//.placemark
+        handleMapSearchDelegate?.dropPinZoomIn(p: selectedItem)
         dismiss(animated: true, completion: nil)
     }
     
