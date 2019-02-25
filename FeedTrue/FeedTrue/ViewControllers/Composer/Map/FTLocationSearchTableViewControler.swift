@@ -62,7 +62,7 @@ class FTLocationSearchTableViewControler: UITableViewController {
 extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let mapView = mapView,
-            let searchBarText = searchController.searchBar.text else { return }
+            let searchBarText = searchController.searchBar.text, searchBarText.count > 1 else { return }
         
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
@@ -73,6 +73,7 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
             guard let response = response else {
                 return
             }
+            var results: [FTLocationProperties] = []
             for item in response.mapItems {
                 var p = FTLocationProperties()
                 p.mapItem = item
@@ -83,9 +84,10 @@ extension FTLocationSearchTableViewControler : UISearchResultsUpdating {
                 p.locationName = item.name ?? ""
                 p.locationThumbnail = ""
                 p.locationType = ""
-                self.matchingItems.append(p)
+                results.append(p)
             }
             //self.matchingItems.append(response.mapItems)
+            self.matchingItems = results
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

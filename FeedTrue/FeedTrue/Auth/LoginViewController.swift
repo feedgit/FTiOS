@@ -46,6 +46,11 @@ class LoginViewController: UIViewController {
         closeImageView.addGestureRecognizer(closeTap)
         
         self.setupUI()
+        
+        #if DEBUG
+        self.usernameTextField.text = "duongnuhabang"
+        self.passwordTextField.text = "chelsea39"
+        #endif
     }
     
     @objc func close(_ sender: Any) {
