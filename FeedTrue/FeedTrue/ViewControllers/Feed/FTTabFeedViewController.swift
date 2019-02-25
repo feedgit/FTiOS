@@ -88,7 +88,7 @@ class FTTabFeedViewController: FTTabViewController {
     }
     
     @objc func addAction() {
-        if rootViewController.coreService.registrationService?.hasAuthenticationProfile() == false {
+        if FTCoreService.share.registrationService?.hasAuthenticationProfile() == false {
             NotificationCenter.default.post(name: .ShowLogin, object: nil)
             return
         }
@@ -97,7 +97,7 @@ class FTTabFeedViewController: FTTabViewController {
 //        composerVC.delegate = self
 //        self.navigationController?.pushViewController(composerVC, animated: true)
         
-        let photoComposerVC = FTPhotoComposerViewController(coreService: rootViewController.coreService, assets: [])
+        let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
         self.navigationController?.pushViewController(photoComposerVC, animated: true)
     }
 
@@ -133,10 +133,10 @@ class FTTabFeedViewController: FTTabViewController {
             self.tableView.removeBottomActivityView()
             return
         }
-        guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+        guard let token = FTCoreService.share.registrationService?.authenticationProfile?.accessToken else {
             return
         }
-        self.rootViewController.coreService.webService?.loadMoreFeed(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
+        WebService.share.loadMoreFeed(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load more feed successful \(response?.next ?? "")")
                 self?.nextURLString = response?.next
@@ -224,7 +224,6 @@ class FTTabFeedViewController: FTTabViewController {
         if tableView.contentOffset.y > 0 {
             tableView.setContentOffset(.zero, animated: true)
         } else if tableView.contentOffset.y == 0 {
-            guard rootViewController.coreService != nil else { return }
             let hub = MBProgressHUD.showAdded(to: self.view, animated: true)
             hub.hide(animated: true, afterDelay: 1)
             self.loadFeed()
@@ -305,7 +304,7 @@ extension FTTabFeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let content = dataSource[indexPath.row]
-        let detailVC = FTFeedDetailViewController(feedInfo: content.feed, coreService: rootViewController.coreService)
+        let detailVC = FTFeedDetailViewController(feedInfo: content.feed, coreService: FTCoreService.share)
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellIdentifier()) as! FTFeedTableViewCell
         detailVC.photos = cell.photos
         detailVC.skPhotos = cell.skPhotos
@@ -318,8 +317,9 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feedCellDidTapUsername(username: String) {
         // TODO: open username
         let profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
+        guard self.rootViewController != nil else { return }
         profileVC.rootViewController = self.rootViewController
-        profileVC.rootViewController.coreService = rootViewController.coreService
+        profileVC.rootViewController.coreService = FTCoreService.share
         profileVC.displayType = .user
         profileVC.username = username
         self.navigationController?.pushViewController(profileVC, animated: true)
@@ -350,7 +350,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         guard let feedID = cell.feed.id else { return }
         progressHub = MBProgressHUD.showAdded(to: self.view, animated: true)
         progressHub?.detailsLabel.text = NSLocalizedString("Delete...", comment: "")
-        self.rootViewController.coreService.webService?.deleteFeed(feedID: "\(feedID)", completion: { [weak self] (success, response) in
+        WebService.share.deleteFeed(feedID: "\(feedID)", completion: { [weak self] (success, response) in
             if success {
                 // Reload feed
                 self?.dataSource = (self?.dataSource.filter { $0.feed.id != cell.feed.id })!
@@ -372,7 +372,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
         let react_type = cell.ftReactionType.rawValue
-        rootViewController.coreService.webService?.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
+        WebService.share.react(ct_name: ct_name, ct_id: ct_id, react_type: react_type, completion: { (success, type) in
             if success {
                 NSLog("did react successful \(type ?? "")")
             } else {
@@ -388,7 +388,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feedCellDidRemoveReaction(cell: FTFeedTableViewCell) {
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
+        WebService.share.removeReact(ct_name: ct_name, ct_id: ct_id, completion: { (success, msg) in
             if success {
                 NSLog("Remove react successful")
             } else {
@@ -404,7 +404,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feedCellDidSave(cell: FTFeedTableViewCell) {
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.saveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Save Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -421,7 +421,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     func feedCellDidUnSave(cell: FTFeedTableViewCell) {
         guard let ct_id = cell.feed.id else { return }
         guard let ct_name = cell.feed.ct_name else { return }
-        rootViewController.coreService.webService?.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
+        WebService.share.removeSaveFeed(ct_name: ct_name, ct_id: ct_id, completion: { (success, message) in
             if success {
                 NSLog("Remove saved Feed successful ct_name: \(ct_name) ct_id: \(ct_id)")
             } else {
@@ -439,7 +439,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
         // TODO: show comment view
         var comments: [FTCommentViewModel] = []
         guard let feed = cell.feed else { return }
-        guard let coreService = self.rootViewController.coreService else { return }
+        let coreService = FTCoreService.share
         if let items = feed.comment?.comments {
             for item in items {
                 let cmv = FTCommentViewModel(comment: item, type: .text)
@@ -456,8 +456,7 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
     
     func feedCellShowDetail(cell: FTFeedTableViewCell) {
         guard let feed = cell.feed else { return }
-        guard let coreService = self.rootViewController.coreService else { return }
-        let detailVC = FTFeedDetailViewController(feedInfo: feed, coreService: coreService)
+        let detailVC = FTFeedDetailViewController(feedInfo: feed, coreService: FTCoreService.share)
         detailVC.photos = cell.photos
         detailVC.skPhotos = cell.skPhotos
         self.navigationController?.pushViewController(detailVC, animated: true)
@@ -479,11 +478,11 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
     func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
         switch index {
         case 0: // video
-            let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
+            let videoVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
             videoVC.delegate = self
             self.navigationController?.pushViewController(videoVC, animated: true)
         case 1: // article
-            let articleVC = FTArticlesViewController(coreService: rootViewController.coreService)
+            let articleVC = FTArticlesViewController(coreService: FTCoreService.share)
             self.navigationController?.pushViewController(articleVC, animated: true)
         default:
             break
@@ -494,7 +493,7 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
 extension FTTabFeedViewController: ComposerDelegate {
     func composerDidSelectedItemAt(_ index: Int) {
         if index == 0 {
-            let photoPicker = FTPhotoPickerViewController(coreService: rootViewController.coreService)
+            let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
             self.navigationController?.pushViewController(photoPicker, animated: true)
         } else if index == 1 {
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
@@ -506,7 +505,7 @@ extension FTTabFeedViewController: ComposerDelegate {
             }
         } else if index == 2 {
             // blog
-            let articleComposerVC = FTArticelComposerViewController(coreService: rootViewController.coreService)
+            let articleComposerVC = FTArticelComposerViewController(coreService: FTCoreService.share)
             self.navigationController?.pushViewController(articleComposerVC, animated: true)
         }
     }
@@ -524,7 +523,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         if mediaType as! String == kUTTypeMovie as String || mediaType as! String == kUTTypeVideo as String {
             if let videoURL = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaURL)] as? URL {
                 print("VIDEO URL: \(videoURL)")
-                let videoVC = FTVideoComposerViewController(videoURL: videoURL, coreService: rootViewController.coreService)
+                let videoVC = FTVideoComposerViewController(videoURL: videoURL, coreService: FTCoreService.share)
                 self.navigationController?.pushViewController(videoVC, animated: true)
             }
         }

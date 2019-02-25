@@ -50,4 +50,8 @@ extension UIFont {
     static func descriptionFont() -> UIFont {
         return customFont(name: "HelveticaNeue", size: 13)
     }
+    
+    static func pageMenuFont() -> UIFont {
+        return customFont(name: "HelveticaNeue-Bold", size: 18)
+    }
 }

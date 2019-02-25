@@ -314,6 +314,13 @@
 		139BF09C2222EB690069B783 /* FTSelectedLocationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */; };
 		139BF09F2222EB850069B783 /* FTSelectedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */; };
 		139BF0A02222EB850069B783 /* FTSelectedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */; };
+		139BF0AA22243E070069B783 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A322243E070069B783 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */; };
+		139BF0AB22243E070069B783 /* CAPSPageMenu+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A422243E070069B783 /* CAPSPageMenu+Options.swift */; };
+		139BF0AC22243E070069B783 /* MenuItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A522243E070069B783 /* MenuItemView.swift */; };
+		139BF0AD22243E070069B783 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A622243E070069B783 /* CAPSPageMenu+UIScrollViewDelegate.swift */; };
+		139BF0AE22243E070069B783 /* CAPSPageMenu+UIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A722243E070069B783 /* CAPSPageMenu+UIConfiguration.swift */; };
+		139BF0AF22243E070069B783 /* CAPSPageMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A822243E070069B783 /* CAPSPageMenuConfiguration.swift */; };
+		139BF0B022243E070069B783 /* CAPSPageMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139BF0A922243E070069B783 /* CAPSPageMenu.swift */; };
 		139DD5D321ABFE7B00C5405B /* FTFeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */; };
 		139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */; };
 		139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */; };
@@ -737,6 +744,13 @@
 		139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSelectedLocationVM.swift; sourceTree = "<group>"; };
 		139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSelectedLocationTableViewCell.swift; sourceTree = "<group>"; };
 		139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSelectedLocationTableViewCell.xib; sourceTree = "<group>"; };
+		139BF0A322243E070069B783 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
+		139BF0A422243E070069B783 /* CAPSPageMenu+Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+Options.swift"; sourceTree = "<group>"; };
+		139BF0A522243E070069B783 /* MenuItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItemView.swift; sourceTree = "<group>"; };
+		139BF0A622243E070069B783 /* CAPSPageMenu+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		139BF0A722243E070069B783 /* CAPSPageMenu+UIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CAPSPageMenu+UIConfiguration.swift"; sourceTree = "<group>"; };
+		139BF0A822243E070069B783 /* CAPSPageMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenuConfiguration.swift; sourceTree = "<group>"; };
+		139BF0A922243E070069B783 /* CAPSPageMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CAPSPageMenu.swift; sourceTree = "<group>"; };
 		139DD5D121ABFE7B00C5405B /* FTFeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTFeedDetailViewController.swift; sourceTree = "<group>"; };
 		139DD5D221ABFE7B00C5405B /* FTFeedDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTFeedDetailViewController.xib; sourceTree = "<group>"; };
 		139DD5D521AC27BD00C5405B /* FTDetailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -885,7 +899,7 @@
 			children = (
 				1386393C21FADFA700E6B3EA /* Filters */,
 				132C7AD4217662DC00EE11AD /* Menu */,
-				13BA9AE22149646400AD06D7 /* vendor */,
+				13BA9AE22149646400AD06D7 /* CustomViews */,
 				13A2C4D12137B56200C377C0 /* Services */,
 				13A2C4B92135507300C377C0 /* ViewControllers */,
 				13489DF52134060400C72BD3 /* Helpers */,
@@ -1801,6 +1815,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		139BF0A222243E070069B783 /* PageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				139BF0A322243E070069B783 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift */,
+				139BF0A422243E070069B783 /* CAPSPageMenu+Options.swift */,
+				139BF0A522243E070069B783 /* MenuItemView.swift */,
+				139BF0A622243E070069B783 /* CAPSPageMenu+UIScrollViewDelegate.swift */,
+				139BF0A722243E070069B783 /* CAPSPageMenu+UIConfiguration.swift */,
+				139BF0A822243E070069B783 /* CAPSPageMenuConfiguration.swift */,
+				139BF0A922243E070069B783 /* CAPSPageMenu.swift */,
+			);
+			path = PageMenu;
+			sourceTree = "<group>";
+		};
 		139DD5CA21ABFBA800C5405B /* FeedDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2016,9 +2044,10 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		13BA9AE22149646400AD06D7 /* vendor */ = {
+		13BA9AE22149646400AD06D7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				139BF0A222243E070069B783 /* PageMenu */,
 				13B7D23E21F9D78F0001C542 /* DTTextField */,
 				13B7D23321F9D60D0001C542 /* YKCircleCropView */,
 				133884AA21D37FC300D0192B /* Badge */,
@@ -2034,7 +2063,7 @@
 				13BA9B132149792D00AD06D7 /* Functions.swift */,
 				13BA9B152149793500AD06D7 /* Table */,
 			);
-			path = vendor;
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		13BA9B032149792100AD06D7 /* FileProvider */ = {
@@ -2559,6 +2588,7 @@
 				13B7D23A21F9D6320001C542 /* UIViewController+Extension.swift in Sources */,
 				132C7B2E2179D18F00EE11AD /* FTArticles.swift in Sources */,
 				13922CD121B52F08003161D2 /* FTDetailFileViewController.swift in Sources */,
+				139BF0AA22243E070069B783 /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
 				13813F1221B7C35800FB496D /* BMPlayerClearityChooseButton.swift in Sources */,
 				1342A90121649FC500EFD1E6 /* ColorPickerViewController.swift in Sources */,
 				1342A90721649FC500EFD1E6 /* ItemWithPhoto.swift in Sources */,
@@ -2567,11 +2597,13 @@
 				1391954D219C8A220068F362 /* SKPhoto.swift in Sources */,
 				134FF0FC2152B37300551771 /* PhotosCollectionLayout.swift in Sources */,
 				13922CCA21B23B30003161D2 /* FTBottomReactionViewModel.swift in Sources */,
+				139BF0AC22243E070069B783 /* MenuItemView.swift in Sources */,
 				1342A90D21649FC500EFD1E6 /* Button.swift in Sources */,
 				13A379B621E7167B0095D410 /* ReactionsBottomTableViewCell.swift in Sources */,
 				13B7D23D21F9D6320001C542 /* UIImage+Extension.swift in Sources */,
 				1342A8DD21649FC500EFD1E6 /* UIView+Extensions.swift in Sources */,
 				13813F0F21B7C35800FB496D /* BMPlayerManager.swift in Sources */,
+				139BF0B022243E070069B783 /* CAPSPageMenu.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
 				132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */,
 				13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */,
@@ -2588,6 +2620,7 @@
 				13922CC721B2372F003161D2 /* FTBottomReactionTableViewCell.swift in Sources */,
 				1342A8FD21649FC500EFD1E6 /* ContactsPickerViewController.swift in Sources */,
 				13B7D13E21F1F3B10001C542 /* FTMenuViewModel.swift in Sources */,
+				139BF0AF22243E070069B783 /* CAPSPageMenuConfiguration.swift in Sources */,
 				1340A7AA22018E6100493693 /* FTReactionTableViewCell.swift in Sources */,
 				13477466216793DE0026B048 /* ChatAccessoryView.swift in Sources */,
 				134FF1B42159EF9B00551771 /* ComponentBuilder.swift in Sources */,
@@ -2778,6 +2811,7 @@
 				13D0C021217DD45C00F745B9 /* FTUserDashBoardViewModel.swift in Sources */,
 				13919555219C8A220068F362 /* SKPhotoBrowserOptions.swift in Sources */,
 				132C7B312179D95E00EE11AD /* FTArticlesViewController.swift in Sources */,
+				139BF0AB22243E070069B783 /* CAPSPageMenu+Options.swift in Sources */,
 				13A2C4C82137A47200C377C0 /* ExampleBackgroundContentView.swift in Sources */,
 				139BF090221DA3660069B783 /* FTCategoryTableViewCell.swift in Sources */,
 				13030AB221CA40FD00905211 /* FTMessageResponse.swift in Sources */,
@@ -2790,6 +2824,7 @@
 				13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */,
 				1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */,
 				13BA9A832147B37900AD06D7 /* FTFeedResponse.swift in Sources */,
+				139BF0AD22243E070069B783 /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
 				134FF0FF2152B37300551771 /* HeaderView.swift in Sources */,
 				13B7D23C21F9D6320001C542 /* YKCircleCropViewController.swift in Sources */,
 				13919548219C8A220068F362 /* SKIndicatorView.swift in Sources */,
@@ -2837,6 +2872,7 @@
 				13919559219C8A220068F362 /* SKLocalPhoto.swift in Sources */,
 				1342A93421661C0B00EFD1E6 /* DropdownItem.swift in Sources */,
 				1342A90321649FC500EFD1E6 /* ImagePickerViewController.swift in Sources */,
+				139BF0AE22243E070069B783 /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				1342A8E621649FC500EFD1E6 /* Optional+Extensions.swift in Sources */,
 				13A2C4B82134723D00C377C0 /* UIColor+FeedTrue.swift in Sources */,
 				13B009052181C264000E7FA5 /* FTPhotoPickerViewController.swift in Sources */,

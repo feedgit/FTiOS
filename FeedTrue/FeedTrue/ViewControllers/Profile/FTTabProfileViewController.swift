@@ -44,13 +44,18 @@ class FTTabProfileViewController: FTTabViewController {
     
     //@IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     
-    @IBOutlet weak var segment: YAScrollSegmentControl!
+    //@IBOutlet weak var segment: YAScrollSegmentControl!
     var imagePicker: UIImagePickerController!
+    
+    @IBOutlet weak var pageMenuView: UIView!
+    var pageMenu : CAPSPageMenu?
+    // Array to keep track of controllers in page menu
+    var controllerArray : [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.setUpSegmentControl()
         avatarImageView.round()
         followBtn.defaultBorder()
         if displayType == .user {
@@ -71,6 +76,7 @@ class FTTabProfileViewController: FTTabViewController {
         imagePicker.delegate = self
         
         setStyle()
+        setupPageMenu()
     }
     
     func setStyle() {
@@ -79,6 +85,50 @@ class FTTabProfileViewController: FTTabViewController {
         photoVideoLabel.font = UIFont.countLabelFont()
         likedLabel.font = UIFont.countLabelFont()
         
+    }
+    
+    func setupPageMenu() {
+        let homeVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
+        homeVC.title = "Home"
+        homeVC.loadFeed()
+        
+        let photosVC = UIViewController()
+        photosVC.title = "Photos"
+        photosVC.view.backgroundColor = .red
+        
+        let videosVC = UIViewController()
+        videosVC.title = "Videos"
+        videosVC.view.backgroundColor = .green
+        
+        let aboutVC = UIViewController()
+        aboutVC.title = "AboutVC"
+        aboutVC.view.backgroundColor = .gray
+        
+        let blogsVC = UIViewController()
+        blogsVC.title = "Blogs"
+        blogsVC.view.backgroundColor = .blue
+        
+        let checkinVC = UIViewController()
+        checkinVC.title = "Checkin"
+        checkinVC.view.backgroundColor = .red
+        
+        controllerArray = [homeVC, photosVC, videosVC, aboutVC, blogsVC, checkinVC]
+        
+        // Customize page menu to your liking (optional) or use default settings by sending nil for 'options' in the init
+        // Example:
+        let parameters: [CAPSPageMenuOption] = [
+            .selectedMenuItemLabelColor(.black),
+            .unselectedMenuItemLabelColor(.gray),
+            .scrollMenuBackgroundColor(.white),
+            .menuItemFont(UIFont.pageMenuFont())
+        ]
+        
+        // Initialize page menu with controller array, frame, and optional parameters
+        pageMenu = CAPSPageMenu(viewControllers: controllerArray, frame: CGRect(x: 0, y: 0, width: pageMenuView.frame.width, height: pageMenuView.frame.height), pageMenuOptions: parameters)
+        
+        self.pageMenuView.addSubview(pageMenu!.view)
+        self.pageMenuView.layer.borderColor = UIColor.black.cgColor
+        self.pageMenuView.layer.borderWidth = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -326,35 +376,6 @@ class FTTabProfileViewController: FTTabViewController {
         print("Segment at index \(sender.selectedSegmentIndex)  selected")
     }
     
-    private func setUpSegmentControl() {
-//        segmentedControl.segmentStyle = .imageOnly
-//        segmentedControl.insertSegment(withTitle: "Feed", image: #imageLiteral(resourceName: "feed_unselected"), at: 0)
-//        segmentedControl.insertSegment(withTitle: "About", image: #imageLiteral(resourceName: "profile_selected"), at: 1)
-//        segmentedControl.insertSegment(withTitle: "Photos", image: #imageLiteral(resourceName: "photos_unselected"), at: 2)
-//        segmentedControl.insertSegment(withTitle: "Videos", image: #imageLiteral(resourceName: "videos_unselected2"), at: 3)
-//        segmentedControl.insertSegment(withTitle: "Articles", image: #imageLiteral(resourceName: "articles_unselected"), at: 4)
-//        segmentedControl.selectedSegmentContentColor = UIColor.navigationBarColor()
-//        //segmentedControl.underlineSelected = true
-//        segmentedControl.selectedSegmentIndex = 1
-//        //fixedWidthSwitch.isOn = false
-//        //segmentedControl.fixedSegmentWidth = fixedWidthSwitch.isOn
-//
-//        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black]
-//        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
-//        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.navigationBarColor()]
-//
-//        segmentedControl.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
-//        segmentedControl.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
-//        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
-//
-//        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
-        segment.buttons = ["Home", "Photos", "Videos", "About", "Blogs", "Checkin"]
-        segment.setBackgroundImage(UIImage(color: .white), for: .normal)
-        segment.setTitleColor(.gray, for: .normal)
-        segment.setTitleColor(.black, for: .selected)
-        segment.setFont(UIFont.boldSystemFont(ofSize: 20))
-        segment.delegate = self
-    }
     
 }
 

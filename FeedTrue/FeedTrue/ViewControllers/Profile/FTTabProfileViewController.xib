@@ -18,8 +18,8 @@
                 <outlet property="fullnameLabel" destination="My9-3R-qrX" id="WeH-Go-8cU"/>
                 <outlet property="introLabel" destination="odg-dv-wZv" id="BAK-xt-mrW"/>
                 <outlet property="likedLabel" destination="nCq-xa-7DS" id="O9J-R5-oe1"/>
+                <outlet property="pageMenuView" destination="uxi-AH-SmT" id="d44-BY-410"/>
                 <outlet property="photoVideoLabel" destination="e5X-KS-7RF" id="2Zf-U1-srD"/>
-                <outlet property="segment" destination="tBX-XI-Ftv" id="ons-5t-f0D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -133,22 +133,20 @@
                         <constraint firstItem="93L-Wb-Vye" firstAttribute="top" secondItem="SL5-3H-SGF" secondAttribute="bottom" constant="7.5" id="xOR-SD-rWp"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBX-XI-Ftv" customClass="YAScrollSegmentControl">
-                    <rect key="frame" x="0.0" y="206" width="375" height="50"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxi-AH-SmT">
+                    <rect key="frame" x="-1" y="204" width="377" height="574"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="P4a-6s-mQg"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="uxi-AH-SmT" firstAttribute="trailing" secondItem="lTT-jd-4FL" secondAttribute="trailing" constant="1" id="6YM-Qs-bIC"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Dlq-RD-dRf"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Jjh-zh-bGY"/>
-                <constraint firstItem="tBX-XI-Ftv" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="QbY-9x-Y1k"/>
-                <constraint firstItem="tBX-XI-Ftv" firstAttribute="top" secondItem="lTT-jd-4FL" secondAttribute="bottom" constant="2" id="Yft-tL-2tc"/>
+                <constraint firstItem="uxi-AH-SmT" firstAttribute="top" secondItem="lTT-jd-4FL" secondAttribute="bottom" id="Spi-0I-wlq"/>
                 <constraint firstItem="lTT-jd-4FL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jZy-pF-ywO"/>
-                <constraint firstItem="tBX-XI-Ftv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="kM5-QW-ezo"/>
+                <constraint firstItem="uxi-AH-SmT" firstAttribute="leading" secondItem="lTT-jd-4FL" secondAttribute="leading" constant="-1" id="kbq-nb-iBf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uxi-AH-SmT" secondAttribute="bottom" id="ppr-2v-4Cz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="94.5"/>
