@@ -25,7 +25,7 @@ pod 'RichEditorView'
 pod 'NVActivityIndicatorView'
 pod 'SnapKit'
 pod 'VIMediaCache'
-pod 'Reveal-SDK', :configurations => ['Debug']
+pod 'Reveal-SDK' #, :configurations => ['Debug']
 pod 'SwipeBack'
 
 # Chatto
