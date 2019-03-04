@@ -14,6 +14,11 @@ import STPopup
 import MobileCoreServices
 import YAScrollSegmentControl
 
+public enum FeedViewMode {
+    case `default`
+    case username
+}
+
 public enum HotFeedType: String {
     case following = "following"
     case hottest = "hottest"
@@ -42,6 +47,8 @@ class FTTabFeedViewController: FTTabViewController {
     public var countCol:Int!
     public var countItem:Int!
     private var hotFeedType: HotFeedType = .following
+    var feedViewMode: FeedViewMode = .default
+    var username: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +115,7 @@ class FTTabFeedViewController: FTTabViewController {
     
     @objc func loadFeed() {
         _ = self.view
-        WebService.share.getFeed(limit: 5, offset: 0, username: nil, ordering: hotFeedType.rawValue, completion: { [weak self] (success, response) in
+        WebService.share.getFeed(limit: 5, offset: 0, username: username, ordering: hotFeedType.rawValue, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next

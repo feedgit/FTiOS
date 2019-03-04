@@ -81,7 +81,6 @@ class FTTabProfileViewController: FTTabViewController {
     
     func setStyle() {
         feedsLabel.font = UIFont.countLabelFont()
-        feedsLabel.textColor = UIColor.mainColor()
         photoVideoLabel.font = UIFont.countLabelFont()
         likedLabel.font = UIFont.countLabelFont()
         
@@ -89,6 +88,8 @@ class FTTabProfileViewController: FTTabViewController {
     
     func setupPageMenu() {
         let homeVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
+        homeVC.feedViewMode = .username
+        homeVC.username = username
         homeVC.title = "Home"
         homeVC.loadFeed()
         
