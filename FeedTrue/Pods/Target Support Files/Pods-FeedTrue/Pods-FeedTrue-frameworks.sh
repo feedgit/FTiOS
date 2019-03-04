@@ -216,6 +216,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PixelEditor/PixelEditor.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PixelEngine/PixelEngine.framework"
+  install_framework "${PODS_ROOT}/Reveal-SDK/RevealServer-20/iOS/RevealServer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/RichEditorView/RichEditorView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/STPopup/STPopup.framework"
