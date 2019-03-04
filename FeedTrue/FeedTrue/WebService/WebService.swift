@@ -1123,7 +1123,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/media/video/feed/"
+        let urlString = "\(host)/api/v1/media/video/feed/?user__username=\(username ?? "")"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -1155,7 +1155,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/blog/"
+        let urlString = "\(host)/api/v1/blog/?user__username=\(username ?? "")"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)

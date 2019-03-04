@@ -13,6 +13,7 @@ class FTArticlesViewController: UIViewController {
     var datasource: [FTAriticleViewModel] = []
     var coreService: FTCoreService!
     var nextURLString: String?
+    var username: String?
     
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl?
@@ -65,7 +66,7 @@ class FTArticlesViewController: UIViewController {
     @objc func loadArticel() {
         _ = self.view
         
-        coreService.webService?.getArticles(username: nil, completion: {[weak self] (success, response) in
+        coreService.webService?.getArticles(username: username, completion: {[weak self] (success, response) in
             if success {
                 NSLog("load articles success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next

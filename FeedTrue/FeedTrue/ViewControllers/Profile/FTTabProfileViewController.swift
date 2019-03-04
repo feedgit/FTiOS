@@ -95,23 +95,23 @@ class FTTabProfileViewController: FTTabViewController {
         
         let photosVC = UIViewController()
         photosVC.title = "Photos"
-        photosVC.view.backgroundColor = .red
+        photosVC.view.backgroundColor = .gray
         
-        let videosVC = UIViewController()
+        let videosVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
+        videosVC.username = username
         videosVC.title = "Videos"
-        videosVC.view.backgroundColor = .green
         
         let aboutVC = UIViewController()
         aboutVC.title = "AboutVC"
         aboutVC.view.backgroundColor = .gray
         
-        let blogsVC = UIViewController()
+        let blogsVC = FTArticlesViewController(coreService: FTCoreService.share)
+        blogsVC.username = username
         blogsVC.title = "Blogs"
-        blogsVC.view.backgroundColor = .blue
         
         let checkinVC = UIViewController()
         checkinVC.title = "Checkin"
-        checkinVC.view.backgroundColor = .red
+        checkinVC.view.backgroundColor = .gray
         
         controllerArray = [homeVC, photosVC, videosVC, aboutVC, blogsVC, checkinVC]
         

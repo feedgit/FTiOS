@@ -23,6 +23,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     fileprivate let itemsPerRow: CGFloat = 2
     fileprivate var backBarBtn: UIBarButtonItem!
     var refreshControl: UIRefreshControl?
+    var username: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +79,7 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
     
     @objc func loadFeed() {
         _ = self.view
-        coreService.webService?.getFeedVideo(username: nil, completion: { [weak self] (success, response) in
+        coreService.webService?.getFeedVideo(username: username, completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed success \(response?.count ?? 0)")
                 self?.nextURLString = response?.next
