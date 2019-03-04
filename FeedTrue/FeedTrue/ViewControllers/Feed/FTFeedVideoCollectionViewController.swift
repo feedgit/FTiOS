@@ -38,17 +38,21 @@ class FTFeedVideoCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
         self.collectionView?.backgroundColor = UIColor.videoVCBackGroundCollor()
         self.loadFeed()
-        
-        //backBarBtn = UIBarButtonItem(title: NSLocalizedString("Home", comment: ""), style: .plain, target: self, action: #selector(back(_:)))
-        backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
-        backBarBtn.tintColor = UIColor.navigationTitleTextColor()
-        self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("Videos", comment: "")
         setUpRefreshControl()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.parent?.navigationItem.rightBarButtonItem = nil
+        
+        let leftTitle = UIBarButtonItem(title: NSLocalizedString("Videos", comment: ""), style: .plain, target: self, action: nil)
+        self.parent?.navigationItem.leftBarButtonItem = leftTitle
+        
+        self.parent?.navigationItem.title = nil
     }
     
     @objc func back(_ sender: Any) {

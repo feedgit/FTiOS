@@ -11,11 +11,11 @@ import ESTabBarController_swift
 import MBProgressHUD
 
 public enum TabType: Int {
-    case dashboard = 0
-    case explore = 1
+    case explore = 0
+    case video = 1
     case notification = 2
     case chat = 3
-    case search = 4
+    case dashboard = 4
 }
 
 class FeedTrueRootViewController: UIViewController {
@@ -30,6 +30,7 @@ class FeedTrueRootViewController: UIViewController {
     var userDashBoardVC: FTUserDashBoardTabViewController!
     var notificationVC: FTNotificationTabViewController!
     var feedVC: FTTabFeedViewController!
+    var videoVC: FTFeedVideoCollectionViewController!
     
     var messageItem: ESTabBarItem!
     var notificationItem: ESTabBarItem!
@@ -201,14 +202,42 @@ class FeedTrueRootViewController: UIViewController {
         searchVC.rootViewController = self
         searchVC.rootViewController.coreService = self.coreService
 
-        let settingItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_search"), selectedImage: UIImage(named: "ic_search_selected"))
+        let settingItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "ic_search"), selectedImage: UIImage(named: "ic_search_selected"))
         settingItem.contentView?.renderingMode = .alwaysOriginal
         settingItem.contentView?.backdropColor = UIColor.clear
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
         searchVC.tabBarItem = settingItem
         
-        tabBarController.viewControllers = [userDashBoardVC, feedVC, notificationVC, messageVC, searchVC]
+        videoVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
+        
+        let videoItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_video"), selectedImage: UIImage(named: "ic_video"))
+        videoItem.contentView?.renderingMode = .alwaysOriginal
+        videoItem.contentView?.backdropColor = UIColor.clear
+        videoItem.contentView?.highlightBackdropColor = UIColor.clear
+        videoVC.tabBarItem = videoItem
+        
+        let composeVC = UIViewController()
+        composeVC.view.backgroundColor = UIColor.clear
+        let composeItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "ic_add"), selectedImage: UIImage(named: "ic_add"))
+        composeItem.contentView?.renderingMode = .alwaysOriginal
+        composeItem.contentView?.backdropColor = UIColor.clear
+        composeItem.contentView?.highlightBackdropColor = UIColor.clear
+        composeVC.tabBarItem = composeItem
+
+        
+        tabBarController.viewControllers = [feedVC, videoVC , composeVC, messageVC, userDashBoardVC]
         feedtrueTabBarController = tabBarController
+        
+        tabBarController.shouldHijackHandler = {
+            tabbarController, viewController, index in
+            if index == 2 {
+                let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
+                self.navigationController?.pushViewController(photoComposerVC, animated: true)
+                return true
+            }
+            return false
+        }
+
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
         
