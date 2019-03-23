@@ -13,48 +13,48 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - DKCamera (1.6.4)
-  - DKImagePickerController (4.1.2):
-    - DKImagePickerController/Camera (= 4.1.2)
-    - DKImagePickerController/Core (= 4.1.2)
-    - DKImagePickerController/ImageDataManager (= 4.1.2)
-    - DKImagePickerController/InlineCamera (= 4.1.2)
-    - DKImagePickerController/PhotoEditor (= 4.1.2)
-    - DKImagePickerController/PhotoGallery (= 4.1.2)
-    - DKImagePickerController/Resource (= 4.1.2)
-  - DKImagePickerController/Camera (4.1.2):
+  - DKImagePickerController (4.1.3):
+    - DKImagePickerController/Camera (= 4.1.3)
+    - DKImagePickerController/Core (= 4.1.3)
+    - DKImagePickerController/ImageDataManager (= 4.1.3)
+    - DKImagePickerController/InlineCamera (= 4.1.3)
+    - DKImagePickerController/PhotoEditor (= 4.1.3)
+    - DKImagePickerController/PhotoGallery (= 4.1.3)
+    - DKImagePickerController/Resource (= 4.1.3)
+  - DKImagePickerController/Camera (4.1.3):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/Core (4.1.2):
+  - DKImagePickerController/Core (4.1.3):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.1.2)
-  - DKImagePickerController/InlineCamera (4.1.2):
+  - DKImagePickerController/ImageDataManager (4.1.3)
+  - DKImagePickerController/InlineCamera (4.1.3):
     - DKCamera
     - DKImagePickerController/Core
-  - DKImagePickerController/PhotoEditor (4.1.2):
+  - DKImagePickerController/PhotoEditor (4.1.3):
     - DKImagePickerController/Core
     - TOCropViewController (~> 2.4)
-  - DKImagePickerController/PhotoGallery (4.1.2):
+  - DKImagePickerController/PhotoGallery (4.1.3):
     - DKImagePickerController/Core
     - DKPhotoGallery
-  - DKImagePickerController/Resource (4.1.2)
-  - DKPhotoGallery (0.0.11):
-    - DKPhotoGallery/Core (= 0.0.11)
-    - DKPhotoGallery/Model (= 0.0.11)
-    - DKPhotoGallery/Preview (= 0.0.11)
-    - DKPhotoGallery/Resource (= 0.0.11)
+  - DKImagePickerController/Resource (4.1.3)
+  - DKPhotoGallery (0.0.12):
+    - DKPhotoGallery/Core (= 0.0.12)
+    - DKPhotoGallery/Model (= 0.0.12)
+    - DKPhotoGallery/Preview (= 0.0.12)
+    - DKPhotoGallery/Resource (= 0.0.12)
     - SDWebImage/GIF
-  - DKPhotoGallery/Core (0.0.11):
+  - DKPhotoGallery/Core (0.0.12):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Preview
     - SDWebImage/GIF
-  - DKPhotoGallery/Model (0.0.11):
+  - DKPhotoGallery/Model (0.0.12):
     - SDWebImage/GIF
-  - DKPhotoGallery/Preview (0.0.11):
+  - DKPhotoGallery/Preview (0.0.12):
     - DKPhotoGallery/Model
     - DKPhotoGallery/Resource
     - SDWebImage/GIF
-  - DKPhotoGallery/Resource (0.0.11):
+  - DKPhotoGallery/Resource (0.0.12):
     - SDWebImage/GIF
   - DTGradientButton (0.1.1)
   - ESTabBarController-swift (2.6.4)
@@ -71,11 +71,11 @@ PODS:
     - FacebookCore (~> 0.5)
     - FBSDKCoreKit (~> 4.37)
     - FBSDKShareKit (~> 4.37)
-  - FBSDKCoreKit (4.40.0):
+  - FBSDKCoreKit (4.42.0):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.40.0):
+  - FBSDKLoginKit (4.42.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.40.0):
+  - FBSDKShareKit (4.42.0):
     - FBSDKCoreKit
   - FLAnimatedImage (1.0.12)
   - JSQMessagesViewController (7.3.5):
@@ -89,18 +89,18 @@ PODS:
   - PixelEditor (0.0.7):
     - PixelEngine
   - PixelEngine (0.0.7)
-  - Reveal-SDK (20)
+  - Reveal-SDK (21)
   - RichEditorView (5.0.0)
   - ScrollableSegmentedControl (1.4.0)
-  - SDWebImage/Core (4.4.5)
-  - SDWebImage/GIF (4.4.5):
+  - SDWebImage/Core (4.4.6)
+  - SDWebImage/GIF (4.4.6):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SnapKit (4.2.0)
   - Socket.IO-Client-Swift (14.0.0):
     - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
-  - STPopup (1.8.3)
+  - STPopup (1.8.6)
   - SVPullToRefresh (0.4.1)
   - SwiftMoment (0.7)
   - SwiftyJSON (4.0.0)
@@ -184,16 +184,16 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
-  DKImagePickerController: 358ebcd5ce87db8863ec4b8dea651c67baca36e0
-  DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
+  DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68
+  DKPhotoGallery: 1b4d65d9a485dfdd2002f22daa5b955eafb350ea
   DTGradientButton: c5e3c76045af259822d9cf4ebbe9805489f2d5df
   ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
   FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
-  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
-  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
+  FBSDKCoreKit: aa42f1c384775f8b075f53a43080474278e9701d
+  FBSDKLoginKit: 373830c68aa48c9e8f0bfed93a3e32d2ca8963a0
+  FBSDKShareKit: 387749259d79e4070ebb304b3fd256e4b4bc4298
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
@@ -202,14 +202,14 @@ SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   PixelEditor: 57d3304f2e56e4e4bb125d8aa23ed3a51f7f290e
   PixelEngine: 978643389e825652ba3f0dffc409889a0f5b33f3
-  Reveal-SDK: 43206a57f575632fd304e85385cc259b5d359e32
+  Reveal-SDK: 3523e0eb7c562811c51bb71da6e523a6373702c8
   RichEditorView: 1bbb07b87ca2d479ac29a6877014b38b8df233ef
   ScrollableSegmentedControl: 56f7baa7f1d7e622e00abb9d6658856c2d52dd4b
-  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  STPopup: da1167250a01584af7bcccb898653185f223ec46
+  STPopup: c2c8c153672c8899b59ceba0804cc63fc5ac7483
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
@@ -220,4 +220,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 69c7d97d131b6493898b6d93bddeed34ca08939d
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.7.0.beta.2
