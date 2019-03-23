@@ -220,6 +220,11 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationController?.pushViewController(photoPicker, animated: true)
     }
     
+    func openVideo() {
+        let uploadVideo = FTUploadVideoVC()
+        self.navigationController?.pushViewController(uploadVideo, animated: true)
+    }
+    
     func generateSettings() {
         feedCategory = FTFeedCategory(key: 0, label: "Something", iconName: "explore-app", background: String.somethingBackground(), description: "Something about your life")
         editorVM = FTRichTextViewModel(content: "")
@@ -493,6 +498,7 @@ extension FTPhotoComposerViewController: FTMenuTableViewCellDelegate {
             openPhoto()
         case 1:
             selectedComposerType = .video
+            openVideo()
         case 2:
             selectedComposerType = .blog
         case 3:
