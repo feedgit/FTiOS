@@ -10,6 +10,7 @@ import UIKit
 import DKImagePickerController
 import RichEditorView
 import MapKit
+import MobileCoreServices
 
 enum ComposerType: String {
     case photos = "Add Photos"
@@ -88,6 +89,8 @@ class FTPhotoComposerViewController: UIViewController {
     var photoVMs: FTPhotosViewModel!
     var selectedComposerType: FTComposerType = .photo
     var feedCategory: FTFeedCategory!
+    var videoPicker: UIImagePickerController!
+    var assetType: DKImagePickerControllerAssetType = .allPhotos
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -220,8 +223,8 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationController?.pushViewController(photoPicker, animated: true)
     }
     
-    func openVideo() {
-        let uploadVideo = FTUploadVideoVC()
+    func openVideo(asset: DKAsset) {
+        let uploadVideo = FTUploadVideoVC(asset: asset)
         self.navigationController?.pushViewController(uploadVideo, animated: true)
     }
     
@@ -269,17 +272,23 @@ extension FTPhotoComposerViewController: PhotoPickerDelegate {
     }
     
     func photoPickerDidSelectedAssets(assets: [DKAsset]) {
-        for asset in assets {
-            asset.fetchOriginalImage { (image, info) in
-                print(info?.debugDescription ?? "")
-                if let im = image {
-                    let vm = FTPhotoComposerViewModel()
-                    vm.image = im
-                    self.photoVMs.datasource.insert(vm, at: self.photoVMs.datasource.count > 1 ? self.photoVMs.datasource.count - 1 : 0)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+        if selectedComposerType == .photo {
+            for asset in assets {
+                asset.fetchOriginalImage { (image, info) in
+                    print(info?.debugDescription ?? "")
+                    if let im = image {
+                        let vm = FTPhotoComposerViewModel()
+                        vm.image = im
+                        self.photoVMs.datasource.insert(vm, at: self.photoVMs.datasource.count > 1 ? self.photoVMs.datasource.count - 1 : 0)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
                     }
                 }
+            }
+        } else if selectedComposerType == .video {
+            if let asset = pickerController.selectedAssets.first {
+                openVideo(asset: asset)
             }
         }
     }
@@ -498,7 +507,17 @@ extension FTPhotoComposerViewController: FTMenuTableViewCellDelegate {
             openPhoto()
         case 1:
             selectedComposerType = .video
-            openVideo()
+            //openVideo()
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                if videoPicker == nil {
+                    videoPicker = UIImagePickerController()
+                }
+                
+                videoPicker.delegate = self
+                videoPicker.sourceType = .photoLibrary
+                videoPicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+                self.present(videoPicker, animated: true, completion: nil)
+            }
         case 2:
             selectedComposerType = .blog
         case 3:
