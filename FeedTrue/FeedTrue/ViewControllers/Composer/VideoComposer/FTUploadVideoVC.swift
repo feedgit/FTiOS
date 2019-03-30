@@ -37,11 +37,11 @@ class FTUploadVideoVC: UIViewController {
         let videosVC = FTComposerVidepPlayerVC(videoURL: videoURL)
         videosVC.title = "Videos"
         
-        let infoVC = UIViewController()
+        let infoVC = FTUploadVideoInfoVC()
         infoVC.title = "Info"
         infoVC.view.backgroundColor = .gray
         
-        let thumbnaiVC = UIViewController()
+        let thumbnaiVC = FTThumnailInfoVC(videoURL: videoURL)
         thumbnaiVC.title = "Thumbnail"
         thumbnaiVC.view.backgroundColor = .blue
         

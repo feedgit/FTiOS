@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTUploadVideoInfoVC" customModule="FeedTrue" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionTextview" destination="qtd-X8-xJT" id="yLf-k5-n8R"/>
+                <outlet property="titleTextField" destination="iGe-o1-UeN" id="0MG-HO-eZO"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sh-ul-6w7">
+                    <rect key="frame" x="16" y="108" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your video title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGe-o1-UeN">
+                    <rect key="frame" x="16" y="133" width="382" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIb-nt-Ioa">
+                    <rect key="frame" x="16" y="179" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qtd-X8-xJT">
+                    <rect key="frame" x="16" y="204" width="382" height="626"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="iGe-o1-UeN" firstAttribute="leading" secondItem="8sh-ul-6w7" secondAttribute="leading" id="5Gn-pK-F5i"/>
+                <constraint firstItem="iGe-o1-UeN" firstAttribute="trailing" secondItem="8sh-ul-6w7" secondAttribute="trailing" id="CAS-DV-mbh"/>
+                <constraint firstItem="8sh-ul-6w7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="EQ3-J2-jP3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8sh-ul-6w7" secondAttribute="trailing" constant="16" id="Jdw-04-BpC"/>
+                <constraint firstItem="qtd-X8-xJT" firstAttribute="trailing" secondItem="iIb-nt-Ioa" secondAttribute="trailing" id="P2c-SH-ygB"/>
+                <constraint firstItem="8sh-ul-6w7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="PPb-A2-omA"/>
+                <constraint firstItem="qtd-X8-xJT" firstAttribute="leading" secondItem="iIb-nt-Ioa" secondAttribute="leading" id="dtq-gX-DGP"/>
+                <constraint firstItem="qtd-X8-xJT" firstAttribute="top" secondItem="iIb-nt-Ioa" secondAttribute="bottom" constant="4" id="ghe-lw-M6J"/>
+                <constraint firstItem="iIb-nt-Ioa" firstAttribute="leading" secondItem="iGe-o1-UeN" secondAttribute="leading" id="o0D-zu-Fxy"/>
+                <constraint firstItem="iGe-o1-UeN" firstAttribute="top" secondItem="8sh-ul-6w7" secondAttribute="bottom" constant="4" id="o5z-Kd-GE2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qtd-X8-xJT" secondAttribute="bottom" constant="32" id="teQ-JR-O7x"/>
+                <constraint firstItem="iIb-nt-Ioa" firstAttribute="trailing" secondItem="iGe-o1-UeN" secondAttribute="trailing" id="wto-Io-A2O"/>
+                <constraint firstItem="iIb-nt-Ioa" firstAttribute="top" secondItem="iGe-o1-UeN" secondAttribute="bottom" constant="16" id="yK5-Pj-Ig2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>
