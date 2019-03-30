@@ -223,8 +223,8 @@ class FTPhotoComposerViewController: UIViewController {
         self.navigationController?.pushViewController(photoPicker, animated: true)
     }
     
-    func openVideo(asset: DKAsset) {
-        let uploadVideo = FTUploadVideoVC(asset: asset)
+    func openVideo(url: URL) {
+        let uploadVideo = FTUploadVideoVC(videoURL: url)
         self.navigationController?.pushViewController(uploadVideo, animated: true)
     }
     
@@ -265,30 +265,32 @@ class FTPhotoComposerViewController: UIViewController {
 
 extension FTPhotoComposerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        self.dismiss(animated: true, completion: nil)
+        if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+            print("videoURL:\(String(describing: videoURL))")
+            openVideo(url: videoURL)
+        }
+    }
 }
 
 extension FTPhotoComposerViewController: PhotoPickerDelegate {
     func photoPickerChangeThumbnail(asset: DKAsset?) {
+        
     }
     
     func photoPickerDidSelectedAssets(assets: [DKAsset]) {
-        if selectedComposerType == .photo {
-            for asset in assets {
-                asset.fetchOriginalImage { (image, info) in
-                    print(info?.debugDescription ?? "")
-                    if let im = image {
-                        let vm = FTPhotoComposerViewModel()
-                        vm.image = im
-                        self.photoVMs.datasource.insert(vm, at: self.photoVMs.datasource.count > 1 ? self.photoVMs.datasource.count - 1 : 0)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+        for asset in assets {
+            asset.fetchOriginalImage { (image, info) in
+                print(info?.debugDescription ?? "")
+                if let im = image {
+                    let vm = FTPhotoComposerViewModel()
+                    vm.image = im
+                    self.photoVMs.datasource.insert(vm, at: self.photoVMs.datasource.count > 1 ? self.photoVMs.datasource.count - 1 : 0)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
                     }
                 }
-            }
-        } else if selectedComposerType == .video {
-            if let asset = pickerController.selectedAssets.first {
-                openVideo(asset: asset)
             }
         }
     }

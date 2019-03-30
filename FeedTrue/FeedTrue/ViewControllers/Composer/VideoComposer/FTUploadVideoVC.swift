@@ -13,12 +13,12 @@ class FTUploadVideoVC: UIViewController {
 
     @IBOutlet weak var pageMenuView: UIView!
     var pageMenu : CAPSPageMenu?
-    var asset: DKAsset
+    var videoURL: URL
     // Array to keep track of controllers in page menu
     var controllerArray : [UIViewController] = []
 
-    init(asset a: DKAsset) {
-        asset = a
+    init(videoURL url: URL) {
+        videoURL = url
         super.init(nibName: "FTUploadVideoVC", bundle: nil)
     }
     
@@ -34,9 +34,8 @@ class FTUploadVideoVC: UIViewController {
     }
     
     func setupPageMenu() {
-        let videosVC = UIViewController()
+        let videosVC = FTComposerVidepPlayerVC(videoURL: videoURL)
         videosVC.title = "Videos"
-        videosVC.view.backgroundColor = .green
         
         let infoVC = UIViewController()
         infoVC.title = "Info"

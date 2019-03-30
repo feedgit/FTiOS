@@ -226,6 +226,8 @@
 		134FF1C22159EF9B00551771 /* ReactionFeedbackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */; };
 		134FF1C32159EF9B00551771 /* ReactionSelectorConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */; };
 		134FF1C42159EF9B00551771 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134FF1B32159EF9A00551771 /* Components.swift */; };
+		136509BA224F203D002C3B9F /* FTComposerVidepPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136509B8224F203D002C3B9F /* FTComposerVidepPlayerVC.swift */; };
+		136509BB224F203D002C3B9F /* FTComposerVidepPlayerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136509B9224F203D002C3B9F /* FTComposerVidepPlayerVC.xib */; };
 		136A464F2190960300EB9AC9 /* FTVideoComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A464D2190960300EB9AC9 /* FTVideoComposerViewController.swift */; };
 		136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A464E2190960300EB9AC9 /* FTVideoComposerViewController.xib */; };
 		136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */; };
@@ -658,6 +660,8 @@
 		134FF1B12159EF9A00551771 /* ReactionFeedbackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionFeedbackDelegate.swift; sourceTree = "<group>"; };
 		134FF1B22159EF9A00551771 /* ReactionSelectorConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionSelectorConfig.swift; sourceTree = "<group>"; };
 		134FF1B32159EF9A00551771 /* Components.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		136509B8224F203D002C3B9F /* FTComposerVidepPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTComposerVidepPlayerVC.swift; sourceTree = "<group>"; };
+		136509B9224F203D002C3B9F /* FTComposerVidepPlayerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTComposerVidepPlayerVC.xib; sourceTree = "<group>"; };
 		136A464D2190960300EB9AC9 /* FTVideoComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerViewController.swift; sourceTree = "<group>"; };
 		136A464E2190960300EB9AC9 /* FTVideoComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTVideoComposerViewController.xib; sourceTree = "<group>"; };
 		136A46522190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTVideoComposerTableViewCell.swift; sourceTree = "<group>"; };
@@ -947,6 +951,8 @@
 			children = (
 				1314C250219593C600FBBE32 /* FTVideoPickerViewController.swift */,
 				1314C251219593C600FBBE32 /* FTVideoPickerViewController.xib */,
+				136509B8224F203D002C3B9F /* FTComposerVidepPlayerVC.swift */,
+				136509B9224F203D002C3B9F /* FTComposerVidepPlayerVC.xib */,
 			);
 			path = VideoPicker;
 			sourceTree = "<group>";
@@ -2385,6 +2391,7 @@
 				13813F1521B7C35800FB496D /* Pod_Asset_BMPlayer.xcassets in Resources */,
 				139DD5D421ABFE7B00C5405B /* FTFeedDetailViewController.xib in Resources */,
 				13919554219C8A220068F362 /* SKPhotoBrowser.bundle in Resources */,
+				136509BB224F203D002C3B9F /* FTComposerVidepPlayerVC.xib in Resources */,
 				13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */,
 				1386394F21FADFA700E6B3EA /* LUT_M08.png in Resources */,
 				13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */,
@@ -2601,6 +2608,7 @@
 				134FF0EC2152B37300551771 /* ViewableControllerContainer.swift in Sources */,
 				13353B06213C120900D74C47 /* FTAboutReponse.swift in Sources */,
 				134FF0F52152B37300551771 /* UIViewExtensions.swift in Sources */,
+				136509BA224F203D002C3B9F /* FTComposerVidepPlayerVC.swift in Sources */,
 				1342A8D921649FC500EFD1E6 /* Array+Extensions.swift in Sources */,
 				13D2580F21428E3700E84002 /* FTSimpleCache.swift in Sources */,
 				136A46542190973F00EB9AC9 /* FTVideoComposerTableViewCell.swift in Sources */,
@@ -2988,7 +2996,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.toanle.FeedTrue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -3007,7 +3015,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.toanle.FeedTrue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
