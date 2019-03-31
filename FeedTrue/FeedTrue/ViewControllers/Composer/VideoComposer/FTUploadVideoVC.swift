@@ -14,6 +14,9 @@ class FTUploadVideoVC: UIViewController {
     @IBOutlet weak var pageMenuView: UIView!
     var pageMenu : CAPSPageMenu?
     var videoURL: URL
+    var videosVC: FTComposerVidepPlayerVC!
+    var infoVC: FTUploadVideoInfoVC!
+    var thumbnaiVC: FTThumnailInfoVC!
     // Array to keep track of controllers in page menu
     var controllerArray : [UIViewController] = []
 
@@ -34,16 +37,14 @@ class FTUploadVideoVC: UIViewController {
     }
     
     func setupPageMenu() {
-        let videosVC = FTComposerVidepPlayerVC(videoURL: videoURL)
+        videosVC = FTComposerVidepPlayerVC(videoURL: videoURL)
         videosVC.title = "Videos"
         
-        let infoVC = FTUploadVideoInfoVC()
+        infoVC = FTUploadVideoInfoVC()
         infoVC.title = "Info"
-        infoVC.view.backgroundColor = .gray
         
-        let thumbnaiVC = FTThumnailInfoVC(videoURL: videoURL)
+        thumbnaiVC = FTThumnailInfoVC(videoURL: videoURL)
         thumbnaiVC.title = "Thumbnail"
-        thumbnaiVC.view.backgroundColor = .blue
         
         controllerArray = [videosVC, infoVC, thumbnaiVC]
         
@@ -84,7 +85,60 @@ class FTUploadVideoVC: UIViewController {
     }
     
     @objc func next(_ sender: Any) {
+        guard let thumbnail = thumbnaiVC.thumbnail, thumbnail != nil else {
+            return
+        }
+        
+        guard let titleInfo = infoVC.infoTitle, !titleInfo.isEmpty else {
+            self.view.showToast("Please enter your title info")
+            return
+        }
+        
+        guard let desInfo = infoVC.infoDescription, !desInfo.isEmpty else {
+            self.view.showToast("Please enter your description info")
+            return
+        }
+        
         self.navigationController?.popViewController(animated: false)
+        
+        // TODO: call back with data to post
     }
    
+}
+
+extension UIView {
+    
+    func showToast(_ message: String) {
+        let container = UIToolbar()
+        container.layer.cornerRadius = 5
+        container.clipsToBounds = true
+        
+        let toastLabel = UILabel()
+        toastLabel.numberOfLines = 0
+        toastLabel.backgroundColor = UIColor.clear
+        toastLabel.textColor = UIColor.darkText
+        toastLabel.textAlignment = .center
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        
+        let margin = CGFloat(20)
+        let padding = CGFloat(10)
+        
+        let size = toastLabel.sizeThatFits(CGSize(width: self.bounds.width - margin * 2 - padding * 2, height: 200))
+        container.frame = CGRect(x: (self.bounds.width - size.width) / 2,
+                                 y: (self.bounds.height - size.height) / 2,
+                                 width: size.width + padding,
+                                 height: size.height + padding)
+        
+        toastLabel.frame = CGRect(x: 0, y: 0, width: container.bounds.width, height: container.bounds.height)
+        container.addSubview(toastLabel)
+        
+        self.addSubview(container)
+        
+        UIView.animate(withDuration: 1.0, delay: 2.0, options: .curveEaseOut, animations: {
+            container.alpha = 0.0
+        }, completion: {(isCompleted) in
+            container.removeFromSuperview()
+        })
+    }
 }

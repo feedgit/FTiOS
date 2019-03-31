@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FTThumnailInfoVC" customModule="FeedTrue" customModuleProvider="target">
             <connections>
-                <outlet property="addImageView" destination="mt7-xW-Fvi" id="LIu-GK-FQ1"/>
-                <outlet property="thumbnailImageView" destination="oGQ-lg-dzf" id="1VD-Tm-Bh3"/>
+                <outlet property="addImageView" destination="mt7-xW-Fvi" id="BYo-ZW-rG0"/>
+                <outlet property="thumbnailImageView" destination="oGQ-lg-dzf" id="lDl-7A-4aa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

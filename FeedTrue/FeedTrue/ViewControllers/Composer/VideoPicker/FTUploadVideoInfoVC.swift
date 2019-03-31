@@ -34,10 +34,12 @@ class FTUploadVideoInfoVC: UIViewController, UITextViewDelegate, UITextFieldDele
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = !textView.text.isEmpty
         NSLog("\(#function) text: \(String(describing: textView.text))")
+        self.infoDescription = textView.text
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         NSLog("\(#function) text: \(textField.text ?? "")")
+        self.infoTitle = textField.text
     }
     
     func isValidInfo() -> Bool {
