@@ -100,10 +100,6 @@ class FTTabFeedViewController: FTTabViewController {
             return
         }
         
-//        let composerVC = FTComposerPopupViewController()
-//        composerVC.delegate = self
-//        self.navigationController?.pushViewController(composerVC, animated: true)
-        
         let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
         self.navigationController?.pushViewController(photoComposerVC, animated: true)
     }
@@ -493,27 +489,6 @@ extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
             self.navigationController?.pushViewController(articleVC, animated: true)
         default:
             break
-        }
-    }
-}
-
-extension FTTabFeedViewController: ComposerDelegate {
-    func composerDidSelectedItemAt(_ index: Int) {
-        if index == 0 {
-            let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
-            self.navigationController?.pushViewController(photoPicker, animated: true)
-        } else if index == 1 {
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-                videoPicker = UIImagePickerController()
-                videoPicker.delegate = self
-                videoPicker.sourceType = .photoLibrary
-                videoPicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
-                self.present(videoPicker, animated: true, completion: nil)
-            }
-        } else if index == 2 {
-            // blog
-            let articleComposerVC = FTArticelComposerViewController(coreService: FTCoreService.share)
-            self.navigationController?.pushViewController(articleComposerVC, animated: true)
         }
     }
 }

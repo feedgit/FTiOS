@@ -38,5 +38,6 @@ pod 'SVPullToRefresh'
 pod 'PixelEngine'
 pod 'PixelEditor'
 pod 'YAScrollSegmentControl'
+pod 'Gallery'
 
 end

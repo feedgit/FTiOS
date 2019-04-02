@@ -90,8 +90,12 @@ class FTTabProfileViewController: FTTabViewController {
         let homeVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
         homeVC.feedViewMode = .username
         homeVC.username = username
-        homeVC.title = "Home"
+        homeVC.title = username
         homeVC.loadFeed()
+        
+        let aboutVC = UIViewController()
+        aboutVC.title = "About"
+        aboutVC.view.backgroundColor = .gray
         
         let photosVC = UIViewController()
         photosVC.title = "Photos"
@@ -101,19 +105,12 @@ class FTTabProfileViewController: FTTabViewController {
         videosVC.username = username
         videosVC.title = "Videos"
         
-        let aboutVC = UIViewController()
-        aboutVC.title = "AboutVC"
-        aboutVC.view.backgroundColor = .gray
         
         let blogsVC = FTArticlesViewController(coreService: FTCoreService.share)
         blogsVC.username = username
         blogsVC.title = "Blogs"
         
-        let checkinVC = UIViewController()
-        checkinVC.title = "Checkin"
-        checkinVC.view.backgroundColor = .gray
-        
-        controllerArray = [homeVC, photosVC, videosVC, aboutVC, blogsVC, checkinVC]
+        controllerArray = [homeVC, aboutVC, photosVC, videosVC, blogsVC]
         
         // Customize page menu to your liking (optional) or use default settings by sending nil for 'options' in the init
         // Example:
@@ -334,8 +331,8 @@ class FTTabProfileViewController: FTTabViewController {
         feedsLabel.text = "\(p.feed_count ?? 0)"
         photoVideoLabel.text = "\(p.photo_video_count ?? 0)"
         likedLabel.text = "\(p.loved ?? 0)"
-        fullnameLabel.text = p.full_name
-        introLabel.text = p.intro
+        fullnameLabel.text = p.username
+        introLabel.text = p.bio
         if let urlString = p.avatar {
             if let url = URL(string: urlString) {
                 avatarImageView.loadImage(fromURL: url, defaultImage: UIImage.userImage())
@@ -349,19 +346,7 @@ class FTTabProfileViewController: FTTabViewController {
         if p.isEditable() {
             followBtn.setTitle(NSLocalizedString("Edit Profile", comment: ""), for: .normal)
         } else {
-            if p.isFollowedByViewer() && p.getFollowType() == .follow_back {
-                followState = .follow_back
-            } else {
-                switch p.getFollowType() {
-                case .follow_back:
-                    followState = .follow
-                case .following:
-                    followState = .following
-                case .secret_following:
-                    followState = .secret_following
-                }
-            }
-            followBtn.setTitle(NSLocalizedString(followState.rawValue, comment: ""), for: .normal)
+            followBtn.setTitle(NSLocalizedString("Follow", comment: ""), for: .normal)
         }
     }
     

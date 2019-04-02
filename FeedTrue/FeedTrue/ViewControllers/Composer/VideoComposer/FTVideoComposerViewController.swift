@@ -155,20 +155,6 @@ extension FTVideoComposerViewController: UITableViewDelegate, UITableViewDataSou
         let content = dataSource[indexPath.row]
         return content.cellHeight()
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            // post in feed
-            let postVC = FTPostInFeedViewController(postText: postText)
-            postVC.delegate = self
-            self.navigationController?.pushViewController(postVC, animated: true)
-        } else if indexPath.row == 2 {
-            // privacy
-            let privacyVC = FTPrivacyPickerViewController()
-            privacyVC.delegate = self
-            self.navigationController?.pushViewController(privacyVC, animated: true)
-        }
-    }
 }
 
 extension FTVideoComposerViewController: PrivacyPickerDelegate {
@@ -190,19 +176,6 @@ extension FTVideoComposerViewController: PrivacyPickerDelegate {
     }
 }
 
-extension FTVideoComposerViewController: PostInFeedDelegate {
-    func postInFeedDidSave(viewController: FTPostInFeedViewController) {
-        postText = viewController.getPostText()
-        var markIcontName = ""
-        if postText != "" {
-            markIcontName = "ic_tick"
-        }
-        
-        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
-        dataSource[1] = postFeed
-        tableView.reloadData()
-    }
-}
 
 extension FTVideoComposerViewController: PhotoPickerDelegate {
     func photoPickerChangeThumbnail(asset: DKAsset?) {

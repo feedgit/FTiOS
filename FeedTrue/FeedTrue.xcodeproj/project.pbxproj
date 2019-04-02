@@ -72,9 +72,6 @@
 		133CDEBB2202735800F32AC9 /* FTRichTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */; };
 		133CDEBC2202735800F32AC9 /* FTRichTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */; };
 		133CDEBE2202737400F32AC9 /* FTRichTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */; };
-		133CDEC122027E5900F32AC9 /* FTSwitchControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */; };
-		133CDEC222027E5900F32AC9 /* FTSwitchControlTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */; };
-		133CDEC422027FFF00F32AC9 /* FTSwitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */; };
 		133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */; };
 		133D028E21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */; };
 		133D029021AE10B400511D2C /* FTDetailPhotosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */; };
@@ -289,8 +286,6 @@
 		1391955A219C8A220068F362 /* SKDetectingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919542219C8A220068F362 /* SKDetectingView.swift */; };
 		1391955B219C8A220068F362 /* SKButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919543219C8A220068F362 /* SKButtons.swift */; };
 		1391955C219C8A220068F362 /* SKMesurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13919544219C8A220068F362 /* SKMesurement.swift */; };
-		1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */; };
-		1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */; };
 		13922CB721AFF61B003161D2 /* UIEdgeInsetsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */; };
 		13922CB821AFF61B003161D2 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB021AFF61B003161D2 /* TabItemView.swift */; };
 		13922CB921AFF61B003161D2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13922CB121AFF61B003161D2 /* UIColorExtension.swift */; };
@@ -406,8 +401,6 @@
 		13D0C02A217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C028217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib */; };
 		13D0C02D217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D0C02B217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift */; };
 		13D0C02E217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C02C217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib */; };
-		13D0C035217F29D300F745B9 /* FTComposerPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */; };
-		13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */; };
 		13D257F6213FC1FB00E84002 /* FTEditUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */; };
 		13D257FD2141324500E84002 /* FTAlertViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D257FC2141324500E84002 /* FTAlertViewManager.swift */; };
 		13D2580221426E0000E84002 /* FTTabSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */; };
@@ -432,8 +425,6 @@
 		13ED3D7821E705A800AB9245 /* ArticleTimestampTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7621E705A800AB9245 /* ArticleTimestampTableViewCell.swift */; };
 		13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */; };
 		13ED3D7B21E7099000AB9245 /* TimestampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */; };
-		13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */; };
-		13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
 		4D56C1F621F5F214002D528E /* FTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */; };
 		4D56C1F721F5F214002D528E /* FTSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */; };
@@ -509,9 +500,6 @@
 		133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRichTextTableViewCell.swift; sourceTree = "<group>"; };
 		133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTRichTextTableViewCell.xib; sourceTree = "<group>"; };
 		133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTRichTextViewModel.swift; sourceTree = "<group>"; };
-		133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSwitchControlTableViewCell.swift; sourceTree = "<group>"; };
-		133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSwitchControlTableViewCell.xib; sourceTree = "<group>"; };
-		133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSwitchViewModel.swift; sourceTree = "<group>"; };
 		133D028B21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		133D028C21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTDetailPhotosTableViewCell.xib; sourceTree = "<group>"; };
 		133D028F21AE10B400511D2C /* FTDetailPhotosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTDetailPhotosViewModel.swift; sourceTree = "<group>"; };
@@ -729,8 +717,6 @@
 		13919542219C8A220068F362 /* SKDetectingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKDetectingView.swift; sourceTree = "<group>"; };
 		13919543219C8A220068F362 /* SKButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKButtons.swift; sourceTree = "<group>"; };
 		13919544219C8A220068F362 /* SKMesurement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMesurement.swift; sourceTree = "<group>"; };
-		1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTArticelComposerViewController.swift; sourceTree = "<group>"; };
-		1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTArticelComposerViewController.xib; sourceTree = "<group>"; };
 		13922CAF21AFF61B003161D2 /* UIEdgeInsetsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsetsExtension.swift; sourceTree = "<group>"; };
 		13922CB021AFF61B003161D2 /* TabItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		13922CB121AFF61B003161D2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -847,8 +833,6 @@
 		13D0C028217DD9B700F745B9 /* FTUserDashBoardFollowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTUserDashBoardFollowCell.xib; sourceTree = "<group>"; };
 		13D0C02B217DDEA400F745B9 /* FTUserDashBoardSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTUserDashBoardSettingCell.swift; sourceTree = "<group>"; };
 		13D0C02C217DDEA400F745B9 /* FTUserDashBoardSettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTUserDashBoardSettingCell.xib; sourceTree = "<group>"; };
-		13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTComposerPopupViewController.swift; sourceTree = "<group>"; };
-		13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTComposerPopupViewController.xib; sourceTree = "<group>"; };
 		13D257F5213FC1FB00E84002 /* FTEditUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTEditUserInfo.swift; sourceTree = "<group>"; };
 		13D257FC2141324500E84002 /* FTAlertViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTAlertViewManager.swift; sourceTree = "<group>"; };
 		13D2580021426E0000E84002 /* FTTabSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabSettingsViewController.swift; sourceTree = "<group>"; };
@@ -873,8 +857,6 @@
 		13ED3D7621E705A800AB9245 /* ArticleTimestampTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTimestampTableViewCell.swift; sourceTree = "<group>"; };
 		13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTimestampTableViewCell.xib; sourceTree = "<group>"; };
 		13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampViewModel.swift; sourceTree = "<group>"; };
-		13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTPostInFeedViewController.swift; sourceTree = "<group>"; };
-		13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTPostInFeedViewController.xib; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
 		4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsViewController.swift; sourceTree = "<group>"; };
 		4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSettingsViewController.xib; sourceTree = "<group>"; };
@@ -1785,15 +1767,6 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
-		1391955E21A6C2E70068F362 /* ArticleComposer */ = {
-			isa = PBXGroup;
-			children = (
-				1391955F21A6C3270068F362 /* FTArticelComposerViewController.swift */,
-				1391956021A6C3270068F362 /* FTArticelComposerViewController.xib */,
-			);
-			path = ArticleComposer;
-			sourceTree = "<group>";
-		};
 		13922CAE21AFF61B003161D2 /* SwipeMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1903,6 +1876,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D20288F22537BB700ABBABC /* Tag */,
 				1321982521C0FBE200C45273 /* Message */,
 				13813F1D21B7D6EF00FB496D /* Notification */,
 				13813EF621B78B6600FB496D /* Player */,
@@ -2006,8 +1980,6 @@
 				133011BF2190B3A300AB5FAB /* FTPhotosTableViewCell.xib */,
 				133CDEB92202735800F32AC9 /* FTRichTextTableViewCell.swift */,
 				133CDEBA2202735800F32AC9 /* FTRichTextTableViewCell.xib */,
-				133CDEBF22027E5900F32AC9 /* FTSwitchControlTableViewCell.swift */,
-				133CDEC022027E5900F32AC9 /* FTSwitchControlTableViewCell.xib */,
 				139BF09D2222EB850069B783 /* FTSelectedLocationTableViewCell.swift */,
 				139BF09E2222EB850069B783 /* FTSelectedLocationTableViewCell.xib */,
 			);
@@ -2021,7 +1993,6 @@
 				1338D81A21828D2E0065B552 /* FTPhotoSettingViewModel.swift */,
 				133011C22190B67E00AB5FAB /* FTPhotosViewModel.swift */,
 				133CDEBD2202737400F32AC9 /* FTRichTextViewModel.swift */,
-				133CDEC322027FFF00F32AC9 /* FTSwitchViewModel.swift */,
 				139BF09B2222EB690069B783 /* FTSelectedLocationVM.swift */,
 			);
 			path = ViewModel;
@@ -2209,15 +2180,11 @@
 			children = (
 				139BF094221DA7A70069B783 /* CategoryPicker */,
 				13B7D13F21F844C60001C542 /* Map */,
-				1391955E21A6C2E70068F362 /* ArticleComposer */,
 				1314C24F2195939E00FBBE32 /* VideoPicker */,
 				136A464C219095D500EB9AC9 /* VideoComposer */,
-				13F5C8A5218763BF006DD345 /* PostInFeed */,
 				1338D8202186F16E0065B552 /* PrivacyPicker */,
 				13B009022181C249000E7FA5 /* PhotoPicker */,
 				13B008FD2181B084000E7FA5 /* PhotoComposer */,
-				13D0C033217F29D300F745B9 /* FTComposerPopupViewController.swift */,
-				13D0C034217F29D300F745B9 /* FTComposerPopupViewController.xib */,
 			);
 			path = Composer;
 			sourceTree = "<group>";
@@ -2282,13 +2249,11 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		13F5C8A5218763BF006DD345 /* PostInFeed */ = {
+		4D20288F22537BB700ABBABC /* Tag */ = {
 			isa = PBXGroup;
 			children = (
-				13F5C8A6218763E6006DD345 /* FTPostInFeedViewController.swift */,
-				13F5C8A7218763E6006DD345 /* FTPostInFeedViewController.xib */,
 			);
-			path = PostInFeed;
+			path = Tag;
 			sourceTree = "<group>";
 		};
 		4D56C1F321F5F156002D528E /* Settings */ = {
@@ -2381,7 +2346,6 @@
 			files = (
 				139BF09A221DA7F80069B783 /* FTCategoryPickerViewController.xib in Resources */,
 				134FF1152152B37300551771 /* seek@3x.png in Resources */,
-				1391956221A6C3270068F362 /* FTArticelComposerViewController.xib in Resources */,
 				1386394A21FADFA700E6B3EA /* LUT_M07.png in Resources */,
 				13B7D14321F844F30001C542 /* FTCheckInViewController.xib in Resources */,
 				13B0090E21821ABD000E7FA5 /* FTPhotoCollectionViewCell.xib in Resources */,
@@ -2393,7 +2357,6 @@
 				139BF0A02222EB850069B783 /* FTSelectedLocationTableViewCell.xib in Resources */,
 				13922CC821B2372F003161D2 /* FTBottomReactionTableViewCell.xib in Resources */,
 				1386394921FADFA700E6B3EA /* LUT_M03.png in Resources */,
-				13D0C036217F29D400F745B9 /* FTComposerPopupViewController.xib in Resources */,
 				13A379AB21E70E570095D410 /* UsernameLabelTableViewCell.xib in Resources */,
 				1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
@@ -2449,7 +2412,6 @@
 				1342A8EC21649FC500EFD1E6 /* Countries.bundle in Resources */,
 				134FF10E2152B37300551771 /* repeat.png in Resources */,
 				1314C253219593C600FBBE32 /* FTVideoPickerViewController.xib in Resources */,
-				133CDEC222027E5900F32AC9 /* FTSwitchControlTableViewCell.xib in Resources */,
 				136A46502190960300EB9AC9 /* FTVideoComposerViewController.xib in Resources */,
 				1386394B21FADFA700E6B3EA /* LUT_M06.png in Resources */,
 				1338D82C2186F4CC0065B552 /* FTPrivacyPickerViewController.xib in Resources */,
@@ -2476,7 +2438,6 @@
 				134FF1112152B37300551771 /* pause.png in Resources */,
 				134FF10C2152B37300551771 /* pause@3x.png in Resources */,
 				13A379B121E713160095D410 /* ArticleContentTableViewCell.xib in Resources */,
-				13F5C8A9218763E6006DD345 /* FTPostInFeedViewController.xib in Resources */,
 				132C7ADD217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.xib in Resources */,
 				13D2580321426E0000E84002 /* FTTabSettingsViewController.xib in Resources */,
 				134FF1062152B37300551771 /* pause@2x.png in Resources */,
@@ -2574,7 +2535,6 @@
 				139BF0B022243E070069B783 /* CAPSPageMenu.swift in Sources */,
 				134FF0F42152B37300551771 /* UIViewController+Window.swift in Sources */,
 				132C7B232176632300EE11AD /* FTMenuTableViewCell.swift in Sources */,
-				13F5C8A8218763E6006DD345 /* FTPostInFeedViewController.swift in Sources */,
 				13B0090D21821ABD000E7FA5 /* FTPhotoCollectionViewCell.swift in Sources */,
 				1342A8E721649FC500EFD1E6 /* Common+Extensions.swift in Sources */,
 				13D0C025217DD6AB00F745B9 /* FTUserDashBoardProfileCell.swift in Sources */,
@@ -2666,7 +2626,6 @@
 				1342A8DF21649FC500EFD1E6 /* String+Extensions.swift in Sources */,
 				1342A8E121649FC500EFD1E6 /* UIColor+Extensions.swift in Sources */,
 				134FF0EE2152B37300551771 /* ViewerController.swift in Sources */,
-				133CDEC422027FFF00F32AC9 /* FTSwitchViewModel.swift in Sources */,
 				13813F1121B7C35800FB496D /* BMPlayerProtocols.swift in Sources */,
 				1342A8F021649FC500EFD1E6 /* PhoneCodeCell.swift in Sources */,
 				13919557219C8A220068F362 /* SKZoomingScrollView.swift in Sources */,
@@ -2716,7 +2675,6 @@
 				134FF0F02152B37300551771 /* NSIndexPath+Contiguous.swift in Sources */,
 				13919551219C8A220068F362 /* UIImage+Rotation.swift in Sources */,
 				134FF1C12159EF9B00551771 /* ReactionButton.swift in Sources */,
-				133CDEC122027E5900F32AC9 /* FTSwitchControlTableViewCell.swift in Sources */,
 				1391954F219C8A220068F362 /* SKCache.swift in Sources */,
 				13813F1C21B7D33A00FB496D /* FTNotificationResponse.swift in Sources */,
 				1314C252219593C600FBBE32 /* FTVideoPickerViewController.swift in Sources */,
@@ -2741,7 +2699,6 @@
 				1342A8FF21649FC500EFD1E6 /* Contact.swift in Sources */,
 				13489DF72134062200C72BD3 /* FTValidation.swift in Sources */,
 				130E05CF212D6A3200C3E21A /* AppDelegate.swift in Sources */,
-				13D0C035217F29D300F745B9 /* FTComposerPopupViewController.swift in Sources */,
 				13ED3D7021E5FEE100AB9245 /* ArticleThumbnailTableViewCell.swift in Sources */,
 				1342A8F721649FC500EFD1E6 /* LocationSearchResultsViewController.swift in Sources */,
 				134FF1B82159EF9B00551771 /* ReactionSummaryConfig.swift in Sources */,
@@ -2836,7 +2793,6 @@
 				1375A9D121CEFCC000092C75 /* Conversation.swift in Sources */,
 				13B7D23B21F9D6320001C542 /* YKCircleCropCutterView.swift in Sources */,
 				13C3DE5A224F7FA2009A0519 /* FTThumnailInfoVC.swift in Sources */,
-				1391956121A6C3270068F362 /* FTArticelComposerViewController.swift in Sources */,
 				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
 				13ED3D7521E608EF00AB9245 /* ArticleTitleViewModel.swift in Sources */,
@@ -3003,7 +2959,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5FA8Y389K4;
+				DEVELOPMENT_TEAM = H3DP348W8X;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3022,7 +2978,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5FA8Y389K4;
+				DEVELOPMENT_TEAM = H3DP348W8X;
 				INFOPLIST_FILE = FeedTrue/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

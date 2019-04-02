@@ -87,13 +87,12 @@ class FTUserDashBoardTabViewController: FTTabViewController {
         
         let blog = ["title": "Blogs", "image": "ic_blog"]
         let miab = ["title": "MIAB", "image": "ic_miab"]
-        let store = ["title": "My Store", "image": "ic_my_store"]
         let saved = ["title": "Saved", "image": "saved"]
         let statistic = ["title": "Statistics", "image": "ic_statistic"]
         
         let setting = ["title": "Settings", "image": "ic_setting"]
         let logout = ["title": "Log out", "image": "ic_logout"]
-        arrMenu = [explore, travel, chat, photo, video, blog, miab, store, saved, statistic, setting, logout]
+        arrMenu = [explore, travel, chat, photo, video, blog, miab, saved, statistic, setting, logout]
 //
 //        let explore = FTUserDashBoardMenuViewModel(title: "Explore", icon: UIImage(named: "feed_selected")!)
 //
@@ -109,7 +108,6 @@ class FTUserDashBoardTabViewController: FTTabViewController {
 //
 //        let miab = FTUserDashBoardMenuViewModel(title: "MIAB", icon: UIImage(named: "ic_miab")!)
 //
-//        let store = FTUserDashBoardMenuViewModel(title: "My Store", icon: UIImage(named: "ic_my_store")!)
 //
 //        let saved = FTUserDashBoardMenuViewModel(title: "Saved", icon: UIImage(named: "saved")!)
 //
@@ -288,6 +286,7 @@ extension FTUserDashBoardTabViewController: UserDashBoardSettingDelegate {
     
     func logout() {
         guard let token = rootViewController.coreService.registrationService?.authenticationProfile?.accessToken else {
+            NSLog("return")
             return
         }
         

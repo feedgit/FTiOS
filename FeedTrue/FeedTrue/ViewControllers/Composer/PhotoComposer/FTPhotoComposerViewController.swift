@@ -11,9 +11,11 @@ import DKImagePickerController
 import RichEditorView
 import MapKit
 import MobileCoreServices
+import AVFoundation
+import AVKit
 
 enum ComposerType: String {
-    case photos = "Add Photos"
+    case photos = "Create Post"
     case article = "Add Article"
 }
 
@@ -24,14 +26,13 @@ enum PrivacyType: Int {
 }
 
 enum ComposerCellType: Int {
-    //[feedCategory, editorVM, switchVM, privacy, checkin, menu, photoVMs]
+    //[feedCategory, editorVM, privacy, checkin, menu, photoVMs]
     case category = 0
     case editor = 1
-    case switchVM = 2
-    case privacy = 3
-    case checkin = 4
-    case menu = 5
-    case photos = 6
+    case privacy = 2
+    case checkin = 3
+    case menu = 4
+    case photos = 5
 }
 
 struct FTLocationProperties {
@@ -48,8 +49,6 @@ struct FTLocationProperties {
 enum FTComposerType {
     case photo
     case video
-    case blog
-    case travel
 }
 
 enum FTCategoryType: Int {
@@ -80,7 +79,6 @@ class FTPhotoComposerViewController: UIViewController {
     var assets: [DKAsset] = []
     var coreService: FTCoreService!
     var editorVM: FTRichTextViewModel!
-    var switchVM: FTSwitchViewModel!
     var addButtonVM: FTPhotoComposerViewModel!
     var checkin: FTPhotoSettingViewModel!
     var selectedCheckin: FTSelectedLocationVM!
@@ -113,7 +111,6 @@ class FTPhotoComposerViewController: UIViewController {
         FTRichTextViewModel.register(tableView: tableView)
         FTPhotoSettingViewModel.register(tableView: tableView)
         FTPhotosViewModel.register(tableView: tableView)
-        FTSwitchViewModel.register(tableView: tableView)
         FTSelectedLocationVM.register(tableView: tableView)
         tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "FTMenuTableViewCell")
         tableView.tableFooterView = UIView()
@@ -210,10 +207,6 @@ class FTPhotoComposerViewController: UIViewController {
             }
         case .video:
             break
-        case .blog:
-            break
-        case .travel:
-            break
         }
     }
     
@@ -246,14 +239,11 @@ class FTPhotoComposerViewController: UIViewController {
         
         let photo = ["title": "Photos", "image": "ic_photo"]
         let video = ["title": "Videos", "image": "ic_video"]
-        let blog = ["title": "Blogs", "image": "ic_blog"]
-        let travel = ["title": "Travel", "image": "ic_travel"]
-        let menu = FTMenuViewModel(arrMenu: [photo, video, blog, travel])
-        menu.countRow = 2
+        let menu = FTMenuViewModel(arrMenu: [photo, video])
+        menu.countRow = 1
         menu.countCol = 3
         
-        switchVM = FTSwitchViewModel(imageName: "feed_selected", title: NSLocalizedString("Feed", comment: ""), isOn: true)
-        settings = [feedCategory, editorVM, switchVM, privacy, checkin, menu, photoVMs]
+        settings = [feedCategory, editorVM, privacy, checkin, menu, photoVMs]
     }
     
     fileprivate func reloadCell(type: ComposerCellType) {
@@ -366,9 +356,9 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
             renderCell.renderCell(data: content)
         }
         
-        if let switchCell = cell as? FTSwitchControlTableViewCell {
-            switchCell.delegate = self
-        }
+//        if let switchCell = cell as? FTSwitchControlTableViewCell {
+//            switchCell.delegate = self
+//        }
         
         
         if let menuCell = cell as? FTMenuTableViewCell {
@@ -399,12 +389,6 @@ extension FTPhotoComposerViewController: UITableViewDelegate, UITableViewDataSou
             categoryVC.delegate = self
             self.navigationController?.pushViewController(categoryVC, animated: true)
         case .editor:
-            // post in feed
-//            let postVC = FTPostInFeedViewController(postText: postText)
-//            postVC.delegate = self
-//            self.navigationController?.pushViewController(postVC, animated: true)
-            break
-        case .switchVM:
             break
         case .privacy:
             // privacy
@@ -464,29 +448,6 @@ extension FTPhotoComposerViewController: PrivacyPickerDelegate {
     }
 }
 
-extension FTPhotoComposerViewController: PostInFeedDelegate {
-    func postInFeedDidSave(viewController: FTPostInFeedViewController) {
-        postText = viewController.getPostText()
-        editorVM.content = postText
-        var markIcontName = ""
-        if postText != "" {
-            markIcontName = "ic_tick"
-        }
-        
-        let postFeed = FTPhotoSettingViewModel(icon: "ic_post_feed", title: NSLocalizedString("Post in NewFeed", comment: ""), markIcon: markIcontName)
-        settings[1] = postFeed
-        let indexPath = IndexPath(row: 1, section: 0)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-}
-
-extension FTPhotoComposerViewController: SwitchControlCellDelegate {
-    func switchStateDidChange(isOn: Bool) {
-        self.editorVM.enable = isOn
-        reloadCell(type: .editor)
-    }
-}
-
 extension FTPhotoComposerViewController: CheckInDelegate, SelectedLocationCellDelegate {
     func checkInDidSelectedLocation(locationProperties p: FTLocationProperties) {
         self.locationProperties = p
@@ -515,15 +476,12 @@ extension FTPhotoComposerViewController: FTMenuTableViewCellDelegate {
                     videoPicker = UIImagePickerController()
                 }
                 
+                videoPicker.videoExportPreset = AVAssetExportPresetPassthrough
                 videoPicker.delegate = self
                 videoPicker.sourceType = .photoLibrary
                 videoPicker.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
                 self.present(videoPicker, animated: true, completion: nil)
             }
-        case 2:
-            selectedComposerType = .blog
-        case 3:
-            selectedComposerType = .travel
         default:
             break
         }

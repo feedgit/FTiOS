@@ -31,6 +31,7 @@ class FeedTrueRootViewController: UIViewController {
     var notificationVC: FTNotificationTabViewController!
     var feedVC: FTTabFeedViewController!
     var videoVC: FTFeedVideoCollectionViewController!
+    var createPostVC: FTPhotoComposerViewController!
     
     var messageItem: ESTabBarItem!
     var notificationItem: ESTabBarItem!
@@ -120,7 +121,7 @@ class FeedTrueRootViewController: UIViewController {
     func customIrregularityStyle(delegate: UITabBarControllerDelegate?) -> UINavigationController {
         let tabBarController = ESTabBarController()
         tabBarController.delegate = delegate
-        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.backgroundColor = UIColor(r: 202, g: 228, b: 230)
         // remove top border line
         tabBarController.tabBar.clipsToBounds = true
         
@@ -134,12 +135,12 @@ class FeedTrueRootViewController: UIViewController {
                 NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
             }
             
-//            if index == 4 {
-//                // user dashboard tab
-//                if self.coreService.registrationService?.hasAuthenticationProfile() == false {
-//                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
-//                }
-//            }
+            if index == 4 {
+                // user dashboard tab
+                if self.coreService.registrationService?.hasAuthenticationProfile() == false {
+                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
+                }
+            }
             return false
         }
         
@@ -170,8 +171,7 @@ class FeedTrueRootViewController: UIViewController {
         profileVC = FTTabProfileViewController(nibName: "FTTabProfileViewController", bundle: nil)
         profileVC.rootViewController = self
         profileVC.rootViewController.coreService = self.coreService
-
-        let feedItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "feed_unselected"), selectedImage: UIImage(named: "feed_selected"))
+        let feedItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "heart"), selectedImage: UIImage(named: "heart_filled"))
 
         feedItem.contentView?.renderingMode = .alwaysOriginal
         feedItem.contentView?.backdropColor = UIColor.clear
@@ -210,34 +210,21 @@ class FeedTrueRootViewController: UIViewController {
         
         videoVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
         
-        let videoItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "ic_video"), selectedImage: UIImage(named: "ic_video"))
+        let videoItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "tag"), selectedImage: UIImage(named: "tag_filled"))
         videoItem.contentView?.renderingMode = .alwaysOriginal
         videoItem.contentView?.backdropColor = UIColor.clear
         videoItem.contentView?.highlightBackdropColor = UIColor.clear
         videoVC.tabBarItem = videoItem
         
-        let composeVC = UIViewController()
-        composeVC.view.backgroundColor = UIColor.clear
+        createPostVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
         let composeItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "ic_add"), selectedImage: UIImage(named: "ic_add"))
         composeItem.contentView?.renderingMode = .alwaysOriginal
         composeItem.contentView?.backdropColor = UIColor.clear
         composeItem.contentView?.highlightBackdropColor = UIColor.clear
-        composeVC.tabBarItem = composeItem
+        createPostVC.tabBarItem = composeItem
 
         
-        tabBarController.viewControllers = [feedVC, videoVC , composeVC, messageVC, userDashBoardVC]
-        feedtrueTabBarController = tabBarController
-        
-        tabBarController.shouldHijackHandler = {
-            tabbarController, viewController, index in
-            if index == 2 {
-                let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
-                self.navigationController?.pushViewController(photoComposerVC, animated: true)
-                return true
-            }
-            return false
-        }
-
+        tabBarController.viewControllers = [feedVC, videoVC , createPostVC, messageVC, profileVC]
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
         

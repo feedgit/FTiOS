@@ -21,4 +21,8 @@ extension UIColor {
 
         return UIColor(red: results[0], green: results[1], blue: results[2], alpha: results[3])
     }
+    
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat) {
+        self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
+    }
 }

@@ -166,16 +166,16 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else {
             self.dateLabel.text = nil
         }
-        var ct = feed.text?.htmlToString ?? ""
-        ct.append(contentsOf: "At: ")
-        ct.append(contentsOf: feed.location?.name ?? "")
-        self.contentLabel.text = ct
+        var feedText = feed.text?.htmlToString ?? ""
+        feedText.append(contentsOf: "At: ")
+        feedText.append(contentsOf: feed.location?.name ?? "")
+        self.contentLabel.text = feedText
         
         let photoController = PhotosController(dataSourceType: .remote)
         photoController.collectionView?.isScrollEnabled = false
         photos.removeAll()
         skPhotos.removeAll()
-        if let type = feed.feedcontent?.display_type {
+        if let type = feed.feedcontent?.type {
             guard let imageDatas = feed.feedcontent?.data else { return }
             switch type {
             case FeedDisplayType.photoset.rawValue:
@@ -186,19 +186,10 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                  "id": 108,
                  "image": "https://api.feedtrue.com/media/users/1/9_108.jpg"
                  },
-                 {
-                 "id": 103,
-                 "image": "https://api.feedtrue.com/media/users/1/9_103.jpg"
-                 },
-                 {
-                 "id": 59,
-                 "image": "https://api.feedtrue.com/media/users/1/9_59.jpg"
-                 }
-                 ]
                  */
             for image in imageDatas {
                 guard let id = image["id"] else { continue }
-                guard let imageDict = image["image"] as? [String: Any] else { continue }
+                guard let imageDict = image["file"] as? [String: Any] else { continue }
                 guard let url = imageDict["src"] as? String else { continue }
                 guard let width = imageDict["width"] as? Int else { continue }
                 guard let height = imageDict["height"] as? Int else { continue }
@@ -228,81 +219,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 photo.type = .video
                 photo.thumbnailURL = thumbnail
                 photos.append(photo)
-                }
-            case FeedDisplayType.singleBlog.rawValue:
-                /*
-                 "display_type": 3,
-                 "data": [
-                 {
-                 "id": 67,
-                 "title": "Gác xếp của tôi",
-                 "thumbnail": "https://api.feedtrue.com/media/avatar/article/67.gif",
-                 "slug": "gac-xep-cua-toi"
-                 }
-                 ]
-                 */
-                for image in imageDatas {
-                    guard let id = image["id"] else { continue }
-                    let title = image["title"] as? String
-                    let thumbnailURL = image["thumbnail"] as? String
-                    let slug = image["content"] as? String
-                    //guard let videoURL = image["file"] as? String else { continue }
-                    let photo = Photo(id: "\(id)")
-                    photo.thumbnailURL = thumbnailURL
-                    //photo.url = videoURL
-                    photo.title = title
-                    photo.slug = slug
-                    photo.type = .image
-                    
-                    photos.append(photo)
-                }
-            case FeedDisplayType.sharedFeed.rawValue:
-                /*
-                 "display_type": 4,
-                 "data": [
-                 {
-                 "id": 56,
-                 "user": {
-                 "id": 1,
-                 "username": "lecongtoan",
-                 "full_name": "Công Toàn Lê",
-                 "first_name": "Công Toàn",
-                 "last_name": "Lê",
-                 "avatar": "https://api.feedtrue.com/media/avatar/profile/1/avatar.jpg"
-                 },
-                 "date": "2018-09-18T07:03:28.041000Z",
-                 "feedcontent": {
-                 "display_type": 1,
-                 "data": [
-                 {
-                 "id": 108,
-                 "image": "https://api.feedtrue.com/media/users/1/9_108.jpg"
-                 },
-                 {
-                 "id": 103,
-                 "image": "https://api.feedtrue.com/media/users/1/9_103.jpg"
-                 },
-                 {
-                 "id": 59,
-                 "image": "https://api.feedtrue.com/media/users/1/9_59.jpg"
-                 }
-                 ]
-                 */
-                for d in imageDatas {
-                    guard let feedcontent = d["feedcontent"] as? [String: Any] else { continue }
-                    guard let dataArr = feedcontent["data"] as? [[String: Any]] else { continue }
-                    for item in dataArr {
-                        guard let id = item["id"] else { continue }
-                        guard let imageDict = item["image"] as? [String: Any] else { continue }
-                        guard let url = imageDict["src"] as? String else { continue }
-                        guard let width = imageDict["width"] as? Int else { continue }
-                        guard let height = imageDict["height"] as? Int else { continue }
-                        let photo = Photo(id: "\(id)")
-                        photo.url = url
-                        photo.width = width
-                        photo.height = height
-                        photos.append(photo)
-                    }
                 }
             default:
                 break

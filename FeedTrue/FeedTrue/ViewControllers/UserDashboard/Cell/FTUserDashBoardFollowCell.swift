@@ -29,10 +29,10 @@ class FTUserDashBoardFollowCell: UITableViewCell, BECellRenderImpl {
             loverLabel.text = "0"
         }
         
-        if let followCount = contentData?.follows_viewer, followCount > 0 {
-            followLabel.text = "\(followCount)"
+        if let follow_viewer_status = contentData?.follow_viewer, follow_viewer_status == false {
+            followLabel.text = "Follow"
         } else {
-            followLabel.text = "0"
+            followLabel.text = "Unfollow"
         }
         
         if let followerCount = contentData?.followed_by_viewer, followerCount > 0 {

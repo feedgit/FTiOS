@@ -366,7 +366,7 @@ class FTFeedDetailViewController: UIViewController {
 
     
     private func loadMoreComments() {
-        //guard let contentType = feedInfo.feedcontent?.display_type else { return }
+        //guard let contentType = feedInfo.feedcontent?.type else { return }
         //guard let objectID = feedInfo.id else { return }
         WebService.share.getMoreComments(limit: 10, offset: 0, contentType: 23, objectID: 174) { (success, response) in
             if success {

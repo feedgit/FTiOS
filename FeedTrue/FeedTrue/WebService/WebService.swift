@@ -35,7 +35,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             "password": password
         ]
         
-        let urlString = "\(host)/api/v1/auth/login/"
+        let urlString = "\(host)/api/login/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -224,7 +224,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         let params:[String: Any] = [
             "access_token": "\(token)"
         ]
-        let urlString = "\(host)/api/v1/auth/login/facebook/"
+        let urlString = "\(host)/api/login/facebook/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -253,17 +253,20 @@ class WebService: NSObject, FTCoreServiceComponent {
     }
     
     func logOut(token: String, completion: @escaping (Bool, String?)->()) {
-        let params:[String: Any] = [
-            "access_token": "\(token)"
-        ]
-        let urlString = "\(host)/api/v1/auth/logout/"
+        let urlString = "\(host)/api/logout/"
+        var headers: HTTPHeaders?
+        if let token = getToken() {
+            headers = [
+                "Authorization": "JWT \(token)"
+            ]
+        }
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
         }
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil)
+        Alamofire.request(url, method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers)
             .responseJSON { (response) in
                 guard response.result.isSuccess else {
                     completion(false, nil)
@@ -292,7 +295,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/users/\(username)/"
+        let urlString = "\(host)/api/user/\(username)/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -324,7 +327,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
 
-        let urlString = "\(host)/api/v1/users/\(username)/about/"
+        let urlString = "\(host)/api/user/\(username)/about/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -403,11 +406,10 @@ class WebService: NSObject, FTCoreServiceComponent {
     }
     
     func getFeed(limit: Int?, offset: Int?, username: String?, ordering: String? = nil, completion: @escaping (Bool, FTFeedResponse?) -> ()) {
-        // https://api.feedtrue.com/api/v1/f/?page=1&per_page=1
         let params:[String: Any] = [
             "limit": limit ?? 5,
             "offset" : offset ?? 0,
-            "ordering" : ordering ?? HotFeedType.following.rawValue
+            "ordering" : "follow"
         ]
         
         var headers: HTTPHeaders?
@@ -417,7 +419,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/feed/?user__username=\(username ?? "")"
+        let urlString = "\(host)/api/feed/?user__username=\(username ?? "")"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
@@ -1852,7 +1854,7 @@ class WebService: NSObject, FTCoreServiceComponent {
             ]
         }
         
-        let urlString = "\(host)/api/v1/feed/\(uid)/"
+        let urlString = "\(host)/api/feed/\(uid)/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)

@@ -183,14 +183,14 @@ class FTFeedInfo: Mappable {
  
  
 class FTFeedContent: Mappable {
-    var display_type: String?
+    var type: String?
     var data: [[String: Any]]?
     required init?(map: Map) {
         
     }
     
     func mapping(map: Map) {
-        display_type <- map["display_type"]
+        type <- map["type"]
         data <- map["data"]
     }
 }
