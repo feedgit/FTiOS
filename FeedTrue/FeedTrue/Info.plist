@@ -41,7 +41,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>$(PRODUCT_NAME) camera use</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>The app will use the location data</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

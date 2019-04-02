@@ -9,6 +9,8 @@
 import UIKit
 import ESTabBarController_swift
 import MBProgressHUD
+import Gallery
+import DKImagePickerController
 
 public enum TabType: Int {
     case explore = 0
@@ -35,11 +37,13 @@ class FeedTrueRootViewController: UIViewController {
     
     var messageItem: ESTabBarItem!
     var notificationItem: ESTabBarItem!
+    var gallery: GalleryController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Gallery.Config.VideoEditor.savesEditedVideoToLibrary = true
         self.view.backgroundColor = UIColor.init(white: 245.0 / 255.0, alpha: 1.0)
         
         // navigation bar
@@ -127,9 +131,17 @@ class FeedTrueRootViewController: UIViewController {
         
         tabBarController.shouldHijackHandler = {
             tabbarController, viewController, index in
-//            if index == 2 {
-//                return true
-//            }
+            if index == 2 {
+                if FTCoreService.share.registrationService?.hasAuthenticationProfile() == false {
+                    NotificationCenter.default.post(name: .ShowLogin, object: nil)
+                    return true
+                }
+                
+                self.gallery = GalleryController()
+                self.gallery.delegate = self
+                self.present(self.gallery, animated: true, completion: nil)
+                return true
+            }
             if index == 1 {
                 // Feed Tab
                 NotificationCenter.default.post(name: .FeedTabTouchAction, object: nil)
@@ -331,4 +343,35 @@ extension FeedTrueRootViewController: UITextFieldDelegate {
         self.searchTextField.endEditing(true)
         return true
     }
+}
+
+extension FeedTrueRootViewController: GalleryControllerDelegate {
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+        var assets: [DKAsset] = []
+        for item in images {
+            let asset = DKAsset.init(originalAsset: item.asset)
+            assets.append(asset)
+        }
+        let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: assets)
+        self.navigationController?.pushViewController(photoComposerVC, animated: true)
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
+    
 }

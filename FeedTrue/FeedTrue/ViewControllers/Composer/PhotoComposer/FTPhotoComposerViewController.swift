@@ -141,8 +141,10 @@ class FTPhotoComposerViewController: UIViewController {
                 if let im = image {
                     let vm = FTPhotoComposerViewModel()
                     vm.image = im
-                    self.photoVMs.datasource.append(self.addButtonVM)
-                    self.settings[self.settings.count - 1 >= 0 ? self.settings.count - 1 : 0] = self.photoVMs
+                    self.photoVMs.datasource.insert(vm, at: self.photoVMs.datasource.count > 1 ? self.photoVMs.datasource.count - 1 : 0)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
         }
@@ -243,7 +245,7 @@ class FTPhotoComposerViewController: UIViewController {
         menu.countRow = 1
         menu.countCol = 3
         
-        settings = [feedCategory, editorVM, privacy, checkin, menu, photoVMs]
+        settings = [feedCategory, editorVM, privacy, checkin, photoVMs]
     }
     
     fileprivate func reloadCell(type: ComposerCellType) {

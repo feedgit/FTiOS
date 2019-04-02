@@ -10,6 +10,7 @@ import UIKit
 import DKImagePickerController
 import PixelEditor
 import PixelEngine
+import Gallery
 
 class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     typealias CellData = FTPhotosViewModel
@@ -20,10 +21,12 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
     fileprivate let itemsPerRow: CGFloat = 3
     var contentData: FTPhotosViewModel!
     fileprivate var editIndex: IndexPath = IndexPath(row: 0, section: 0)
+    var gallery: GalleryController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        Gallery.Config.VideoEditor.savesEditedVideoToLibrary = true
         collectionView.delegate = self
         collectionView.dataSource = self
         FTPhotoComposerViewModel.register(collectionView: collectionView)
@@ -64,10 +67,24 @@ class FTPhotosTableViewCell: UITableViewCell, BECellRenderImpl {
 
 extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return contentData.datasource.count > 1 ? contentData.datasource.count : 0
+        return contentData.datasource.count + 1// > 1 ? contentData.datasource.count : 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == contentData.datasource.count {
+            let addButtonVM = FTPhotoComposerViewModel()
+            addButtonVM.image = UIImage(named: "ic_add_new")
+            addButtonVM.canDelete = false
+            addButtonVM.canEdit = false
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
+            cell.delegate = self
+            
+            // Configure the cell
+            cell.tag = indexPath.row
+            cell.renderCell(data: addButtonVM)
+            cell.deleteImageView.isHidden = !addButtonVM.canDelete
+            return cell
+        }
         let content = contentData.datasource[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FTPhotoComposerViewModel.cellIdentifier, for: indexPath) as! FTPhotoCollectionViewCell
         cell.delegate = self
@@ -90,11 +107,13 @@ extension FTPhotosTableViewCell: UICollectionViewDataSource, UICollectionViewDel
 //                editIndex = indexPath
 //            }
 //        }
-        if indexPath.row == contentData.datasource.count - 1 {
-            let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
-            photoPicker.delegate = self
+        if indexPath.row == contentData.datasource.count {
+//            let photoPicker = FTPhotoPickerViewController(coreService: FTCoreService.share)
+//            photoPicker.delegate = self
+            self.gallery = GalleryController()
+            self.gallery.delegate = self
             if let topVC = UIApplication.topViewController() {
-                 topVC.navigationController?.pushViewController(photoPicker, animated: true)
+                 topVC.present(self.gallery, animated: true, completion: nil)
             }
            
         }
@@ -211,5 +230,42 @@ extension FTPhotosTableViewCell: PhotoPickerDelegate {
     func photoPickerChangeThumbnail(asset: DKAsset?) {
         
     }
+    
+}
+
+
+extension FTPhotosTableViewCell: GalleryControllerDelegate {
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Gallery.Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+        
+        for item in images {
+            item.resolve { (image) in
+                let vm = FTPhotoComposerViewModel()
+                vm.image = image
+                // insert in front of add button
+                self.contentData.datasource.insert(vm, at: self.contentData.datasource.count > 1 ? self.contentData.datasource.count - 1 : 0)
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Gallery.Image]) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+        controller.dismiss(animated: true, completion: nil)
+        gallery = nil
+    }
+    
     
 }
