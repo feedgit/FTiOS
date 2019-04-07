@@ -1,5 +1,5 @@
 //
-//  FTFeedVideoCollectionViewCell.swift
+//  FTTagViewCell.swift
 //  FeedTrue
 //
 //  Created by Quoc Le on 10/11/18.
@@ -10,39 +10,37 @@ import UIKit
 
 @objc protocol VideoCellDelegate {
     // reaction
-//    func videoCellDidChangeReactionType(cell: FTFeedVideoCollectionViewCell)
-//    func videoCellDidRemoveReaction(cell: FTFeedVideoCollectionViewCell)
+//    func videoCellDidChangeReactionType(cell: FTTagViewCell)
+//    func videoCellDidRemoveReaction(cell: FTTagViewCell)
     
     // saved
-    func videoCellDidSaved(cell: FTFeedVideoCollectionViewCell)
-    func videoCellDidUnSaved(cell: FTFeedVideoCollectionViewCell)
+    func videoCellDidSaved(cell: FTTagViewCell)
+    func videoCellDidUnSaved(cell: FTTagViewCell)
 }
-class FTFeedVideoCollectionViewCell: UICollectionViewCell {
+class FTTagViewCell: UICollectionViewCell {
 
     weak var delegate: VideoCellDelegate?
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var contentLabel: UILabel!
-    var contetnData: FTFeedVideoContent?
+    var contetnData: TagExploreContent?
     @IBOutlet weak var lovedLabel: UILabel!
-    @IBOutlet weak var avatarImage: UIImageView!
-    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var tagNameLbl: UITextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        imageView.contentMode = .scaleAspectFill
-        self.layer.cornerRadius = 8
-        avatarImage.round()
-        self.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 8
+        imageView.layer.masksToBounds = true
+        tagNameLbl.textContainer.maximumNumberOfLines = 2
+        tagNameLbl.textContainer.lineBreakMode = .byTruncatingTail
     }
     
-    func render(content: FTFeedVideoContent) {
+    func render(content: TagExploreContent) {
         contetnData = content
-        contentLabel.text = content.title.htmlToString
+        tagNameLbl.text = content.name
         // Render LovedLabel
         let LovedLabelString = NSMutableAttributedString(string: "")
         let spaced = NSMutableAttributedString(string: " ")
-        let loved_stats = content.reactions?.count ?? 0
+        let loved_stats = content.tagged_count
         if (loved_stats > 0) {
             let ic_loved = NSTextAttachment()
             ic_loved.image = UIImage(named: "love_filled")
@@ -63,9 +61,7 @@ class FTFeedVideoCollectionViewCell: UICollectionViewCell {
             LovedLabelString.append(viewed_string)
         }
         lovedLabel.attributedText = LovedLabelString
-        avatarImage.loadImage(fromURL: URL(string: content.user?.avatar ?? ""), defaultImage: UIImage.userImage())
         // video content
-        durationLabel.text = content.duration
         imageView.loadImage(fromURL: URL(string: content.thumbnail), defaultImage: UIImage.noImage())
     }
 }

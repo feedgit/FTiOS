@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1000x1000" translatesAutoresizingMaskIntoConstraints="NO" id="wzf-Yk-Bu6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch" translatesAutoresizingMaskIntoConstraints="NO" id="wzf-Yk-Bu6">
                                 <rect key="frame" x="147" y="294" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wzf-Yk-Bu6" secondAttribute="height" id="cUk-JJ-E6e"/>
@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97289419420000001" green="0.97289419420000001" blue="0.97289419420000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wzf-Yk-Bu6" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-24" id="QeZ-Nc-hdB"/>
                             <constraint firstItem="wzf-Yk-Bu6" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="yP9-QQ-kZi"/>
@@ -40,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1000x1000" width="150" height="150"/>
+        <image name="Launch" width="204" height="204"/>
     </resources>
 </document>

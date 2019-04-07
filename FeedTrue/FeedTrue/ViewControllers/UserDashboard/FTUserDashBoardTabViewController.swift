@@ -266,9 +266,6 @@ extension FTUserDashBoardTabViewController: UITableViewDelegate, UITableViewData
                 let articleVC = FTArticlesViewController(coreService: rootViewController.coreService)
                 self.navigationController?.pushViewController(articleVC, animated: true)
             } else if indexPath.row == 4 {
-                let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
-                //videoVC.delegate = self
-                self.navigationController?.pushViewController(videoVC, animated: true)
             }
         }
     }
@@ -354,9 +351,6 @@ extension FTUserDashBoardTabViewController: FTMenuTableViewCellDelegate {
             let articleVC = FTArticlesViewController(coreService: rootViewController.coreService)
             self.navigationController?.pushViewController(articleVC, animated: true)
         } else if index == 4 {
-            let videoVC = FTFeedVideoCollectionViewController(coreService: rootViewController.coreService)
-            //videoVC.delegate = self
-            self.navigationController?.pushViewController(videoVC, animated: true)
         } else if index == 11 {
             logout()
         } else if index == 10 {

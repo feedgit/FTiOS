@@ -63,7 +63,7 @@ class FTCommentTextCell: UITableViewCell, BECellRenderImpl {
             self.avatarImageView.image = UIImage.userImage()
         }
         let lastname = data.comment.user?.last_name ?? ""
-        let lastnameAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.blue ]
+        let lastnameAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.black ]
         let lastnameAttrString = NSAttributedString(string: lastname, attributes: lastnameAttribute)
         
         let content = data.comment.comment?.htmlToString ?? ""

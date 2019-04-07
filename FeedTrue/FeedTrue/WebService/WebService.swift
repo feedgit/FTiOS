@@ -1116,7 +1116,7 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
-    func getFeedVideo(username: String?, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
+    func fetchTagExplore(limit: Int=15, offset: Int=0,completion: @escaping (Bool, FTFeedVideo?) -> ()) {
         
         var headers: HTTPHeaders?
         if let token = getToken() {
@@ -1124,15 +1124,19 @@ class WebService: NSObject, FTCoreServiceComponent {
                 "Authorization": "JWT \(token)"
             ]
         }
+        let params:[String: Any] = [
+            "limit": limit,
+            "offset" : offset
+        ]
         
-        let urlString = "\(host)/api/v1/media/video/feed/?user__username=\(username ?? "")"
+        let urlString = "\(host)/api/tag/"
         
         guard let url = URL(string: urlString) else {
             completion(false, nil)
             return
         }
         
-        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: headers)
             .responseObject { (response: DataResponse<FTFeedVideo>) in
                 guard response.result.isSuccess else {
                     completion(false, nil)

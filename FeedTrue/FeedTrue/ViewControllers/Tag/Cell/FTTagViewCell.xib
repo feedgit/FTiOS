@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FTTagViewCell" customModule="FeedTrue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="246" height="331"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="246" height="331"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bHF-M1-ixI">
+                        <rect key="frame" x="0.0" y="0.0" width="246" height="246"/>
+                        <color key="backgroundColor" red="0.95799581310000004" green="1" blue="0.94038758050000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="bHF-M1-ixI" secondAttribute="height" id="Nf5-yM-YK8"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="maskToBounds" value="NO"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ney-xt-h0f" userLabel="Bottom View">
+                        <rect key="frame" x="0.0" y="246" width="246" height="85"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" scrollEnabled="NO" editable="NO" text="{{tag_name}}" translatesAutoresizingMaskIntoConstraints="NO" id="Z6r-3A-bvp" userLabel="tag_name">
+                                <rect key="frame" x="0.0" y="0.0" width="246" height="85"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Z6r-3A-bvp" firstAttribute="top" secondItem="ney-xt-h0f" secondAttribute="top" id="6MA-cB-Kdb"/>
+                            <constraint firstItem="Z6r-3A-bvp" firstAttribute="width" secondItem="ney-xt-h0f" secondAttribute="width" id="IrX-qa-9dG"/>
+                            <constraint firstAttribute="bottom" secondItem="Z6r-3A-bvp" secondAttribute="bottom" id="fUG-NT-Ykm"/>
+                            <constraint firstItem="Z6r-3A-bvp" firstAttribute="leading" secondItem="ney-xt-h0f" secondAttribute="leading" id="sa8-aW-Loo"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJD-qf-bqN" userLabel="RightView">
+                        <rect key="frame" x="0.0" y="191" width="246" height="55"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="❤ 124" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y19-nM-zps" userLabel="loved_stats">
+                                <rect key="frame" x="8" y="17" width="48" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.044226241438356163" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="sJD-qf-bqN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="20s-ha-9Ip"/>
+                <constraint firstItem="bHF-M1-ixI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4qr-sv-Pvb"/>
+                <constraint firstItem="sJD-qf-bqN" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1/6" id="BDh-Wi-7Xn"/>
+                <constraint firstAttribute="trailing" secondItem="ney-xt-h0f" secondAttribute="trailing" id="ByN-U8-yjv"/>
+                <constraint firstAttribute="bottom" secondItem="ney-xt-h0f" secondAttribute="bottom" id="Gag-pY-jVE"/>
+                <constraint firstItem="ney-xt-h0f" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Mxa-Hk-lFA"/>
+                <constraint firstItem="ney-xt-h0f" firstAttribute="top" secondItem="bHF-M1-ixI" secondAttribute="bottom" id="RPu-RV-SaZ"/>
+                <constraint firstItem="bHF-M1-ixI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="V4k-oa-vis"/>
+                <constraint firstAttribute="trailing" secondItem="bHF-M1-ixI" secondAttribute="trailing" id="Wrt-JX-xam"/>
+                <constraint firstItem="ney-xt-h0f" firstAttribute="top" secondItem="sJD-qf-bqN" secondAttribute="bottom" id="cUe-N2-8BS"/>
+                <constraint firstAttribute="trailing" secondItem="sJD-qf-bqN" secondAttribute="trailing" id="dof-4M-h5X"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="246" height="269"/>
+            <connections>
+                <outlet property="imageView" destination="bHF-M1-ixI" id="EID-R5-hF1"/>
+                <outlet property="lovedLabel" destination="Y19-nM-zps" id="CQ3-9J-Tj5"/>
+                <outlet property="tagNameLbl" destination="Z6r-3A-bvp" id="FHw-QF-lDp"/>
+            </connections>
+            <point key="canvasLocation" x="46.399999999999999" y="211.84407796101951"/>
+        </collectionViewCell>
+    </objects>
+</document>

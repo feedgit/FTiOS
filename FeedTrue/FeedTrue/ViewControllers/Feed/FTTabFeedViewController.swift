@@ -29,7 +29,7 @@ class FTTabFeedViewController: FTTabViewController {
     
     //@IBOutlet weak var segmentedControl: ScrollableSegmentedControl!
     
-    @IBOutlet weak var segment: YAScrollSegmentControl!
+//    @IBOutlet weak var segment: YAScrollSegmentControl!
     @IBOutlet weak var tableView: UITableView!
     var dataSource = [FTFeedViewModel]()
     var nextURLString: String?
@@ -60,11 +60,10 @@ class FTTabFeedViewController: FTTabViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.separatorInset = .zero
-        tableView.layer.cornerRadius = 8
         tableView.clipsToBounds = true
         
-        self.setUpSegmentControl()
-        self.setUpRefreshControl()
+//        self.setUpSegmentControl()
+//        self.setUpRefreshControl()
         NotificationCenter.default.addObserver(self, selector: #selector(feedTabTouchAction), name: .FeedTabTouchAction, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loadFeed), name: .ComposerPhotoCompleted, object: nil)
         
@@ -83,16 +82,13 @@ class FTTabFeedViewController: FTTabViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.parent?.navigationItem.leftBarButtonItem = nil
-        //self.parent?.navigationItem.title = NSLocalizedString("FeedTrue", comment: "")
-//        let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_add")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addAction))
-        //self.parent?.navigationItem.rightBarButtonItem = addBarBtn
+        let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_love")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addAction))
+        self.parent?.navigationItem.rightBarButtonItem = addBarBtn
         
-        let leftTitle = UIBarButtonItem(title: NSLocalizedString("Explore", comment: ""), style: .plain, target: self, action: nil)
-        self.parent?.navigationItem.leftBarButtonItem = leftTitle
+//        let leftTitle = UIBarButtonItem(title: NSLocalizedString("Explore", comment: ""), style: .plain, target: self, action: nil)
+        self.parent?.navigationItem.leftBarButtonItem = nil
         
         self.parent?.navigationItem.title = nil
-        self.parent?.navigationItem.rightBarButtonItem = nil
     }
     
     @objc func addAction() {
@@ -186,12 +182,12 @@ class FTTabFeedViewController: FTTabViewController {
 //        segmentedControl.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
 //
 //        segmentedControl.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
-        segment.buttons = ["Following", "Hot", "Explore"]
-        segment.setBackgroundImage(UIImage(color: .white), for: .normal)
-        segment.setTitleColor(.gray, for: .normal)
-        segment.setTitleColor(.black, for: .selected)
-        segment.setFont(UIFont.boldSystemFont(ofSize: 20))
-        segment.delegate = self
+//        segment.buttons = ["Following", "Hot", "Explore"]
+//        segment.setBackgroundImage(UIImage(color: .white), for: .normal)
+//        segment.setTitleColor(.gray, for: .normal)
+//        segment.setTitleColor(.black, for: .selected)
+//        segment.setFont(UIFont.boldSystemFont(ofSize: 20))
+//        segment.delegate = self
     }
     
     private func setUpRefreshControl() {
@@ -472,17 +468,17 @@ extension FTTabFeedViewController: FTFeedCellDelegate {
 }
 
 extension FTTabFeedViewController: VideoControllerDelegate {
-    func videoGoHome() {
+//    func videoGoHome() {
         //self.segmentedControl.selectedSegmentIndex = 0
-        self.segment.selectedIndex = 0
-    }
+//        self.segment.selectedIndex = 0
+//    }
 }
 
 extension FTTabFeedViewController: FTMenuTableViewCellDelegate {
     func menuTableViewCell(_ menuCell: FTMenuTableViewCell, didSelectedItemAt index: Int) {
         switch index {
         case 0: // video
-            let videoVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
+            let videoVC = FTTagViewController(coreService: FTCoreService.share)
             videoVC.delegate = self
             self.navigationController?.pushViewController(videoVC, animated: true)
         case 1: // article

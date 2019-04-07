@@ -14,7 +14,7 @@ import DKImagePickerController
 
 public enum TabType: Int {
     case explore = 0
-    case video = 1
+    case tag = 1
     case notification = 2
     case chat = 3
     case dashboard = 4
@@ -32,7 +32,7 @@ class FeedTrueRootViewController: UIViewController {
     var userDashBoardVC: FTUserDashBoardTabViewController!
     var notificationVC: FTNotificationTabViewController!
     var feedVC: FTTabFeedViewController!
-    var videoVC: FTFeedVideoCollectionViewController!
+    var TagVC: FTTagViewController!
     var createPostVC: FTPhotoComposerViewController!
     
     var messageItem: ESTabBarItem!
@@ -44,7 +44,7 @@ class FeedTrueRootViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         Gallery.Config.VideoEditor.savesEditedVideoToLibrary = true
-        self.view.backgroundColor = UIColor.init(white: 245.0 / 255.0, alpha: 1.0)
+        self.view.backgroundColor = UIColor.white
         
         // navigation bar
         let nav = customIrregularityStyle(delegate: nil)
@@ -164,7 +164,6 @@ class FeedTrueRootViewController: UIViewController {
         feedVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
         feedVC.rootViewController = self
         feedVC.rootViewController.coreService = self.coreService
-        feedVC.view.backgroundColor = UIColor.backgroundColor()
 
         let messageVC = FTMessageTabViewController(nibName: "FTMessageTabViewController", bundle: nil)
         messageVC.rootViewController = self
@@ -220,13 +219,13 @@ class FeedTrueRootViewController: UIViewController {
         settingItem.contentView?.highlightBackdropColor = UIColor.clear
         searchVC.tabBarItem = settingItem
         
-        videoVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
+        TagVC = FTTagViewController(coreService: FTCoreService.share)
         
         let videoItem = ESTabBarItem.init(ExampleIrregularityBasicContentView(), title: nil, image: UIImage(named: "tag"), selectedImage: UIImage(named: "tag_filled"))
         videoItem.contentView?.renderingMode = .alwaysOriginal
         videoItem.contentView?.backdropColor = UIColor.clear
         videoItem.contentView?.highlightBackdropColor = UIColor.clear
-        videoVC.tabBarItem = videoItem
+        TagVC.tabBarItem = videoItem
         
         createPostVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
         let composeItem = ESTabBarItem.init(ExampleIrregularityContentView(), title: nil, image: UIImage(named: "ic_add"), selectedImage: UIImage(named: "ic_add"))
@@ -236,7 +235,7 @@ class FeedTrueRootViewController: UIViewController {
         createPostVC.tabBarItem = composeItem
 
         
-        tabBarController.viewControllers = [feedVC, videoVC , createPostVC, messageVC, profileVC]
+        tabBarController.viewControllers = [feedVC, TagVC , createPostVC, messageVC, profileVC]
 
         let navigationController = UINavigationController.init(rootViewController: tabBarController)
         

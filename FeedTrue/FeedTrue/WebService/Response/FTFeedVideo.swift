@@ -15,7 +15,7 @@ class FTFeedVideo: Mappable {
     var current = 0
     var next = ""
     var previous = ""
-    var results: [FTFeedVideoContent]?
+    var results: [TagExploreContent]?
     
     required init?(map: Map) {
         
@@ -31,19 +31,19 @@ class FTFeedVideo: Mappable {
     }
 }
 
-class FTFeedVideoContent: Mappable {
+class TagExploreContent: Mappable {
     var id = -1
     var uid = ""
     var ct_name = "video"
     var user: UserProfile?
     var thumbnail = ""
-    var title = ""
+    var name = ""
     var duration = ""
     var views = 0
     var timestamp = ""
     var editable = false
     var comments: FTComment?
-    var reactions: FTReactions?
+    var tagged_count = 0
     var request_reacted = ""
     var saved = false
     
@@ -57,13 +57,13 @@ class FTFeedVideoContent: Mappable {
         ct_name <- map["ct_name"]
         user <- map["user"]
         thumbnail <- map["thumbnail"]
-        title <- map["title"]
+        name <- map["name"]
         duration <- map["duration"]
         views <- map["views"]
         timestamp <- map["timestamp"]
         editable <- map["editable"]
         comments <- map["comments"]
-        reactions <- map["reactions"]
+        tagged_count <- map["tagged_count"]
         request_reacted <- map["request_reacted"]
         saved <- map["saved"]
     }

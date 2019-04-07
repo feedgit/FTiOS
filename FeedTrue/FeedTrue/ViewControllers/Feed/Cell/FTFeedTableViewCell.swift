@@ -160,7 +160,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
         } else {
             self.userAvatarImageview.image = UIImage.userImage()
         }
-        self.nameLabel.text = feed.user?.last_name
+        self.nameLabel.text = feed.user?.username
         if let dateString = feed.date {
             self.dateLabel.text = moment(dateString, timeZone: TimeZone(secondsFromGMT: 0)!, locale: .current)?.fromNowFT()
         } else {

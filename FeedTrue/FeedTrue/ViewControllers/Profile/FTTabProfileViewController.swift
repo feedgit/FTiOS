@@ -101,7 +101,7 @@ class FTTabProfileViewController: FTTabViewController {
         photosVC.title = "Photos"
         photosVC.view.backgroundColor = .gray
         
-        let videosVC = FTFeedVideoCollectionViewController(coreService: FTCoreService.share)
+        let videosVC = FTTagViewController(coreService: FTCoreService.share)
         videosVC.username = username
         videosVC.title = "Videos"
         

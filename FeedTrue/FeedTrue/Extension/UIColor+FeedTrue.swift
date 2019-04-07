@@ -26,7 +26,7 @@ extension UIColor {
     }
     
     class func backgroundColor(alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor(rgb: 0xF6F6F6).withAlphaComponent(alpha)
+        return UIColor(rgb: 0xFFF).withAlphaComponent(alpha)
     }
     
     class func videoVCBackGroundCollor(alpha: CGFloat = 1.0) -> UIColor {
