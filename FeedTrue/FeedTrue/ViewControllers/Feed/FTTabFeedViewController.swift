@@ -77,6 +77,7 @@ class FTTabFeedViewController: FTTabViewController {
 
         self.setData()
         tableView.register(FTMenuTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        loadFeed()
         
     }
     

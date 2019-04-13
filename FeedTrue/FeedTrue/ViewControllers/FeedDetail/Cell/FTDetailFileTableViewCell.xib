@@ -103,13 +103,12 @@
                 <outlet property="commentCountLabel" destination="8Ub-KF-f6L" id="kkU-z2-xU8"/>
                 <outlet property="reactionButton" destination="MDE-PN-byz" id="chD-yk-pqq"/>
                 <outlet property="reactionCountLabel" destination="1AO-su-iRe" id="gJD-cl-Q4F"/>
-                <outlet property="savedBtn" destination="zFi-Li-r0y" id="Yhg-U9-zUT"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="comment" width="38.400001525878906" height="38.400001525878906"/>
-        <image name="save" width="35.200000762939453" height="35.200000762939453"/>
-        <image name="share" width="35.200000762939453" height="35.200000762939453"/>
+        <image name="comment" width="32" height="32"/>
+        <image name="save" width="30" height="30"/>
+        <image name="share" width="32" height="32"/>
     </resources>
 </document>

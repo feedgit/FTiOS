@@ -426,9 +426,15 @@
 		13ED3D7921E705A800AB9245 /* ArticleTimestampTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */; };
 		13ED3D7B21E7099000AB9245 /* TimestampViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */; };
 		13F8471C213A868A0068656C /* FTTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F8471B213A868A0068656C /* FTTabViewController.swift */; };
+		4D0EF79C225F495F0068F3EF /* MansoryFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0EF79A225F495F0068F3EF /* MansoryFeedCollectionViewCell.swift */; };
+		4D0EF79D225F495F0068F3EF /* MansoryFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D0EF79B225F495F0068F3EF /* MansoryFeedCollectionViewCell.xib */; };
+		4D31A441225CD4A000C3241A /* FTNewFeedViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31A43F225CD4A000C3241A /* FTNewFeedViewViewController.swift */; };
+		4D31A442225CD4A000C3241A /* FTNewFeedViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D31A440225CD4A000C3241A /* FTNewFeedViewViewController.xib */; };
+		4D3E0E8E2261935C002DBDD1 /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E0E8D2261935C002DBDD1 /* PinterestLayout.swift */; };
 		4D56C1F621F5F214002D528E /* FTSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */; };
 		4D56C1F721F5F214002D528E /* FTSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */; };
 		4D56C1F921F5F51E002D528E /* FTSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D56C1F821F5F51E002D528E /* FTSettingViewModel.swift */; };
+		4D7BE1B4225E2BAC0055D0C8 /* MansoryFeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BE1B3225E2BAC0055D0C8 /* MansoryFeedCollectionViewController.swift */; };
 		B29493D5C59E43C0CF16387A /* Pods_FeedTrue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */; };
 /* End PBXBuildFile section */
 
@@ -858,9 +864,15 @@
 		13ED3D7721E705A800AB9245 /* ArticleTimestampTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTimestampTableViewCell.xib; sourceTree = "<group>"; };
 		13ED3D7A21E7099000AB9245 /* TimestampViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimestampViewModel.swift; sourceTree = "<group>"; };
 		13F8471B213A868A0068656C /* FTTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTTabViewController.swift; sourceTree = "<group>"; };
+		4D0EF79A225F495F0068F3EF /* MansoryFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MansoryFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		4D0EF79B225F495F0068F3EF /* MansoryFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MansoryFeedCollectionViewCell.xib; sourceTree = "<group>"; };
+		4D31A43F225CD4A000C3241A /* FTNewFeedViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTNewFeedViewViewController.swift; sourceTree = "<group>"; };
+		4D31A440225CD4A000C3241A /* FTNewFeedViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTNewFeedViewViewController.xib; sourceTree = "<group>"; };
+		4D3E0E8D2261935C002DBDD1 /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
 		4D56C1F421F5F214002D528E /* FTSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingsViewController.swift; sourceTree = "<group>"; };
 		4D56C1F521F5F214002D528E /* FTSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FTSettingsViewController.xib; sourceTree = "<group>"; };
 		4D56C1F821F5F51E002D528E /* FTSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTSettingViewModel.swift; sourceTree = "<group>"; };
+		4D7BE1B3225E2BAC0055D0C8 /* MansoryFeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MansoryFeedCollectionViewController.swift; sourceTree = "<group>"; };
 		8624FB5F1013C728D1DEED80 /* Pods-FeedTrue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.release.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.release.xcconfig"; sourceTree = "<group>"; };
 		BB881E1DC87EFF82C1261605 /* Pods-FeedTrue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedTrue.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FeedTrue/Pods-FeedTrue.debug.xcconfig"; sourceTree = "<group>"; };
 		F8373BD041FA865BC09781B9 /* Pods_FeedTrue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedTrue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1876,6 +1888,7 @@
 		13A2C4B92135507300C377C0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4D31A43E225CD41B00C3241A /* NewFeed */,
 				4D20288F22537BB700ABBABC /* Tag */,
 				1321982521C0FBE200C45273 /* Message */,
 				13813F1D21B7D6EF00FB496D /* Notification */,
@@ -2054,6 +2067,7 @@
 		13BA9AE22149646400AD06D7 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				4D3E0E8C2261931A002DBDD1 /* Mansory */,
 				139BF0A222243E070069B783 /* PageMenu */,
 				13B7D23E21F9D78F0001C542 /* DTTextField */,
 				13B7D23321F9D60D0001C542 /* YKCircleCropView */,
@@ -2255,6 +2269,34 @@
 			path = Tag;
 			sourceTree = "<group>";
 		};
+		4D31A43E225CD41B00C3241A /* NewFeed */ = {
+			isa = PBXGroup;
+			children = (
+				4D31A445225D098A00C3241A /* Cell */,
+				4D31A43F225CD4A000C3241A /* FTNewFeedViewViewController.swift */,
+				4D31A440225CD4A000C3241A /* FTNewFeedViewViewController.xib */,
+				4D7BE1B3225E2BAC0055D0C8 /* MansoryFeedCollectionViewController.swift */,
+			);
+			path = NewFeed;
+			sourceTree = "<group>";
+		};
+		4D31A445225D098A00C3241A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4D0EF79A225F495F0068F3EF /* MansoryFeedCollectionViewCell.swift */,
+				4D0EF79B225F495F0068F3EF /* MansoryFeedCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4D3E0E8C2261931A002DBDD1 /* Mansory */ = {
+			isa = PBXGroup;
+			children = (
+				4D3E0E8D2261935C002DBDD1 /* PinterestLayout.swift */,
+			);
+			path = Mansory;
+			sourceTree = "<group>";
+		};
 		4D56C1F321F5F156002D528E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2369,6 +2411,7 @@
 				1337576221D0E2370028D6D5 /* FTMenuItemTableViewCell.xib in Resources */,
 				1338D81F21828E290065B552 /* FTPhotoSettingTableViewCell.xib in Resources */,
 				1386394721FADFA700E6B3EA /* LUT_M01.png in Resources */,
+				4D31A442225CD4A000C3241A /* FTNewFeedViewViewController.xib in Resources */,
 				132C7AAD216FA67E00EE11AD /* FTTagViewController.xib in Resources */,
 				13813F2321B7D72800FB496D /* FTNotificationTableViewCell.xib in Resources */,
 				13813F1521B7C35800FB496D /* Pod_Asset_BMPlayer.xcassets in Resources */,
@@ -2397,6 +2440,7 @@
 				13ED3D7121E5FEE100AB9245 /* ArticleThumbnailTableViewCell.xib in Resources */,
 				13353AF7213A89D200D74C47 /* FTTabProfileViewController.xib in Resources */,
 				132C7B222176632300EE11AD /* menuData.plist in Resources */,
+				4D0EF79D225F495F0068F3EF /* MansoryFeedCollectionViewCell.xib in Resources */,
 				13C3DE57224F79EA009A0519 /* FTUploadVideoInfoVC.xib in Resources */,
 				133D028E21AE108E00511D2C /* FTDetailPhotosTableViewCell.xib in Resources */,
 				13B7D14721F870A80001C542 /* FTLocationSearchTableViewControler.xib in Resources */,
@@ -2612,6 +2656,7 @@
 				1342A90B21649FC500EFD1E6 /* GradientSlider.swift in Sources */,
 				1321982D21C1095A00C45273 /* FTContactResponse.swift in Sources */,
 				134FF0F62152B37300551771 /* Viewable.swift in Sources */,
+				4D31A441225CD4A000C3241A /* FTNewFeedViewViewController.swift in Sources */,
 				1342A90421649FC500EFD1E6 /* ItemWithImage.swift in Sources */,
 				139DD5D721AC27BD00C5405B /* FTDetailContentTableViewCell.swift in Sources */,
 				1342A90621649FC500EFD1E6 /* TelegramPickerViewController.swift in Sources */,
@@ -2714,6 +2759,7 @@
 				1342A7E6215D443400EFD1E6 /* Notification+FT.swift in Sources */,
 				13A2C4C92137A47200C377C0 /* ExampleBouncesContentView.swift in Sources */,
 				132C7ADC217662EB00EE11AD /* CoolSlidingMenuCollectionViewCell.swift in Sources */,
+				4D0EF79C225F495F0068F3EF /* MansoryFeedCollectionViewCell.swift in Sources */,
 				13353B0B213FBDBE00D74C47 /* FTEditUserResponse.swift in Sources */,
 				130E05EA212DC5F000C3E21A /* SignUpPhoneNumberViewController.swift in Sources */,
 				1386395221FAFB2B00E6B3EA /* FTActivitiesResponse.swift in Sources */,
@@ -2757,6 +2803,7 @@
 				133D028D21AE108E00511D2C /* FTDetailPhotosTableViewCell.swift in Sources */,
 				1342A8EB21649FC500EFD1E6 /* TextViewController.swift in Sources */,
 				1342A8EE21649FC500EFD1E6 /* LocaleInfo.swift in Sources */,
+				4D7BE1B4225E2BAC0055D0C8 /* MansoryFeedCollectionViewController.swift in Sources */,
 				139BF09F2222EB850069B783 /* FTSelectedLocationTableViewCell.swift in Sources */,
 				13BA9B22214A614600AD06D7 /* FTFeedTableViewCell.swift in Sources */,
 				1342A8DA21649FC500EFD1E6 /* UISegmentedControl+Extensions.swift in Sources */,
@@ -2803,6 +2850,7 @@
 				13C3DE5A224F7FA2009A0519 /* FTThumnailInfoVC.swift in Sources */,
 				13919558219C8A220068F362 /* SKDetectingImageView.swift in Sources */,
 				1338D8242186F1B90065B552 /* FTPrivacyPickerTableViewCell.swift in Sources */,
+				4D3E0E8E2261935C002DBDD1 /* PinterestLayout.swift in Sources */,
 				13ED3D7521E608EF00AB9245 /* ArticleTitleViewModel.swift in Sources */,
 				1342A8EA21649FC500EFD1E6 /* AttributedTextBlock.swift in Sources */,
 				1342A90921649FC500EFD1E6 /* Label.swift in Sources */,

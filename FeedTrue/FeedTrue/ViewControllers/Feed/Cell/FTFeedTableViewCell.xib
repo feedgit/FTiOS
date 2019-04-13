@@ -233,7 +233,6 @@
                 <outlet property="privacyImageView" destination="juf-3R-3Vq" id="rpD-j6-cmb"/>
                 <outlet property="reactionButton" destination="AYi-Cj-sHG" id="JRd-cJ-bSU"/>
                 <outlet property="reactionCountLabel" destination="UkJ-zb-W0j" id="3ib-Kt-Rah"/>
-                <outlet property="savedBtn" destination="PeB-an-6Dv" id="waa-uj-Rgt"/>
                 <outlet property="userAvatarImageview" destination="WDm-gu-T0d" id="2dv-dF-7Su"/>
             </connections>
             <point key="canvasLocation" x="194.40000000000001" y="166.41679160419793"/>

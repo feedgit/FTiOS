@@ -31,7 +31,7 @@ class FeedTrueRootViewController: UIViewController {
     var profileVC: FTTabProfileViewController!
     var userDashBoardVC: FTUserDashBoardTabViewController!
     var notificationVC: FTNotificationTabViewController!
-    var feedVC: FTTabFeedViewController!
+    var feedVC: FTNewFeedViewViewController!
     var TagVC: FTTagViewController!
     var createPostVC: FTPhotoComposerViewController!
     
@@ -161,9 +161,9 @@ class FeedTrueRootViewController: UIViewController {
 //            print("didHijackHandler")
 //        }
 //
-        feedVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
-        feedVC.rootViewController = self
-        feedVC.rootViewController.coreService = self.coreService
+        feedVC = FTNewFeedViewViewController(nibName: "FTNewFeedViewViewController", bundle: nil)
+//        feedVC.rootViewController = self
+//        feedVC.rootViewController.coreService = self.coreService
 
         let messageVC = FTMessageTabViewController(nibName: "FTMessageTabViewController", bundle: nil)
         messageVC.rootViewController = self
@@ -259,7 +259,7 @@ class FeedTrueRootViewController: UIViewController {
     
     func loadDefaultData() {
         self.feedtrueTabBarController?.selectedIndex = 0
-        self.feedVC.loadFeed()
+//        self.feedVC.loadFeed()
         self.profileVC.loadUserInfo()
         self.userDashBoardVC.loadUserInfo()
         self.getActivities()
@@ -329,7 +329,7 @@ extension FeedTrueRootViewController: LoginDelegate {
         self.feedtrueTabBarController.selectedIndex = 0
         self.profileVC.loadUserInfo()
         self.userDashBoardVC.loadUserInfo()
-        self.feedVC.loadFeed()
+//        self.feedVC.loadFeed()
     }
     
     func didLoginFailure() {

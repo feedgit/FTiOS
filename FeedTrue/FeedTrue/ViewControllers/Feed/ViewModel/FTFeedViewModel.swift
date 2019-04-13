@@ -26,6 +26,14 @@ class FTFeedViewModel: BECellDataSource {
         
     }
     
+    func ratiosizeFirstThumbnail () -> CGSize {
+        guard let feedcontent = feed.feedcontent else { return CGSize(width: 0, height: 0) }
+        guard let img = feedcontent.data![0]["file"] as? [String: Any] else { return CGSize(width: 0, height: 0) }
+        let width = img["width"] as! Int
+        let height = img["height"] as! Int
+        return CGSize(width: width, height: height)
+    }
+    
     static func register(tableView: UITableView) {
         tableView.register(UINib(nibName: feedCellId, bundle: nil), forCellReuseIdentifier: feedCellId)
     }

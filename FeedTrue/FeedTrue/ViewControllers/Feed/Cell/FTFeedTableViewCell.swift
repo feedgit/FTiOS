@@ -72,7 +72,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
     
     @IBOutlet weak var photoSetView: UIView!
     @IBOutlet weak var photoSetConstraint: NSLayoutConstraint!
-    @IBOutlet weak var savedBtn: UIButton!
     
     @IBOutlet weak var commentTableConstraintHeight: NSLayoutConstraint!
     @IBOutlet weak var privacyImageView: UIImageView!
@@ -306,21 +305,7 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
                 reactionButton.reaction   = Reaction.facebook.like
             }
         }
-        
-        // config save icon
-        if let saved = feed.saved {
-            if saved {
-                // icon saved
-                savedBtn.setImage(UIImage(named: "saved"), for: .normal)
-            } else {
-                // icon save
-                savedBtn.setImage(UIImage(named: "save"), for: .normal)
-            }
-        } else {
-            // icon save
-            savedBtn.setImage(UIImage(named: "save"), for: .normal)
-        }
-        
+
         // config privacy icon
         /*
          0: Public
@@ -422,21 +407,6 @@ class FTFeedTableViewCell: UITableViewCell, BECellRenderImpl {
             actions = [gotoFeedAction, shareAction, seeLessContentAction, reportInapproriate, cancelAction]
         }
         FTAlertViewManager.defaultManager.showActions(nil, message: nil, actions: actions, view: self)
-    }
-    
-    
-    @IBAction func savedTouchUpAction(_ sender: Any) {
-        if let saved = feed.saved {
-            if saved {
-                self.delegate?.feedCellDidUnSave(cell: self)
-                self.savedBtn.setImage(UIImage(named: "save"), for: .normal)
-                self.feed.saved = false
-                return
-            }
-        }
-        self.savedBtn.setImage(UIImage(named: "saved"), for: .normal)
-        self.feed.saved = true
-        self.delegate?.feedCellDidSave(cell: self)
     }
     
     @IBAction func commentTouchUpAction(_ sender: Any) {
