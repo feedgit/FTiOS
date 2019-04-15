@@ -90,7 +90,7 @@ class FTFeedDetailViewController: UIViewController {
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.gray, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)], for: .normal)
         segment.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20)], for: .selected)
         segment.tintColor = .clear
-        segment.insertSegment(withTitle: "Reacted (\(feedInfo.reactions?.count ?? 0))", at: 0, animated: false)
+        segment.insertSegment(withTitle: "Reacted (\(feedInfo.loves ?? 0))", at: 0, animated: false)
         segment.insertSegment(withTitle: "Comments (\(feedInfo.comment?.count ?? 0))", at: 1, animated: false)
         segment.selectedSegmentIndex = segmentSelectedIndex
         segment.addTarget(self, action: #selector(didChange(segmentControl:)), for: .valueChanged)

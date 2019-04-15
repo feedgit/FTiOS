@@ -39,7 +39,7 @@ class FTArticleContent: Mappable {
     var create_date = ""
     var editable = false
     var comments: FTComment?
-    var reactions: FTReactions?
+    var loves: Int?
     var request_reacted = ""
     var saved = false
     var created_at: String?
@@ -62,7 +62,7 @@ class FTArticleContent: Mappable {
         create_date <- map["create_date"]
         editable <- map["editable"]
         comments <- map["comments"]
-        reactions <- map["reactions"]
+        loves <- map["loves"]
         request_reacted <- map["request_reacted"]
         saved <- map["saved"]
         created_at <- map["created_at"]

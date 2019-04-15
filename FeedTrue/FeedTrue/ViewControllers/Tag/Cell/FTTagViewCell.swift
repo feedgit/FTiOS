@@ -34,6 +34,11 @@ class FTTagViewCell: UICollectionViewCell {
         tagNameLbl.textContainer.lineBreakMode = .byTruncatingTail
     }
     
+    override func prepareForReuse() {
+        tagNameLbl.text = ""
+        imageView.image = nil
+    }
+    
     func render(content: TagExploreContent) {
         contetnData = content
         tagNameLbl.text = content.name

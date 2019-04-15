@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "FTTagViewCell"
 
 @objc protocol VideoControllerDelegate {
-//    func videoGoHome()
+    //    func videoGoHome()
 }
 
 class FTTagViewController: UICollectionViewController {
@@ -27,10 +27,10 @@ class FTTagViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Register cell classes
         self.collectionView?.register(UINib(nibName: reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         collectionView?.delegate = self
@@ -41,7 +41,7 @@ class FTTagViewController: UICollectionViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
+        //        self.collectionView?.backgroundColor = UIColor.black.withAlphaComponent(0.25)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,10 +54,10 @@ class FTTagViewController: UICollectionViewController {
         self.parent?.navigationItem.title = nil
     }
     
-//    @objc func back(_ sender: Any) {
-//        self.navigationController?.popViewController(animated: true)
-//        self.delegate?.videoGoHome()
-//    }
+    //    @objc func back(_ sender: Any) {
+    //        self.navigationController?.popViewController(animated: true)
+    //        self.delegate?.videoGoHome()
+    //    }
     
     init(coreService c: FTCoreService) {
         coreService = c
@@ -91,9 +91,6 @@ class FTTagViewController: UICollectionViewController {
                         self?.datasource.removeAll()
                         self?.datasource = tags
                         self?.collectionView?.reloadData()
-//                        self?.tableView.addBotomActivityView {
-//                            self?.loadMore()
-//                        }
                     }
                     
                 }
@@ -102,36 +99,78 @@ class FTTagViewController: UICollectionViewController {
             }
         })
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    
+    func fetchMoreTags() {
+        guard let nextURL = self.nextURLString else {
+            self.collectionView.removeBottomActivityView()
+            return
+        }
+        guard let token = FTCoreService.share.registrationService?.authenticationProfile?.accessToken else {
+            return
+        }
+        WebService.share.fetchMoreTag(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
+            if success {
+                NSLog("loadmore \(nextURL as String )")
+                self?.nextURLString = response?.next
+                DispatchQueue.main.async {
+                    if let tags = response?.results {
+                        if tags.count > 0 {
+                            self?.collectionView.endBottomActivity()
+                            self?.datasource.append(contentsOf: tags)
+                            self?.collectionView.collectionViewLayout.invalidateLayout()
+                            self?.collectionView.reloadData()
+                        }
+                        else {
+                            self?.collectionView.removeBottomActivityView()
+                        }
+                    } else {
+                        self?.collectionView.removeBottomActivityView()
+                    }
+                }
+            } else {
+                NSLog("Loading more explore Feed failed")
+                self?.collectionView.removeBottomActivityView()
+            }
+        })
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
-
+    
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("Number Cell will render: " + String(datasource.count))
         return datasource.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FTTagViewCell
-    
+        
         // Configure the cell
         cell.render(content: datasource[indexPath.row])
+        print("Rendered Cell: " + String(indexPath.row))
         return cell
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == datasource.count - 1 {
+            self.fetchMoreTags()
+        }
+    }
+    
 }
 
 extension FTTagViewController: UICollectionViewDelegateFlowLayout {

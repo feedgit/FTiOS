@@ -16,17 +16,19 @@ class FTNewFeedViewViewController: UIViewController {
     
     // Initialize newfeed navigator
     func initNewFeedNavi () {
-        let FollowingVC = MansoryFeedCollectionViewController(collectionViewLayout: PinterestLayout())
+        let FollowingVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
         FollowingVC.title = "Following"
-        FollowingVC.fetchExploreFeed()
+        FollowingVC.loadFeed()
         
-        let ExploreVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
+        let ExploreVC = MansoryFeedCollectionViewController(collectionViewLayout: PinterestLayout())
         ExploreVC.title = "Explore"
         let parameters: [CAPSPageMenuOption] = [
             .selectedMenuItemLabelColor(.black),
             .unselectedMenuItemLabelColor(.gray),
             .scrollMenuBackgroundColor(.white),
-            .menuItemFont(UIFont.pageMenuFont())
+            .menuItemFont(UIFont.pageMenuFont()),
+            .centerMenuItems(true),
+            .menuHeight(50)
         ]
         
         NaviArray = [FollowingVC, ExploreVC]

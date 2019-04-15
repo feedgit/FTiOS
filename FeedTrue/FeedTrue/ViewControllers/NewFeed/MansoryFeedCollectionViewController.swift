@@ -16,6 +16,7 @@ class MansoryFeedCollectionViewController: UICollectionViewController {
     var dataSource = [FTFeedViewModel]()
     var coreService: FTCoreService!
     var refreshControl: UIRefreshControl?
+    var nextURLString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,18 +44,41 @@ class MansoryFeedCollectionViewController: UICollectionViewController {
         WebService.share.getFeed(limit: 9, offset: 0, username: nil, ordering: "explore", completion: { [weak self] (success, response) in
             if success {
                 NSLog("load feed explore success \(response?.count ?? 0)")
-                //                self?.nextURLString = response?.next
+                self?.nextURLString = response?.next
                 DispatchQueue.main.async {
                     if let feeds = response?.feeds {
                         self?.dataSource.removeAll()
                         self?.dataSource = feeds.map({FTFeedViewModel(f: $0)})
-                        self?.collectionView.reloadData()
+                        self?.collectionView.collectionViewLayout.invalidateLayout()
+                        self?.collectionView?.reloadData()
                     }
                 }
             } else {
                 NSLog("load feed explore failure")
             }
         })
+    }
+    
+    @objc func fetchMoreFeeds() {
+        guard let nextURL = self.nextURLString else { return }
+        guard let token = FTCoreService.share.registrationService?.authenticationProfile?.accessToken else { return }
+        _ = self.view
+        WebService.share.loadMoreFeed(nextURL: nextURL, token: token, completion: { [weak self] (success, response) in
+            if success {
+                NSLog("load more feed successful \(response?.next ?? "")")
+                self?.nextURLString = response?.next
+                DispatchQueue.main.async {
+                    if let feeds = response?.feeds {
+                        if feeds.count > 0 {
+                            self?.dataSource.append(contentsOf: feeds.map({FTFeedViewModel(f: $0)}))
+                            self?.collectionView?.collectionViewLayout.invalidateLayout()
+                            self?.collectionView?.reloadData()
+                        }
+                    }
+                }
+            }
+        })
+        
     }
 }
 
@@ -67,6 +91,7 @@ extension MansoryFeedCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        print("will rendering: " + String(dataSource.count))
         return dataSource.count
     }
     
@@ -76,6 +101,13 @@ extension MansoryFeedCollectionViewController {
         // Configure the cell
         cell.renderCell(data: content)
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == dataSource.count - 1 {
+            print("Load more")
+            self.fetchMoreFeeds()
+        }
     }
 }
 
@@ -92,10 +124,7 @@ extension MansoryFeedCollectionViewController : PinterestLayoutDelegate {
                         heightForAnnotationAtIndexPath indexPath: IndexPath, withWidth width: CGFloat) -> CGFloat {
         let annotationPadding = CGFloat(4)
         let annotationHeaderHeight = CGFloat(17)
-//        let photo = dataSource[(indexPath as NSIndexPath).item]
-//        let font = UIFont(name: "AvenirNext-Regular", size: 10)!
-        let commentHeight = CGFloat(Int.random(in: 20 ..< 70))
-        let height = annotationPadding + annotationHeaderHeight + commentHeight + annotationPadding
+        let height = annotationPadding + 40 + 40 + annotationHeaderHeight
         return height
     }
 }

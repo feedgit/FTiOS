@@ -100,7 +100,7 @@ public class DownloadTask : Operation, URLSessionDataDelegate {
     private var totalReceived: Int64 = 0
     //MARK:
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("Did finish download \(downloadURL) with error \(String(describing: error))")
+//        print("Did finish download \(downloadURL) with error \(String(describing: error))")
         downloadFileHandle?.closeFile()
         
         try? FileManager.default.moveItem(at: tempFile, to: expectedFilePath)

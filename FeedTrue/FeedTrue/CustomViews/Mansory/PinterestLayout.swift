@@ -53,8 +53,19 @@ class PinterestLayout: UICollectionViewLayout {
         return collectionView!.bounds.width - (insets.left + insets.right)
     }
     
+    /**
+     Invalidates layout.
+     */
+    override public func invalidateLayout() {
+        cache.removeAll()
+        contentHeight = 0
+        
+        super.invalidateLayout()
+    }
+    
     override func prepare() {
         if cache.isEmpty {
+            print("rendering to cache")
             // get column width
             let columnWidth = contentWidth / CGFloat(numberOfColumns)
             

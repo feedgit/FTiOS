@@ -109,7 +109,7 @@ public class UploadTask : Operation, URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("Did finish upload \(String(describing: postedValue)) with error \(String(describing: error))")
+//        print("Did finish upload \(String(describing: postedValue)) with error \(String(describing: error))")
         completion?(error == nil ? postedValue: nil, error == nil ? nil : .uploadFail)
         uploadCompleted = true
     }

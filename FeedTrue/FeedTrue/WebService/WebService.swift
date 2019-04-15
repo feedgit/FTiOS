@@ -1153,6 +1153,35 @@ class WebService: NSObject, FTCoreServiceComponent {
         }
     }
     
+    func fetchMoreTag(nextURL: String, token: String, completion: @escaping (Bool, FTFeedVideo?) -> ()) {
+        let headers: HTTPHeaders = [
+            "Authorization": "JWT \(token)"
+        ]
+        
+        let urlString = nextURL
+        
+        guard let url = URL(string: urlString) else {
+            completion(false, nil)
+            return
+        }
+        
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers)
+            .responseObject { (response: DataResponse<FTFeedVideo>) in
+                guard response.result.isSuccess else {
+                    completion(false, nil)
+                    return
+                }
+                
+                
+                guard let value = response.result.value else {
+                    completion(false, nil)
+                    return
+                }
+                
+                completion(true, value)
+        }
+    }
+    
     func getArticles(username: String?, completion: @escaping (Bool, FTArticles?) -> ()) {
         var headers: HTTPHeaders?
         if let token = getToken() {

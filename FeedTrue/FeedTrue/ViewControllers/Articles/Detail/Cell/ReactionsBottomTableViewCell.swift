@@ -45,7 +45,7 @@ class ReactionsBottomTableViewCell: UITableViewCell, BECellRenderImpl {
     func renderCell(data: ArticleReactionViewModel) {
         article = data.article
         
-        if let reactionCount = article.reactions?.count, reactionCount > 0 {
+        if let reactionCount = article.loves, reactionCount > 0 {
             reactionLabel.text = "\(reactionCount)"
         } else {
             reactionLabel.text = nil

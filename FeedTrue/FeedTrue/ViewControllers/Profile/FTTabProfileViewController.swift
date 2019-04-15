@@ -86,6 +86,16 @@ class FTTabProfileViewController: FTTabViewController {
         
     }
     
+    @objc func gotoSetting() {
+        if FTCoreService.share.registrationService?.hasAuthenticationProfile() == false {
+            NotificationCenter.default.post(name: .ShowLogin, object: nil)
+            return
+        }
+        
+        let photoComposerVC = FTPhotoComposerViewController(coreService: FTCoreService.share, assets: [])
+        self.navigationController?.pushViewController(photoComposerVC, animated: true)
+    }
+    
     func setupPageMenu() {
         let homeVC = FTTabFeedViewController(nibName: "FTTabFeedViewController", bundle: nil)
         homeVC.feedViewMode = .username
@@ -135,7 +145,8 @@ class FTTabProfileViewController: FTTabViewController {
         let backBarBtn = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back(_:)))
         backBarBtn.tintColor = UIColor.navigationTitleTextColor()
         self.navigationItem.leftBarButtonItem = backBarBtn
-        navigationItem.title = NSLocalizedString("About", comment: "")
+        let addBarBtn = UIBarButtonItem(image: UIImage(named: "ic_setting")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(gotoSetting))
+//        navigationItem.title = NSLocalizedString("About", comment: "")
     }
     
     @objc func back(_ sender: Any) {

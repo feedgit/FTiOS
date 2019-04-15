@@ -105,7 +105,7 @@ class FTPlayerViewController: UIViewController {
             loveButton.setImage(UIImage.loveImage(), for: .normal)
         }
         
-        if let reactionsCount = feed.reactions?.count, reactionsCount > 0 {
+        if let reactionsCount = feed.loves, reactionsCount > 0 {
             loveButton.badgeString = "\(reactionsCount)"
         } else {
             loveButton.badgeString = nil
